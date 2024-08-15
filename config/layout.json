@@ -1,0 +1,8 @@
+{
+    "layout" : [
+        { "page" : { "name" : "Home"   , "sections" : [ { "section" : [ { "module": "clock", "config" : {} }, { "module": "timezones", "config" : {} } ] } ] } },
+        { "page" : { "name" : "Travel" , "sections" : [ { "section" : [ { "module": "clock", "config" : {} }, { "module": "timezones", "config" : {} } ] } ] } },
+        { "page" : { "name" : "Kitchen", "sections" : [ { "section" : [ { "module": "clock", "config" : {} } ] } ] } },
+        { "page" : { "name" : "Other" } }
+    ]
+}

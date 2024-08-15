@@ -1,0 +1,9 @@
+{
+    "modules" : [
+        { "id" : "clock", "config" : {} },
+        { "id" : "tz", "config" : {} },
+        { "id" : "wx", "config" : { "zipcode" : "20878" } },
+        { "id" : "calendar", "config" : {} },
+        { "id" : "cnn", "config" : { "update" : 15 } }
+    ]
+}
