@@ -6,52 +6,57 @@
     "types": "build/index.d.ts",
     "type": "module",
     "scripts": {
-      "test": "npm run build && ava",
-      "check": "npm outdated",
-      "clean": "tsc --build --clean",
-      "bundle": "esbuild ./build/client/index.js --bundle --outfile=web/public/js/bundle.js",
-      "bundlemin": "esbuild ./build/client/index.js --bundle --outfile=web/public/js/bundle.js --minify",
-      "build": "tsc --build && npm run bundle",
-      "start": "node build/server/main.js",
-      "refresh": "npm run clean && npm run build && npm run start"
+        "test": "npm run build && ava",
+        "check": "npm outdated",
+        "clean": "tsc --build --clean",
+        "bundle": "esbuild ./build/client/index.js --bundle --outfile=web/public/js/bundle.js",
+        "bundlemin": "esbuild ./build/client/index.js --bundle --outfile=web/public/js/bundle.js --minify",
+        "build": "tsc --build && npm run bundle",
+        "start": "node build/server/main.js",
+        "refresh": "npm run clean && npm run build && npm run start"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/johnrteg/smartscreen-svc.git"
+        "type": "git",
+        "url": "git+https://github.com/johnrteg/smartscreen-svc.git"
     },
     "keywords": [
-      "node",
-      "typescript",
-      "microservice",
-      "node.js"
+        "node",
+        "typescript",
+        "microservice",
+        "node.js"
     ],
     "author": "John Tegen",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/johnrteg/smartscreen-svc/issues"
+        "url": "https://github.com/johnrteg/smartscreen-svc/issues"
     },
     "homepage": "https://github.com/johnrteg/smartscreen-svc#readme",
     "devDependencies": {
-      "typescript": "^5.3.3"
+        "typescript": "^5.3.3"
     },
     "dependencies": {
-      "@emotion/react": "^11.11.3",
-      "@emotion/styled": "^11.11.0",
-      "@fastify/formbody": "^7.4.0",
-      "@fastify/static": "^6.12.0",
-      "@types/node": "^20.10.5",
-      "@types/react": "^18.2.78",
-      "@types/react-dom": "^18.2.18",
-      "@mui/icons-material": "^5.15.5",
-      "@mui/lab": "^5.0.0-alpha.163",
-      "@mui/material": "^5.15.7",
-      "@mui/x-date-pickers": "^7.2.0",
-      "@mui/x-tree-view": "^7.2.0",
-      "ava": "^6.0.1",
-      "axios": "^1.6.2",
-      "fastify": "^4.24.3",
-      "esbuild": "0.20.2",
-      "node": "^21.2.0"
+        "@emotion/react": "^11.11.3",
+        "@emotion/styled": "^11.11.0",
+        "@fastify/formbody": "^7.4.0",
+        "@fastify/http-proxy": "^9.5.0",
+        "@fastify/static": "^6.12.0",
+        "@mui/icons-material": "^5.15.5",
+        "@mui/lab": "^5.0.0-alpha.163",
+        "@mui/material": "^5.15.7",
+        "@mui/x-date-pickers": "^7.2.0",
+        "@mui/x-tree-view": "^7.2.0",
+        "@types/d3": "^7.4.3",
+        "@types/google-apps-script": "^1.0.83",
+        "@types/node": "^20.10.5",
+        "@types/react": "^18.2.78",
+        "@types/react-dom": "^18.2.18",
+        "ava": "^6.0.1",
+        "axios": "^1.6.2",
+        "d3": "^7.9.0",
+        "esbuild": "0.20.2",
+        "fastify": "^4.24.3",
+        "googleapis": "^142.0.0",
+        "node": "^21.2.0",
+        "query-string": "^9.1.0"
     }
-  }
-  
+}

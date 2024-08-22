@@ -2,43 +2,71 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import vm from 'vm';
-import { fileURLToPath } from 'url';
 
 // external
-import fastify from 'fastify';
-import fastifyStatic from '@fastify/static';
-import { FastifyInstance, FastifyReply, FastifyRequest, FastifyError, FastifyListenOptions, HTTPMethods } from 'fastify';
+import { netService } from '../net/netService.js';
+import getLayout from './endpoints/getLayout.js';
+import getLoginGoogle from './endpoints/getLoginGoogle.js';
+import getAuthGoogle from './endpoints/getAuthGoogle.js';
 
-//import clock from "./modules/clock/module.js";
+// modules
+import { WxModule } from './modules/wx/WxModule.js';
+import { CalendarModule } from './modules/calendar/CalendarModule.js';
 
-//
-interface Module
+
+export class smartScreenService extends netService
 {
-    id : string;
-    config : any;
-}
-
-export class smartScreenService
-{
-    protected   server     : FastifyInstance;
-    protected   log_server : boolean;
+    private modules : any;
 
     //////////////////////////////////////////////////////////////////////////////
     constructor()
     {
-        this.server = null;
-        this.log_server = false;
+        super();
+
+        this.modules = {};
+        
+
+        this.initConfig( this.readJsonFile( "config/host.json", {} ) );
     }
 
     //////////////////////////////////////////////////////////////////////////////
     protected async init() : Promise<void>
     {
-        let config : any = this.readJsonFile("config/modules.json", {} );
+        await super.init();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////
+    protected async loadModules() : Promise<void>
+    {
+
+        let config : any = this.readJsonFile( "config/modules.json", {} );
         //console.log("init::modules", config, config.modules.length );
 
         //config.modules.forEach( ( module : Module ) => this.addModule( module ) );
+
+        // instantiate configuration
+        this.modules[ "wx" ] = new WxModule( this );
+        this.modules[ "calendar" ] = new CalendarModule( this );
+
+        // set configuration
+        let i : number;
+        for( i=0; i < config.modules.length; i++ )
+        {
+            if( this.modules[ config.modules[i].id ] )
+            {
+                this.modules[ config.modules[i].id ].setConfig( config.modules[i].config );
+            }
+        }
+
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    protected bindCallbacks() : void
+    {
+        super.bindCallbacks();
+    }
+
+    /*
     //////////////////////////////////////////////////////////////////////////////
     protected async addModule( module : Module ) : Promise<void>
     {
@@ -75,64 +103,7 @@ export class smartScreenService
         }
         
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////
-    public readJsonFile( path : string, default_json : any ) : any
-    {
-        if( fs.existsSync( path ) )
-            return JSON.parse( fs.readFileSync( path, "utf8"));
-        else
-        {
-            console.error( "readJsonFile path not found", { path: path, cwd: process.cwd() } );
-            return default_json;
-        }   
-    }
-
-    //////////////////////////////////////////////////////////////////////////////
-    public started( err: Error, address : string ) : void
-    {
-        if( err )
-        {
-            console.error( "serviceStarted", err );
-            process.exit(1);
-        }
-
-        console.log( "service started", address );
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    protected addNotFoundHandler( callback : Function ) : void
-    {
-        this.server.setNotFoundHandler( ( req : any, res: any ) => callback(req,res) );
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //
-    protected directoryPath( import_meta_url : string ) : string
-    {
-        const filename : string = fileURLToPath( import_meta_url );
-        return path.dirname( filename );
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Adds the ability to server up static files
-    protected addStaticFileHosting( homedir: string, rootdir : string, prefix: string, setheaders : Function ) : void
-    {
-        this.server.register( fastifyStatic, {
-                                root        : path.join( this.directoryPath( homedir ), rootdir ),
-                                wildcard    : true,
-                                serveDotFiles: false,
-                                list        : false,
-                                schemaHide  : true,
-                                // allowPath: (path : string, root : string, request: any )-> callback,
-                                setHeaders: ( res:any, path:any, stats:any ) => setheaders(res,path,stats),
-                                prefixAvoidTrailingSlash: false,
-                                prefix    : prefix, // optional: default '/'
-                                //constraints: { host: 'example.com' } // optional: default {}
-          });
-          //this.server.setNotFoundHandler( ( req : any, res: any ) => this.defaultRoute( req, res ) );
-    }
+        */
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private setNotFoundHandler( request : any, response: any ) : void
@@ -157,39 +128,17 @@ export class smartScreenService
     //////////////////////////////////////////////////////////////////////////////
     public async registerEndpoints() : Promise<void>
     {
-    }
+        super.registerEndpoints();
 
-    //////////////////////////////////////////////////////////////////////////////
-    public async loadModules() : Promise<void>
-    {
-    }
+        this.registerHost();
 
-    //////////////////////////////////////////////////////////////////////////////
-    public async start() : Promise<void>
-    {
-        await this.init();
-
-        this.server = fastify({ logger              : this.log_server,
-                                disableRequestLogging: true,
-                                ignoreTrailingSlash : true,
-                                ignoreDuplicateSlashes: true,
-                                caseSensitive       : false,
-                                maxParamLength      : 100 });
+        // non-module endpoints
+        this.route( new getLayout( this ) );
+        this.route( new getAuthGoogle( this ) );
+        this.route( new getLoginGoogle( this ) );
 
         await this.loadModules();
-        await this.registerHost();
-        await this.registerEndpoints();
-
-        try
-        {
-            let opts : FastifyListenOptions = { port: 8080,
-                                                host: "localhost" };
-            this.server.listen( opts, ( err: Error, address: string ) => this.started( err, address) );
-        }
-        catch( err : any )
-        {
-            console.error( "startServer exception", err );
-            process.exit( 1 );
-        }
     }
+
+
 }

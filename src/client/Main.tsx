@@ -1,14 +1,16 @@
 import * as React from "react";
 
 //
-import { Typography, Stack, Box, Tab, Tabs, AppBar} from '@mui/material';
+import { Stack, Box, Tab, AppBar, IconButton, Menu, MenuItem} from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 
+import { Settings as SettingsIcon }         from '@mui/icons-material';
 
 //
-//import AppData from "../../data/AppData.js";
-//
+import AppData from "./AppData.js";
+import { Interfaces } from "./Interfaces.js";
 import Page from './Page.js';
+
 
 
 export interface MainProps
@@ -21,8 +23,15 @@ export interface MainProps
 //
 export default function Main( props : MainProps ) : JSX.Element
 {
-    const [tab, setTab] = React.useState<string>("main");
+    const [appdata,setAppData]      = React.useState< AppData >( AppData.instance() );
+
+    const warm_timer             = React.useRef<NodeJS.Timeout>(null);
+    
+    const [tab, setTab]             = React.useState<string>("");
     const [tabs,setTabs]            = React.useState< Array<JSX.Element> >( [] );
+    const [warm,setWarm]            = React.useState< boolean >( false );
+
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
     React.useEffect( () => pageLoaded(), [] );
 
@@ -31,52 +40,95 @@ export default function Main( props : MainProps ) : JSX.Element
     {
         let new_tabs : Array<JSX.Element> = [];
 
-        new_tabs.push( <Tab key="main"     value="main"       label={ "Main"}           /> );
-        new_tabs.push( <Tab key="travel"    value="travel"      label={ "travel" }        /> );
-        new_tabs.push( <Tab key="kitchen"   value="kitchen"     label={ "kitchen" }         /> );
-        new_tabs.push( <Tab key="other"   value="other"     label="other"         /> );
-
+        //if( appdata.layout.pages )
+        //{
+            appdata.layout.pages.forEach( ( page : Interfaces.Page, index : number ) => { new_tabs.push( <Tab key={page.name} value={page.name} label={page.name} /> ) } );
+            setTab( appdata.layout.pages[0].name );
+        //}
+        
         setTabs( new_tabs );
+
+        window.onclick = onBackPressed;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////
-    async function onLogin() : Promise<void>
-    {
-        //console.log('button pressed');
-        //let response : any = await appdata.server.get('/account');
-        //console.log('button pressed', response );
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////
     function onTabChange( event: React.SyntheticEvent, newValue: string ) : void
     {
         setTab(newValue);
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function onBackPressed() : void
+    {
+        if( warm_timer.current )clearTimeout( warm_timer.current );
+        setWarm( true );
+        warm_timer.current = setTimeout( cool, 10000 );
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function cool() : void
+    {
+        setWarm( false );
+        warm_timer.current = null;
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function onOpenMenu( event: React.MouseEvent<HTMLButtonElement> ) : void
+    {
+        setAnchorEl(event.currentTarget);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function onCloseMenu() : void
+    {
+        setAnchorEl(null);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function onRefresh() : void
+    {
+        window.location.reload();
+        onCloseMenu();
+    }
 
     // ===============================================================================================
-    return (
-
+    return ( <div>
         <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={tab}>
-            
-            <TabPanel value="main"  ><Page name={ "main" }/></TabPanel>
-            <TabPanel value="travel" ><Page name={ "travel" }/></TabPanel>
-            <TabPanel value="kitchen"><Page name={ "kitchen" }/></TabPanel>
-            <TabPanel value="other"><Page name={ "other" }/></TabPanel>
+            <TabContext value={tab}>
+                
+                { appdata.layout.pages.map( ( page : Interfaces.Page, index : number ) => { return <TabPanel key={index} value={page.name}  ><Page name={ page.name } rows={ page.rows } warm={warm}/></TabPanel> } ) }
 
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
-                    <TabList onChange={onTabChange} >
-                        { tabs }
-                    </TabList>
-                </AppBar>
-            </Box>
-        </TabContext>
-
-        
+                { warm ?
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }}>
+                        <Stack direction={"row"}>
+                            <TabList onChange={onTabChange} >
+                                { tabs }
+                            </TabList>
+                            <Box sx={{ flexGrow: 1 }} ></Box>
+                            <IconButton onClick={onOpenMenu}><SettingsIcon /></IconButton>
+                        </Stack>
+                        
+                    </AppBar>
+                </Box> : null }
+            </TabContext>
         </Box>
-            
+
+        <Menu
+            id="action-menu"
+            anchorEl={anchorEl}
+            open={ anchorEl != null }
+            onClose={onCloseMenu}
+            MenuListProps={{
+            'aria-labelledby': 'basic-button',
+            }}
+            >
+            <MenuItem onClick={onCloseMenu}>TBD</MenuItem>
+            <MenuItem onClick={onCloseMenu}>TBD</MenuItem>
+            <MenuItem onClick={onRefresh}>Refresh</MenuItem>
+        </Menu>
+            </div>
     );
     // ===============================================================================================
 }

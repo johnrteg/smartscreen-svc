@@ -1,8 +1,37 @@
 {
-    "layout" : [
-        { "page" : { "name" : "Home"   , "sections" : [ { "section" : [ { "module": "clock", "config" : {} }, { "module": "timezones", "config" : {} } ] } ] } },
-        { "page" : { "name" : "Travel" , "sections" : [ { "section" : [ { "module": "clock", "config" : {} }, { "module": "timezones", "config" : {} } ] } ] } },
-        { "page" : { "name" : "Kitchen", "sections" : [ { "section" : [ { "module": "clock", "config" : {} } ] } ] } },
-        { "page" : { "name" : "Other" } }
+    "pages" : [
+        { "name" : "Home"   , "rows" : [    { "widgets" :   [   { "module": "clock"     , "width" : "40%", "config" : { "date" : "MD", "seconds" : true } },
+                                                                { "module": "wxnow"     , "width" : "25%", "config" : { "lat" : 39.11, "lon" : -77.23,
+                                                                                                                        "name" : "Gaithersburg",
+                                                                                                                        "units" : "imperial",
+                                                                                                                        "update" : 60 } },
+                                                                { "module": "timezones" , "width" : "35%", "config" : { "tzs" : ["America/New_York","Europe/Paris","America/Denver","America/Los_Angeles","Pacific/Honolulu"] } }
+                                                            ] },
+                                            { "widgets" :   [   { "module": "calendar"  , "width" : "100%", "config" : { "days": 60 } }
+                                                            ] },
+                                            { "widgets" :   [   { "module": "wxforecast", "width" : "50%", "config" : { "lat" : 39.11, "lon" : -77.23,
+                                                                                                                    "name" : "Gaithersburg",
+                                                                                                                    "units" : "imperial",
+                                                                                                                    "update" : 60,
+                                                                                                                    "days" : 2 } }
+                                                        ] }
+                                        ] },
+        { "name" : "Travel" , "rows" : [    { "widgets" :   [   { "module": "clock"     , "width" : "35%", "config" : { "date" : "DM", "seconds" : false } },
+                                                                { "module": "timezones" , "width" : "35%", "config" : { "tzs" : ["America/New_York","Europe/Paris"] } }
+                                                            ] }
+                                        ] },
+        { "name" : "Kitchen", "rows" : [    { "widgets" :   [   { "module": "clock"     , "width" : "35%", "config" : {} }
+                                                            ] }
+                                        ] },
+        { "name" : "Household" },
+        { "name" : "Weather", "rows" :  [    { "widgets" :   [  { "module": "clock"     , "width" : "40%", "config" : { "date" : "MD", "seconds" : true } },
+                                                                { "module": "wx"        , "width" : "25%", "config" : { "days" : 0,
+                                                                                                                        "lat" : 39.11, "lon" : -77.23,
+                                                                                                                        "name" : "Gaithersburg",
+                                                                                                                        "units" : "imperial",
+                                                                                                                        "update" : 60 } }
+                                                                                                                                            ] }
+                                        ]  },
+        { "name" : "Other" }
     ]
 }
