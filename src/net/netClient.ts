@@ -322,10 +322,12 @@ export class netClient
         }
         catch ( err : any )
         {
+            //console.error( url, err.code );
+
             const error        : AxiosError = err;
             let error_code     : string = error.code ? error.code : 'EXCEPTION';
-            let error_messsage : string = 'server error';
-            let error_status   : number = 500;
+            let error_messsage : string = 'server error at: ' + method + ":" + url;
+            let error_status   : number = ( error.code && error.code == "ECONNABORTED" ) ? 504 : 500;
 
             //
             reply.duration = Date.now() - start;

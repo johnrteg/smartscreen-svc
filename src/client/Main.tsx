@@ -10,6 +10,7 @@ import { Settings as SettingsIcon }         from '@mui/icons-material';
 import AppData from "./AppData.js";
 import { Interfaces } from "./Interfaces.js";
 import Page from './Page.js';
+import SettingsPage from './settings/SettingsPage.js';
 
 
 
@@ -27,6 +28,7 @@ export default function Main( props : MainProps ) : JSX.Element
 
     const warm_timer             = React.useRef<NodeJS.Timeout>(null);
     
+    const [settings, showSettings]  = React.useState<boolean>(false);
     const [tab, setTab]             = React.useState<string>("");
     const [tabs,setTabs]            = React.useState< Array<JSX.Element> >( [] );
     const [warm,setWarm]            = React.useState< boolean >( false );
@@ -72,7 +74,6 @@ export default function Main( props : MainProps ) : JSX.Element
         warm_timer.current = null;
     }
 
-
     /////////////////////////////////////////////////////////////////////////////////////////////////
     function onOpenMenu( event: React.MouseEvent<HTMLButtonElement> ) : void
     {
@@ -92,9 +93,24 @@ export default function Main( props : MainProps ) : JSX.Element
         onCloseMenu();
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function onSettings() : void
+    {
+        showSettings( true );
+        onCloseMenu();
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    function onSettingsClose() : void
+    {
+        showSettings( false );
+    }
+
     // ===============================================================================================
     return ( <div>
         <Box sx={{ width: '100%', typography: 'body1' }}>
+
+            { settings ? <SettingsPage onClose={onSettingsClose}/> : 
             <TabContext value={tab}>
                 
                 { appdata.layout.pages.map( ( page : Interfaces.Page, index : number ) => { return <TabPanel key={index} value={page.name}  ><Page name={ page.name } rows={ page.rows } warm={warm}/></TabPanel> } ) }
@@ -112,21 +128,17 @@ export default function Main( props : MainProps ) : JSX.Element
                         
                     </AppBar>
                 </Box> : null }
-            </TabContext>
+            </TabContext> }
         </Box>
 
-        <Menu
-            id="action-menu"
-            anchorEl={anchorEl}
-            open={ anchorEl != null }
-            onClose={onCloseMenu}
-            MenuListProps={{
-            'aria-labelledby': 'basic-button',
-            }}
-            >
+        <Menu   id="action-menu"
+                anchorEl={anchorEl}
+                open={ anchorEl != null }
+                onClose={onCloseMenu}
+                MenuListProps={{'aria-labelledby': 'basic-button'}} >
             <MenuItem onClick={onCloseMenu}>TBD</MenuItem>
-            <MenuItem onClick={onCloseMenu}>TBD</MenuItem>
-            <MenuItem onClick={onRefresh}>Refresh</MenuItem>
+            <MenuItem onClick={onSettings}>{"Settings"}</MenuItem>
+            <MenuItem onClick={onRefresh}>{"Refresh"}</MenuItem>
         </Menu>
             </div>
     );

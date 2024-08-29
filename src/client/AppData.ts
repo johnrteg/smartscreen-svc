@@ -7,6 +7,7 @@
 //import ObjectUtils                  from "microvolt-lib/lib/utils/ObjectUtils.js";
 import { getLayoutEndpoint } from '../api/getLayoutEndpoint.js';
 import { netClient }          from '../net/netClient.js';
+import { Constants } from '../utils/Constants.js';
 import { Interfaces } from './Interfaces.js';
 
 
@@ -41,6 +42,8 @@ export default class AppData
     //public localizer : Localizer;
     public layout : Interfaces.Layout;
 
+    public begin_window : number = 6; // hours
+    public end_window   : number = 22; // hours
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     constructor()
@@ -66,6 +69,15 @@ export default class AppData
             AppData._instance = new AppData();
         }
         return AppData._instance;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    public nextUpdate( tm : number ) : number
+    {
+        const now : Date = new Date();
+        // use given if within window to update
+        // else next update at the start of the window, less 1 hour
+        return ( now.getHours() >= this.begin_window && now.getHours() <= this.end_window ) ? tm : ( 24 - now.getHours() + this.begin_window - 1 )*Constants.HOURS_TO_MS;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

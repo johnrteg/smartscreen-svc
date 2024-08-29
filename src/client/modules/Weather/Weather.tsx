@@ -1,36 +1,29 @@
 import * as React from "react";
 
 //
-import { Typography, Stack, SvgIcon } from '@mui/material';
-import AppData from "../../AppData.js";
-import { getWxNowEndpoint } from "../../../api/getWxNowEndpoint.js";
-import { netClient } from "../../../net/netClient.js";
+import { Typography, Stack } from '@mui/material';
 
+import AppData from "../../AppData.js";
+
+//
+import { Constants } from "../../../utils/Constants.js";
+import { netClient } from "../../../net/netClient.js";
+import { getWxNowEndpoint } from "../../../api/getWxNowEndpoint.js";
+
+//
 import Wind from "./Wind.js";
 import Humidity from "./Humidity.js";
+import { WxIcon } from "./WxIcon.js";
 
 
-// icons
-import { Icon as CloudIcon } from "./icons/CloudIcon.js";
-import { Icon as SnowIcon } from "./icons/SnowIcon.js";
-import { Icon as ScatteredCloudsIcon } from "./icons/ScatteredCloudsIcon.js";
-import { Icon as ThunderstormIcon } from "./icons/ThunderstormIcon.js";
-import { Icon as ShowersIcon } from "./icons/ShowersIcon.js";
-import { Icon as RainIcon } from "./icons/RainIcon.js";
-import { Icon as FewCloudsIcon } from "./icons/FewCloudsIcon.js";
-import { Icon as FogIcon } from "./icons/FogIcon.js";
-import { Icon as SunIcon } from "./icons/SunIcon.js";
-import { Constants } from "../../../utils/Constants.js";
 
-
+//
 export interface WeatherConfig
 {
-    days : number;
-    lat : number;
-    lon : number;
+    location : string;
     name : string;
     units : string;
-    update : number;
+    update_hours : number;
 }     
 
 export interface WeatherProps
@@ -68,42 +61,22 @@ export default function Weather( props : WeatherProps ) : JSX.Element
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function pageUnloaded() : void
     {
-        console.log("wx unloaded");
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    function Icon( value : getWxNowEndpoint.Conditions, size : number, color : string = "white" ) : JSX.Element
-    {
-        console.log("Icon", value );
-        switch( value )
-        {
-            case getWxNowEndpoint.Conditions.CLEAR             : return <SunIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            case getWxNowEndpoint.Conditions.FEW_ClOUDS        : return <FewCloudsIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            case getWxNowEndpoint.Conditions.SCATTERED_ClOUDS  : return <ScatteredCloudsIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            case getWxNowEndpoint.Conditions.BROKEN_ClOUDS     : return <CloudIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            case getWxNowEndpoint.Conditions.SHOWWERS          : return <ShowersIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            case getWxNowEndpoint.Conditions.RAIN              : return <RainIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            case getWxNowEndpoint.Conditions.THUNDERSTORM      : return <ThunderstormIcon color={color} width={size+"px"} height={size+"px"} />;break;
-            case getWxNowEndpoint.Conditions.SNOW              : return <SnowIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            case getWxNowEndpoint.Conditions.MIST              : return <FogIcon color={color} width={size+"px"} height={size+"px"} />; break;
-            default : return <SunIcon color={color} width={size+"px"} height={size+"px"} />;
-        }
-        
+        //console.log("wx unloaded");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     async function refresh() : Promise<void>
     {
         const endpt : getWxNowEndpoint = new getWxNowEndpoint();
-        endpt.request.lat   = props.config.lat;
-        endpt.request.lon   = props.config.lon;
-        endpt.request.units = props.config.units as getWxNowEndpoint.Units;
+        endpt.request.location = props.config.location;
+        endpt.request.units    = props.config.units as getWxNowEndpoint.Units;
 
         const reply  : netClient.Reply = await appdata.webserver.fetch( endpt, { cache: true, lifespan: 15 } ); // 15 minute force update
         if( reply.ok )
         {
-            //console.log("wx", reply.data );
+            
             const data : getWxNowEndpoint.ReplyData = reply.data;
+            //console.log("wx", data );
 
             const temp : number = Math.ceil( data.reports[0].temperature );
             const like : number = Math.ceil( data.reports[0].feels_like );
@@ -117,8 +90,12 @@ export default function Weather( props : WeatherProps ) : JSX.Element
             setWindDirection( data.reports[0].wind.direction );
             setHumidity( data.reports[0].humidity );
 
-            setTimeout( refresh, 0.25*Constants.HOURS_TO_MS );
         }
+
+        // google map key: AIzaSyAh7YwRm96CWF8eftoTrnvt1kfhNDYB7fY
+
+        // throttle checks based on the time of day (5AM-9PM)
+        setTimeout( refresh, appdata.nextUpdate( props.config.update_hours*Constants.HOURS_TO_MS ) );
     }
 
 // 
@@ -126,7 +103,7 @@ export default function Weather( props : WeatherProps ) : JSX.Element
     return (
         <Stack direction={"column"} spacing={0} gap={0} width={"100%"}>
             <Stack direction={"row"} justifyContent="flex-start" spacing={1} width={"100%"}>
-                { Icon( icon, 175, "white" ) }
+                { WxIcon( icon, 175, "white" ) }
                 <Stack direction={"column"} alignContent="center" spacing={1}>
                     <Typography sx={{ fontSize: 87, lineHeight:1.0 }} component="div" color="text.primary">{temperature}</Typography>
                     { diff_temps ? <Typography sx={{ fontSize: 20, lineHeight:1.0 }} component="div" color="text.secondary">Feels Like</Typography> : null }

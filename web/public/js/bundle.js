@@ -519,7 +519,7 @@
             }
             return element;
           };
-          function createElement18(type, config, children) {
+          function createElement25(type, config, children) {
             var propName;
             var props = {};
             var key = null;
@@ -1093,7 +1093,7 @@
             }
             return dispatcher.useContext(Context2);
           }
-          function useState18(initialState) {
+          function useState22(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1101,11 +1101,11 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useReducer(reducer, initialArg, init);
           }
-          function useRef21(initialValue) {
+          function useRef25(initialValue) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect23(create, deps) {
+          function useEffect27(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1618,7 +1618,7 @@
                 error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
               }
             }
-            var element = createElement18.apply(this, arguments);
+            var element = createElement25.apply(this, arguments);
             if (element == null) {
               return element;
             }
@@ -1888,15 +1888,15 @@
           exports.useContext = useContext12;
           exports.useDebugValue = useDebugValue3;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect23;
+          exports.useEffect = useEffect27;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle6;
           exports.useInsertionEffect = useInsertionEffect3;
           exports.useLayoutEffect = useLayoutEffect3;
           exports.useMemo = useMemo7;
           exports.useReducer = useReducer;
-          exports.useRef = useRef21;
-          exports.useState = useState18;
+          exports.useRef = useRef25;
+          exports.useState = useState22;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2392,9 +2392,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React84 = require_react();
+          var React110 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React84.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React110.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3999,7 +3999,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React84.Children.forEach(props.children, function(child) {
+                  React110.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -9398,7 +9398,7 @@
               }
             }
           }
-          function createElement18(type, props, rootContainerElement, parentNamespace) {
+          function createElement25(type, props, rootContainerElement, parentNamespace) {
             var isCustomComponentTag;
             var ownerDocument2 = getOwnerDocumentFromRootContainer(rootContainerElement);
             var domElement;
@@ -10259,7 +10259,7 @@
               }
               parentNamespace = hostContextDev.namespace;
             }
-            var domElement = createElement18(type, props, rootContainerInstance, parentNamespace);
+            var domElement = createElement25(type, props, rootContainerInstance, parentNamespace);
             precacheFiberNode(internalInstanceHandle, domElement);
             updateFiberProps(domElement, props);
             return domElement;
@@ -26497,7 +26497,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React84 = require_react();
+          var React110 = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -26523,7 +26523,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React84.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React110.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -27405,7 +27405,7 @@
         value: true
       });
       exports.default = StyledEngineProvider2;
-      var React84 = _interopRequireWildcard(require_react());
+      var React110 = _interopRequireWildcard(require_react());
       var _propTypes = _interopRequireDefault(require_prop_types());
       var _react2 = (init_emotion_react_browser_esm(), __toCommonJS(emotion_react_browser_esm_exports));
       var _cache = _interopRequireDefault((init_emotion_cache_browser_esm(), __toCommonJS(emotion_cache_browser_esm_exports)));
@@ -27495,7 +27495,7 @@
         value: true
       });
       exports.default = GlobalStyles;
-      var React84 = _interopRequireWildcard(require_react());
+      var React110 = _interopRequireWildcard(require_react());
       var _propTypes = _interopRequireDefault(require_prop_types());
       var _react2 = (init_emotion_react_browser_esm(), __toCommonJS(emotion_react_browser_esm_exports));
       var _jsxRuntime = require_jsx_runtime();
@@ -30227,7 +30227,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   });
 
   // build/client/index.js
-  var React83 = __toESM(require_react(), 1);
+  var React109 = __toESM(require_react(), 1);
   var import_client = __toESM(require_client(), 1);
 
   // build/utils/StringUtils.js
@@ -33279,6 +33279,8 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   Constants.MINUTES_TO_MS = 6e4;
   Constants.HOURS_TO_MS = 36e5;
   Constants.DAYS_TO_MS = 864e5;
+  Constants.MINUTES_TO_DAY = 1440;
+  Constants.MILES_TO_METERS = 1609.344;
 
   // build/net/netClient.js
   var __awaiter2 = function(thisArg, _arguments, P, generator) {
@@ -33473,8 +33475,8 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
         } catch (err) {
           const error = err;
           let error_code = error.code ? error.code : "EXCEPTION";
-          let error_messsage = "server error";
-          let error_status = 500;
+          let error_messsage = "server error at: " + method + ":" + url;
+          let error_status = error.code && error.code == "ECONNABORTED" ? 504 : 500;
           reply.duration = Date.now() - start;
           reply.ok = false;
           if (error.response) {
@@ -33534,6 +33536,8 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   })(Cache || (Cache = {}));
   var AppData = class _AppData {
     constructor() {
+      this.begin_window = 6;
+      this.end_window = 22;
       this.config = { host: "http://localhost:8080" };
       this.layout = { pages: [] };
     }
@@ -33546,6 +33550,10 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
         _AppData._instance = new _AppData();
       }
       return _AppData._instance;
+    }
+    nextUpdate(tm) {
+      const now = /* @__PURE__ */ new Date();
+      return now.getHours() >= this.begin_window && now.getHours() <= this.end_window ? tm : (24 - now.getHours() + this.begin_window - 1) * Constants.HOURS_TO_MS;
     }
     initialize(main2) {
       return __awaiter3(this, void 0, void 0, function* () {
@@ -33562,7 +33570,7 @@ The following color spaces are supported: srgb, display-p3, a98-rgb, prophoto-rg
   };
 
   // build/client/App.js
-  var React82 = __toESM(require_react(), 1);
+  var React108 = __toESM(require_react(), 1);
 
   // node_modules/@mui/material/styles/identifier.js
   var identifier_default = "$$material";
@@ -37006,7 +37014,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   var theme_default = theme;
 
   // build/client/Main.js
-  var React81 = __toESM(require_react(), 1);
+  var React107 = __toESM(require_react(), 1);
 
   // node_modules/@mui/material/utils/capitalize.js
   var import_capitalize4 = __toESM(require_capitalize2());
@@ -44663,33 +44671,39 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   } : void 0;
   var TabPanel_default = TabPanel;
 
-  // node_modules/@mui/icons-material/esm/ArrowCircleLeftOutlined.js
+  // node_modules/@mui/icons-material/esm/ArrowBack.js
   var import_jsx_runtime46 = __toESM(require_jsx_runtime());
-  var ArrowCircleLeftOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime46.jsx)("path", {
+  var ArrowBack_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime46.jsx)("path", {
+    d: "M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20z"
+  }), "ArrowBack");
+
+  // node_modules/@mui/icons-material/esm/ArrowCircleLeftOutlined.js
+  var import_jsx_runtime47 = __toESM(require_jsx_runtime());
+  var ArrowCircleLeftOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime47.jsx)("path", {
     d: "M2 12c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2 2 6.48 2 12m18 0c0 4.42-3.58 8-8 8s-8-3.58-8-8 3.58-8 8-8 8 3.58 8 8M8 12l4-4 1.41 1.41L11.83 11H16v2h-4.17l1.59 1.59L12 16z"
   }), "ArrowCircleLeftOutlined");
 
   // node_modules/@mui/icons-material/esm/ArrowCircleRightOutlined.js
-  var import_jsx_runtime47 = __toESM(require_jsx_runtime());
-  var ArrowCircleRightOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime47.jsx)("path", {
+  var import_jsx_runtime48 = __toESM(require_jsx_runtime());
+  var ArrowCircleRightOutlined_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime48.jsx)("path", {
     d: "M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12s4.48 10 10 10 10-4.48 10-10M4 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8-8-3.58-8-8m12 0-4 4-1.41-1.41L12.17 13H8v-2h4.17l-1.59-1.59L12 8z"
   }), "ArrowCircleRightOutlined");
 
   // node_modules/@mui/icons-material/esm/Google.js
   var React60 = __toESM(require_react());
-  var import_jsx_runtime48 = __toESM(require_jsx_runtime());
-  var Google_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime48.jsx)("path", {
+  var import_jsx_runtime49 = __toESM(require_jsx_runtime());
+  var Google_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime49.jsx)("path", {
     d: "M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"
   }), "Google");
 
   // node_modules/@mui/icons-material/esm/Settings.js
-  var import_jsx_runtime49 = __toESM(require_jsx_runtime());
-  var Settings_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime49.jsx)("path", {
+  var import_jsx_runtime50 = __toESM(require_jsx_runtime());
+  var Settings_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime50.jsx)("path", {
     d: "M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6"
   }), "Settings");
 
   // build/client/Page.js
-  var React80 = __toESM(require_react(), 1);
+  var React105 = __toESM(require_react(), 1);
 
   // build/client/modules/Space/Space.js
   var React61 = __toESM(require_react(), 1);
@@ -44818,22 +44832,20 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   }
 
   // build/client/modules/Weather/Weather.js
-  var React76 = __toESM(require_react(), 1);
+  var React79 = __toESM(require_react(), 1);
 
   // build/api/getWxNowEndpoint.js
   var getWxNowEndpoint = class extends Endpoint.Definition {
     constructor() {
       super(Network.Method.GET, "/wx/now", false);
       this.datamap = {
-        lat: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-        lon: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-        units: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true }
+        location: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
+        units: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true }
       };
     }
     reset() {
       this.request = {
-        lat: Endpoint.InitValue,
-        lon: Endpoint.InitValue,
+        location: Endpoint.InitValue,
         units: Endpoint.InitValue
       };
     }
@@ -44851,14 +44863,17 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     let Conditions;
     (function(Conditions2) {
       Conditions2["CLEAR"] = "clear";
-      Conditions2["FEW_ClOUDS"] = "fewclouds";
-      Conditions2["SCATTERED_ClOUDS"] = "scattered_clouds";
-      Conditions2["BROKEN_ClOUDS"] = "broken_clouds";
-      Conditions2["SHOWWERS"] = "showers";
+      Conditions2["PARTLY_ClOUDY"] = "partly_cloudy";
+      Conditions2["CLOUDY"] = "cloudy";
+      Conditions2["OVERCAST"] = "overcast";
+      Conditions2["DRIZZLE"] = "drizzle";
+      Conditions2["SHOWERS"] = "showers";
       Conditions2["RAIN"] = "rain";
       Conditions2["THUNDERSTORM"] = "thunderstorms";
       Conditions2["SNOW"] = "snow";
+      Conditions2["SLEET"] = "sleet";
       Conditions2["MIST"] = "mist";
+      Conditions2["FOG"] = "fog";
     })(Conditions = getWxNowEndpoint2.Conditions || (getWxNowEndpoint2.Conditions = {}));
     let Error2;
     (function(Error3) {
@@ -44972,7 +44987,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
         React66.createElement(
           "g",
           null,
-          React66.createElement("path", { d: describeArc(props.size / 2, props.size / 2, props.size / 2 - 9, 6, 0, 360 * (props.value / 100)), fill: color2, fillOpacity: 0.6 }),
+          React66.createElement("path", { d: describeArc(props.size / 2, props.size / 2, props.size / 2 - 9, 6, 0, 359.9 * (props.value / 100)), fill: color2, fillOpacity: 0.6 }),
           React66.createElement("circle", { stroke: "white", cx: props.size / 2, cy: props.size / 2, r: props.size / 2 - 2, strokeWidth: 2, fillOpacity: 0 }),
           React66.createElement("text", { x: "50%", y: "30%", textAnchor: "middle", fill: "white", fontSize: "10", strokeWidth: "2px", dy: ".3em" }, "Humidity"),
           React66.createElement(
@@ -44986,78 +45001,142 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     );
   }
 
-  // build/client/modules/Weather/icons/CloudIcon.js
+  // build/client/modules/Weather/WxIcon.js
+  var React78 = __toESM(require_react(), 1);
+
+  // build/client/modules/Weather/icons/SnowIcon.js
   var import_react8 = __toESM(require_react(), 1);
   var Icon = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react8.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react8.default.createElement("path", { d: "M5.38846 12.7023C3.98522 12.1237 3 10.7636 3 9.17807C3 7.42863 4.3 5.8125 6.25 5.5C6.86168 4.0617 8.30934 3 9.9978 3C12.1607 3 13.9285 4.65893 14.05 6.75C14.8721 7.10549 15.5169 7.83126 15.8166 8.69914M5.38846 12.7023C4.50928 13.5938 4 14.7867 4 16.0315C4 18.7755 6.28335 21 9.1 21L16.75 21C19.0972 21 21 19.1279 21 16.8185C21 15.1039 19.951 13.5202 18.45 12.875C18.3457 11.0905 17.3135 9.5483 15.8166 8.69914M5.38846 12.7023C6.11557 11.9651 7.0957 11.4339 8.25 11.25C9.04989 9.3802 10.943 8 13.151 8C14.1227 8 15.0333 8.25474 15.8166 8.69914", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react8.default.createElement("path", { d: "M11.9994 3V7M11.9994 7V17M11.9994 7L8.99943 4M11.9994 7L14.9994 4M11.9994 17V21M11.9994 17L8.99943 20M11.9994 17L14.9994 20M4.20624 7.49999L7.67034 9.49999M7.67034 9.49999L16.3306 14.5M7.67034 9.49999L3.57227 10.5981M7.67034 9.49999L6.57227 5.40191M16.3306 14.5L19.7947 16.5M16.3306 14.5L17.4287 18.5981M16.3306 14.5L20.4287 13.4019M4.2067 16.5L7.6708 14.5M7.6708 14.5L16.3311 9.49999M7.6708 14.5L3.57273 13.4019M7.6708 14.5L6.57273 18.5981M16.3311 9.49999L19.7952 7.49999M16.3311 9.49999L17.4291 5.40192M16.3311 9.49999L20.4291 10.5981", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
 
-  // build/client/modules/Weather/icons/SnowIcon.js
+  // build/client/modules/Weather/icons/CloudyAltIcon.js
   var import_react9 = __toESM(require_react(), 1);
   var Icon2 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react9.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react9.default.createElement("path", { d: "M11.9994 3V7M11.9994 7V17M11.9994 7L8.99943 4M11.9994 7L14.9994 4M11.9994 17V21M11.9994 17L8.99943 20M11.9994 17L14.9994 20M4.20624 7.49999L7.67034 9.49999M7.67034 9.49999L16.3306 14.5M7.67034 9.49999L3.57227 10.5981M7.67034 9.49999L6.57227 5.40191M16.3306 14.5L19.7947 16.5M16.3306 14.5L17.4287 18.5981M16.3306 14.5L20.4287 13.4019M4.2067 16.5L7.6708 14.5M7.6708 14.5L16.3311 9.49999M7.6708 14.5L3.57273 13.4019M7.6708 14.5L6.57273 18.5981M16.3311 9.49999L19.7952 7.49999M16.3311 9.49999L17.4291 5.40192M16.3311 9.49999L20.4291 10.5981", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react9.default.createElement("path", { d: "M5.38846 12.7023C3.98522 12.1237 3 10.7636 3 9.17807C3 7.42863 4.3 5.8125 6.25 5.5C6.86168 4.0617 8.30934 3 9.9978 3C12.1607 3 13.9285 4.65893 14.05 6.75C14.8721 7.10549 15.5169 7.83126 15.8166 8.69914M5.38846 12.7023C4.50928 13.5938 4 14.7867 4 16.0315C4 18.7755 6.28335 21 9.1 21L16.75 21C19.0972 21 21 19.1279 21 16.8185C21 15.1039 19.951 13.5202 18.45 12.875C18.3457 11.0905 17.3135 9.5483 15.8166 8.69914M5.38846 12.7023C6.11557 11.9651 7.0957 11.4339 8.25 11.25C9.04989 9.3802 10.943 8 13.151 8C14.1227 8 15.0333 8.25474 15.8166 8.69914", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
 
-  // build/client/modules/Weather/icons/ScatteredCloudsIcon.js
+  // build/client/modules/Weather/icons/ThunderstormIcon.js
   var import_react10 = __toESM(require_react(), 1);
   var Icon3 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react10.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react10.default.createElement("path", { d: "M7.45508 2V3M11.3438 3.61084L10.6366 4.31795M4.27344 10.6821L3.56633 11.3892M1.95508 7.5H2.95508M3.56641 3.61084L4.27351 4.31795M6.50049 9.21251C6.38862 9.15163 6.2832 9.08038 6.18553 9.00006C5.73952 8.63325 5.45508 8.07714 5.45508 7.45459C5.45508 6.35002 6.35051 5.45459 7.45508 5.45459C8.21398 5.45459 8.87416 5.87727 9.21303 6.50006C9.29756 6.65541 9.3621 6.82321 9.40319 7M9.8 21C7.14903 21 5 18.9466 5 16.4137C5 14.3144 6.6 12.375 9 12C9.75283 10.274 11.5346 9 13.6127 9C16.2747 9 18.4504 10.9907 18.6 13.5C20.0127 14.0956 21 15.5574 21 17.1402C21 19.2719 19.2091 21 17 21L9.8 21Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react10.default.createElement("path", { d: "M13 11L10 16H15L12 21M6 16.4438C4.22194 15.5683 3 13.7502 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 14.0582 20.206 15.4339 19 16.2417", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
 
-  // build/client/modules/Weather/icons/ThunderstormIcon.js
+  // build/client/modules/Weather/icons/ShowersIcon.js
   var import_react11 = __toESM(require_react(), 1);
   var Icon4 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react11.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react11.default.createElement("path", { d: "M13 11L10 16H15L12 21M6 16.4438C4.22194 15.5683 3 13.7502 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 14.0582 20.206 15.4339 19 16.2417", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react11.default.createElement("path", { d: "M10.5 21L12 18M14.5 21L16 18M6.5 21L8 18M8.8 15C6.14903 15 4 12.9466 4 10.4137C4 8.31435 5.6 6.375 8 6C8.75283 4.27403 10.5346 3 12.6127 3C15.2747 3 17.4504 4.99072 17.6 7.5C19.0127 8.09561 20 9.55741 20 11.1402C20 13.2719 18.2091 15 16 15L8.8 15Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
 
-  // build/client/modules/Weather/icons/ShowersIcon.js
+  // build/client/modules/Weather/icons/RainIcon.js
   var import_react12 = __toESM(require_react(), 1);
   var Icon5 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react12.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react12.default.createElement("path", { d: "M10.5 21L12 18M14.5 21L16 18M6.5 21L8 18M8.8 15C6.14903 15 4 12.9466 4 10.4137C4 8.31435 5.6 6.375 8 6C8.75283 4.27403 10.5346 3 12.6127 3C15.2747 3 17.4504 4.99072 17.6 7.5C19.0127 8.09561 20 9.55741 20 11.1402C20 13.2719 18.2091 15 16 15L8.8 15Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react12.default.createElement("path", { d: "M4 14.7519C3.37037 13.8768 3 12.8059 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 13.5693 20.6254 14.5541 20 15.3275M12.5 12.9995L10.5 21.0008M8.5 11.9995L6.5 20.0008M16.5 12L14.5 20.0013", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
 
-  // build/client/modules/Weather/icons/RainIcon.js
+  // build/client/modules/Weather/icons/FewCloudsIcon.js
   var import_react13 = __toESM(require_react(), 1);
   var Icon6 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react13.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react13.default.createElement("path", { d: "M4 14.7519C3.37037 13.8768 3 12.8059 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 13.5693 20.6254 14.5541 20 15.3275M12.5 12.9995L10.5 21.0008M8.5 11.9995L6.5 20.0008M16.5 12L14.5 20.0013", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react13.default.createElement("path", { d: "M11.0947 8.02658C11.5476 5.73111 13.5717 4 16 4C18.7614 4 21 6.23858 21 9C21 11.0345 19.7849 12.7852 18.0408 13.5659M11.0947 8.02658C9.24194 8.21766 7.68947 9.4193 7 11C4.6 11.375 3 13.3144 3 15.4137C3 17.9466 5.14903 20 7.8 20L15 20C17.2091 20 19 18.2719 19 16.1402C19 15.1829 18.6388 14.2698 18.0408 13.5659M11.0947 8.02658C11.265 8.00902 11.4378 8 11.6127 8C14.2747 8 16.4504 9.99072 16.6 12.5C17.1583 12.7354 17.6501 13.106 18.0408 13.5659", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
 
-  // build/client/modules/Weather/icons/FewCloudsIcon.js
+  // build/client/modules/Weather/icons/FogIcon.js
   var import_react14 = __toESM(require_react(), 1);
   var Icon7 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react14.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react14.default.createElement("path", { d: "M11.0947 8.02658C11.5476 5.73111 13.5717 4 16 4C18.7614 4 21 6.23858 21 9C21 11.0345 19.7849 12.7852 18.0408 13.5659M11.0947 8.02658C9.24194 8.21766 7.68947 9.4193 7 11C4.6 11.375 3 13.3144 3 15.4137C3 17.9466 5.14903 20 7.8 20L15 20C17.2091 20 19 18.2719 19 16.1402C19 15.1829 18.6388 14.2698 18.0408 13.5659M11.0947 8.02658C11.265 8.00902 11.4378 8 11.6127 8C14.2747 8 16.4504 9.99072 16.6 12.5C17.1583 12.7354 17.6501 13.106 18.0408 13.5659", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react14.default.createElement("path", { d: "M3 18H7M10 18H21M5 21H12M16 21H19M8.8 15C6.14903 15 4 12.9466 4 10.4137C4 8.31435 5.6 6.375 8 6C8.75283 4.27403 10.5346 3 12.6127 3C15.2747 3 17.4504 4.99072 17.6 7.5C19.0127 8.09561 20 9.55741 20 11.1402C20 13.2719 18.2091 15 16 15L8.8 15Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
 
-  // build/client/modules/Weather/icons/FogIcon.js
+  // build/client/modules/Weather/icons/SunAltIcon.js
   var import_react15 = __toESM(require_react(), 1);
   var Icon8 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react15.default.createElement(
     "svg",
-    { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react15.default.createElement("path", { d: "M3 18H7M10 18H21M5 21H12M16 21H19M8.8 15C6.14903 15 4 12.9466 4 10.4137C4 8.31435 5.6 6.375 8 6C8.75283 4.27403 10.5346 3 12.6127 3C15.2747 3 17.4504 4.99072 17.6 7.5C19.0127 8.09561 20 9.55741 20 11.1402C20 13.2719 18.2091 15 16 15L8.8 15Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    { width: width2, height: height2, viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" },
+    import_react15.default.createElement("path", { d: "M5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12ZM5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM12,5a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5Zm5.66,2.34a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34Zm-12-.29a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5ZM12,19a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19Z", fill: color2 })
   );
 
-  // build/client/modules/Weather/icons/SunIcon.js
+  // build/client/modules/Weather/icons/SleetIcon.js
   var import_react16 = __toESM(require_react(), 1);
-  var Icon9 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react16.default.createElement(
+  function Icon9({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) {
+    return import_react16.default.createElement(
+      "svg",
+      { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+      import_react16.default.createElement("path", { d: "M6 18L4 21M9.5 20V19M9.5 19V18M9.5 19H10.5M9.5 19H8.5M14.5 18L12.5 21M18 20V19M18 19V18M18 19H19M18 19H17M8.8 15C6.14903 15 4 12.9466 4 10.4137C4 8.31435 5.6 6.375 8 6C8.75283 4.27403 10.5346 3 12.6127 3C15.2747 3 17.4504 4.99072 17.6 7.5C19.0127 8.09561 20 9.55741 20 11.1402C20 13.2719 18.2091 15 16 15L8.8 15Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    );
+  }
+
+  // build/client/modules/Weather/icons/DrizzleIcon.js
+  var import_react17 = __toESM(require_react(), 1);
+  var Icon10 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react17.default.createElement(
     "svg",
     { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-    import_react16.default.createElement("path", { d: "M15 12C15 13.6569 13.6569 15 12 15C10.3432 15 9.00004 13.6569 9.00004 12C9.00004 10.3432 10.3432 9.00004 12 9.00004C13.6569 9.00004 15 10.3432 15 12Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }),
-    import_react16.default.createElement("path", { d: "M7.64338 5.18899L7.56701 6.10541C7.52707 6.58478 7.50709 6.82447 7.40373 7.01167C7.31261 7.1767 7.1767 7.31261 7.01167 7.40373C6.82447 7.50709 6.58477 7.52707 6.10541 7.56701L5.18898 7.64338C4.16259 7.72892 3.6494 7.77168 3.39642 8.00615C3.17627 8.21018 3.05941 8.50232 3.07812 8.8019C3.09961 9.14615 3.44174 9.53105 4.126 10.3008L4.69153 10.9371C5.02586 11.3132 5.19302 11.5012 5.2565 11.7135C5.31243 11.9004 5.31243 12.0997 5.2565 12.2866C5.19302 12.4988 5.02586 12.6869 4.69153 13.063L4.126 13.6992C3.44174 14.469 3.09961 14.8539 3.07812 15.1982C3.05941 15.4978 3.17627 15.7899 3.39642 15.9939C3.6494 16.2284 4.16259 16.2712 5.18899 16.3567L6.10541 16.4331C6.58478 16.473 6.82446 16.493 7.01167 16.5964C7.1767 16.6875 7.31261 16.8234 7.40373 16.9884C7.50709 17.1756 7.52707 17.4153 7.56701 17.8947L7.64338 18.8111C7.72892 19.8375 7.77168 20.3507 8.00615 20.6037C8.21018 20.8238 8.50232 20.9407 8.8019 20.922C9.14615 20.9005 9.53105 20.5583 10.3008 19.8741L10.9371 19.3085C11.3132 18.9742 11.5012 18.8071 11.7135 18.7436C11.9004 18.6876 12.0997 18.6876 12.2866 18.7436C12.4988 18.8071 12.6869 18.9742 13.063 19.3085L13.6992 19.8741C14.469 20.5583 14.8539 20.9005 15.1982 20.922C15.4978 20.9407 15.7899 20.8238 15.9939 20.6037C16.2284 20.3507 16.2712 19.8375 16.3567 18.8111L16.4331 17.8947C16.473 17.4153 16.493 17.1756 16.5964 16.9884C16.6875 16.8234 16.8234 16.6875 16.9884 16.5964C17.1756 16.493 17.4153 16.473 17.8947 16.4331L18.8111 16.3567C19.8375 16.2712 20.3507 16.2284 20.6037 15.9939C20.8238 15.7899 20.9407 15.4978 20.922 15.1982C20.9005 14.8539 20.5583 14.469 19.8741 13.6992L19.3085 13.063C18.9742 12.6869 18.8071 12.4988 18.7436 12.2866C18.6876 12.0997 18.6876 11.9004 18.7436 11.7135C18.8071 11.5012 18.9742 11.3132 19.3085 10.9371L19.8741 10.3008C20.5583 9.53105 20.9005 9.14615 20.922 8.8019C20.9407 8.50232 20.8238 8.21018 20.6037 8.00615C20.3507 7.77168 19.8375 7.72892 18.8111 7.64338L17.8947 7.56701C17.4153 7.52707 17.1756 7.50709 16.9884 7.40373C16.8234 7.31261 16.6875 7.1767 16.5964 7.01167C16.493 6.82446 16.473 6.58478 16.4331 6.10541L16.3567 5.18898C16.2712 4.16259 16.2284 3.6494 15.9939 3.39642C15.7899 3.17627 15.4978 3.05941 15.1982 3.07812C14.8539 3.09961 14.469 3.44174 13.6992 4.126L13.063 4.69153C12.6869 5.02586 12.4988 5.19302 12.2866 5.2565C12.0997 5.31243 11.9004 5.31243 11.7135 5.2565C11.5012 5.19302 11.3132 5.02586 10.9371 4.69153L10.3008 4.126C9.53105 3.44174 9.14615 3.09961 8.8019 3.07812C8.50232 3.05941 8.21018 3.17627 8.00615 3.39642C7.77168 3.6494 7.72892 4.16259 7.64338 5.18899Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+    import_react17.default.createElement("path", { d: "M9 18H9.01M15 18H15.01M9 20.5H9.01M12 18H12.01M12 21H12.01M15 20.5H15.01M8.8 15C6.14903 15 4 12.9466 4 10.4137C4 8.31435 5.6 6.375 8 6C8.75283 4.27403 10.5346 3 12.6127 3C15.2747 3 17.4504 4.99072 17.6 7.5C19.0127 8.09561 20 9.55741 20 11.1402C20 13.2719 18.2091 15 16 15L8.8 15Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
   );
+
+  // build/client/modules/Weather/icons/MistIcon.js
+  var import_react18 = __toESM(require_react(), 1);
+  var Icon11 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react18.default.createElement(
+    "svg",
+    { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    import_react18.default.createElement("path", { d: "M17,15a1.73,1.73,0,0,1-.86-.23,3.11,3.11,0,0,0-3.27,0,1.73,1.73,0,0,1-1.73,0,3.11,3.11,0,0,0-3.27,0A1.74,1.74,0,0,1,7,15a1,1,0,0,0,0,2,3.72,3.72,0,0,0,1.9-.52,1.13,1.13,0,0,1,1.2,0,3.75,3.75,0,0,0,3.8,0,1.13,1.13,0,0,1,1.2,0A3.72,3.72,0,0,0,17,17a1,1,0,0,0,0-2Zm0,4a1.73,1.73,0,0,1-.86-.23,3.11,3.11,0,0,0-3.27,0,1.73,1.73,0,0,1-1.73,0,3.11,3.11,0,0,0-3.27,0A1.74,1.74,0,0,1,7,19a1,1,0,0,0,0,2,3.72,3.72,0,0,0,1.9-.52,1.13,1.13,0,0,1,1.2,0,3.75,3.75,0,0,0,3.8,0,1.13,1.13,0,0,1,1.2,0A3.72,3.72,0,0,0,17,21a1,1,0,0,0,0-2ZM18.42,7.21A7,7,0,0,0,5.06,9.11,4,4,0,0,0,2,13a4,4,0,0,0,1.34,3,1,1,0,0,0,.66.25,1,1,0,0,0,.75-.35,1,1,0,0,0-.09-1.41A1.93,1.93,0,0,1,4,13a2,2,0,0,1,2-2,1,1,0,0,0,1-1,5,5,0,0,1,9.73-1.61,1,1,0,0,0,.78.66A3,3,0,0,1,20,12a2.93,2.93,0,0,1-.74,2,1,1,0,1,0,1.48,1.33A4.91,4.91,0,0,0,22,12,5,5,0,0,0,18.42,7.21Z", fill: color2 })
+  );
+
+  // build/client/modules/Weather/WxIcon.js
+  function WxIcon(value, size, color2 = "white") {
+    switch (value) {
+      case getWxNowEndpoint.Conditions.CLEAR:
+        return React78.createElement(Icon8, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.PARTLY_ClOUDY:
+        return React78.createElement(Icon6, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.CLOUDY:
+        return React78.createElement(Icon2, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.OVERCAST:
+        return React78.createElement(Icon2, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.MIST:
+        return React78.createElement(Icon11, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.DRIZZLE:
+        return React78.createElement(Icon10, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.SHOWERS:
+        return React78.createElement(Icon4, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.RAIN:
+        return React78.createElement(Icon5, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.THUNDERSTORM:
+        return React78.createElement(Icon3, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.SNOW:
+        return React78.createElement(Icon, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.SLEET:
+        return React78.createElement(Icon9, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      case getWxNowEndpoint.Conditions.FOG:
+        return React78.createElement(Icon7, { color: color2, width: size + "px", height: size + "px" });
+        break;
+      default:
+        return React78.createElement(Icon8, { color: color2, width: size + "px", height: size + "px" });
+    }
+  }
 
   // build/client/modules/Weather/Weather.js
   var __awaiter4 = function(thisArg, _arguments, P, generator) {
@@ -45088,62 +45167,26 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     });
   };
   function Weather(props) {
-    const [appdata2, setAppData] = React76.useState(AppData.instance());
-    const [icon, setIcon] = React76.useState(getWxNowEndpoint.Conditions.CLEAR);
-    const [temperature, setTemperature] = React76.useState("");
-    const [feels_like, setFeelsLike] = React76.useState("");
-    const [diff_temps, setDiffTemps] = React76.useState(true);
-    const [wind_speed, setWindSpeed] = React76.useState(0);
-    const [wind_gust, setWindGust] = React76.useState(0);
-    const [wind_direction, setWindDirection] = React76.useState(0);
-    const [humidity, setHumidity] = React76.useState(0);
-    React76.useEffect(() => pageLoaded(), []);
-    React76.useEffect(() => () => pageUnloaded(), []);
+    const [appdata2, setAppData] = React79.useState(AppData.instance());
+    const [icon, setIcon] = React79.useState(getWxNowEndpoint.Conditions.CLEAR);
+    const [temperature, setTemperature] = React79.useState("");
+    const [feels_like, setFeelsLike] = React79.useState("");
+    const [diff_temps, setDiffTemps] = React79.useState(true);
+    const [wind_speed, setWindSpeed] = React79.useState(0);
+    const [wind_gust, setWindGust] = React79.useState(0);
+    const [wind_direction, setWindDirection] = React79.useState(0);
+    const [humidity, setHumidity] = React79.useState(0);
+    React79.useEffect(() => pageLoaded(), []);
+    React79.useEffect(() => () => pageUnloaded(), []);
     function pageLoaded() {
       refresh();
     }
     function pageUnloaded() {
-      console.log("wx unloaded");
-    }
-    function Icon10(value, size, color2 = "white") {
-      console.log("Icon", value);
-      switch (value) {
-        case getWxNowEndpoint.Conditions.CLEAR:
-          return React76.createElement(Icon9, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.FEW_ClOUDS:
-          return React76.createElement(Icon7, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.SCATTERED_ClOUDS:
-          return React76.createElement(Icon3, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.BROKEN_ClOUDS:
-          return React76.createElement(Icon, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.SHOWWERS:
-          return React76.createElement(Icon5, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.RAIN:
-          return React76.createElement(Icon6, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.THUNDERSTORM:
-          return React76.createElement(Icon4, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.SNOW:
-          return React76.createElement(Icon2, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        case getWxNowEndpoint.Conditions.MIST:
-          return React76.createElement(Icon8, { color: color2, width: size + "px", height: size + "px" });
-          break;
-        default:
-          return React76.createElement(Icon9, { color: color2, width: size + "px", height: size + "px" });
-      }
     }
     function refresh() {
       return __awaiter4(this, void 0, void 0, function* () {
         const endpt = new getWxNowEndpoint();
-        endpt.request.lat = props.config.lat;
-        endpt.request.lon = props.config.lon;
+        endpt.request.location = props.config.location;
         endpt.request.units = props.config.units;
         const reply = yield appdata2.webserver.fetch(endpt, { cache: true, lifespan: 15 });
         if (reply.ok) {
@@ -45158,52 +45201,50 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
           setWindGust(Math.ceil(data.reports[0].wind.gust));
           setWindDirection(data.reports[0].wind.direction);
           setHumidity(data.reports[0].humidity);
-          setTimeout(refresh, 0.25 * Constants.HOURS_TO_MS);
         }
+        setTimeout(refresh, appdata2.nextUpdate(props.config.update_hours * Constants.HOURS_TO_MS));
       });
     }
-    return React76.createElement(
+    return React79.createElement(
       Stack_default,
       { direction: "column", spacing: 0, gap: 0, width: "100%" },
-      React76.createElement(
+      React79.createElement(
         Stack_default,
         { direction: "row", justifyContent: "flex-start", spacing: 1, width: "100%" },
-        Icon10(icon, 175, "white"),
-        React76.createElement(
+        WxIcon(icon, 175, "white"),
+        React79.createElement(
           Stack_default,
           { direction: "column", alignContent: "center", spacing: 1 },
-          React76.createElement(Typography_default, { sx: { fontSize: 87, lineHeight: 1 }, component: "div", color: "text.primary" }, temperature),
-          diff_temps ? React76.createElement(Typography_default, { sx: { fontSize: 20, lineHeight: 1 }, component: "div", color: "text.secondary" }, "Feels Like") : null,
-          diff_temps ? React76.createElement(Typography_default, { sx: { fontSize: 40, lineHeight: 1 }, component: "div", color: "text.secondary" }, feels_like) : null
+          React79.createElement(Typography_default, { sx: { fontSize: 87, lineHeight: 1 }, component: "div", color: "text.primary" }, temperature),
+          diff_temps ? React79.createElement(Typography_default, { sx: { fontSize: 20, lineHeight: 1 }, component: "div", color: "text.secondary" }, "Feels Like") : null,
+          diff_temps ? React79.createElement(Typography_default, { sx: { fontSize: 40, lineHeight: 1 }, component: "div", color: "text.secondary" }, feels_like) : null
         )
       ),
-      React76.createElement(
+      React79.createElement(
         Stack_default,
         { direction: "row", alignContent: "flex-start", spacing: 1, width: "100%" },
-        wind_speed > 0 || wind_gust > 0 ? React76.createElement(Wind, { size: 75, minSpeed: wind_speed, maxSpeed: wind_gust, direction: wind_direction, units: "MPH" }) : null,
-        React76.createElement(Humidity, { size: 75, value: humidity })
+        wind_speed > 0 || wind_gust > 0 ? React79.createElement(Wind, { size: 75, minSpeed: wind_speed, maxSpeed: wind_gust, direction: wind_direction, units: "MPH" }) : null,
+        React79.createElement(Humidity, { size: 75, value: humidity })
       )
     );
   }
 
   // build/client/modules/Weather/WeatherForecast.js
-  var React77 = __toESM(require_react(), 1);
+  var React81 = __toESM(require_react(), 1);
 
   // build/api/getWxForecastEndpoint.js
   var getWxForecastEndpoint = class extends Endpoint.Definition {
     constructor() {
       super(Network.Method.GET, "/wx/forecast", false);
       this.datamap = {
-        lat: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-        lon: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-        units: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
+        location: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
+        units: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
         days: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true }
       };
     }
     reset() {
       this.request = {
-        lat: Endpoint.InitValue,
-        lon: Endpoint.InitValue,
+        location: Endpoint.InitValue,
         units: Endpoint.InitValue,
         days: Endpoint.InitValue
       };
@@ -45219,18 +45260,6 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       Units2["METRIC"] = "metric";
       Units2["IMPERIAL"] = "imperial";
     })(Units = getWxForecastEndpoint2.Units || (getWxForecastEndpoint2.Units = {}));
-    let Conditions;
-    (function(Conditions2) {
-      Conditions2["CLEAR"] = "clear";
-      Conditions2["FEW_ClOUDS"] = "fewclouds";
-      Conditions2["SCATTERED_ClOUDS"] = "scattered_clouds";
-      Conditions2["BROKEN_ClOUDS"] = "broken_clouds";
-      Conditions2["SHOWWERS"] = "showers";
-      Conditions2["RAIN"] = "rain";
-      Conditions2["THUNDERSTORM"] = "thunderstorms";
-      Conditions2["SNOW"] = "snow";
-      Conditions2["MIST"] = "mist";
-    })(Conditions = getWxForecastEndpoint2.Conditions || (getWxForecastEndpoint2.Conditions = {}));
     let Error2;
     (function(Error3) {
       Error3["INVALID_IDENTIFIER"] = "invalid_identifier";
@@ -45238,6 +45267,16 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       Error3["NOT_AUTHORIZED"] = "not_authorized";
     })(Error2 = getWxForecastEndpoint2.Error || (getWxForecastEndpoint2.Error = {}));
   })(getWxForecastEndpoint || (getWxForecastEndpoint = {}));
+
+  // build/client/widgets/Title.js
+  var React80 = __toESM(require_react(), 1);
+  function Title(props) {
+    return React80.createElement(
+      Box_default,
+      { component: "section", width: "100%", height: "20px", sx: { borderBottom: 1, borderColor: "text.secondary" } },
+      React80.createElement(Typography_default, { component: "div", color: "text.secondary", sx: { fontSize: 18, lineHeight: 1 } }, props.label)
+    );
+  }
 
   // build/client/modules/Weather/WeatherForecast.js
   var __awaiter5 = function(thisArg, _arguments, P, generator) {
@@ -45267,43 +45306,70 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
   };
+  var Direction;
+  (function(Direction4) {
+    Direction4["HORIZONTAL"] = "horizontal";
+    Direction4["VERTICAL"] = "vertical";
+  })(Direction || (Direction = {}));
   function WeatherForecast(props) {
-    const [appdata2, setAppData] = React77.useState(AppData.instance());
-    const [icon, setIcon] = React77.useState(getWxForecastEndpoint.Conditions.CLEAR);
-    const [temperature, setTemperature] = React77.useState("");
-    const [feels_like, setFeelsLike] = React77.useState("");
-    const [diff_temps, setDiffTemps] = React77.useState(true);
-    const [wind_speed, setWindSpeed] = React77.useState(0);
-    const [wind_gust, setWindGust] = React77.useState(0);
-    const [wind_direction, setWindDirection] = React77.useState(0);
-    const [humidity, setHumidity] = React77.useState(0);
-    React77.useEffect(() => pageLoaded(), []);
-    React77.useEffect(() => () => pageUnloaded(), []);
+    const [appdata2, setAppData] = React81.useState(AppData.instance());
+    const dow = React81.useRef(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]);
+    const [forecast, setForecast] = React81.useState([]);
+    React81.useEffect(() => pageLoaded(), []);
+    React81.useEffect(() => () => pageUnloaded(), []);
     function pageLoaded() {
       refresh();
     }
     function pageUnloaded() {
-      console.log("wx unloaded");
     }
     function refresh() {
       return __awaiter5(this, void 0, void 0, function* () {
         const endpt = new getWxForecastEndpoint();
-        endpt.request.lat = props.config.lat;
-        endpt.request.lon = props.config.lon;
+        endpt.request.location = props.config.location;
         endpt.request.units = props.config.units;
         endpt.request.days = props.config.days;
-        const reply = yield appdata2.webserver.fetch(endpt, { cache: true, lifespan: 15 });
+        const reply = yield appdata2.webserver.fetch(endpt, { cache: true, lifespan: 60 });
         if (reply.ok) {
-          console.log("wx", reply.data);
           const data = reply.data;
+          setForecast(data.reports);
         }
+        setTimeout(refresh, appdata2.nextUpdate(props.config.update_hours * Constants.HOURS_TO_MS));
       });
     }
-    return React77.createElement(Stack_default, { direction: "column", spacing: 0, gap: 0, width: "100%" }, "Forecast");
+    function renderWx(day, index) {
+      let date = /* @__PURE__ */ new Date();
+      date.setTime(day.date * 1e3 + date.getTimezoneOffset() * Constants.MINUTES_TO_MS);
+      let elem = React81.createElement(
+        Box_default,
+        { key: day.date, sx: { display: "flex", justifyContent: "center", alignItems: "center" }, width: "80px" },
+        React81.createElement(
+          Stack_default,
+          { direction: "column", spacing: 0, gap: 0.5, sx: { display: "flex", justifyContent: "center", alignItems: "center" }, width: "100%" },
+          React81.createElement(Typography_default, { component: "div", color: "text.primary" }, index == 0 ? "Today" : dow.current[date.getDay()]),
+          WxIcon(day.conditions, 75),
+          React81.createElement(
+            Stack_default,
+            { direction: "row", spacing: 0, gap: 0, width: "100%" },
+            React81.createElement(Typography_default, { component: "div", color: "text.secondary", sx: { fontSize: 12, lineHeight: 1, paddingTop: "4px" } }, Math.floor(day.min_temp) + "\xB0"),
+            React81.createElement(Box_default, { sx: { flexGrow: 1 } }),
+            React81.createElement(Typography_default, { component: "div", color: "text.primary", sx: { fontSize: 18, lineHeight: 1 } }, Math.ceil(day.max_temp) + "\xB0")
+          )
+        )
+      );
+      return elem;
+    }
+    return React81.createElement(
+      Stack_default,
+      { direction: "column", spacing: 0, gap: 0, width: "100%" },
+      props.config.title ? React81.createElement(Title, { label: "Forecast: " + props.config.name }) : null,
+      React81.createElement(Stack_default, { direction: props.config.direction == Direction.HORIZONTAL ? "row" : "column", spacing: 0, gap: 5 }, forecast.map((day, index) => {
+        return renderWx(day, index);
+      }))
+    );
   }
 
   // build/client/modules/Calendar/Calendar.js
-  var React79 = __toESM(require_react(), 1);
+  var React83 = __toESM(require_react(), 1);
 
   // node_modules/query-string/base.js
   var base_exports = {};
@@ -45825,16 +45891,12 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     constructor() {
       super(Network.Method.GET, "/calendar", false);
       this.datamap = {
-        address: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-        service: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-        start_date: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-        end_date: { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true }
+        start_date: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
+        end_date: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true }
       };
     }
     reset() {
       this.request = {
-        address: Endpoint.InitValue,
-        service: Endpoint.InitValue,
         start_date: Endpoint.InitValue,
         end_date: Endpoint.InitValue
       };
@@ -45853,26 +45915,23 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   })(getCalendarEndpoint || (getCalendarEndpoint = {}));
 
   // build/client/modules/Calendar/MonthlyView.js
-  var React78 = __toESM(require_react(), 1);
+  var React82 = __toESM(require_react(), 1);
   function MonthlyView(props) {
-    const [appdata2, setAppData] = React78.useState(AppData.instance());
-    const dow = React78.useRef(["S", "M", "T", "W", "T", "F", "S"]);
-    const month = React78.useRef(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
-    const [start_date, setStartDate] = React78.useState(null);
-    const [events, setEvents] = React78.useState([]);
-    React78.useEffect(() => pageLoaded(), []);
-    React78.useEffect(startChanged, [props.start_date]);
-    React78.useEffect(() => () => pageUnloaded(), []);
+    const [appdata2, setAppData] = React82.useState(AppData.instance());
+    const dow = React82.useRef(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]);
+    const month = React82.useRef(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]);
+    const cells = React82.useRef([]);
+    const max_events_per_day = React82.useRef(3);
+    const [start_date, setStartDate] = React82.useState(null);
+    React82.useEffect(() => pageLoaded(), []);
+    React82.useEffect(startChanged, [props.start_date]);
+    React82.useEffect(() => () => pageUnloaded(), []);
     function pageLoaded() {
-      const today = (/* @__PURE__ */ new Date()).getTime() / 1e3;
-      setEvents([
-        { id: "1234", start_date: today, end_date: today + Constants.HOURS_TO_MS / 1e3, title: "New Event" },
-        { id: "5678", start_date: today, end_date: today + Constants.HOURS_TO_MS / 1e3, title: "Gym" },
-        { id: "abcd", start_date: today, end_date: today + Constants.DAYS_TO_MS / 1e3, title: "Swim Meet" },
-        { id: "efgh", start_date: today, end_date: today + Constants.HOURS_TO_MS / 1e3, title: "Car wash" }
-      ]);
+      const today = Math.floor((/* @__PURE__ */ new Date()).getTime() / Constants.MINUTES_TO_MS);
     }
     function pageUnloaded() {
+    }
+    function refresh() {
     }
     function startChanged() {
       if (props.start_date) {
@@ -45881,29 +45940,9 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
         setStartDate(start);
       }
     }
-    function renderEvents(date_seconds, row, col) {
+    function renderEvents(date_minutes, row, col) {
       let event_elements = null;
       let i;
-      for (i = 0; i < events.length; i++) {
-        if (events[i].start_date >= date_seconds) {
-          if (event_elements == null)
-            event_elements = [];
-          if (event_elements.length == 3) {
-            event_elements.push(React78.createElement(
-              Box_default,
-              { key: "more_" + date_seconds.toString(), component: "section", width: "100%", height: "20px" },
-              React78.createElement(Typography_default, { sx: { fontSize: 12, lineHeight: 1, padding: 0.5 }, component: "div", color: "text.secondary" }, "More...")
-            ));
-            break;
-          } else {
-            event_elements.push(React78.createElement(
-              Box_default,
-              { key: events[i].id, component: "section", width: "100%", height: "20px", sx: { borderRadius: 1, bgcolor: "#616161" } },
-              React78.createElement(Typography_default, { sx: { fontSize: 12, lineHeight: 1, padding: 0.5 }, component: "div", color: "text.primary" }, events[i].title)
-            ));
-          }
-        }
-      }
       return event_elements;
     }
     function renderCellInside(today, cell_date, row, col) {
@@ -45917,15 +45956,15 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       let banner = { display: "flex", justifyContent: "center", paddingTop: 0.5, paddingRight: 0.5, paddingBottom: 0.5 };
       if (today.getTime() == cell_date.getTime())
         date_color = "error";
-      return React78.createElement(
+      return React82.createElement(
         Stack_default,
         { direction: "column", spacing: 0, gap: 0.3, width: "100%" },
-        React78.createElement(
+        React82.createElement(
           Box_default,
           { key: "in_" + cell_date.getTime() / 1e3, sx: banner },
-          React78.createElement(Typography_default, { sx: { fontSize: 40, lineHeight: 1, padding: 0 }, component: "div", color: date_color }, label)
+          React82.createElement(Typography_default, { sx: { fontSize: 40, lineHeight: 1, padding: 0 }, component: "div", color: date_color }, label)
         ),
-        renderEvents(cell_date.getTime() / 1e3, row, col)
+        renderEvents(cell_date.getTime() / Constants.DAYS_TO_MS, row, col)
       );
     }
     function renderCell(today, date, row, col, maxRow) {
@@ -45933,23 +45972,23 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       let sx = { p: 0, borderTop: "1px solid grey" };
       if (row == maxRow - 1)
         sx["borderBottom"] = "1px solid grey";
-      return React78.createElement(Box_default, { key: cell_date.getTime(), component: "section", width: "100%", height: "140px", sx }, renderCellInside(today, cell_date, row, col));
+      return React82.createElement(Box_default, { key: cell_date.getTime(), component: "section", width: "100%", height: "140px", sx }, renderCellInside(today, cell_date, row, col));
     }
     function renderRow(today, date, row, maxRow) {
-      let rowel = React78.createElement(Stack_default, { key: row, direction: "row", spacing: 0, gap: 0, width: "100%" }, dow.current.map((dow2, col) => {
+      let rowel = React82.createElement(Stack_default, { key: row, direction: "row", spacing: 0, gap: 0, width: "100%" }, dow.current.map((dow2, col) => {
         return renderCell(today, date, row, col, maxRow);
       }));
       return rowel;
     }
     function renderDow(dow2) {
-      return React78.createElement(
+      return React82.createElement(
         Box_default,
         { key: dow2, component: "section", width: "100%", sx: { display: "flex", justifyContent: "center" } },
-        React78.createElement(Typography_default, { sx: { fontSize: 42, lineHeight: 1, padding: 1 }, component: "div", color: "text.primary" }, dow2)
+        React82.createElement(Typography_default, { sx: { fontSize: 42, lineHeight: 1, padding: 1 }, component: "div", color: "text.primary" }, dow2.charAt(0))
       );
     }
     function renderHeader() {
-      let header = React78.createElement(Stack_default, { key: "header", direction: "row", spacing: 0, gap: 0, width: "100%" }, dow.current.map((dow2) => {
+      let header = React82.createElement(Stack_default, { key: "header", direction: "row", spacing: 0, gap: 0, width: "100%" }, dow.current.map((dow2) => {
         return renderDow(dow2);
       }));
       return header;
@@ -45963,13 +46002,27 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       let weeks = [];
       let w;
       let date = start_date.getTime();
+      console.log("nbr_weeks", nbr_weeks);
+      const nbr_cells = nbr_weeks * 7;
+      let i;
+      const start_minutes = date / Constants.MINUTES_TO_MS;
+      let ids;
+      cells.current = [];
+      for (i = 0; i < nbr_cells; i++) {
+        ids = [];
+        cells.current.push({ date: start_minutes + i * Constants.MINUTES_TO_DAY, ids });
+      }
+      let cell_index;
       weeks.push(renderHeader());
       for (w = 0; w < nbr_weeks; w++) {
         weeks.push(renderRow(today, date, w, nbr_weeks));
       }
       return weeks;
     }
-    return React78.createElement(Stack_default, { direction: "column", spacing: 0, gap: 0, width: "100%" }, renderWeeks());
+    function sortEvent(a, b) {
+      return 0;
+    }
+    return React82.createElement(Stack_default, { direction: "column", spacing: 0, gap: 0, width: "100%" }, renderWeeks());
   }
 
   // build/client/modules/Calendar/Calendar.js
@@ -46001,38 +46054,23 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     });
   };
   function Calendar(props) {
-    const [appdata2, setAppData] = React79.useState(AppData.instance());
-    const [login, setLogin] = React79.useState("");
-    const [start_date, setStartDate] = React79.useState(null);
-    React79.useEffect(() => pageLoaded(), []);
-    React79.useEffect(() => () => pageUnloaded(), []);
+    const [appdata2, setAppData] = React83.useState(AppData.instance());
+    const [login, setLogin] = React83.useState("");
+    const [events, setEvents] = React83.useState([]);
+    const oauth_window = React83.useRef(null);
+    const oauth_timer_id = React83.useRef(null);
+    const [start_date, setStartDate] = React83.useState(null);
+    React83.useEffect(() => pageLoaded(), []);
+    React83.useEffect(() => () => pageUnloaded(), []);
+    React83.useEffect(onStartChange, [start_date]);
     function pageLoaded() {
-      console.log("config", props.config);
       let today = /* @__PURE__ */ new Date();
       let start = new Date(today.getFullYear(), today.getMonth(), 1, 0, 0, 0, 0);
       setStartDate(start);
     }
-    function refresh() {
-      return __awaiter6(this, void 0, void 0, function* () {
-        const now = /* @__PURE__ */ new Date();
-        const until = new Date(now.getTime() + 30 * Constants.DAYS_TO_MS);
-        const endpt = new getCalendarEndpoint();
-        endpt.request.address = "jlajrt@gmail.com";
-        endpt.request.service = "google";
-        endpt.request.start_date = now.toDateString();
-        endpt.request.end_date = until.toDateString();
-        const reply = yield appdata2.webserver.fetch(endpt);
-        if (reply.ok) {
-          console.log("cal", reply.data);
-          const data = reply.data;
-        }
-      });
-    }
     function pageUnloaded() {
-      console.log("cal unloaded");
     }
     function onLogin() {
-      console.log("login");
       googleLogin();
     }
     function onToday() {
@@ -46053,7 +46091,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     function googleLogin() {
       return __awaiter6(this, void 0, void 0, function* () {
         const params = query_string_default.stringify({
-          client_id: "251787141802-8lm7p0g9r8ph27lt54v0tjl0if521bjp.apps.googleusercontent.com",
+          client_id: "1067509946324-up5h3eqksr1hkihtb1ujte4h4i93iutj.apps.googleusercontent.com",
           redirect_uri: "http://localhost:8080/auth/google",
           scope: [
             "https://www.googleapis.com/auth/userinfo.email",
@@ -46061,42 +46099,656 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
             "https://www.googleapis.com/auth/calendar.events"
           ].join(" "),
           response_type: "code",
+          include_granted_scopes: true,
           access_type: "offline",
           prompt: "consent"
         });
         const url = StringUtils_default.format("https://accounts.google.com/o/oauth2/v2/auth?{0}", params);
-        var win = window.open(url, "_blank", "width=600,height=700,location=false");
-        win.focus();
+        oauth_window.current = window.open(url, "_blank", "width=600,height=750,top=100,left=100,location=false");
+        oauth_window.current.focus();
+        oauth_timer_id.current = setInterval(onCheckWindow, 500);
       });
     }
-    return React79.createElement(
+    function onCheckWindow() {
+      try {
+        if (oauth_window.current.location.host === "localhost:8080") {
+          clearInterval(oauth_timer_id.current);
+          oauth_timer_id.current = null;
+          oauth_window.current.close();
+        }
+      } catch (err) {
+      }
+    }
+    function onClose(event) {
+      if (oauth_timer_id.current)
+        clearInterval(oauth_timer_id.current);
+      oauth_timer_id.current = null;
+    }
+    function onStartChange() {
+      getEvents();
+    }
+    function getEvents() {
+      return __awaiter6(this, void 0, void 0, function* () {
+        if (start_date == null)
+          return;
+        let end_date = new Date(start_date.getTime() + 30 * Constants.DAYS_TO_MS);
+        const endpt = new getCalendarEndpoint();
+        endpt.request.start_date = start_date.toISOString();
+        endpt.request.end_date = end_date.toISOString();
+        const reply = yield appdata2.webserver.fetch(endpt, { cache: true, lifespan: 15 });
+        if (reply.ok) {
+          const data = reply.data;
+          console.log("event", data);
+          setEvents(data.events);
+        }
+      });
+    }
+    return React83.createElement(
       Stack_default,
       { direction: "column", spacing: 0, gap: 0 },
-      React79.createElement(
+      React83.createElement(
         Stack_default,
         { direction: "row", spacing: 0, gap: 0, justifyContent: "center", alignItems: "center" },
-        React79.createElement(Button_default, { variant: "outlined", size: "large", onClick: onLogin, startIcon: React79.createElement(Google_default, null), sx: { width: "250px" } }, "Google Login"),
-        props.warm ? React79.createElement(
+        React83.createElement(Button_default, { variant: "outlined", size: "large", onClick: onLogin, startIcon: React83.createElement(Google_default, null), sx: { width: "275px" } }, "Sign in with Google"),
+        props.warm ? React83.createElement(
           "div",
           null,
-          React79.createElement(
+          React83.createElement(
             IconButton_default,
             { size: "large", onClick: onPrevious },
-            React79.createElement(ArrowCircleLeftOutlined_default, null)
+            React83.createElement(ArrowCircleLeftOutlined_default, null)
           ),
-          React79.createElement(Button_default, { variant: "outlined", color: "primary", size: "large", onClick: onToday, sx: { width: "100px" } }, "Today"),
-          React79.createElement(
+          React83.createElement(Button_default, { variant: "outlined", color: "primary", size: "large", onClick: onToday, sx: { width: "100px" } }, "Today"),
+          React83.createElement(
             IconButton_default,
             { size: "large", onClick: onNext },
-            React79.createElement(ArrowCircleRightOutlined_default, null)
+            React83.createElement(ArrowCircleRightOutlined_default, null)
           )
         ) : null
       ),
-      React79.createElement(MonthlyView, { start_date, days: props.config.days })
+      React83.createElement(MonthlyView, { start_date, days: props.config.days, events })
     );
   }
 
-  // build/client/Page.js
+  // build/client/modules/exchange/Exchange.js
+  var React94 = __toESM(require_react(), 1);
+
+  // build/client/assets/flags/icons/1x1/ca.js
+  var import_react19 = __toESM(require_react(), 1);
+  var Icon12 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react19.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", id: "flag-icons-ca", viewBox: "0 0 512 512" },
+    import_react19.default.createElement("path", { fill: "#fff", d: "M81.1 0h362.3v512H81.1z" }),
+    import_react19.default.createElement("path", { fill: "#d52b1e", d: "M-100 0H81.1v512H-100zm543.4 0h181.1v512H443.4zM135.3 247.4l-14 4.8 65.4 57.5c5 14.8-1.7 19.1-6 26.9l71-9-1.8 71.5 14.8-.5-3.3-70.9 71.2 8.4c-4.4-9.3-8.3-14.2-4.3-29l65.4-54.5-11.4-4.1c-9.4-7.3 4-34.8 6-52.2 0 0-38.1 13.1-40.6 6.2l-9.9-18.5-34.6 38c-3.8 1-5.4-.6-6.3-3.8l16-79.7-25.4 14.3c-2.1.9-4.2 0-5.6-2.4l-24.5-49-25.2 50.9c-1.9 1.8-3.8 2-5.4.8l-24.2-13.6 14.5 79.2c-1.1 3-3.9 4-7.1 2.3l-33.3-37.8c-4.3 7-7.3 18.4-13 21-5.7 2.3-25-4.9-37.9-7.7 4.4 15.9 18.2 42.3 9.5 51z" })
+  );
+
+  // build/client/assets/flags/icons/1x1/eu.js
+  var import_react20 = __toESM(require_react(), 1);
+  var Icon13 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react20.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", id: "flag-icons-eu", viewBox: "0 0 512 512" },
+    import_react20.default.createElement(
+      "defs",
+      null,
+      import_react20.default.createElement(
+        "g",
+        { id: "eu-d" },
+        import_react20.default.createElement(
+          "g",
+          { id: "eu-b" },
+          import_react20.default.createElement("path", { id: "eu-a", d: "m0-1-.3 1 .5.1z" }),
+          import_react20.default.createElement("use", { xlinkHref: "#eu-a", transform: "scale(-1 1)" })
+        ),
+        import_react20.default.createElement(
+          "g",
+          { id: "eu-c" },
+          import_react20.default.createElement("use", { xlinkHref: "#eu-b", transform: "rotate(72)" }),
+          import_react20.default.createElement("use", { xlinkHref: "#eu-b", transform: "rotate(144)" })
+        ),
+        import_react20.default.createElement("use", { xlinkHref: "#eu-c", transform: "scale(-1 1)" })
+      )
+    ),
+    import_react20.default.createElement("path", { fill: "#039", d: "M0 0h512v512H0z" }),
+    import_react20.default.createElement(
+      "g",
+      { fill: "#fc0", transform: "translate(256 258.4)scale(25.28395)" },
+      import_react20.default.createElement("use", { xlinkHref: "#eu-d", width: "100%", height: "100%", y: "-6" }),
+      import_react20.default.createElement("use", { xlinkHref: "#eu-d", width: "100%", height: "100%", y: "6" }),
+      import_react20.default.createElement(
+        "g",
+        { id: "eu-e" },
+        import_react20.default.createElement("use", { xlinkHref: "#eu-d", width: "100%", height: "100%", x: "-6" }),
+        import_react20.default.createElement("use", { xlinkHref: "#eu-d", width: "100%", height: "100%", transform: "rotate(-144 -2.3 -2.1)" }),
+        import_react20.default.createElement("use", { xlinkHref: "#eu-d", width: "100%", height: "100%", transform: "rotate(144 -2.1 -2.3)" }),
+        import_react20.default.createElement("use", { xlinkHref: "#eu-d", width: "100%", height: "100%", transform: "rotate(72 -4.7 -2)" }),
+        import_react20.default.createElement("use", { xlinkHref: "#eu-d", width: "100%", height: "100%", transform: "rotate(72 -5 .5)" })
+      ),
+      import_react20.default.createElement("use", { xlinkHref: "#eu-e", width: "100%", height: "100%", transform: "scale(-1 1)" })
+    )
+  );
+
+  // build/client/assets/flags/icons/1x1/gb.js
+  var import_react21 = __toESM(require_react(), 1);
+  var Icon14 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react21.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", id: "flag-icons-gb", viewBox: "0 0 512 512" },
+    import_react21.default.createElement("path", { fill: "#012169", d: "M0 0h512v512H0z" }),
+    import_react21.default.createElement("path", { fill: "#FFF", d: "M512 0v64L322 256l190 187v69h-67L254 324 68 512H0v-68l186-187L0 74V0h62l192 188L440 0z" }),
+    import_react21.default.createElement("path", { fill: "#C8102E", d: "m184 324 11 34L42 512H0v-3zm124-12 54 8 150 147v45zM512 0 320 196l-4-44L466 0zM0 1l193 189-59-8L0 49z" }),
+    import_react21.default.createElement("path", { fill: "#FFF", d: "M176 0v512h160V0zM0 176v160h512V176z" }),
+    import_react21.default.createElement("path", { fill: "#C8102E", d: "M0 208v96h512v-96zM208 0v512h96V0z" })
+  );
+
+  // build/client/assets/flags/icons/1x1/au.js
+  var import_react22 = __toESM(require_react(), 1);
+  var Icon15 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react22.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", id: "flag-icons-au", viewBox: "0 0 512 512" },
+    import_react22.default.createElement("path", { fill: "#00008B", d: "M0 0h512v512H0z" }),
+    import_react22.default.createElement("path", { fill: "#fff", d: "M256 0v32l-95 96 95 93.5V256h-33.5L127 162l-93 94H0v-34l93-93.5L0 37V0h31l96 94 93-94z" }),
+    import_react22.default.createElement("path", { fill: "red", d: "m92 162 5.5 17L21 256H0v-1.5zm62-6 27 4 75 73.5V256zM256 0l-96 98-2-22 75-76zM0 .5 96.5 95 67 91 0 24.5z" }),
+    import_react22.default.createElement("path", { fill: "#fff", d: "M88 0v256h80V0zM0 88v80h256V88z" }),
+    import_react22.default.createElement("path", { fill: "red", d: "M0 104v48h256v-48zM104 0v256h48V0z" }),
+    import_react22.default.createElement("path", { fill: "#fff", d: "m202 402.8-45.8 5.4 4.6 45.9-32.8-32.4-33 32.2 4.9-45.9-45.8-5.8L93 377.4 69 338l43.6 15 15.8-43.4 15.5 43.5 43.7-14.7-24.3 39.2 38.8 25.1Zm222.7 8-20.5 2.6 2.2 20.5-14.8-14.4-14.7 14.5 2-20.5-20.5-2.4 17.3-11.2-10.9-17.5 19.6 6.5 6.9-19.5 7.1 19.4 19.5-6.7-10.7 17.6zM415 293.6l2.7-13-9.8-9 13.2-1.5 5.5-12.1 5.5 12.1 13.2 1.5-9.8 9 2.7 13-11.6-6.6zm-84.1-60-20.3 2.2 1.8 20.3-14.4-14.5-14.8 14.1 2.4-20.3-20.2-2.7 17.3-10.8-10.5-17.5 19.3 6.8 7.2-19.1 6.7 19.3 19.4-6.3-10.9 17.3zm175.8-32.8-20.9 2.7 2.3 20.9-15.1-14.7-15 14.8 2.1-21-20.9-2.4 17.7-11.5-11.1-17.9 20 6.7 7-19.8 7.2 19.8 19.9-6.9-11 18zm-82.1-83.5-20.7 2.3 1.9 20.8-14.7-14.8L376 140l2.4-20.7-20.7-2.8 17.7-11-10.7-17.9 19.7 6.9 7.3-19.5 6.8 19.7 19.8-6.5-11.1 17.6z" })
+  );
+
+  // build/client/assets/flags/icons/1x1/ch.js
+  var import_react23 = __toESM(require_react(), 1);
+  var Icon16 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react23.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", id: "flag-icons-ch", viewBox: "0 0 512 512" },
+    import_react23.default.createElement(
+      "g",
+      { fillRule: "evenodd", strokeWidth: "1pt" },
+      import_react23.default.createElement("path", { fill: "red", d: "M0 0h512v512H0z" }),
+      import_react23.default.createElement(
+        "g",
+        { fill: "#fff" },
+        import_react23.default.createElement("path", { d: "M96 208h320v96H96z" }),
+        import_react23.default.createElement("path", { d: "M208 96h96v320h-96z" })
+      )
+    )
+  );
+
+  // build/client/assets/flags/icons/1x1/hk.js
+  var import_react24 = __toESM(require_react(), 1);
+  var Icon17 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react24.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", id: "flag-icons-hk", viewBox: "0 0 512 512" },
+    import_react24.default.createElement("path", { fill: "#EC1B2E", d: "M0 0h512v512H0" }),
+    import_react24.default.createElement("path", { id: "hk-a", fill: "#fff", d: "M282.3 119.2C203 114 166.6 218 241.6 256.4 215.6 234 221 201 231.5 184l1.9 1c-13.8 23.6-11.2 52.8 11 71-12.6-12.2-9.4-39 12.2-48.8s23.6-39.3 16.4-49.1q-14.7-25.6 9.3-39zM243.9 180l-4.7 7.4-1.8-8.6-8.6-2.3 7.8-4.3-.6-9 6.5 6.2 8.3-3.3-3.7 8 5.6 6.9z" }),
+    import_react24.default.createElement("use", { xlinkHref: "#hk-a", transform: "rotate(72 248.5 259.5)" }),
+    import_react24.default.createElement("use", { xlinkHref: "#hk-a", transform: "rotate(144 248.5 259.5)" }),
+    import_react24.default.createElement("use", { xlinkHref: "#hk-a", transform: "rotate(216 248.5 259.5)" }),
+    import_react24.default.createElement("use", { xlinkHref: "#hk-a", transform: "rotate(288 248.5 259.5)" })
+  );
+
+  // build/client/assets/flags/icons/1x1/jp.js
+  var import_react25 = __toESM(require_react(), 1);
+  var Icon18 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react25.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", id: "flag-icons-jp", viewBox: "0 0 512 512" },
+    import_react25.default.createElement(
+      "defs",
+      null,
+      import_react25.default.createElement(
+        "clipPath",
+        { id: "jp-a" },
+        import_react25.default.createElement("path", { fillOpacity: ".7", d: "M177.2 0h708.6v708.7H177.2z" })
+      )
+    ),
+    import_react25.default.createElement(
+      "g",
+      { fillRule: "evenodd", strokeWidth: "1pt", clipPath: "url(#jp-a)", transform: "translate(-128)scale(.72249)" },
+      import_react25.default.createElement("path", { fill: "#fff", d: "M0 0h1063v708.7H0z" }),
+      import_react25.default.createElement("circle", { cx: "523.1", cy: "344.1", r: "194.9", fill: "#bc002d", transform: "translate(-59.7 -34.5)scale(1.1302)" })
+    )
+  );
+
+  // build/client/assets/flags/icons/1x1/mx.js
+  var import_react26 = __toESM(require_react(), 1);
+  var Icon19 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react26.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", xmlnsXlink: "http://www.w3.org/1999/xlink", id: "flag-icons-mx", viewBox: "0 0 512 512" },
+    import_react26.default.createElement(
+      "defs",
+      null,
+      import_react26.default.createElement("radialGradient", { xlinkHref: "#mx-a", id: "mx-b", cx: "842.3", cy: "103.7", r: "25.9", gradientTransform: "matrix(.11321 .02876 -.02762 .11359 180.2 193.2)", gradientUnits: "userSpaceOnUse" }),
+      import_react26.default.createElement("radialGradient", { xlinkHref: "#mx-a", id: "mx-c", cx: "651.5", cy: "550.5", r: "25.9", gradientTransform: "matrix(-.10753 -.04307 .03971 -.09991 375.3 9.8)", gradientUnits: "userSpaceOnUse" }),
+      import_react26.default.createElement("radialGradient", { xlinkHref: "#mx-a", id: "mx-d", cx: "380.8", cy: "740.4", r: "25.9", gradientTransform: "matrix(.06029 .00225 -.00274 .11843 377.4 -120)", gradientUnits: "userSpaceOnUse" }),
+      import_react26.default.createElement(
+        "linearGradient",
+        { id: "mx-a" },
+        import_react26.default.createElement("stop", { offset: "0", stopColor: "#fff" }),
+        import_react26.default.createElement("stop", { offset: "1", stopColor: "#f15770" })
+      )
+    ),
+    import_react26.default.createElement("path", { fill: "#ce1126", d: "M341.3 0H512v512H341.3z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M170.7 0h170.6v512H170.7z" }),
+    import_react26.default.createElement("path", { fill: "#006847", d: "M0 0h170.7v512H0z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m284.6 295.6.2 3.5 1.4-.9-1-3z" }),
+    import_react26.default.createElement("circle", { cx: "284.5", cy: "294.6", r: "1.1", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m289 301.1-2.7-2.5-1.2 1 3.6 2z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M288.7 302.6c-.4-.6-.3-1.3.3-1.7.5-.4 1.2-.3 1.6.2.3.5.2 1.2-.3 1.6-.5.4-1.2.3-1.6-.2zm20.3-38.9 2.7 2.6.4-1.3-2.5-1.7z" }),
+    import_react26.default.createElement("circle", { cx: "308.7", cy: "263", r: "1.1", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m316.1 265.3-4 1.1.3-1.3 3.5-.4z" }),
+    import_react26.default.createElement("circle", { cx: "316.8", cy: "264.7", r: "1.1", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m302.3 285.5-2.5-4 .4-.1 2.9 3.3z" }),
+    import_react26.default.createElement("circle", { cx: "299.6", cy: "280.7", r: "1.2", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m302.5 285.6 3.2.6.1-.5-2.7-1z" }),
+    import_react26.default.createElement("circle", { cx: "306.6", cy: "286.2", r: "1.1", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M227.7 294.4c0 .6-.4 1-.8 1s-.8-.5-.8-1 .4-1 .8-1 .8.5.8 1zm0 1.8.7 4-1-.3-.3-3.5z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M228.6 294.9c.4.6-.3 1.5-1.2 1.7-.8.3-1.9-.1-1.9-.9 0-.9 1.3-.4 1.6-.5.5-.2 1-1 1.5-.3z" }),
+    import_react26.default.createElement("ellipse", { cx: "221.6", cy: "301", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", rx: "1.3", ry: ".9" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m223.7 300.8 3.9-.2-.7-.8-3.2.4z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M224 300.4c.4 1 .4 2.3-.7 2.1-1.1-.1-.9-1.1-1-1.5-.1-.7-.8-1.3-.1-2 .6-.6 1.5.4 1.8 1.4z" }),
+    import_react26.default.createElement("ellipse", { cx: "211.5", cy: "279.4", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", rx: ".8", ry: "1.1" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m211.5 281.9.1 3.7-1-.9.1-3z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M213 280.8c.2.8-1.1 1.3-2 1.1-.8-.1-1.5-.6-1.3-1.4 0-.7 1.2-.6 1.5-.4.4.3 1.5-.6 1.8.7z" }),
+    import_react26.default.createElement("ellipse", { cx: "204.9", cy: "285.2", fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", rx: "1.3", ry: ".6" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m207.3 285.2 2.9-.2 1.2 1-4.2-.2z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M206.2 283.6c.8 0 1.3.9 1.2 1.8 0 1-.8 1.7-1.5 1.6-.8-.1-.7-.8-.7-1l.5-.8c0-.3-.2-1-.1-1.2 0-.3.2-.4.6-.4zm-2.4-22.7c-.3.6-1 1-1.2.7-.3-.2-.2-.9.1-1.4.3-.5.8-.8 1.2-.6.3.2.3.8 0 1.3zm-3.2 5.9 1.6-3.9-.2-.2-1.9 2.7z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M202 263c-.9-.6-1-1.3-.8-1.9.3-.5.9-.2.9-.2l.7.7c.2.1.7-.1 1 .4.4.5.2 1 0 1a2 2 0 0 1-1.9 0zm-6.9-.6c.6.4 1 1 .7 1.3-.2.4-.8.4-1.4 0s-.9-.8-.7-1.2c.2-.4.9-.4 1.4 0zm1.7 1.7 3 1.8v1.5l-3.3-2.8z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M196.8 264.5c-.7.7-1.3.8-1.8.5-.6-.3-.1-.9-.1-.9l.6-.6c.2-.3 0-.8.6-1 .5-.4 1-.1 1 .2.1.3.3 1.2-.3 1.8z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "m285.3 295.8-.4.4-.2.7v-1.1l.4-.3z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M285.4 295s-.2.5-.9.5c-.6 0-1-.3-1-.7l.1-.9-.3.4v.7l.5.6h.4l.4.1.5-.2.3-.2v-.2zm3.4 6h-.6a13.3 13.3 0 0 1-2.7-1.4l3 2zm1.9.8s0 .6-.6.8c-.6.3-1 .2-1.2 0a1.1 1.1 0 0 1-.3-1l-.1.5.3.6.6.3h.5l.3-.2.4-.4.2-.4zm19.4-38v.8l-.7-.7.3-.4zm-.3-1c0 .5-.8 1.3-1.3 1-.6-.2-1-.8-.7-1.4l-.2.3.1.8.6.5h.6l.6-.2.3-.6zm8 1.4s-.1-.3 0 0c0 .5-.5 1.4-1.1 1.3-.7 0-1-.6-.9-1.1v.8l.3.3.5.3h.5l.6-.4.2-.5v-.3z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M315 264.9s0 .2-.3.4a42.8 42.8 0 0 0-1 .6l2.2-.6-.2-.6zm-13.6 17.9-.2.4v.6l-1.2-2 .4-.2zm-.7-2c-.3.6-1.2 1-1.6.7-.5-.3-.8-1.2-.3-1.6l-.3.2-.1.6.2.5.4.5.4.2.7-.2.5-.3s.3-1 0-.5zm4.4 4.7s0 .2-.4.2h-1.2l2 .4.2-.4z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M307.7 286c.2.7-.4 1.4-1.2 1.1s-1-1-.8-1.5l-.2.6.2.6.5.4.5.2.5-.2.5-.5.1-.6v-.1zm-79.2 8.9c.2.2-.1 1.2-1 1.5-1 .4-1.4 0-1.6-.3l-.2-.6-.2.2.2.4.4.4.8.2.6-.1.6-.3.3-.3.3-.4v-.5l-.1-.2z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "m227.7 296.9-.3.3-.2.6v-1l.4-.3zm-3 3.2s-.1.2.1.4l.8.2h-1.4l-.2-.5zm-.5 1a1.1 1.1 0 0 1-.1.5c-.2.4-.3.8-.8.7a1 1 0 0 1-.8-.9 1 1 0 0 0-.2-.5v.5l.3.8.6.3h.4l.4-.2.2-.5v-.8zm-3.8-.2s.2.7 1 .7c.7 0 1-.2 1-.2v.3l-.3.1-.6.1-.6-.1-.3-.2-.2-.4zm-7.5-20.3v.3c-.1.3-.6.9-1.5.9-.8 0-1.2-.3-1.4-.6-.3-.3-.3-.7-.3-.7v.5l.3.5.9.4h.8l.8-.2.4-.4zm-1.4 1.8-.5.2a3 3 0 0 0-.3.3v-1h.8v.6zm-3.8 2.8.4.3c.4.2 2.5.4 2.5.4l-3.3-.1.2-.6zm-.3 0-.2.5c-.2.3-.6 1.2-1.3 1.1-.7-.1-.6-.6-.6-.7v-.2l-.1.5.2.3.2.2h.6l.4-.1.4-.4.2-.4.2-.5zm-1.8.1s0 .2-.6.2l-1.3-.2.3.3.4.1h1zm-1.7-23s.1.3-.2.5c-.3.2-1 .4-1.4.1-.4-.2-1.2-1-1.2-1l.4.6.5.5.8.2h.8l.3-.4.1-.2z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M201.6 263.3v.4l-.1 1 .6-1.6-.2-.2zm-4.3 1.2.1.3c.2.5 2 2.1 2 2.1l-2.8-2.2.3-.5zm-.9.2-.7.3c-.2 0-.8 0-.8-.4v-.5l-.2.5.1.3.4.2h.6l.5-.2.1-.1zm-1-1.1h-.6c-.5 0-1-.6-1-.6l.3.6.9.4z" }),
+    import_react26.default.createElement("path", { fill: "#9ca168", d: "M319.9 256.1c-.3 3-3.3 4.7-4.9 5.8a8.6 8.6 0 0 0-2.3 2.6l-.6 1.8-.2 1.1v.4l.2 1.7-.1 3.4 2.1-1.5 1.6-.6h.4s-1.7 1.6-2.3 3.4c-.7 1.9-2 5.8-4.3 7-2.3 1.3-3.8.8-4.6 1.5l-.8.9-1 1.3-.8 1-.7.6-.5.3c0 .4 0 1-.2 1.4l-.5 1.9 1-.4h1.1l-.6 1c-.1.5.1 3.7-2.9 5.6-3 1.9-10.7 1.6-10.7 1.6l-1.4.6-1.4 1-1.2 1.4-.1.3s-1 1.2-1.7 1.6l-2.2 1.5 1.8.1 2.8 1.2s-1.8 0-3 .4c-1.1.5-6.5 3.5-9 3.4-2.7 0-6.4-3.8-6.4-3.8l-1.6-1.2-2.8-.6-3.5-.2v-.4l.1-.6 3 .1c1.7.2 2.2.8 3.6 1a5.8 5.8 0 0 0 2.8-.3l4.7-3.8 4.7-1.6 1.8.2.8.2.7.2-.8 1-1.2.7.6.5 3-.5 1 .3.2.1.4-1c.4-.5 2-1.8 2.8-2.3.7-.5.9-.5 1-.8.3-.2 1.3-2.7 1.3-2.7l.1-1.3 3.3-3.1 2.2-2.4 1-2.7-.1-.5s.7.8.6 2.5c-.1 1.7-.5 2.2-.5 2.2s2.2-1.5 3.4-2c1-.5 1.7-.4 2-.4a5.4 5.4 0 0 0 1.6-1.5c.7-1 .8-1.2.8-1.6l.1-2.2-.2-5.7 2-4.2 2.8-2.5.5-.3-.3 1v1s1.4-1.8 2.1-2.2l.5-.2.6-1.6c.2-1 .2-2.5.2-2.5v-2.3l-.4-1.8-1.3-3.5v-4.6l-1-1.3s.9-.1 2 1.5a10.8 10.8 0 0 1 1.5 4l2.7-8.1s.7 1 1.2 2.5l.7 2.7 1-2.2.1.8c.2.7 1.8 1.7 1.6 4.7m-53.8 52s-.6-1.2-3.1-2.5a19 19 0 0 0-4.5-1.5v1l4 1.7 2 1.6z" }),
+    import_react26.default.createElement("path", { fill: "#717732", d: "M284.3 300.5a19.1 19.1 0 0 1 3.5-2.8 7.8 7.8 0 0 1 2.6-.7c1.5-.3 1.7 0 5.2-2s4.3-4.1 5-4.7c.7-.5 1.9-.7 1.9-.7l-2.7 3.2c-1.3 1.4-2.7 2.3-4.7 3.6-2 1.3-6 1.4-6 1.4a6.1 6.1 0 0 0-3.3 1.7c-1 .8-1.6 1.7-1.6 1.7s-.2-.4 0-.7zm9.7-10.2c-3.3 3-4.3 5.8-4.3 5.8l4.3-4c1.5-1.4 3.6-2 4.5-3 1-.8 1-1.5 1.6-2l1-.9s-1.4-1-7.1 4.1m-6.9 6.9s1.4-.6 2-1.9c.3-.9.1-1.1.7-2.2 0 0 3.4-3.2 4.6-4.6 2.1-2.5 1.2-4.6 1.2-4.6s.2 1-.7 2.2c-.9 1-5.2 4-5.8 5.8-.5 1.7-.2 1.7-.4 2.7-.6 2-1.6 2.6-1.6 2.6m-2.2 8.4s-1.7-1.1-3.6-1c-3.9.3-7.2 2.6-9.7 2.7-2.6 0-3.6-1.2-5.6-2.6-2.1-1.4-7.3-1.2-7.3-1.2v.1l-.1.2s3.6 0 5.1.4c3 .9 4.5 4 7.9 3.7 4.3-.2 7.8-2.9 9.6-2.9 3 0 3.7.6 3.7.6m-19.3-2s3 .6 5.4-1.1c2.3-1.7 5.1-4 6.6-4.1 1.6-.1 3.2.3 3.2.3s-2-1-3.5-.9a9 9 0 0 0-4.6 1.1c-1.5.9-2.2 2.5-3.8 3.5-1.5 1-3.3 1.3-3.3 1.3zm-.5 4.1c-.4 0-.9.3-1 .2-.2 0-1-1-2.4-1.6-1.3-.7-3.2-1.1-3.2-1.1s-.2 0 .2.2l3 1.1a7 7 0 0 1 2.2 1.8c0 .1.4.6 1.2.6.7 0 1-.5 1-.7-.1-.3-.6-.5-1-.5m2.1-3s1.2.8 3.2.7c4.2 0 6.8-3 9.6-4s4.2-.2 4.2-.2v-.2a5.6 5.6 0 0 0-3.1-1c-4.6.1-9 3-10.9 3.8-1.8.8-3 1-3 1zM312 273c-1.5 1.5-3.6 6.2-4.5 7.4-1 1.3-2.1 1.7-2.6 2.2l-2.5 3.3c-.4.6-.5.4-.8.6-.3.3-.4.3 0 .2.5-.1.6-.4 1.3-1.2.7-.8.7-1.2 1.8-2.2 1.1-1 3.1-2.1 4.1-3.3 1-1.3 3-6 4.2-7.2 1.1-1.2 3.1-2 3.1-2s-1.6-.4-4.1 2.2m-7.2 8.9s0-.9 1-2.1c1-1.2 1.4-1 2.2-2.9.8-1.8 1.2-3.6 1.9-5.5.6-2 1.8-3.8 1.8-3.8s-1.1 0-2.2 1.6a27.6 27.6 0 0 0-3.8 7c-1 2.6-1 5.7-1 5.7zm-1.4 1.8s.4-.3.5-2.6c0-2.3-.1-5.6.5-7.3.7-1.6 4.3-5.5 4.3-5.5s-1.5.3-3.6 2c-2 1.7-3 3.7-2.8 5.3 0 1.6 1 3.4 1 5l.1 3zm8.5-16.2 1.2-4c.4-.7.4-1.2 2.2-3.2 1-1.1 2-1.9 2.5-3.5.4-1.6.4-6.1.4-6.1s-.5.4-.8 1.2c-.4.8-.1 3.7-.8 5-.7 1.4-2.2 4.6-3 5.3 0 0-.1-2.3.1-4.6.3-2.3 1-3 1.4-4.5.4-1.5.2-5.4.2-5.4s-1.3 1.2-1.9 2.7c-.6 1.5-1 4-1 6s.5 3.6.6 4.7c0 1.1.1 1.7-.3 2.9-.5 1.2-.2.4-.5 1.6a27.9 27.9 0 0 1-.6 2zm-2.8-17.2s1 1.3.9 2.9c-.2 1.5-.8 3.6-.2 5.2.6 1.6 1.5 1.7 1.8 2.7.2.9.2 2.7.2 2.7s.5-3.4.2-4.4c-.4-1-.5-.5-1-1.5s0-3.7-.4-5.3a3.8 3.8 0 0 0-1.5-2.3" }),
+    import_react26.default.createElement("path", { fill: "#9ca168", d: "M245.4 307.9s.3-1 2.5-2 5.4-2.5 5.7-2.3c.4.2-.1 1.3-.1 1.3l-2.1.7-1.7 1-2 1.3z" }),
+    import_react26.default.createElement("path", { fill: "#9ca168", d: "M251 302.1c-2.9.1-4.4.8-5 1-.1 0-.5.2-.9 0-.6-.2-1.2-1.1-1.2-1.1l-.6-.5-.1 2-4-3.6-.5 2.4-.5 1-4-3.8.1 3h-1l-3-2-.8.4 1 1.7-3.7.3-.8.6-.7.9v.3h1.4c.3-.2.5-.7.6-.5.1.2.2 1 .7 1 .5-.2 2.2-1.4 3.4-.9 1.3.7-1.8 1.6-1.4 2.5.3 1 2.5.6 3 .3.6-.3 2.3-2.4 3-1.6 1 1-2 2-1.5 3 .6 1.1 2.2.9 3 .4.8-.5 2.7-3.3 3.1-2.7.7 1-1.6 2.1-1 3 .6.8 1.9 0 2.7-.7.9-.6 1.2-2 2.4-2.7 1.1-.6 1-.3 1.4-.4.3 0 1.2-.9 1.2-.9l2.7-1.1h1.4l.7.4 1.4.2.1-1.2s-1.6-.7-2.7-.7zm-22 0 .5-1-.3-.5s-1-.5-1.9-1.4a5.4 5.4 0 0 0-1.6-1.3 35.6 35.6 0 0 1-1.7-1.1l-.6-2.3-.4-.6-1 .4-1.4-4.9-.3-.9h-.6l-1.1 3-1.3-1.9-.3-4-.8.9-1 1-1.8-3.7s-.2 0-.3.3c0 .3-.2 1.4 0 2.1a19 19 0 0 1-2.5-1.8c-1.8-1.6-2.3-2.4-2.3-2.4l-.8-2 .8-1.7.4-2-1.8.7-.3-4.6-.3-1.4-2.1 3-.8-1.2v-3l-.6-.1-.9 1.6s-.8-1.7-1.2-2c.1-.7.2-2.3-.2-3.6-.5-1.6-1-2.5-.9-3.8.2-1.4.8-1.5.7-2 0-.7-1 .3-.6-.5.3-.7 3-2.5 2.5-3.4-.6-1-3.3 1.4-2.7-.2.7-1.6 3.2-1.6 3.4-3.9 0-1.3-2.5 1-2.7.2-.2-.7 1.6-2.1 1.6-3 0-1 .3-1-.2-1.5s-2 1.9-2 1.9l-1.7-.6-.6 2.4-.5 2-2.1-1.2.5 2.5.5 2.4-2.1-.6 1.1 2.1 1.5 1.5 1 1.3.6.3 1 1 .2 1.2.5 1.5.1 1.5v2.3l-.1.8c-.4 0-1-.6-1.3-.2-.3.5 1.2 1.6 1 2-.3.2-2.6-.5-2.7.2-.1.7.2 1.7 1.5 2 1.3.3 4.2 1 3.7 1.6-.5.6-3.7-1.8-3.5 0a3 3 0 0 0 2 2.7c.9.3 4.1 0 4 .7-.3.7-2.7-.3-3 .8-.2 1.1 1.8 1.3 2.2 1.3.4 0 1.7 0 2.3.4l3.4 3.2c1 .9 3.1 2.3 3.7 2.7-.6 0-1.9-.2-2.1.3-.3.6 4.9 2.4 3.4 3-1.5.6-3-1.6-3.5-.3-.4 1.3 1 2.4 1.8 3 .8.4 5.3 0 4.5 1-1 1-4.2-.7-4.3.6 0 1.2 2.2 3.1 3.4 3 1.1 0 2.4-1.8 2.9-.8s-.9 1.4.2 1.6 1.9-1 3.2-.8c1.2.2 3.2 1 4.4 2a63.2 63.2 0 0 1 2.2 2.3z" }),
+    import_react26.default.createElement("path", { fill: "#717732", d: "M246.7 307.3c.8 0 .9.4 1 .4 0 0 1.4-1.1 2.7-1.8 1.2-.7 3-1 3-1h.2s-2.3.7-3.3 1.4l-2.5 1.7c0 .2-.6.5-1.4.5-.7 0-1-.4-1-.6 0-.3.5-.6 1.3-.6m6.8-3.4s-.7 0-1-.3a3.5 3.5 0 0 0-2.1-.6 5 5 0 0 0-3.2 1.4s-.2.5-1.1 1c.3.1.9-.3 1.5-.8a5.9 5.9 0 0 1 3-1.1c.8-.1 1.3.3 1.7.6.4.3 1.2.2 1.2.2zm-40.4-16.5v-.6s-.6-.2-1.7-1c-1.3-.7-4.1-2.9-4.1-2.9l2.3 2.1a28 28 0 0 0 3.2 2.3zm28.5 20.2 1.2-1.8c.8-1.2 1.4-1.6 1.5-1.7.1-.1-.3-.7-.5-1.2-.2-.4-.2-.9-.2-1 0 0 .3.8.8 1.2l1 .7s1-.1 1-.3c0-.2 0-.4-.2-.5-.2 0-.4.2-.9 0-1-.5-1.4-2-2-2-.6-.1-.2 1.6-.5 1.6-1 0-1.6-3.5-4-3.6-1.5-.1-1.8.2-1.9.6 0 .3 2 2.4 1.3 2.7-.7.3-2.8-3.3-4.4-3.3-1.6 0-1.7.5-1.6.9.1.3 1.8.6 1.4 1.7-.4 1.1-2-1.7-3.4-1.5-1.4.1-1.6.3-1.7.7 0 .4.5 1 .3 1.1-.2.2-1 .1-1.8.6-.7.5-1.7 1.9-1.7 1.9s.9-1.4 2.2-1.5h4.4l-.9-.7c-.5-.4-.9-1.3-.9-1.3l1.4 1.3 1.5 1s1.4 0 1.5.2c0 .2 0 .5-.6 1.1a23 23 0 0 1-1.4 1.3l1.6-1.2 1.2-1s1 .2 1.1.1c.1 0 0-.3-.6-1.3a46.5 46.5 0 0 1-1.3-2s.8.7 1.6 1.8c.9 1 .7 1.6 1 1.6l1.2.2c.3 0 .3.4-.3 1.3s-1 2-1 2l1.3-1.6c.6-.6 1-1.4 1.2-1.4h1.2l-.7-1.3c-.4-1-.5-2.2-.5-2.2s.4 1.2 1 2l1.1 1.6h1.3c0 .4 0 .6-.5 1.4zm-17.2-10 1.3.3s-1.3-.8-1.7-2c-.3-1 0-3.4-.6-3.4-.5 0-.9 1.8-1.4 1.4-.6-.3.2-3.5-.5-4.8-.6-1.4-2-2.3-2.4-1.8-.3.5-.2 3.4-1.1 2.8-1-.7 0-3.2-.2-4.3-.3-1.1-1-2-1.5-1.7-.5.3.2 2.4-.6 2.5-.9 0-.7-1.5-1-1.7-.4-.1-.6.3-.7 0-.2-.3-.1-1.3-.6-1.2-.4 0-.3 1-.2 1.4l.6 1.4c.1.3.8.7.7 1 0 .2-.4.4-.8.4h-1.4l1.4.3c.4 0 1.2-.1 1.4.2l1.1 1.7s.3-.7.4-1.9v-2.1s.3 1.3.3 2.1l-.3 2.4s.9.7.6 1h-2.3c-1 0-2.6-.3-2.6-.3s1.4.6 2.4.8c1 .2 3 .2 3 .2l1.4 1.6s.7-1.1.8-2.3V289l.4 2.2a9.8 9.8 0 0 1-.5 3 4 4 0 0 1-1.5.8c-1 .3-2.9.5-2.9.5s1.8.3 3 0c1.3-.3 1.4-.7 1.8-.5l.7.6 1 .8-.8.5-1.2.6 1.8-.6.9-.3.4.2-.1-1-.3-1.4s.5.6.6 1.3l.1 1.2s.1.2 1 .6zM199.5 269s.3-1.4.3-3c0-1.5-1-3.9-1.3-4.1a3.8 3.8 0 0 1-.2-.5l.7-1-1 .7-1-.4c-.4-.3-.6-.7-.6-.7l1 .5c.4.2.5.1.5.1l-.3-1.5-1.6-.8c-1-.6-2-1.5-2-1.5l2.2 1.2 1.3.3s.9-.2 1.3-.5l1.3-.9s-.8.5-1.4.6l-1.2.2-.3-1.9-.9-.9c-.7-1-1.2-2.2-1.2-2.2s.7.9 1.3 1.3c.6.5 1.1 1.2 1.1 1.2l1.3-.8 2.3-1.6-2.2 1-1.3.6v-1.2c.2-.4.6-1 .6-1.3-.1-.4-.4-.2-.5-.5l.4-2.1v1c.1.3 0 .7.4.7s2.6-2.1 2.8-2.5c.3-.4.7-1.5-.4-1-1.1.4-.9 1.3-1.8 1.3-.3 0-.6-1.2-1-1-.3.3-1 1-1.2 2-.2.8.2 2-.3 2.4-.5.4-1-1.4-1.8-1.2-1 .3-1.2 1.6-1 2 .1.6 2.1 3 1.5 3.2-.6.3-2.2-2-3-.4-1 1.5 2.6 3.1 3 3.5.5.4 0 .5.7 1.3.6.8 1.5 1 1.9 1.5.4.5 1.7 3 1.7 4.6v2.3zm9.4 13.6s-.9-1-.6-2.6c.3-1.7 1.5-4.6 1-5-.3-.4-1.6 1.8-1.9 1.3-.3-.5.7-3.4.2-4.6-.5-1.2-.6-2-1.6-1.9-1 .1-1.5 3.5-2 3-.5-.7.3-2.2 0-3-.4-.8-.5-1.1-1-1-.6.1-.8 1.7-1.2 1.7-.3 0-1-2-1.7-1.6-.7.2 1.8 3.5 1.8 3.5s.5-.4.7-1l.5-1.1s.2 1 0 1.5c-.2.4-.3 1.4-.3 1.4s-.7.2-1.7 0c-1-.1-1.9-.5-1.9-.5s.7.4 1.8.7l2.2.6.7 1 .9 1.1.6-1.6 1-2.8s-.2 2-.5 3l-.5 2.5s-1 0-2.1-.3l-3-.6 3 1 2.3.6 1 1.4.8-1.1c.5-.7.8-1.5.8-1.5s-.2 1.1-.5 1.8l-.6 1.1-1.4.2h-2a16 16 0 0 0 3.6.7s0 .4.5 1.1a3.7 3.7 0 0 0 1 1z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M251.6 312.7s-.5-.6-1.2-1c-.7-.3-1-.2-1-.2h-.3l.7-1.6 4.4-4.3.7-4.3h2.7v5.9l.8.3 5 3v1.3l-.8.3-.6.3-1.8.2-3.3-2.4-1.4-1.4-2.4 3.1-1.6.8z" }),
+    import_react26.default.createElement("path", { fill: "#016848", d: "M255 301.3v1c0 .6 0 4-.2 4.5-.1.5-2.5 1.4-4 2.6-1.3 1.2-1.3 2.1-1.3 2.1l-1.3.4c-.9.3-1.3.8-1.3.8s.5-2.2 2.8-4.1c2.2-2 3.3-2.2 3.5-2.5.2-.3 0-4.1 0-4.4.1-.3.4-.3.6-.3h1.3zm5.7 12.6.6-.9.7-.6-1-.6c-1.3-.5-2-.4-2.8-1a8.1 8.1 0 0 1-1.7-1.7l-1.2 1 1.4 1.7c.6.6 2.1.8 2.8 1.2l1.2 1z" }),
+    import_react26.default.createElement("path", { fill: "#cd202a", d: "m257.2 301.3 1.5.1.2.5c0 .1 0 3.2-.2 4.2a6.4 6.4 0 0 1-1 2.5c-.4.3-2.4 2-3.3 3-1 .9-1.9 2.2-1.9 2.2l-.6-.8c-.3-.4-.6-.5-.6-.7a8.1 8.1 0 0 1 2.7-2.8c1.5-1 2.9-2.2 3.1-3.9.3-1.7.1-4.3.1-4.3" }),
+    import_react26.default.createElement("path", { fill: "#cd202a", d: "M266 312s-.3-.3-1.4-.4c-1.2 0-1.2.2-1.2.2s-.7-.8-1.6-1.4c-1-.7-1.8-.6-2.8-1.3-1-.7-1.6-1.7-1.6-1.7l.8-1.6s.9 1.3 1.8 2c1 .7 3 1.3 3.7 2 .7.5 2.3 2.2 2.3 2.2" }),
+    import_react26.default.createElement("path", { fill: "#30c2dc", stroke: "#0872a7", strokeWidth: ".4", d: "M276 293s-3-1-2.7-2c.2-1 6.6-2.7 6.6-2.7l.1-1.7s-1 0-2.5.5a22.8 22.8 0 0 1-7 1.2c-1.6 0-2.5-.2-3-.3a1475 1475 0 0 0-23.2-1.4 14.2 14.2 0 0 1-1.2 0c-3-.3-4.9-4.8-4.9-4.8l-1.4.2s.4 2.3-.3 2.5c-1.5.4-11.1-4.8-11.1-4.8l-.6 2.1s6 3.2 5.8 4.3c-.2 1.2-2 1.1-2 1.1l.8 1.4c.3 0 9.7.5 9.9 3.3 0 1.2-2.3 1.9-2.3 1.9l.8 1v.4s5.2 0 6.7.9c1.4.8 2.2 2 4 3a55 55 0 0 0 15.7.2c2.1-.6 3.4-3 6.9-4 3.5-1.1 4.6-1.2 4.6-1.2z" }),
+    import_react26.default.createElement("circle", { cx: "227.6", cy: "288.6", r: "1.7", fill: "#fff", stroke: "#0872a7", strokeWidth: ".8" }),
+    import_react26.default.createElement("circle", { cx: "237.2", cy: "280.8", r: "1.7", fill: "#fff", stroke: "#0872a7", strokeWidth: ".8" }),
+    import_react26.default.createElement("circle", { cx: "277.2", cy: "293.2", r: "1.7", fill: "#fff", stroke: "#0872a7", strokeWidth: ".8" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", d: "M220.1 278.3c-.5 1.2 1.6 3.6 3.1 3.9 1.5.2 2.4-.1 2.6-.9.3-.7 0-1.5-.3-2-1-1.3-4.8-2.3-5.4-1" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M224.8 280.2c0-.8-1.3-1.5-2-1.5s-1.7 0-1.5.4c.1.4 2.2 1 2.2 1.2 0 .2-.6.5-.3.8.4.3.8.1 1.1-.1.4-.3.6-.4.5-.8" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", d: "M238.2 294.6c.3 1.1-.6 1.7-1.7 2.2-1.1.5-3.4.2-4-.7-.4-1 1-2.4 2.3-2.7 1.4-.3 3 .2 3.4 1.2" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M235.8 295.3c.5-.1.5.6.9.6s.7-.7.6-1.1c-.1-.5-.8-1-1.5-1-.6 0-2.4 1.6-2.2 2 .2.5.6.4 1 .2.3-.1.8-.7 1.2-.7" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", d: "M279.4 288.8c1 1.4 2.8.1 3.3-.4s2-1.4 1.4-2.2c-.6-1-1.7-.9-2.4-.8-.7 0-2 1-2.3 1.5-.3.5-.5 1.3 0 2z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M279.7 288s.1-1.5 1.5-1.6c.7 0 .8.2 1.4.6.5.3.8-.5.8-.5s0 1-1 1.1c-.9 0-.5-.4-1.5-.6-.8 0-1.2 1-1.2 1" }),
+    import_react26.default.createElement("path", { fill: "#f9aa51", stroke: "#953220", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: ".4", d: "m257.5 285.1-.7-.4h-5l2.7 8 3.3 4.6 1.2.4 2.5-.1.5-1.3-1-7.6z" }),
+    import_react26.default.createElement("path", { fill: "#f9aa51", stroke: "#953220", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: ".4", d: "m248.5 285.6.1-.9 1.5-.1a4 4 0 0 1 1.7.1c.1 0 2 2.3 2.5 3.8.6 1.4 1.4 3.8 2.2 5.3a59 59 0 0 0 2.5 4h-3.2l-1.5-.5-4.6-7.2z" }),
+    import_react26.default.createElement("path", { fill: "#f9aa51", stroke: "#953220", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: ".4", d: "m246.6 284.6 2 .1c.2.1 2.3 2 3.1 4.2.9 2.3.4 2.6 1.5 5 1 2.3 2.6 4 2.6 4s-3.2 0-5-.2c-1.7-.3-2.3-.3-2.7-.8a7.3 7.3 0 0 0-1.4-1h-1.8l.5-2.5-.5-5.5V285zm18.7 1.5-3-1.2-5.5-.3.4 2.8c.2 1.4 1.2 4.6 2 6.2 1 1.6 1.9 3.5 2.4 4 .4.4 3.6-.9 3.6-.9l2.1-.3-.3-2.3-.3-.7.5-6.4-.4-1z" }),
+    import_react26.default.createElement("path", { fill: "#f9aa51", stroke: "#953220", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: ".4", d: "M245.7 286.1c0 .7.7.8 1 .7.1 0 .8-.3.8-1.2s-.6-1.7-1.8-1.8c-1.1 0-2 1.4-2 2.4s1 1.5 1 1.9c0 0-1 .9-1 2.5s1.4 2.8 1.4 2.8-1.4 1.1-1.4 2.2 1 1.9 2 1.9 2.3-.7 2.3-1.5c0-.9-.8-1.4-1.4-1.4-.6 0-.9.4-.9.7m20.5-8.7c0 .7-.4.7-.8.7s-.9-.2-.9-1.1c0-.9 1.1-1.3 1.9-1.3.7 0 2 1 2 2.2s-1 2-1 2 .6.3.6 1.8-1 2.6-1 2.6 1.3.5 1.3 2.1-1 2.1-1.8 2.1-2.1-.5-2.1-1.5.7-1.5 1.2-1.5 1 .6 1 1.2" }),
+    import_react26.default.createElement("path", { fill: "#953220", d: "m247.6 295 .3.4c.2.3.3.8.6 1 .7.7 5.8.9 7.4.9 1.6 0 6.2.2 7.1-.3 1-.6 1-1.4 1.5-1.8l.7-.4-.6.6v1l.3.7s0 .3-.6.6c-.6.4-1 .5-1.8.6-.8 0-10.6 0-12.2-.2-1.6-.3-1.5-.3-2-.6a3.5 3.5 0 0 1-.7-.7l.3-.7zm16-9.5.8.4s-.7.2-1.3 1.8c-.6 1.5 0 2-.5 2.2H258l-.7-1.8z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M277.1 284.9s-.7-.3-1-1c-.4-.5-.7-1.3-.4-1.4.3-.2.8.3.8.8s.6 1.6.6 1.6m8.4-2.3.7 1 1 .5s-1.2 0-1.6-.3a6.7 6.7 0 0 1-.8-1.2z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M288 283.3s-.7.4-1.3.2c-.6-.2-1-.6-.9-.8.3-.3.4-.2.7.2.4.3 1.5.4 1.5.4m4.2-3.6s-.6.6-1 .6-1.2-.2-1.2-.4 1-.3 1.2-.3zm-6.3-8.3s-1 .2-1.3.7c-.3.5-.2 1 .2 1s.5-.6.5-.7c0-.2.6-1 .6-1m-4.2 2.3s-.7.4-.9.8c-.2.4-.3 1.2 0 1.3.5 0 .6-.7.7-1z" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", stroke: "#04534e", strokeWidth: ".4", d: "m274.2 278.7-2.3 2.4s5.3 3 9.4 2.8c4 0 8.6-3.3 9-4 .2-.6 0-3.4-.5-4.3-.6-.9-3.4-3-4.4-3-1 .1-3 1.6-4.7 3.2-1.7 1.7-1.6 3.2-4 3z" }),
+    import_react26.default.createElement("path", { fill: "#0c8489", d: "M273.6 279.7s5.7.8 7.3-.6c1.6-1.5 3.4-4.3 4.5-5 1.2-.6 1.7-.6 1.7-.6l1.2 1 1.5 1.1.4 2.7v1.5l-1.7 1.4-3.3 1.5-3 1-2.7-.1-5.3-1.6-1.4-.9-.3-.3z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M282.2 276.4c0-.5.4-.4.8-.4s.9 0 .9.5-.5 1.2-1 1.2c-.3 0-.7-.8-.7-1.3m2.3 1.4c0-.4.3-.6.8-.6.6 0 1 .6 1 1s-.4.8-.9.8-.9-.7-.9-1.2m-.8 3.4c0-.5.4-.6.9-.6s.8.2.8.7-.4 1-1 1c-.4 0-.7-.5-.7-1zm-3-1c0-.6.6-.8 1-.8.5 0 .9.5.9 1 0 .6-.4 1.1-.8 1.1-.5 0-1-.7-1-1.3zm-4.7.6a1.1 1.1 0 1 1 2.3 0 1.1 1.1 0 0 1-2.3 0" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "M284.5 277.8c0-.4.5-.6.8-.6.4 0 .6.3.6.7 0 .4-.2.7-.5.7-.4 0-.9-.4-.9-.8m-.8 3.3c0-.5.5-.7 1-.7.4 0 .8.2.8.7s-.4.8-.9.8-.9-.4-.9-.8m-3-1c0-.5.9-.7 1.2-.7.3 0 .3.3.3.8s-.3.9-.6.9c-.4 0-.8-.5-.8-1zm1.5-3.7c0-.5.3-.5.6-.5s.5.1.5.6c0 .4-.2.8-.5.8s-.6-.5-.6-1zm-6.2 4c0-.5.5-1 1.1-1 .7 0 1.4.2 1.4.7 0 .6-.8 1.5-1.5 1.5s-1-.7-1-1.2" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M278.2 279.5s-.8.1-1.2.5c-.4.4-.5.9-.2 1 .2.1.5-.3.5-.5zm3.7-.8s-.7.5-.8 1c0 .6 0 .8.2.8s.3-.6.3-1c-.1-.2.3-.8.3-.8" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M282.5 279.5s-.4 0-.8.3c-.3.3-.6.7-.4.7.2 0 .6-.1.6-.3 0-.2.6-.7.6-.7m.8-4.4-.5.5c-.2.2-.5.7-.2.9.2 0 .4-.1.6-.5.2-.4.2-.9.2-.9zm2.9 1.8s-.7.1-1 .5c-.2.3-.4.6 0 .6s.3-.1.5-.4c0-.3.5-.7.5-.7m-.5 3.4s-.1.5-.6.7c-.4.3-.5.5-.7.2-.2-.4 0-.5.3-.6a52.3 52.3 0 0 1 1-.3" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M290.3 278s.3 1.6-1 2.3c-1.4.8-5.2 3.5-8.8 3.2-3.6-.4-7.7-2.4-7.7-2.4l-.5.3.9.4 2.8 1.1 3.1 1h2l1.7-.1 3.2-1.1 2.7-1.4 1.4-1 .3-.5v-1.6z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M219.9 257.8s.8.7.8 1.3c-.1.6-.3.8-.6.7-.2 0-.2-.7-.2-1zm6.2 5.7s-.3 1-.7 1.1c-.4.1-.7-.3-.7-.5.1-.2.5 0 .7-.2zm-13.4.8s.3.6.8.7c.6.1.8-.3.7-.5h-.6zm2.4 4.7s.5.6 1.1.6a1 1 0 0 0 1.1-.6c0-.1-.8-.1-1 .1-.3.2-1.2-.1-1.2-.1m4.2 3.6s1-.2 1.3-.5c.2-.3.4-.8.2-1-.2-.4-.4.3-.5.6z" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", stroke: "#04534e", strokeWidth: ".4", d: "M226.1 269.7s.7-4.9-3.2-8.3c-4-3.4-6.5-2.6-7.9-1.3-1.3 1.2-2.5 5.4 1.7 9 4.2 3.6 9.3 2.5 9.3 2.5z" }),
+    import_react26.default.createElement("path", { fill: "#0c8489", d: "M214 264.6s0-2.7 1.3-3.5a5.5 5.5 0 0 1 7.5 2.4c2 4 2 6 1.5 8h-2.2l-3.4-1.4-2.8-2.1z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M225.6 270.4s-.7.8-2.1.7c-1.5 0-8-1.8-9.7-7.7v1.3l.1.4.5 1.2 1.4 2 1.7 1.5 2.2 1.2 1.6.4 2 .4h1.2l1-1.4z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M222.1 268.7c0-.5.3-.5.7-.5.4 0 .8-.2.8.3s-.3 1.3-.7 1.3c-.5 0-.8-.6-.8-1zm.3-3.1c0-.4.3-.7.8-.7s.7.3.7.7c0 .3-.3.6-.7.6s-.8-.3-.8-.6m-3 3.4c0-.3.4-.5.9-.5.4 0 .8.2.8.5s-.8.7-1.3.7-.4-.4-.4-.7m-.3-3.7c0-.4.3-.3.7-.3.4 0 .9.1.9.6s-.5 1.1-1 1.1c-.3 0-.6-.9-.6-1.4m-2.7.7c0-.4.2-1 .7-1s1 .6 1 1c0 .3-.4.7-.9.7s-.9-.4-.9-.7zm.5-3.3c0-.4.2-.4.7-.4s1 .2 1 .6c0 .4-.6 1-1.1 1-.6 0-.6-.8-.6-1.2m3-.3c0-.4.3-.3.8-.3s.8.3.8.7c0 .4-.6.8-1 .8-.5 0-.6-.8-.6-1.2" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "M216.9 262.6c0-.3.2-.5.6-.5s.7 0 .7.5c0 .4-.3.7-.7.7-.3 0-.7-.3-.6-.7m-.6 3.2c0-.4.2-.8.6-.8.4 0 .7 0 .7.5s-.3.8-.7.8c-.4 0-.6 0-.6-.5m3.5-3.4c0-.3.3-.3.7-.3.4 0 .7 0 .7.4 0 .3-.4.5-.7.5-.4 0-.6-.3-.6-.6zm-.6 3.1c0 .4.3.8.7.8.4 0 .8-.4.8-.8s-.5-.8-.8-.8c-.5 0-.7.4-.7.8m3.3-.5c0 .4.4.8.8.8s.8-.4.8-.8c0-.3-.4-.7-.8-.7s-.8.4-.8.7m-3.2 4c0-.3.3-.7.7-.7.4 0 .7.2.7.6 0 .3-.6.8-1 .8-.3 0-.4-.4-.4-.7m2.9-.5c0-.4.3-.5.7-.5s.7 0 .7.5-.4.8-.8.8c-.5 0-.7-.4-.7-.8z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M223 263.6s.4.5.5 1l-.1.9c-.2 0-.4-.3-.5-.7v-1.3zm-2.6-2.7s.3.4.3.8 0 .8-.3.8c-.2 0-.2-.4-.2-.7zm-3 .4s.3.4.3.8 0 .8-.2.8-.2-.4-.2-.7z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "m216.4 261.8.7.4c.4.3.5.6.4.7-.2.2-.5 0-.5-.2zm2.3 3.1s.5 0 .9.3c.3.3.5.6.3.8-.1.2-.6-.2-.8-.4a6.7 6.7 0 0 1-.4-.7m-2.8 0 .8.2c.3.2.3.6.2.7-.1 0-.3 0-.5-.3zm6.7 2 .1 1c0 .5.1 1-.1 1s-.3-.6-.3-1z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "m221.8 268 .7.3c.2.2.2.5 0 .5l-.3-.4zm-3 .1.8.2c.2.2.2.8.2 1 0 0-.4 0-.5-.4a6.2 6.2 0 0 0-.4-.8z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M217.7 259s-2.6.6-3 2.3c-.6 1.7-.6 3.6-.6 3.6l-.4-2.2.6-1.3.7-1.3 1.2-.7 1-.4zm8.2 10s.2-.6-.5-2.6c-.8-2.1-2.4-4.8-2.4-4.8l1.2 1.4 1 1.6.5 1.4.4 1.3v1.3z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M228.5 265.7s1 .6 1 1v.5c-.3 0-.7-.3-.8-.5zm-3.8 10.3s.4-.8 1-1c.6-.4 1-.3 1.1-.2.2.2-.3.7-.7.8zm6.4 2.5s.7-.3 1-.8c.5-.4.5-.7.4-.9-.2-.1-.7.1-1 .5zm-.7-.6s.2-.8.5-1.1c.2-.3.5-.4.7-.3.3.2.1.5 0 .7z" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", stroke: "#04534e", strokeWidth: ".4", d: "M241.2 273s-4-5.8-10.3-6.1c-5-.3-6.5 4.2-6.3 5.5.1 1.4 2 4.3 8.7 4.7 6.6.5 7.7-3 8-3.3.2-.1-.1-.8-.1-.8z" }),
+    import_react26.default.createElement("path", { fill: "#0c8489", d: "M236.5 269s1.6 1.3 2.3 2.3.9 1.7.5 1.8c-.4.2-4-3.2-7-3.9-3-.7-5.5 0-6.1 1.4-.6 1.4-.4 3.5 1 4.4 1.3.9 7.7 2 7.7 2l3-.5 1.8-1 .4-1 .4-1.4.2-.5-1.5-1.7z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M231.4 269.8c0 .4-.4.6-.8.6s-.7-.2-.7-.6c0-.4.3-.7.7-.7.4 0 .8.3.8.7m-3.7 1.3c0-.3.4-.3.9-.3s.7.3.7.6c0 .4-.7 1-1 .8-.5-.3-.6-.7-.6-1zm4 2.2c0-.5.3-.9.8-.9s1 .4 1 .9-.7 1-1.2 1-.7-.5-.7-1z" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "M228.7 274.2c0-.4.4-.5.8-.5.3 0 .8.4.8.8s-.5.7-.8.7c-.4 0-.8-.6-.8-1" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M234 275.6c0-.3.2-.6.5-.6.4 0 .8.2.8.5s-.3.7-.7.7a.6.6 0 0 1-.6-.6m2.4-1.8c0-.4.2-.4.6-.4.5 0 .9.3.9.7 0 .4-.5.6-1 .6-.4 0-.5-.5-.5-1z" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "M231.1 269.5c0 .3-.1.5-.4.5-.4 0-.8-.2-.8-.5 0-.4.2-.5.5-.5s.7.1.7.5m-1.9 1.5c0 .4-.5.6-.9.6s-.5-.2-.5-.6c0-.3.2-.4.6-.4.3 0 .8 0 .8.4m.9 3.1c0 .3-.1.6-.5.6s-.9-.3-.9-.6.2-.5.5-.5c.4 0 .9.2.9.5m3.1-1c0 .3-.6.7-1 .7s-.5-.6-.5-1c0-.3.3-.6.7-.6.3 0 .8.5.8.9m4.7 1c0 .3-.6.3-1 .3-.2 0-.5-.4-.5-.8 0-.3 0-.6.9-.5.3 0 .6.6.6 1m-2.8 1.3c0 .4-.2.7-.6.7a.6.6 0 0 1-.6-.6c0-.4.3-.5.6-.5.4 0 .6.1.6.5z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M235.6 273.5s.6-.2 1-.1c.6 0 .6.2.6.3l-.6.2zm-2.7 2.3.9-.4c.4 0 .7 0 .6.3 0 .3-.1.3-.5.3zm-1.8-4s1.1.5 1.4 1c.2.4.3.5 0 .6-.2.2-.4-.1-.6-.3a43.8 43.8 0 0 1-.8-1.3" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "m230.8 273.3 1.3-.3c.4 0 .5 0 .5.2s0 .3-.4.3l-1.4-.3zm-2.7 0s1 .1 1.2.4c.2.2.2.4.1.6-.1.1-.5 0-.7-.1s-.6-.9-.6-.9" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M228 274.6s.3-.5.7-.6c.3-.1.7 0 .8 0 0 .3-.3.5-.6.6zm-.7-4 .9.2c.3.3.4.5.3.6h-.7c-.4-.3-.6-.8-.6-.8zm2-2.4s1 .3 1.2.7c.3.4.3.7.2.8l-.8-.4z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M240 275s-1.9 1.6-6.2 1.5c-4.3-.2-8.3-2-9.2-4l.4 1 1 1.2 3 1.6 3.4.7 2.7.2 2.5-.4 2-1 .3-.5.2-.3zm.6-2-1.7-2a62.5 62.5 0 0 0-5-3.4l3.2 1.4 2.1 1.8 1.5 1.6z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M240.8 269s1.1.5 1.3.8l.4.5s-.3.7-.5.4l-.6-.7a7.7 7.7 0 0 1-.6-1m3.3-1.7s1 .5 1.3 1c.4.5.3.9.2 1-.2 0-.9-.6-1-.8 0-.3-.5-1.2-.5-1.2" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M245 267.1s1 .7 1.2 1c.2.4.5.8.2 1-.3 0-.8-.5-1-.8zm5.6 1.3s.7.3.8 1v1l-.6-.6v-.5zm1.4.5s.6.6.7 1c0 .4.1.7-.2.7-.3.1-.5-.3-.5-.6v-1zm-9.8 12s.5.2.9 0c.5-.1.8-.5.7-.8 0-.2-.3-.5-.6-.1-.3.3-.2.5-.4.6zm5.4 1.5s.7-.1 1.2-.7c.5-.5.7-.9.4-1-.3-.1-.8 0-.9.4a4.5 4.5 0 0 1-.7 1.3m4.4.1 1-.7c.4-.4.7-.6.4-1-.3-.2-.5 0-.7.1l-.1.6a7.1 7.1 0 0 1-.6 1" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M253.4 282.5s.6-.7.7-1.1c.1-.4.2-.9 0-.8-.3 0-.6.4-.7.6a68.3 68.3 0 0 0 0 1.3" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", stroke: "#04534e", strokeWidth: ".4", d: "M239.9 275.3c0-2 2.8-6.5 6-6.4 1.3 0 4 .7 6 1.7 1.8.8 2.4 1.6 3.5 2 1.2.2 3 0 3 0l4-.5-3.2 4.6-1 1s-1 2-4 3c-2.7 1.1-7.5.3-9.7-.2-2.1-.5-4.7-2.6-4.6-5.2z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M239.9 275.3h.2c0-.4.2-1 .5-1.7a9.8 9.8 0 0 1 2.1-3c1-.9 2-1.5 3.1-1.5a24.3 24.3 0 0 1 6 1.6 7 7 0 0 1 2 1.2 4.6 4.6 0 0 0 3.2 1l1.4-.1 3.5-.4-2.8 4.2-1.2 1a7.2 7.2 0 0 1-3.7 3c-1 .3-2.2.5-3.5.5-2.3 0-4.8-.5-6.1-.8a6.7 6.7 0 0 1-3-1.7 4.5 4.5 0 0 1-1.5-3.2v-.1h-.4a5 5 0 0 0 1.6 3.6 7.2 7.2 0 0 0 3.2 1.8c1.4.3 3.8.8 6.2.8a11 11 0 0 0 3.7-.6c2.9-1.1 3.9-3 3.9-3.1l-.2-.1.1.2 1.2-1 3.4-5-4.5.5H257a6.7 6.7 0 0 1-1.5-.1c-.6-.1-1-.4-1.5-.7-.5-.4-1-.8-2-1.2a23.2 23.2 0 0 0-3.3-1.2c-1.1-.3-2.1-.5-2.8-.5-1 0-1.7.3-2.5.8a9 9 0 0 0-2.6 2.8 6.7 6.7 0 0 0-1.1 3z" }),
+    import_react26.default.createElement("path", { fill: "#0c8489", d: "M259.2 275.9c-.4.3-.7.3-1.1.3-.5 0-9.3-5.4-12-5.2-2.8.2-5.4 1.4-5.5 4.2 0 2.9.6 2.9 1.2 3.7s6 2 6 2h3.2l2.7-.4 2.3-1.3 1.3-1 .9-1z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M245.2 274.5c0 .5-.2 1-.8 1-.5 0-.9-.3-.9-.9 0-.5.3-.7.8-.7s.9 0 .9.6m1-2.5c0-.4.4-.6.9-.6s.9.1.9.6-.4.8-1 .8-.9-.3-.9-.8zm5.2 1.5c0-.4.4-.8.8-.8s.8.4.8.8-.4.7-.8.7a.7.7 0 0 1-.8-.7m1 3.2c0-.5.4-1 1-1 .4 0 .8.3.8.8s-.2 1-.6 1c-.5 0-1.1-.3-1.1-.8zm-2.5 2c0-.4.4-.7.9-.7s.8.3.8.8c0 .4-.3.7-.8.7-.4 0-.9-.3-.9-.7zm-4.9-.8c0-.4.4-.7.8-.7a.8.8 0 1 1 0 1.5.8.8 0 0 1-.8-.8" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "M245.2 274.4c0 .4-.4.8-.9.8a.8.8 0 0 1-.8-.8c0-.5.4-.6.8-.6.5 0 .9.1.9.5zm2.5-2.5c0 .4-.1.7-.5.7-.5 0-1-.3-1-.8 0-.4.3-.7.7-.7.5 0 .8.3.8.8m5.2 1.3c0 .4-.4.7-.8.7s-.7-.3-.7-.7c0-.3.3-.6.7-.6s.8.3.8.6" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M250.1 275.4c0 .6-.2 1-.7 1s-1-.3-1-.9c0-.5.3-.7.9-.7s.8 0 .8.6" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "M246.4 277.8c0 .4-.3.7-.8.7a.8.8 0 0 1-.8-.7c0-.5.5-.7 1-.7.4 0 .6.2.6.6zm3.6-2.5a.8.8 0 0 1-.8.8.8.8 0 0 1-.8-.8.8.8 0 0 1 .8-.8.8.8 0 0 1 .8.8m4.2 1c0 .6-.3 1-.8 1a.9.9 0 0 1-1-1c0-.4.2-.6.7-.6s1 .2 1 .7zm-2.7 2.3c0 .4-.3.7-.8.7s-.9-.3-.9-.7c0-.5.4-.7.9-.7.4 0 .8.3.8.7" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M251.8 276s1.3-.2 1.6 0c.2.3.2.6 0 .8l-.7-.1zm-1.3-4.3s1 .3 1.4.7c.4.4.4.8.3.9 0 0-.5.2-.7-.2zm-3 2s1.2.7 1.4 1c.3.4.4.7.2.9 0 .1-.7 0-.8-.3a78 78 0 0 0-.8-1.6" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M247 274.6s1.3.2 1.6.5c.4.2.6.2.6.4s-.2.4-.4.4l-1-.4c0-.2-.8-.8-.8-.8zm-1.6-3.8s1.4.2 1.7.4c.3.2.3.8 0 1-.3.2-.6-.2-.8-.4 0-.3-.9-1-.9-1m-2.9 2s1.3.6 1.7 1.2c.2.3.4.5 0 .6-.4.2-.8-.5-.8-.6a7 7 0 0 0-.9-1.2" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "m242.3 274.4 1.1-.1c.4 0 1-.2 1 .1 0 .3-.5.4-.8.3zm6.8 4.5s1-.6 1.3-.5c.5.1.6 0 .6.3s-.5.2-.6.2a48.8 48.8 0 0 1-1.2 0zm-4.8-.7s.4-.5.7-.6l.6.1c0 .2-.3.5-.5.5z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M258 277.3s-1.2 1.6-3 2.4c-2 .8-3.3 1-5.9.9a12 12 0 0 1-5.6-1.5 9 9 0 0 1-3.3-2.7c-.3-.6.3 1 .3 1l1.5 2 2 .8 2.7.7 2.6.3h2l2.4-.4 1.6-.5 1-.7.8-.6zm-2.4-4.7s-.7.2-2.3-.7c-1.6-1-3.5-2.3-7-2.3-3.6 0-4.8 2.4-5 2.6l1.6-2.1 1.6-1 1.3-.1h1.2l1.6.5 1.4.4 1.7.6 1.5.8 1.7.9zm4.8 1h-2.7c-.6.1-.6.2-.7.4a3.1 3.1 0 0 1-.2.4l-.7-1.4 2.9-.4 1.6.6-.2.5z" }),
+    import_react26.default.createElement("path", { fill: "#0c8489", stroke: "#04534e", strokeWidth: ".4", d: "M256.6 288.3c.1.4.4.8.8.8h1.4l2.8-.2 1-1.1.6-2.6.8-1 2.6-1.5 2.3-.6 1.5-.2 2-.7 1.5-.7.6-1 .7-1.5-.7-2-1.6-2-2.6-1.1H268l-2.5.9-4.3 1s-2.5 1-3.5 3c-1 1.8-1 2.3-1.1 4.8-.2 2.5 0 5.7 0 5.7z" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "M257.7 287.4c.9 0 .2-1.4 1.2-3 1-1.7 2-3.7 2.4-3.7.3 0 .3.3.7.2.3-.1 1-.7 1-.8 0-.2 0-1 .7-1.7.7-.6 1.8-1.4 2.2-1.5.5-.1.7-.2.8 0 .1.2-.2.5.1.7.3 0 1 0 1.3-.5.2-.5.1-.7.1-.7s.5-.5 1.5-.3 1 .2 1.1.5c.1.4-.4.4-.3.7.1.3 0 .2 0 .4.1.2.3.8 1 .8.6 0 .8-.4.8-.4l.2-.3s.2-.4 0-.6c-.3-.2-.2-.4 0-.2.3 0 1.2 1.4 1.6.9.3-.6.3-1.4.2-1.6l-1.6-2.2-2.4-.9-3.2.3-3.2 1.8-2.9 1.5s-.1 2.4-.6 2c-.6-.5-1.3-1.6-1.5-1.3l-1 3c-.3.9-1.2 3.5-1 4.5 0 1 .5 2.4.8 2.4" }),
+    import_react26.default.createElement("path", { fill: "#8cbebf", d: "m260.6 283.6-.6.3a.8.8 0 0 0-.2.8c.1.3.6.6.6.6h.4l.7-.2s.3-.3.3-.7c0-.4-.2-.5-.3-.5zm5-4.1c-.5-.2-.7.1-.7.2v.5s0 .6.3.7c.2.1.8.3 1 .1.2-.2.4-.3.4-.7 0-.4-.6-.6-.6-.6zm4 1c0-.2-.4-.3-.7-.3-.3 0-.6.4-.5.9.1.5.6.5 1 .4.4 0 .3-.6.3-.7l-.1-.4zm-11.6.7c0 .3.5.7 1 .7a1 1 0 0 0 1-.8c0-.3-.3.3-.7.4-.4 0-.7.2-.9 0l-.3-.3z" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M261.8 284.4s0 .5-.3.8l-.8.2c-.2 0-.5 0-.6-.2l-.3-.6s.4.7 1 .5c.7-.1 1-.7 1-.7m10.7-6.6s0 .5-.4.7c-.4.2-.6.3-.8.2-.2 0-.5 0-.6-.3-.5-.7-.2-1.2-.2-1.2s.3 1.3 1 1.2c.7-.1 1-.6 1-.6M263 280s-.4 1-1 1c-.7 0-.6-.1-.6-.3 0 0 .3.2.6 0 .3 0 1-.6 1-.6zm1.8-.1s0 .7.2 1c.2.2.5.3.8.3s.5 0 .7-.3c.2-.3 0-.6 0-.6l-.1.3a.7.7 0 0 1-.6.3c-.2 0-.6 0-.7-.3zm3.4-3.5s.2.5-.2 1c-.4.4-1.2.2-1.2.2s.6.1 1-.2c.3-.4.4-1 .4-1" }),
+    import_react26.default.createElement("path", { fill: "#04534e", d: "M257.4 288.9s4.2 0 4.5-.7c.4-.5-.3-2.8 2.2-4.6 2.5-1.8 4.5-1.8 5.9-1.9 1.3 0 4.2-1 4.8-3.6.3-1.6-1.9-1.7-2.7-3.2-.8-1.5-2.9-.9-3-.9 0 0-2.4 0-3.5 1-.6.7-.5 1.5-.9 1.8-.2.4-3 0-3.3.5-.3.4 0 1.4-.2 1.6-.2.2-.8-.6-.8-.6l.2-2.3 3.5-2 4-2.3h2.8l2.8 1.5 1.4 1.6s.3.6.4 1.8a4.3 4.3 0 0 1-.1 1.6 6 6 0 0 1-5.4 4c-2.4.1-4.6 1.2-5.6 2-1.1.8-1.7 4.3-1.7 4.7 0 .5-5.2.2-5.2.2z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M259.1 280.7c-.2.2-.5.1-.6-.1-.2-.7.3-1.7.3-1.7v1.2c.1.2.3.2.4.3zm2.7-.6c-.2 0-.2-.7 0-1l1.3-1.1-.5 1.2c-.1.3-.5 1-.8 1zm-1 4.3c-.2 0-.3-.3-.3-.8s.8-1.3.8-1.3l-.2 1v.7c0 .3-.2.4-.3.4" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "m262.7 283.2-.8.7c-.4.2-.9.6-1.1.5-.3 0 .1-.6.3-.7zm3.6-5.1-.7 1c-.2.5-.3 1 0 1 .2.2.5-.6.5-.8z" }),
+    import_react26.default.createElement("path", { fill: "#231f20", d: "M267.6 279.9s-.3-.3-.9-.5c-.6-.1-.9 0-1 .2 0 .2-.4.4-.2.6l.7-.3c.1 0 .4-.2.7-.1h.8zm-.7-3.5c.2.1.5-.2.8-.5l.5-1-.8.5c-.3.2-.6.8-.5 1m5.5-.2-1 .7c-.2.3-.5.6-.3.8.3.2.5-.2.7-.4l.6-1zm-1.6 3.7s-.2.5-.7.8c-.4.3-1 .4-1 .3-.2-.2 0-.5.2-.6l.7-.2c.4 0 .8-.3.8-.3" }),
+    import_react26.default.createElement("ellipse", { cx: "272.7", cy: "229.2", fill: "url(#mx-b)", rx: "2.3", ry: "3.4", transform: "rotate(8.7)" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "m236.3 261.5-1.4 3.5 1.1-.2.7-3z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M237 260c-.6 0-1 .4-1 1-.1.4.2.9.7 1 .5 0 1-.3 1-.9 0-.5-.3-1-.8-1zm58.8 8.6-3.4 3.2 1.4.3 2.3-3z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M297.3 267.3c-.6-.3-1.3 0-1.7.5a1 1 0 0 0 .4 1.5c.5.3 1.3 0 1.6-.5a1 1 0 0 0-.4-1.5zm-87.1-16.9 1.8 3.9.8-1-2-3z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3e", stroke: "#aa8c30", strokeWidth: ".2", d: "M209.5 248.7a1.1 1.1 0 0 0-.1 1.5c.4.5 1 .6 1.5.2a1.1 1.1 0 0 0 .1-1.5 1 1 0 0 0-1.5-.2z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M237.3 260.2s.2.2 0 0c-.4 0-1.2.3-1.2.9 0 .5.4.8.8.8h-.6l-.2-.4-.2-.4.1-.5.3-.4.4-.1h.3z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M236.5 262.5s-.2 0-.4.3l-.6.8.7-1.9.5.2zm61 5.1s.3.3 0 0-1.4-.2-1.7.4c-.2.6 0 1.1.5 1.3.5.2-.2 0-.2 0l-.5-.4-.1-.4v-.6l.4-.4.6-.3h.5l.3.2.3.2z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M295.5 269.8h-.6l-1.2.7 1.9-1.7.4.5zm-85.6-21.3s.3-.1 0 0c-.3.3-.6 1.2-.2 1.6a1 1 0 0 0 1.3 0c.4-.3 0 .2 0 .2l-.6.3h-.4l-.5-.2-.3-.5v-.6l.1-.5.3-.2z" }),
+    import_react26.default.createElement("path", { fill: "#aa8c30", d: "M211.2 251s-.2.2-.1.6l.2 1.2-1-2.2.5-.2z" }),
+    import_react26.default.createElement("ellipse", { cx: "327.1", cy: "-73.3", fill: "url(#mx-c)", rx: "3.7", ry: "2.5", transform: "rotate(62.9)" }),
+    import_react26.default.createElement("path", { fill: "#e92736", d: "M210 257s.8.2 1.2 0c.5-.3.5-.6.6-.7l.2-.7a3 3 0 0 0-.8-1.2h-.8c-.1-.2 0-.4-.2-.5-.2 0-1.3 1.3-1.1 1.5.2.2.3-.1.4 0v1z" }),
+    import_react26.default.createElement("path", { fill: "#e92736", d: "M211.2 254.5c0 .2.5.8.7.8h.9c.1 0 .7-.5.7-.8l-.1-.6c-.1-.2 0-.8-.3-.9-.2 0-.2 0-.3-.2-.2 0 0-.3-.2-.5-.1-.3-2 .8-1.8 1 .1.2.3 0 .4.2z" }),
+    import_react26.default.createElement("path", { fill: "#e92736", d: "m215.4 254-.1-1.4c-.2-.1-.5-.1-.6-.3 0-.1.3-.2.3-.4s-2 .1-2 .3c.2.3.5.1.5.3l-.4.5.2.9c.1.1 0 .3.2.4l.5.1h1.1c.1-.1.2 0 .3-.4m17.5 10.3s.3.6.7.7h.7c.1 0 .5-.1.6-.3l.3-1.1-.5-.6c0-.2.3-.2.2-.4s-1.6 0-1.6.2.2.1.2.3l-.6.5z" }),
+    import_react26.default.createElement("path", { fill: "#e92736", d: "M235 263.6v1l.5.5h.9a1 1 0 0 0 .3-.5c.1-.2.5-.5.4-.6l-.1-.4c0-.1.3-.2.3-.4s-1.7-.8-1.7-.6c-.1.3.2.2.1.4 0 0-.6.4-.6.6z" }),
+    import_react26.default.createElement("path", { fill: "#e92736", d: "M237.8 266c.2-.1.8-.7.8-1l-.1-.4.4-.1c0-.1-1.3-1.3-1.3-1-.1.2.2.3 0 .4h-.4l-.5.7c0 .1-.2.1-.1.3l.1.4.7.7zm52.9 4.4s0 .6.3 1l.6.3h.6c.2 0 .7-.7.7-.9v-.7c0-.1.2 0 .2-.2s-1.3-.9-1.4-.6v.3l-.7.2z" }),
+    import_react26.default.createElement("path", { fill: "#e92736", d: "m292.7 270.8-.5.6v.7l.9.4a1 1 0 0 0 .4-.2c.2 0 .7-.1.7-.3v-.3c.1-.1.3 0 .5-.2.1-.1-1-1.3-1.1-1.2-.2.2 0 .3 0 .3z" }),
+    import_react26.default.createElement("path", { fill: "#e92736", d: "M293.2 273.8h1l.3-.4.3.1c.2 0 0-1.5-.1-1.4-.2 0-.1.3-.2.3-.2 0-.3-.2-.4-.3l-.7.1c-.2.1-.3 0-.4.2l-.1.3v.9z" }),
+    import_react26.default.createElement("path", { fill: "#f7e204", d: "M211.3 255.3c.2.2 0 .8-.2 1-.1.2-1 0-1-.2v-.7c.1-.1.4-.5.7-.5.2 0 .5.3.5.4m.3-1.2c-.1.3 0 .5.2.6 0 .2.7.3 1 .2 0 0 .4-1.1.2-1.3 0-.1-.4-.2-.6-.1a3 3 0 0 0-.8.6m2.2-1v.6s.5.4.8.4c.2 0 .3-.8.3-1s0-.1-.2-.2zm20.9 11c0 .3-.6.5-.8.5-.2 0-.5-.7-.4-.8 0-.1.2-.3.4-.3h.7zm.8-.5c-.2 0-.2.3-.2.5 0 .1.2.6.4.7.2 0 1-.4 1-.6l-.3-.4zm2 .8c-.2 0-.4.3-.4.4 0 0 0 .5.2.7.2.1.7-.2.8-.3v-.3zm54.8 6.6c-.2.1-.7 0-.8 0-.2 0-.2-.9 0-.9 0 0 .3-.2.4-.1.2 0 .5.2.5.4zm.8 0-.5.2v.8c.1.1 1 .2 1 0 .2 0 .1-.4.1-.4zm.9 1.6h-.5l-.3.6c0 .2.5.3.6.3.1 0 .2 0 .3-.2z" }),
+    import_react26.default.createElement("ellipse", { cx: "398.3", cy: "-31.4", fill: "url(#mx-d)", rx: "1.8", ry: "3.6", transform: "rotate(47.9)" }),
+    import_react26.default.createElement("path", { fill: "#a8ac71", d: "M228.6 223.4s-3 .3-5.2 0c-2-.4-1.6-5.9-1.7-6 0-.2-1.3-1.5-1-2.7.2-1.2 4-4.4 4.6-4.6.4-.1 1.2.2 1.2.2s1-1 1.3-1c.3 0 .7.6.6.8-.2.3-1.5 1-1.6 1.7-.1.6 0 1.2-.4 1.8-.4.6-1.1 1.4-1.2 1.9-.1.5-.3 1 0 1.1.4.2 1.7 0 2.8-.5 1.1-.5 1.6-1.1 1.7-1 .2 0-.6 1.3-1.8 1.8-1.3.5-2 1.1-2.7 1 0 0-.6 1.6 1.4 1.7 2.1.1 3.3-.4 3.3-.4zm-12 12.8s1.7.6 1.7 2.4c0 1.8-1.8 3.3-1.7 6.5 0 3.2.5 3.2 4.7 6.6.1 0 1 1 1.2 2 .3 1 1 7 5 7s4.6-2.5 4.6-2.5l-1.7-2.5s-1.4.4-2.2.2a2.8 2.8 0 0 1-1.8-1.7c-.5-1-.6-3.3-1.3-4.3-1.7-2.5-4.7-3-4.7-5.6 0-2.7 1.9-3 1.3-6.1s-4.3-4.7-4.3-4.7l-1.5-.6-.5 3.1z" }),
+    import_react26.default.createElement("path", { fill: "#f1a720", d: "M227.8 214.1c1.3-.3.5-3.8.5-3.8l-.9.7s.6.8.6 1.6-.2 1.5-.2 1.5" }),
+    import_react26.default.createElement("path", { fill: "#a8ac71", d: "m230.2 249.2-.7-.6c-.4-.3-2.6-2-2.2-7 .4-5.8 8.7-8.8 9.2-11.1.7-2.6 2.6-3.7-4.1-8.9l-1.6 1.9 2.8 2s.6-.3.6.5c0 .7-.7 1.4-1 2 0 .5-4.2 3.4-4.5 3.7l-2.4 2s-1.1 1-2.1 3.2-.5 5-.5 5 0 6.2 6.5 7.3" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "m226.2 252.4.4 2.2-1.3.5h-.6l-.4.1-1 1h-.3l-.2-.7a16.7 16.7 0 0 0-.1-1.1l1.2.5h.5l.3-.1.5-1.2zm-4 .4-.5-.8-.8-.7 1-.5h1l-.2 1.2zm2.3-3.5s.6.3.8.8l.5 1-1.6-.1-1.1-.4.7-1zm-.6 9.6s-.3-.2-.5-.7l-.3-1.3 1-.2 1.2.5h.3l-.3.6-1.1 1zm4-3.3s-.8-.3-1-.7c-.1-.5-.2-.4-.2-.4l-.3 1.2-.4 1.2.1.2 1-.3.6-.7zm-3.7 3.8 1 .6c.7.4 1 .4 1 .4l.6-.5.4-1 .1-.1-2.5.2zm3.5-1 2.1-1.2.1-1.1-.4-.3h-1.2l-.3 1.4-.3 1.3zm-1.5 2s1.5.7 4-.2c1.2-.5 1.4-1 1.4-1l-1-.4-1 .8zm-2-16.2-.3-1-.1-1 .7.4 1.1.8-.7.6zm1.8 3-.7-.8a9.7 9.7 0 0 1-.5-1l.8.2.9.5-.4 1.1z" }),
+    import_react26.default.createElement("path", { fill: "#c6c7a6", d: "M221.3 213.7c-.2.5-.4 1.4.3 1.6.4 0 2 0 3.7-2 .8-1 .8-2 .8-2l.4-1s-.7-.5-1.8.2a33 33 0 0 0-3.4 3.2" }),
+    import_react26.default.createElement("circle", { cx: "226", cy: "210.9", r: ".3", fill: "#1c242f" }),
+    import_react26.default.createElement("path", { fill: "#a8ac71", d: "M223.8 211.2c-.8.6-1.4 1.3-1.4 1.3s1.1-.3 2-1.1a2.8 2.8 0 0 1 2.2-.6c.2 0 .1-.3 0-.4-.3-.2-1.1-.3-1.3-.2 0 0-.8.4-1.5 1" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "M227.3 243.6v-1.8l-.7.6-.7 1 1 .3zm-3.6-2v-1.9c0-.9.4-2.5.4-2.5l.4 1.1 1.3 2 .4.3-1 .7-1.2.4zm3.6-.6.2-.8.4-1-1.1 1-.5.4.6.5zm-3-4.7s.2-.6.7-1.3l1.1-1.5.5 2 .3 1.6v.3l-.5.2c-.1 0-1.3 0-1.5-.3zm3.8 2.2.7-.7.8-.8-2.6.5.4.8zm-1.5-5.3.9-.8c.7-.7 1-.6 1-.6l.3 2.8-1.3-.4zm3.2 3.8 1.6-1.6-2.6-.8.5 1.8zm1.1-4.2.2-2.7-1.2.8-1 .8.3.4 1 .6zm2.3-2.6v-2l-.9.9a4.5 4.5 0 0 0-.6.6l.7.4zm1 2.8 1.2-1a5.2 5.2 0 0 0 1.2-1.3l-3.3-.3.1 1.4zm-7.8-11v1.5h2.7l-.7-1-.8-.5-.8-.8zm5.4 13 1.2-1 1-.8-2.7-.3.1 1.8zm5-4.8s.3-1 .3-2a5.2 5.2 0 0 0-.2-1.5l-2 1.3.3 1 .8.9z" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "M233.4 227.8s.6-.7.7-1.1v-.3h1.6l.9.1.1.1-.7.8-1 .6-1.2.1zm3.2-1.5-1-1.7-.6-.8-.8 2.2v.3z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "m217.3 241.8-.3.6s1-.6 1.9-.5c.8 0 1.7 1 1.7 1l.2-.7s-1.1-1-1.8-1.1c-.7 0-1.7.7-1.7.7m.5-4.7.3.3c0 .1 0-.7 1.1-1.2 1-.4 1.7 0 1.7 0s-.2-.7-.7-.8c-.5-.1-1 0-1.5.4-.6.4-.9 1.3-.9 1.3m3.6 3.5s-.5-1-1.4-1.3c-.8-.2-1.9.5-1.9.5l-.2.5s1.2-.6 2-.3c.9.4 1.3 1.4 1.3 1.4zm-4-4 .3.3s-.2-1 .4-1.7l.9-.8-.5-.2s-.7.5-1 1c-.2.5-.2 1.1-.1 1.3zm-.5-2c.3-.5 1-.7 1-.7l-.3-.2h-.3s-.4.2-.7.8c-.3.7-.3 1.6-.3 1.6l.5.2s-.1-1 .1-1.6zm6.3-15.2c.7-.4 1.2-.3 1.2-.3s-1 1-.5 2.3c-.6 1-.8 1.9-.8 1.9h.6l.3-1.5a5 5 0 0 0 1.5 1.7h.8s0-1 .5-2a4 4 0 0 0 1.6 1.2v-.3s-.9-.5-1.4-1.2v-.1c.6-1 1.4-1.3 1.4-1.3l.6.4.1-.1-.4-.6h-.5l-1.4 1.4a7.3 7.3 0 0 1-.6-1.3h-.4s-.8 0-1.6 1.3c-.1-1 1-2 1-2l-.1-.3-2 .4c-.7.3-1.2 1-1.2 1v.6s.7-.8 1.3-1.2m1.2 1.7c.5-.7 1.5-1.2 1.5-1.2s0 .6.7 1.3c-.4.8-.6 1.9-.6 1.9s-.9-.6-1.6-1.6a1.3 1.3 0 0 1-.1-.3 2 2 0 0 1 0-.1zm-6 16.9v.6s.6-.7 1.5-.7c1 0 1.8.7 1.8.7v-.9c-.2 0-1-.5-1.7-.5-.8 0-1.7.8-1.7.8zm17-9a8.1 8.1 0 0 1-.3-.8l.4-.2a10 10 0 0 0 1.4-1.3l-.3-.4h-1.3l-1.1-.1.4-1.4.4-1.1-.4-.4s.1.4-.7.5a7 7 0 0 1-2.2-.7v.4l2 .5 1-.2a6.9 6.9 0 0 0-.5 1l-.2.8.2.1-.1.7 1.1.1 1.4.1s-.7.8-1.4 1.1a1.8 1.8 0 0 1-.3.1l-.8-1.2v.4l.5 1-1.2-.2-.3.3v2l-1.4-.4-.3.2-.3.2s-.3 1.2-.3 2.6c-1.2-.3-1.9-1-1.9-1l-.3.2s-.2 1.2.1 2.6a4.7 4.7 0 0 1-2-1.2l-.4.4.4 3.5.1.3a4 4 0 0 1-.6 0c-1 0-1.8-1.1-1.8-1.1l-.3.8s.4 2.2 1.6 3.2l.3.2c-1 .8-2.3 1-2.3 1l.1.6a35.8 35.8 0 0 0 1.7 1.3c-.6.5-1.3.7-1.3.7l.2.4 1.4-1a7 7 0 0 0 1.5.4v-.4l-1.2-.2v-.1c.5-.4 1.2-1.5 1.2-1.5v-.8s-.4 0-.9-.4c1.5-1 1.5-1.5 1.5-1.5l.3-.5s-.5-.2-.9-1a9 9 0 0 0 2.4-.5l.2-.2s-.6-.9-.9-2l2.4.5.4-.4s-.3-.9-.4-2l2.5.3.3-.3s-.8-1.5-.8-2.3v-.1h3.2l.2-.4s-1-.7-1.4-1.2m-8.4 12.4s-.3.8-1 1.6l-.3.2a3.7 3.7 0 0 1-.4-.2c-.8-.5-1-1-1-1l2-1.3zm.7-2.5-1.5 1.5a3.3 3.3 0 0 1-.3-.4c-.7-.9-1.6-1.6-1.5-3 0 0 .5 1 1.7.9l.8-.2c.3.8.8 1.2.8 1.2m1.6-2-2 .5a4.2 4.2 0 0 1-.2-.3c-.4-1.3-.4-3.2-.4-3.2s.9.6 2 .9zm-.3-2.4c-.2-1.1 0-2.3 0-2.3s.7.6 1.9.8c0 1.1.2 1.7.2 1.7zm4.6-1.8s-.7.3-2.2.1a18.4 18.4 0 0 1 0-2.8c.2 0 1 .4 1.8.5v.1a8 8 0 0 0 .4 2.1m0-2.5h-.2v-2.1s.8.2 1.4.1c.1.4 0 .5.4 1 .3.6.9 1 .9 1s-1.9.2-2.6 0zm-6 15-.2-.5s-.7.5-1 1.1a1.3 1.3 0 0 1-.2 0l-1.6-.7.2.3 1.5.6-.3 1.2.2.3s0-.8.4-1.4h1l-.2.7a51.4 51.4 0 0 0-.3 1.2l.3.2h1.7l-.3-.3h-.6a3.2 3.2 0 0 0-.9 0l.3-1 .2-.6-.2-.6-.9.1.8-.7zm-9.1-1.1a3.4 3.4 0 0 1 1.8.7v-.5s-.8-1-1.7-1c-1 0-2 .9-2 .9v1s.9-1.1 1.9-1.1m10.6 15.5c-1 .5-2.2.5-2.2.5l.7-1.3c2-.5 2.4-1.9 2.4-1.9l-.1-.5s-.5 1.3-2.2 2l.6-2.6-.5-.2s-.8 1-1.6 1.3a6 6 0 0 0 .6-2.2l-.2-.4s-.6.5-1.4.6h-.5c.5-.6 1.4-2.5 1.4-2.5l-.1-.4s-.7 1.7-1.4 2.5l-.3.3a9.7 9.7 0 0 1-1.7-.8v.3s.7.5 1.5.8l-1 1v.8l2.4.3a5.8 5.8 0 0 1-1.6 1.7l.3.5s1.1 0 3-.5c-.5 1-1 1.5-1 1.5s1.8.1 3-.5 1.6-1.2 1.6-1.2l-.4-.4s-.2.9-1.3 1.3m-5.5-3.3 1-1.1c1.2.3 1.6-.1 1.6-.1s.2.7-.5 1.8a6.6 6.6 0 0 1-2-.6zm1.1 2.5 1-1.3a3.2 3.2 0 0 0 .3-.3c1.2 0 1.9-1 1.9-1s.1 1-.4 2.2c-1.6.6-2.8.4-2.8.4m-1.5-7.9c1.2.1 2.6.6 2.6.6l-.1-.6-2.3-.4c.4-.9 1.2-1.3 1.2-1.3l-.4-.2s-.4 0-1 1.2l-.2.2a3.4 3.4 0 0 0-.3 0c-1 0-1.9.6-1.9.6l.2.3s.9-.4 1.8-.4l-.6 2 .2.5zm-2.4-4.9-.2-.6s-1.3-.4-2.2 0c-1 .5-1.6 1.5-1.6 1.5l.4.8s.6-1.2 1.5-1.5c.8-.3 2.1-.2 2.1-.2m2.4 1.9-.8-.4s-1.3.3-1.8.8-.9 1.7-.7 2c.1.4.5.6.5.6s.2-1.3.9-1.9c.6-.6 1.9-1.1 1.9-1.1m-3-.4c.4-.5 1.4-.7 1.4-.7l-.5-.5s-1.2.2-1.8.7l-1.4 1.7.7.7 1.5-1.9zm4-35.8c.7-.8 1.3-.8 1.5-.8h.6a7.4 7.4 0 0 0-.7 2c-.2.8-.5 1-.8 1.5-.3.5-.9 1.5-1 2.3 0 .8.2 1.2.5 1.3.2 0 .5-.4.5-.5 0-.3-.2 0-.4 0s0-.3-.2-.8c0-.5.6-1.8.8-2.2.3-.4.8-1 .9-1.6 0-.7.5-2 .5-2 0-.1-.3-.2-1-.2a2 2 0 0 0-1.5.9c-.4.5-1.4.9-1.4.9s1.1 0 1.7-.8" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "M228.2 219.6h-2l.5 1.5zm-2.4 0-.4-.4a1.2 1.2 0 0 0-.3-.3l-.7.5-.4 1.5.2.2 1.6-1.6zm-.3 4-1.4-2.2-.8 1.7.4.2 1 .1.8.1zm6 35.7h-.1a7.2 7.2 0 0 1-3.8 1.2c-.8 0-1.8-.2-2.7-.7a3.1 3.1 0 0 1-1.2-1.5c-.5-.9-.6-2-.8-3.1a8.8 8.8 0 0 0-1-3c-.6-1-1.8-1.7-3-2.6a5.9 5.9 0 0 1-2.2-4.2 6.5 6.5 0 0 1 0-.6 9 9 0 0 1 .9-3.6c.4-1 .9-2 .9-2.8v-.4c-.2-.6-.8-1.1-1.2-1.5l-1-.6-.8-.3v.3l.7.2v-.1.1a6.8 6.8 0 0 1 1 .7c.5.4.9.8 1 1.3v.3c0 .7-.4 1.6-.9 2.7a9.4 9.4 0 0 0-.9 3.7 6.1 6.1 0 0 0 2.4 5c1.2 1 2.4 1.6 3 2.6.6 1 .7 2.5 1 4 .2.7.3 1.4.6 2 .3.7.7 1.2 1.4 1.6a5.6 5.6 0 0 0 2.8.8c2.3 0 4-1.3 4-1.3z" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "m229.7 255.4-1 .2a2 2 0 0 1-1.4-.6c-.6-.6-.8-1.1-.9-1.8-.1-.7-.3-1.6-.7-2.7-.5-1.1-1.7-2-2.9-2.9-1-.9-2.1-1.8-2.3-2.7a2.6 2.6 0 0 1 0-.5c0-.8.3-1.6.6-2.6.4-.9.8-2 .8-3.2v-.6c-.2-1.6-1.5-2.8-2.6-3.6a11.3 11.3 0 0 0-2.3-1.1v.2h.1c.4.2 1.5.7 2.5 1.5 1 .7 1.8 1.7 2 3v.6c0 1.2-.3 2.2-.7 3.1-.3 1-.7 1.8-.7 2.7a3 3 0 0 0 0 .5c.3 1.1 1.4 2 2.5 2.9 1.1.9 2.3 1.8 2.7 2.8.5 1.1.6 2 .7 2.6a3.5 3.5 0 0 0 1 2c.6.5 1.1.7 1.6.7a2.2 2.2 0 0 0 1.2-.3z" }),
+    import_react26.default.createElement("path", { fill: "#a8ac71", d: "M237 249.3s1.5.3 1.4 1.4c0 1.2-.6 2.7-.6 2.7l-2-1.7 1.1-1 .4-.5-.2-1z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M213.1 235.6s-1.4.5-1.7-.1c-.2-.6-.1-1-.1-1.2 0-.1-.9-.2-.8-1 0-.8 1-.7 1.3-.7.2 0 .3-1.2 1-1.2s1 .9 1 .9z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M214.6 236s-1.1.6-1.5 0c-.4-.5 0-1.3-.1-1.4-.2-.1-.9-.4-.7-1 0-.8.8-.5 1-.7.3-.1.5-1.1 1.3-1 .7.2.8.8.8.8z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M216.6 236.3s-.3.7-1.2.5c-.8-.1-.5-1.3-.7-1.5-.1-.2-.7-.4-.6-1.2.1-.7.9-.6 1.2-.7.2-.1.5-1.3 1-1.1.6.1 1.2.8 1 1.1 0 0-1.1.4-1.3 1.2-.1.8.6 1.7.6 1.7z" }),
+    import_react26.default.createElement("path", { fill: "#af7029", d: "m235 249-1.8-2.1-1.8-2.2-1.8-.9-1.2-1.9v-2.2l.4-1.3.7-1s-3.7 1.4-1.8 8.5c.8 3 2.8 3.4 2.8 3.4l3.4-.2 1-.1z" }),
+    import_react26.default.createElement("path", { fill: "#816c2a", d: "M233.3 225.4c.3 0 .5 0 .6.2l.1.6a1.6 1.6 0 0 1 0 .2l.1.1c-1.3 2.7-3.9 4-6.2 5.6a11 11 0 0 0-3 3.1 9.6 9.6 0 0 0-1.4 5.5c.1 4 1.6 6.3 3.3 7.4a7.7 7.7 0 0 0 4.2 1.3h.3l1.2-.1a28.5 28.5 0 0 1 2.4-.2 9 9 0 0 1 1.4.1c.4 0 .6.2.7.3a.6.6 0 0 1 .2.4c0 .3-.2.7-.5 1l-.7.5v.3l.9-.6c.3-.4.5-.7.5-1.2a.9.9 0 0 0-.2-.5c-.2-.2-.5-.3-.9-.4a9.4 9.4 0 0 0-1.4-.1l-3.6.2v.2-.2a4.6 4.6 0 0 1-.2 0c-.7 0-2.5 0-4.1-1.2-1.6-1-3.1-3.2-3.2-7.2v-.3c0-2.2.5-3.8 1.2-5 1.2-2 3-3 4.8-4.3 1.8-1.2 3.5-2.4 4.4-4.5s0-.2 0-.4l-.1-.7c-.1-.2-.4-.4-.8-.4z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M238.3 250.1s-1 1.6-1.2 1.7c-.2 0 .8.2 1 .6l-.2.4s-1-.7-1.5-.7l-.1-.6s.5-.2.9-.6c.3-.3.7-1.1.7-1.3z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3d", d: "m241.7 251.2-2.2.6-1.1-.7s0-.9-.4-1.3c-.5-.4-.8-.5-1.3-.7-.4-.2-2-.2-2-.2l-4-4.3 1.5.2 2.4-.3 2.1-.2 1.2.2 1.2.3.6.6.7.6.7 1 .4 1.3.2 1.3z" }),
+    import_react26.default.createElement("path", { fill: "#af7029", d: "M241.8 251s-.8.3-1.8.3-1.6-.2-1.6-.2l-.2.7-.4 1v2.6l2.1.4 1.1-.4.6-2.8.1-1.5z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3d", d: "M241.2 250v1h.5v-.8zm-2-24-.2-1.7-.7-1.2-.9-1.2-.9-1-.5-.5-.2-.3-2.3.1-1.2 1.4s3 2.2 4.3 4.6c1 .3 1.8 1 2.2 1.4l.1-.2z" }),
+    import_react26.default.createElement("path", { fill: "#af7029", d: "M237 228c0 1.7-.3 2.6-.6 3l1.4-1.6 1-1.8a5.7 5.7 0 0 0-2.2-1.4c.2.6.4 1.2.4 1.8" }),
+    import_react26.default.createElement("path", { fill: "#816c2a", d: "m240.2 254.3-1.1-1.3-1-.7-.2.2h.1l1 .7a13.1 13.1 0 0 1 1 1.3z" }),
+    import_react26.default.createElement("path", { fill: "#6f5b24", d: "M241.6 252.4s-.2.8-1 1.5-1.8 1.1-1.8 1.1l2.2.9 1.5-1.4-1-2.1z" }),
+    import_react26.default.createElement("path", { fill: "#404118", d: "m241.9 254.3-.2.2-.4.4-.3.4.6-2.4.4.7v.4z" }),
+    import_react26.default.createElement("path", { fill: "none", stroke: "#78732e", strokeWidth: ".2", d: "M228.6 223.4s-3 .3-5.2 0c-2-.4-1.6-5.9-1.7-6 0-.2-1.3-1.5-1-2.7.2-1.2 4-4.4 4.6-4.6.4-.1 1.2.2 1.2.2s1-1 1.3-1c.3 0 .7.6.6.8-.2.3-1.5 1-1.6 1.7-.1.6 0 1.2-.4 1.8-.4.6-1.1 1.4-1.2 1.9-.1.5-.3 1 0 1.1.4.2 1.7 0 2.8-.5 1.1-.5 1.6-1.1 1.7-1 .2 0-.6 1.3-1.8 1.8-1.3.5-2 1.1-2.7 1 0 0-.6 1.6 1.4 1.7 2.1.1 3.3-.4 3.3-.4z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", stroke: "#4d2a15", strokeWidth: ".3", d: "M255 200.5s-5.7-1-5.6 3.6c0 1.5.4 2 1.5 2.3 1.2.3 3.6.5 5.6 2.3 2 1.8 2.2 3.1 2.2 4.2 0 1-.5 2-.5 2l1.3 6.2 1.2 4.6 3.8-2.2 2.3-6.8-2.9-12.2z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M260.5 224s2-.8 2.5-2.4c0-.4-2-2.3-2-2.3l1.5 1c.5.5 1 .7 1 .6.3 0 1.2-2.1.8-2.6-.3-.4-.9-1.5-1.7-2-.8-.6-1.9-.5-1.9-.5s1.5-.5 2.3 0c.7.3.8.8.9.6a9 9 0 0 0-.5-3c-.4-.6-.7-1-1.6-1.1-1-.2-1.9-.1-1.9-.1s1.3-.8 2.3-.5c1 .2 1 .7 1 .6a9.8 9.8 0 0 0-.7-2.3 5.3 5.3 0 0 0-1.7-1.5l-1.4-.2h-.5s.7-.5 1.7-.4c1 .1 1 .4 1.1.4.2 0 0-.2-.7-.6a39.6 39.6 0 0 0-3.4-1.6h-2.5s0-.7.7-.8c.7-.1 1 0 .9-.1 0-.2-2.2-.7-2.2-.7h-1.7l-2.4.3.5-.7c.3-.3.8-.4 1.1-.5.9-.2-.4-.9-.4-.9l.6-1 3.2.2 6.5 3.9 3.1 2.6 2 5-.6 8.6-4.4 3.6-2 .2z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M254.8 202.7s-.2-.6-.2-1.4v-.7s-2-.3-3.5.9c-1.6 1.2-.7 3.3-.7 3.3s.7-.6 1.5-1c.9-.3 2.4-.2 2.4-.2.2-.2-.3-.8-.9-.9l-1.7-.1s.7-.5 1.8-.4c1.1.1 1.3.5 1.3.5" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "m261.3 224.7-1.4.5.9 6 5.7 9.7 3-.5 1-1.8.7.3c.4.4 1.5 2.3 2.4 2.7 1 .3 1.4.2 2.3.9.8.6 3.9 5.2 4 5.3.2.2-.2-1.9-.2-1.9l-.9-2.7-1.1-1.9-.2-.5h1.5l1 .6 1.5 1.3.8.9.4 1 .2.8.4 1.3.8 1.7 1 1.7.3-.6-.5-2-1.5-4.9-1-1.6 1.6 1c.4 0 1.5 1.8 1.5 1.8l.7 1.7.5 1.6.4 1.4.5 1.5.9-.5-.2-1.1-.8-3.4-.3-3.6s.4 0 1 .6c.5.6 1 1.9 1 1.9l.3 3.2.5 3 1 3 1 2 .7 1v-1.5l-1.2-12.8.1-.5s.2-.1.6.5l.9 1.5.3 2 .2 1.4.3 2.6.3 2.8 1.3 3 .7 1.7.4-2-.6-13.6.3-.4 1 1 .6.8.5 3 .3 8.7.3 2.2 2.6-22.6 1.5-.3.2-.5-1.1-.8-2.6-4-1.7-3.9-3-5.6-5.3-6.4-4.1-3.4-1.5-1 .2-.9.9-1.4h-.8l-1.8.3-1.8-.6-3.5-2.4-3.7-1.8-2.2-.8-5.3-1.3-5.3-.7h-2.3l-2.2.3s-1 .5-1.4 1.2c-.4.6-.4 1.1-.3 2.1.1 1 .7 1.5 2.2 2.1 1.5.6 5 3 5 3l1.6 1.6.6.8.1.6 1.2 9-2.3 4.8z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M267 238.6s1 1.6 2.3.3c1.4-1.2-.6-4.8-.5-5 0-.2.6-.3.6-.3l1 1.9s.6 1 .3 2.5c-.2 1.6-1.7 3-1.7 3l-1.7-.5z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m300.2 259.4-1.2-3.6-.4-2.8-.3-7.5c-.1-1 0-2.3-.2-2.5l-1.3-1.8-.5-.5.3-.3s.5.5.6.3c.1-.3 0-1.6-.5-3.6s-3-6.7-3-6.7l.2.3.7.7 1.5 1.2 3.3 1.2 1.7.3 1.2 2.3s.8 3.9.7 5.9c0 2-.1 3.6-.9 5.6-.8 2-1 8.2-1 9.2l-.5 2z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M300.2 249s.7-.9 1-2c.3-1 .4-9.9-.6-11a8.2 8.2 0 0 0-3.3-1.8l.8 2.9.7 1 .5 1.5c0 .7.7 2.5.8 4.8z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M295.4 254.4s.5-4.1.3-7.1-.5-3.4-.8-4a25.8 25.8 0 0 1-2-5c-.7-2.6-1.2-4.5-1.6-5-.5-.5-1.4-1.6-1.6-1.3-.2.3-.2.9-.2.9l-1.3-.3-.3-.8.4-1.3v-.6l-.2-.9 1.6 1.3 3.3 2.2 1.7 7 1.5 4.2.2 7.2-.1 6.4zm2-19.7 1.3 1c.5.4 1.5 1 1.3 1l-1.6-.6-1-.7z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M291 252.8s.6-1.4.5-3.3c-.1-1.8-1-6.3-1.3-6.8-.3-.6-1.6-1.4-2.7-4-1.2-2.4-1.1-3-1.9-3.8a73.6 73.6 0 0 1-1.6-2l.3-2.7 2.8 1.5 1.3.6 1.4 7 1.3 2 .6 2.7.7 6.5.3 5.2-.2.5zm-3.4-3s0-2-.4-3.8c-.5-1.9-1-3.2-1.5-3.8a28 28 0 0 1-3.3-4 45 45 0 0 0-3.1-4v-2.7l1.7 1.2a44.9 44.9 0 0 1 1.8 1l.8 3 1 2.1 1.4 2 1 .8.5 3.2.3 1.8.8 2.6-.3 1.3zm-2.4 0-.8-.7s.5-.5.3-1.5c-.3-1-.5-2-1-3s-.6-1.6-.9-1.9a97.8 97.8 0 0 0-3.5-3.2l-3-2.6c-.8-.5-1.4-.6-1.4-.6l-.4-3.2s1 1.4 1.7 1.6l1.6.6 2.3 4 .8 1 2 1.7.9 1.7.6 2 .8 2.7.2 1.7zm-4.4-.8s-1.3-1.5-1.6-2.5c-.2-1 .2-1-.2-2.1a9.5 9.5 0 0 0-3-3.7c-1.1-1-2.7-2.3-2.6-3 0-.7.3-.8.3-.8l.7.6 3.5 3.8 1.1 2 .9 2.5.5 1.1.5 1.5zm12.8-18.6s2.5 3 3.1.2c.3-1.2-.8-3.6-.8-3.6l-3-5-4.7-5.8-2.8-1.3 1 1.6s2 2 4.7 6.7c2.7 4.6 2.1 7 2.1 7zM279.4 212s4.9 4.2 8 8.7c3.1 4.5 4.4 7.5 3.7 8-.7.7-2.7-.3-3.5-1.5-.8-1.3-1.5-3.5-4.4-6.9-3-3.4-4.4-3.9-4.4-3.9l-2.2-3.4zm-2.6 10s3 2.4 4.7 4.3a29.8 29.8 0 0 1 2.8 3.4l1.1 1.1s-.6-1.2-.2-1.6c.3-.4.8-.2.8-.2l-9.2-9.7zm-.6.2s1 1.8 2.5 3.3a298 298 0 0 0 3.2 3.1l.7 2.4s-4.2-3.2-4.2-2.4a7 7 0 0 0 1 2.4l-1.3-.7-1.8-2.5-1-2.3-1.2-3z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M263.6 232.2s2.2 2 3.4 0c1.2-1.9.2-4 .2-4s3.1 4.5 4 .2c.1-.8-1.9-3.7-1.9-3.7l.7-.7 1.6 2.6s1.5-.6 1.5-2.4c0-1.8-1.6-4.2-1.6-4.2l1.5 1.6s2.8 0 2.9-1.7c0-1.7-2.4-3.5-2.4-3.5s2 .1 2-1c-.1-1.2-2.7-2-2.8-2.7 0-.7.8-1.9 2-1.2 1.2.6 2.8 1.2 3.5-.1.7-1.3 0-1.6 0-1.6l-1.7-.4-2.8-1.4-2.1-.8-2.2-.3.8 1.7.6 4.5v2.1l.4 4.6-1 3.8-.7.7-.4.5-1 2-1.2 1.5-1.7 2.2z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M279 240.7s-.5-1.3-1.7-2.3c-1.2-.9-3-1-3-1l3.2 3.4zm4.5.8s-1-2-2.2-3.3c-1.2-1.3-2-3-2.4-3l-.5.1.3 2.6 2.2 2.2s2 1.5 2.6 1.4m3.7-.2s-.5-2.4-1.7-4.7-2.6-3.3-2.6-3.3l.3 2.5 1 2.4 1.7 2.4zm3-1.3s.9-5 .1-6.3a3.7 3.7 0 0 0-2.2-1.7l-.5.7.5 3.6 1.1 2.7zm3-8.3s.7.4 1.6 2c.9 1.7 2.1 6.7 2.1 7 0 .2-.5.1-.6 0l-3-4.7-.6-4.3z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M272.3 237.5s1.6-.4 1.6-1c0-.5-2-1.6-1.8-2.5.1-.4 1.6.1 1.7-.2.2-.3-1.5-3-1-3.6.5-.6 2 2.9 2 2.9s.8 1.6.5 2.5c-1 3-3 1.9-3 1.9m3.7-3.6c0-.2 2.5.3 2.5.1.1-.5-2.2-2.3-2.2-2.3s-.5-1-.3-1.1c.1-.2 1.6.1 1.7 0 0-.3-1.7-2.6-1.7-3 0-.4.5 0 .5 0s1.3 1.4 2 2.5c.8 1.2 1.5 2.1 1.2 4-.2 2-4 .4-3.7-.2m11-3.6s-.5-1.7-.2-1.9l.8-.4s-1.3-.8-1.9-.8c-.6 0-.7-.2-.8 0-.2.3 1 2 1 2z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M279.6 231.5s3.7 1 3.8.7c.2-.3-3-3.2-3-3.2v-.7c0-.2 1.3-.2 1.7.1.3.3 0 1 0 1.2.2.2 1.4 2 1.6 1.7.2-.3-.2-2.5-.1-2.6 0-.2 1.4 1.2 1.7 1.5.4.2 2.5 1.8 2.7 1 .2-.7.3-.8.3-1.3-.1-.4.6 2.1-.3 2.4-1 .4-2.1-.3-2.1-.3l-.9-.7-.5-.5s.6 2 0 2.2c-.7.2-1.5.1-1.5.1l-1.5-.2-2-1.4zm8.5-2.5s4 2.4 4.3 2c.4-.5-1-6-.8-6.6.2-.5 3.2 6.3 1.8 7.2-1.2.7-1.7.2-1.7.2l-2-1zm11 10 .9.4.5.2-1.1.2zm-3.8-13.1.6.3.5.2-.5.2a1.3 1.3 0 0 1-.3-.1zm-1.2-2s.4.2 1-.1.5-.7.5-.8c0-.2-.9-.2-1.2-.4-.2-.2-.2-.5-.2-.5H293zm3.5 11.6 1.6.7c.3 0 .9.4.8.5 0 .1-1 .2-1.4 0-.5-.3-.6-.2-.6-.2zm-6.5-18.1h1c.2.2 0 1-.3 1.3l-.8.4a38.5 38.5 0 0 1-1.3-1.8zm-5.7-5 1.2-.1c.4 0 .9.3 1.2.5.4.2.7 2.6.5 3-.2.5-2.8-1.5-2.9-1.7 0-.2-1.2-2-1.2-2zm-2.5-1.2s2 .2 1.8-1a3 3 0 0 0-1-1.9l-2.4 1.7zm-5.2-2.2s.5.2 1.1 0c.6-.2 2.1-2.2 3.2-2.4 1.1-.3 1.4-.3 1.6 0 .2.2 0 1.4-.2 1.7-.2.3-3.5 1.7-3.5 1.7l-1.2-.2-1-.3zm-.6-3.6c-.5-1.2-1.4-1.6-1.7-1.6-.3.1 1.1 1.3 1.3 2.8l.2 2.8h.7v-.5l.2-.5v-.4l-.1-.8-.2-.6-.1-.5zm-4.6-1.7a12.3 12.3 0 0 0-4.4-3c-.2 0 3.2 2 4 3.4.7 1.2.7 3 1 3.2.4.3.7 0 .7-.1 0 0 .3-.4.2-.5l-.2-.9-.5-.8-.3-.6zm-4.4-1.8a13.4 13.4 0 0 0-8-2.5c-2.9 0-4.3.2-3.9 1.8.4 1.5 1.7 2.1 4 2.1 2.4 0 3-.2 4.2.2 1.2.4 2.4 1 2.9 1.6.4.4-1-1.2-2.1-2l-2-1.5s-.2-.5 1.4-.2c1.6.2 3.8 1.2 4.3 2.6.6 1.3.5 2 .5 2.4 0 .2.6-.2.6-.2l.2-.7s.1-.5-.2-1c-.3-.7-.4-.9-1.1-1.7zm-7.7 22.8c1.2 0 3.8-2.2 4.2-5.4a27 27 0 0 0-2-10.1c-.5-.7.7-.3 1.4.3.6.7 2 5.2 2 8.5s-.8 4.3-2.5 6c-1.8 1.6-3.2 1.5-3.2 1.5zm4.1 9.3s.6.7 1.2.5c1.2-.5 3.1-1.4 3.1-3 0-1.2-1.4-2.2-1.5-2.6v-.8l1.3.3.3 1.8s.5.5 1 .3c.6-.2 2-1.3 1.9-2.4-.2-1-1.7-2.3-1.8-2.8a1.8 1.8 0 0 1 0-1l1.2.2.4 1.5s.3.6 1 .4c.7-.1 2-1.4 1.7-2l-1.3-2.1v-.7l.5.3s.4.2 1.4-.1c.9-.3 1.8-1 1.8-1.6 0-.6-.7-1.2-.8-1.6v-.5l.6.1.8 1 .2 1-.3 1-1.1 1.3-1.2.4h-.3l.7 1.2-.2 1.6-1 1-1.4.7v1.5l-.8 1.6-1.7 1h-.5l-.2 1-1 1.5-2 1.3-1.3.2-.8-1.1z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M274.7 217.1s3.1 1 3-1c0-1.2-3-3.7-3.2-4.1-.2-.5-.1-1-.1-1l1.5 1.4s2 .5 2.6-.7c.5-1.1 0-1.8 0-1.9h.4l1 .1-.2 1.8-1 4.4s.3 1.7-1 1.9c-1.4 0-3-.9-3-.9m3 23.6s0-.9-.7-1.5-2-1.2-2.2-1.4a48 48 0 0 0 2.2 2.8zm4.5.1-2-2.5c-.2-.7-1-2.1-1.7-2.2-.6 0 .6 2.4.6 2.4l2.5 2.3zm4.3 0-1.7-3.3c-.3-.7-1-2.7-1.8-3.3-.8-.5 0 1 0 1l1 2.6 1.4 2.3 1 .7zm3.1-1.8s-.1-2.2-.4-3.7a4.6 4.6 0 0 0-1.5-2.7l.1 2.7zm6.5 1.6-1.5-3.8a17.6 17.6 0 0 0-1.7-3.3l.3 2.3 1.4 3.8zm5.6-6.8s-1-1-3.1-1.9a15 15 0 0 0-4.3-.9l.2.3 1 .8 2.2 1.2 3 .7z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M278.6 235s0 2 1 3.1l3.7 3.7c.4.4.8 2.7 1.5 4.6.6 2 .8 3.5 1.1 4 .3.6.9 1.5.5 1.4-.5 0-1-.6-1.2-1.3-.3-.7-.2-.7-.1-1.7 0-1-1.5-5.9-2.2-6.4-.7-.6-3.9-3.2-5.1-5-1.2-1.9-1-2.3-1-2.3z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M283.7 247.5c-.7-1.4-.8-2.7-1-3.5a12 12 0 0 0-3.5-3.4c-.5-.2-1.5.1-2-.2l-2.9-3.2s-.3.4-.2.5c.1 0 2.7 3 3.7 3.8 1 1 1.5 3 2.2 4.6.6 1.6.4 1.2.4 2 .1.8.6 1.2 1 1.2s.7-.2.5-.3a8.3 8.3 0 0 1-1.7-2.8c-.6-1.4-1.2-4-2-4.9l-.3-.2 1-.1c.7 0 3.4 2.4 3.6 3.1.2.7 0 1 1 3.4 1.2 2.4 1.7 3 1.7 3h.2zm-4.1-16 2.4 1.4 1 .2s.3 3.5 1.7 5.5 2.6 2.7 2.6 2.7 0 3.8 1 6.4a14 14 0 0 1 1 6.3c-.2.5-1-1.5-1.6-3.3l-1.5-5a10.3 10.3 0 0 0-2-3.6c-.7-.5-.2-.4.2 0a9.1 9.1 0 0 1 2 3.5c.6 2 .9 4 1.2 4 .4 0 .6-.3.6-.7 0-.4-.4-1.4-.7-3.3-.4-2-.7-3.2-1-3.7-.3-.6-.8-.6-2-2.8a16 16 0 0 1-2-4.2v-1c-.3-.2-.4 0-1.4-.5s-1.5-1.9-1.5-1.9" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M284.5 230.8s1.2 1 1.9 1.2c.6.3 1.6.3 1.6.3s-.3 3.4 1 5.5c1.3 2.2 2.7 3.4 2.7 3.4s.2.8.6 5.5l.6 6.6c0 1.8.1 8.4-.1 8.2-1-.8-.2-4.3-.7-5.8-.5-1.5-1.3-1.7-2.3-6-1-4-.3-5-1-6.6-.7-1.6-1.6-1.7-1.6-1.7s1.3.2 1.8 1.6c.5 1.3.6 4.8 1 6.5 1 4 2.4 6 2.4 6s-.3-5-.7-7.8c-.4-2.8-.3-5.1-.9-6.2-.5-1-1.6-2-2.3-3.3-.7-1.5-.9-4.3-1.2-5-.3-.7-.5-.5-1-.7-1.5-.6-1.8-1.7-1.8-1.7" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M288 229s1.1 1.2 2.6 2c1.4.9 2.2.6 2.4.8.2.2-.3 3.1 1.2 5.8 1.5 2.8 2 2.8 2.1 3.2l.5 11c.2 2.8.4 12-.7 12s-.1-6.8-.7-8.4c-.5-1.6-.5-1.1-1-2.4-.6-1.2-.6-6.2-1.4-9.2-.7-2.2-1.3-2.6-1.3-2.6s1 .6 1.6 2.5c.5 1.8.6 8 1.2 8.9.6 1 1.4 2.2 1.6 3 .2 1 0-11.5-.4-12.3-.2-.8-2.7-5.3-3-7.8-.1-2.5-.2-2.8-.4-3-.3-.2-1 0-2.2-1.1-1.2-1.2-2-2.4-2-2.4z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M293.8 230.4c0-.2.8 1.4 3 2.3 2.3.9 4.5.7 4.8 1a18 18 0 0 1 1.7 8.1c0 4.5-.8 4.1-1.5 8-.7 4-.7 11.8-1.1 13-.2.5-.5.7-.7 1.5-.3.7.2 2.2-.5 2.2s-.8-1.1-.8-1.7c0-.6.7-2.8.7-5s-.4-2.4-.8-5c-.3-2.5-.3-10.7-.6-11.5-.3-.8-1.7-2.5-1.7-2.5s1.5 1 1.9 2c.4 1.2.4 10.3.8 12.1.4 1.9.3-.4.4-1.5.2-1 .7-5.5.7-7.9-.1-2.4-1.1-7.6-2-8.4 0 0 .5.5 1 1.6l.6.5.8.4a2.3 2.3 0 0 1-.8-.2l-.5-.3a19.1 19.1 0 0 1 1 6.4c.1 4-.5 13 .1 13.2.7 0 .5-5 1.2-9s1.6-4.6 1.3-8c-.3-3.2-1.2-6.8-1.9-7.3-.6-.4-2.6-.3-4.4-1.4-1.8-1.1-2.8-2.3-2.7-2.6m-28.6 4.6s.6.3 1.4 0c.7-.4 2.7-2 2.7-2.7V231s0 .3.7.4c.5 0 2.2-1.2 2.3-2V227c-.3-.2.4.3.8 0 .3-.3 1.9-1.3 1.9-2.4 0-1-1-2-1-2h1.3c.5-.1 2-1 2-2s-.6-2.4-1.8-2.5c0 0 .9.2 1.8 0 .9-.4 1.2-1 1.2-2s-1.8-3-2.1-3.2c-.4-.2 1.9.6 2.5-.3.5-1 .6-1.5.4-2-.1-.5-.6-.7-.6-.7s1 .3 2.3-.4c1.3-.6 2.4-1.5 3-1.5.6 0-1.9 1.4-2 2.1 0 .3.7.8 1.8 1.7l.2.1c.5.3 2.5.4 2.6.5.2 0-1.9 0-1.7.2a27.3 27.3 0 0 1 4.6 4.3s.3.3.7.4l1 .2H290a52.2 52.2 0 0 1 2.6 3.8s.4.5.7.6l1 .2c0 .2-1.2 0-1 .2a65.6 65.6 0 0 1 2.6 4.8s-2.5-4.3-5.5-7.6c-3-3.4-3.6-3.8-3.8-3.5-.2.3 2.2 3.3 3.5 5.3 1.3 2.1 2.4 4.7 2.4 4.7s-3-6.2-7.2-10c-4.2-3.9-4.6-4.5-5-4.3-.6.1-1 3-.6 3.5.3.6 3.3 3 6 6 2.6 3 5.9 8.4 5.9 8.4s-2.4-3.8-6.4-8-5.5-5.3-5.8-5.3c-.3 0-.4.8-.8 1.5-.5.6-1.5.5-1.5.8 0 .3 3.4 3.4 4 3.8.7.4 1.1.2 1.6.5l1.1.7-1.2-.4c-.5-.2-1-.2-1 0s2.7 3.5 3.2 3.7c.4.2.7.1 1.3.4.6.2 1.5.8 1.5.8l-1.6-.7c-.7 0-1 0-1 .2s2.1 2.9 2 3c0 0-3.2-3.8-5.8-6.1-2.7-2.4-3.9-2.9-4-2.8-.1.1 0 .8-.7 1-.6.3-1.2.3-1.2.6 0 .2 2.3 2.5 4 4.3a119.5 119.5 0 0 1 3.2 3.7l-3.6-3.5c-1.9-1.8-2.8-2.5-3-2.4-.2.1-.2 1 0 1.3.1.2 3.6 4.3 3.5 4.4-.1.1-4.1-4.9-4.4-4.9-.2 0-.4.6-.6 1-.3.2-1.4.2-1.4.6 0 .4 5.6 6 5.4 6 0 0-4.6-4-4.8-3.7-.1.2 2 4 1.9 4.1-.2.1-2.8-4-3-4-.2 0-.2.5-.9 1.1-.7.6-1.5.4-1.5.6 0 .3 3.8 4.6 3.7 4.7 0 0-4-4.1-4-3.9 0 0-.3.3-.2.6.3 1 1.2 2.9 1 3 0 0-1.2-2.5-1.5-2.4-.3 0-.3.6-1 1-.5.3-1 .2-1 .5s.7.7 1 1.3c.3.6.6 2 .6 2s-.4-1.2-1-1.9c-.5-.7-1-1.2-1.4-1.2-.4 0-.7.4-.7.4z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M301.6 233.7s1.2-.1 1.4-.4c.1-.3-.5 0-1.6-1.3-1.2-1.2-4-9.7-7.3-14-5.2-6.9-10-10-10-10s5.7 3.3 10.2 9.9c4.6 6.6 5.7 11.9 7 13.2 1.3 1.4 2.5 1.6 2.4 2 0 .4-.2.7-.7.8l-1.7.1.2-.3zm-38.4-1.9.2.1c.3 0 1.9-1.5 1.8-2 0 0-.7-.2-1.3-.8-.6-.6-.7-1.5-.7-1.5s.5 1 1 1.3c.4.3 1.1.5 1.4.3.2-.3 2.5-2 2.4-2.6 0 0-.7 0-1.4-.5s-.8-1.6-.8-1.6.4.9 1.1 1.2c.7.3 1.4.2 1.6 0 .2-.3 1.7-2.4 1.5-3 0 0-.7 0-1.4-.4-.7-.5-1.1-1.7-1.1-1.7s.5 1 1.4 1.2c.9.2 1.6-.4 1.7-1 .2-.6.7-3 0-3.6 0 0-1.2.4-2 0s-1.1-1.5-1.1-1.5.6 1 1.6 1c.9.2 1.3-.3 1.4-.7.2-.3.2-1.7 0-2.4-.3-.7-.9-.7-1-1.8 0 0-.3.4-1.5.4s-1.8-1.3-1.8-1.3 1 .9 1.9.8c.9 0 1.2-.8 1.3-1.4 0-.6-.5-1.2-.8-1.8-.2-.6-.3-1.3-.4-1.2-.2 0-.4.6-1.6.4-1.2-.2-1.5-1-1.5-1s.9.6 1.5.6c.7 0 1.2-.4 1.2-.9 0-.4-.3-1.3-1.8-2.6a46.5 46.5 0 0 0-2.8-2.2s2 1.1 3.3 2.2c1.3 1 2 2.1 2 2.1s1.4.5 1.5 0c.2-.5.2-1-.3-2-.4-.7-1.6-2-1.6-2s1.2 1 1.8 2.1c.6 1.1.4 1.9.4 2.1 0 .3 2.7 1.3 3.3 1 .6-.4.3-1.2-.2-2l-1-1.4s.7.7 1.2 1.5c.4.7.8 1.4.6 1.7-.2.4-.5.5-.5.7l1.8 1c.9.5 1.9 1 2 .7.2-.3.2-.9.2-1.8-.1-.8-.6-2.1-.6-2.1s.6 1.2.7 2.1v2c.3.2 1 .3 1 .3s-.6.4-1.7 0c-1.2-.3-6.2-2.8-6.4-2.6-.2.3 2.3 1.8 3.5 3 1.2 1 1.7 2.2 1.7 2.2s-.9-.8-1.8-1.3-3.5-1.8-3.7-1.6c-.1.2 1 .4 1.1.6.1.2-.8 1-.8 1.4 0 .3 3.8 3 3.7 3.2-.2.3-1 1-1.2 1-.1 0-2-1.5-2-1.3 0 .3 1 1.2 1 1.4 0 .2-.6.6-.5 1 .1.5 2.1 2.1 2 2.7 0 .5-1 1-.8 1.4l1.2 1.6-1.5-1.1c-.3-.4-1-1.2-1.1-1.1a6 6 0 0 0-.8 2c0 .4 1 .9 1.1 1.8.2 1-.1 2-.2 2 0 0-1.3-1.7-1.5-1.7-.3 0-.6 0-.8.5-.2.4-1 1.7-.8 2 0 .1 1.3.4 1.3 1.4 0 1-.8 1.9-.9 1.9l-1.6-2c-.2 0-1.8 1.9-1.8 2 0 .3 1 1.1.9 1.4-.2.4-1 0-1.5.2l-1.3.5c-.2 0-.4-.5-.4-.5" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M284 208s.1-.5.4-.8c.2-.2 1.2-1.3.8-1.6-.3-.2-1.6.2-2.4.2-.8-.1-1.3 0-3.7-1.9 0 0-7.4-5.1-18.9-5.8-3.6-.2-5.2 1-5.4 1.8 0 .1 1-1.5 4.6-1.5a40 40 0 0 1 19.2 5.7c.3.3 2.3 2.2 4.1 2 1.9-.3 2.3-.5 2.2-.2 0 .2-.6 1-.7 1.2zm-20 1.5a9.6 9.6 0 0 0-2.2-2.6 30.3 30.3 0 0 0-6.4-3.4c-.2 0 4.8 2.3 6.2 3.7z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M264 217.8s-.4-.5-1.4-1.2a7.9 7.9 0 0 0-2-.9l2.4.6c.6.6 1 1.5 1 1.5m-.7-4.3s-.3-.5-1.7-1c-1.4-.4-1.7-.3-1.7-.3s1.3-.6 2.3 0a2 2 0 0 1 1.2 1.3zm-.8-3.6s-.3-.6-1.5-1c-1.3-.5-2.1-.6-2.1-.6s1.3-.3 2.5.2c1.3.5 1.1 1.4 1.1 1.4m-1.5-2.2s-.3-.5-2.7-1c-2.3-.6-3.2-.6-3.2-.6s3.3-.3 4.2 0c.9.4 1.7 1.6 1.7 1.6m-4.3-2.5s-1.4-.4-2.8-.5l-3.5.1s4-.6 5-.4c1.1.3 1.3.8 1.3.8" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M243.6 254.7s.7 1.3 2 1.3c1.5 0 2.6 2 2.6 2l-1.5 1.6-3.7.2-1.2-2 1.8-3zm0-1.2c.2-.3-1-2.7-1.9-3-.8-.5.3.7.1 1.2-.2.5-.3 1-.2 1.2 0 0 .7 1 .3 1.5-.3.5 1.8-1 1.8-1z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M243 257.1s.7.3 1.2.2c.5-.2 1-.7 1-.7m-2.9-.4s2.1-1.5 2-2.3c-.2-.8-.7-.8-1-.7a5.6 5.6 0 0 0-1.6 1.3z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M240.9 257.2s.3 1 1 1 1.7-.5 1.7-1c0-.3-.7-1-1.1-1.3-.5-.2-1.5.3-1.5.3z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M242.8 255.8c-.2.3-1.5 1-1.9 1-.4 0-1.3-1-1-1.2l1.2-.3c.3-.2.4-.7.6-.7.2 0 .7.2.9.5s.3.4.2.7z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M241.4 256.7s-2 2.8-2.9 2.6c-.8-.1.4-3.9.4-3.9l1 .4c.6.2 1.3.5 1.5 1z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M237.8 254.8s2.6.4 2.7.8c.1.5-1.2 1-2 1-.7 0-.7-1.9-.7-1.9z" }),
+    import_react26.default.createElement("path", { fill: "#202220", d: "M231.2 258.7s.4 1.3 1.5 1.4c1.2 0 2.2-1.2 2.2-1.2l-2.7-1z" }),
+    import_react26.default.createElement("path", { fill: "#4b4139", d: "m231.2 258.7.3.7c.3.3.6.7 1.2.7h.1c1.1 0 2.2-1.2 2.2-1.2l-2.8-1.2zl1-.8 2.7 1-.2.1c-.3.4-1.1 1-1.9 1-.6 0-1-.3-1.2-.7a2.3 2.3 0 0 1-.2-.4 3.3 3.3 0 0 1-.1-.1z" }),
+    import_react26.default.createElement("path", { fill: "#202220", d: "M232 258.4s.4 1 2 1c1.4 0 2.6-1.2 2.6-1.2l-2.4-1.9z" }),
+    import_react26.default.createElement("path", { fill: "#4b4139", d: "M232 258.4s.4 1 2 1a4 4 0 0 0 2.6-1.2l-2.4-2-2.3 2.2zl2.2-2 2.4 1.8h-.1a4 4 0 0 1-2.5 1.1 2.4 2.4 0 0 1-1.6-.5 1.8 1.8 0 0 1-.3-.3 1 1 0 0 1 0-.1z" }),
+    import_react26.default.createElement("path", { fill: "#4b4139", d: "M232.2 258.6s.6.5 1.4.6l1.8-.2-1 .3h-1.2l-.5-.2-.4-.3z" }),
+    import_react26.default.createElement("path", { fill: "#202220", d: "M234 257.3s.6 1.6 2 1.4c1.3-.1 1.4-1 1.4-1l-1.6-2.2z" }),
+    import_react26.default.createElement("path", { fill: "#4b4139", d: "m234 257.3.4.8c.3.3.8.7 1.5.7h.2c.7-.1 1-.3 1.2-.6a.9.9 0 0 0 .2-.4l-1.6-2.4-2 1.9zl2-1.7 1.4 2.2c0 .1-.1.7-1.3.9a1.4 1.4 0 0 1-.2 0c-.6 0-1-.4-1.4-.7a3.2 3.2 0 0 1-.3-.5 3 3 0 0 1 0-.2 1.2 1.2 0 0 1-.1 0" }),
+    import_react26.default.createElement("path", { fill: "#4b4139", d: "M234.1 257.6s.9 1 1.6 1c.7 0 1.2-.3 1.2-.3v.1l-.4.2-.6.1h-.7l-.6-.4zm-2.6 1.6s.6.7 1.2.7 1.5-.5 1.5-.5h.1l-.1.1-.6.4-.8.2-.6-.1-.4-.3-.3-.3z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M237.6 254.6c.6 0 2 1.7 2 2.6 0 .9-.4 2.2-1 2.1-.7 0-2.2-1.3-2.5-2-.3-.6-.7-1.1-.4-1.4.2-.4 2-1.3 2-1.3zm-6.4.2s-1-.8-1.5-.4c-.4.4-.3 1.8 0 2 .3.4 1.5-.6 1.5-.6z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M231 255.8s-1.4 0-1.4.7.7 1.3.8 1.5c.2.1 1.4-.6 1.4-.6z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M231.6 256.9s-1.5.4-1.5 1c0 .4.7 1.3 1.1 1.3.5 0 .8-.9 1-1 .2-.2-.6-1.3-.6-1.3zm.7-4.1s-.3-.4-.9-.2c-.6.3-1.3.9-1.1 1.8 0 1 .4 1.6.4 1.6l2.1-.7z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M232.4 254.4s-1.8.6-1.9 1.3c0 .8.4 1.5 1 1.6.4.1 2-1.4 2-1.4z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M234 257.4s-1.8 1.2-2 1.2c-.3 0-1-1-.8-1.6.2-.6 1.4-1.1 1.9-1.3.4-.2 1 1.7 1 1.7zm1.6-6.6s-.6-.4-1.7-.4c-1 .1-1.9 1.5-2 2.3-.1.7 0 2 .4 2.2.4.2 2.7-1.6 2.7-1.6z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M233.4 256.2c-.8 0-1.4-1.1-1.3-1.8.1-.6 1.6-1.8 2.4-1.6.8 0 .6 2 .6 2s-1 1.5-1.7 1.4z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M235.8 256s-.4 1-1.1 1.3c-.8.4-1.3.1-1.7-.5-.5-.7.2-1 .5-1.3.4-.3 1.4-.5 1.4-.5z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M234.6 253.8s-.9.6-.4 1.4c.5.8.9 1 1.5 1.2.6.1 1-.1 1.5-.7s1.2-.9 1.1-1.6c0-.7-.3-1.3-.8-1.5-.4-.2-1.7 0-3 1.1z" }),
+    import_react26.default.createElement("path", { fill: "#202220", d: "M237 250.4s-.9-.4-1.6 0c-.6.4-1.1 1.2-1.1 2l.1 1.7s1-.2 1.5-.7.8-.7.7-1c0 0-.3-.3-.3-.9 0-1 .7-1.1.7-1.1" }),
+    import_react26.default.createElement("path", { fill: "#4b4139", d: "M237 250.4s-1-.2-1.5.1c-.5.3-1 .8-1.1 1.5-.2.7 0 .8 0 .8s-.2-.5 0-1.1c.2-.6.7-1.2 1.2-1.4a3 3 0 0 1 1.4 0z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "m263 269.6 1.3-.6 1.6-1 .3 1.8-1.4 1h-1.2l-.7-.5.2-.7z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M261.1 269.7h.9l1-.1c.2 0 .5 1 .5 1l-.4.5-1.2.7-1-.6-.1-1.4zm9.7-.5-.7-.9-1.7-1.5v4h1.8l.8-1.3z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M261.1 269.7s-.3-.4-1-.3c-.8.1-1.6.7-1.7 1.3 0 .5 0 2 .4 2.3.4.3 1 .5 1.8.3.8-.3 5-2.9 5-2.9l-1 .3-1.2-.2s-.5.7-1.2.8c-.7.1-.8-.3-1-.6z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "m264 271.1-1 .4a7 7 0 0 1-1 .5l.3 1.3 1.8.4 1.1-1v-1.2zm8.3-.9-.6-.6c-.3-.4-.8-.5-.9-.4l-1 1.1v.9l1 .5.7.1 1-.6z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "m266.1 269.6-1.2.7-1 .8 1 1 .9.2 2-1.4-.2-1.3zm7.6 1.6-.4-.6c-.4-.3-.8-.4-1-.4-.2 0-1 1.2-1 1.2l-.1.3.7.8 1.3.3.9-.8z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: ".2", d: "m270.4 272.6 1 .2s-.1.2.2.4c.2.2.3 0 .3 0s0 1 1 1.7c0 0 1.2.4 1.7 0 .6-.3.5.1.5.1l1.6-2s0-.4-.4-.4c0 0 .3-1.2-.7-1.5s-1.9.1-1.9.1-.8 1.5-1.2 1.3a1.9 1.9 0 0 1-.6-.4l-.6-.7-.7-.2c-.4-.2-.7-.9-.7-.9s-.6 0-.8-.3a3 3 0 0 1-.5-.6l-1.5 1s0 .5-.9 1.1c-.8.7-1.4.7-1.4.7s-.2 1.3-1.2 1c-1-.1-1.6-1.2-1.6-1.2s-.7-.1-1.1.5c-.5.6-.7.8-.7 1.4 0 .6.4 1.4.7 1.7.3.3 1.3 1 2.4.4 1.2-.6.8-1.5.8-1.5l.6-.4c.7-.5 1.5-1.2 2-1.4" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeWidth: ".2", d: "M268.6 264.7v2.5s.4 2.3-.1 3c-.5.7-2.3.6-2.6 0-.2-.7-.1-2.6-.1-2.6l2.8-3z" }),
+    import_react26.default.createElement("path", { fill: "#f8c83c", stroke: "#977c2e", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: ".2", d: "M266.6 272.4s-.4.7.8.8a.8.8 0 0 0 .7-.3c.3-.3.3-.6.3-.6s-.1.9 1 1c1.1 0 1-1.1 1-1.1" }),
+    import_react26.default.createElement("path", { fill: "#202220", d: "M257 274.5s-.7-1.1 0-1.5c.8-.4 1.3 0 1.7 0 .5 0 .3-1.2.2-1.4 0-.3-.3-.8-.5-1-.2 0-2.8.2-2.7 1.9 0 1.7 1.3 2 1.3 2m4 4.1s-.8-1.2-.4-1.9c.5-.7.8-.2 1-.3.2 0 .3-.5 0-1.3s-.9-1.1-1.2-1.2c-.2 0-1.8 1.1-1.5 2.6.4 1.8 2 2.1 2 2.1zm14.5-1.4s2.8 1.2 3-1.7c.1-1.5-1.3-2.5-1.7-2.5-.3 0-.5.2-1 .8-.5.6-.9 1-.7 1.2.2.3 1-.2 1.4.7.6 1.5-1 1.5-1 1.5" }),
+    import_react26.default.createElement("path", { fill: "#4b4139", d: "M261 278.6s-2.2-.5-2.2-2.6c0-1.4 1.6-2 1.6-2s-1.4.7-1.5 2c0 2.1 2 2.6 2 2.6zm-4-4.1s-1.3-.3-1.4-2.1c-.2-1.8 2.8-1.7 2.8-1.7s-2.8 0-2.7 1.8c.2 1.8 1.3 2 1.3 2m18.5 2.7s.6.3 1.2.2c.7 0 1.4-.2 1.7-1.2.3-1.1.1-1.6-.6-2.5-.5-.7-1-.7-1-.7s.6.1 1 .7.9 1.3.5 2.5-1.5 1.2-2 1.2z" }),
+    import_react26.default.createElement("path", { fill: "#904720", d: "m242.1 217.9-.5-.1.4-.9 1.4-.5 1.5-.1h1.5l.7.4.8 1.9-2.9 1.7-.5.2-.1-.8-.5-1.1z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "m269.5 260.4-.1-4.4-12 3.6 4.8 4.4z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "m247.6 252.7-1-.8-1.1-.6h-1l-.1.2.1.4 1.1 1.3 1.8 1 .7.5.4.2zm-.3 1.9h.7l.6.9.5.8.5 1 .2.7-1.3-.3-3.9-1.2.4-.9.6-.6.6-.2.8-.2z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "m249.8 257.8.6-.1.4-.4-.2-1.4.3-4.6-3.1-3.7-.7 2.1 1 3.8.6 2.2z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M247.5 249.3s-.2.4.1 1.6c.3 1.2.7 4 1.8 5.8 1 1.8-1-1.5-1-1.5s-1.7-3.7-1.5-6.5c.3-2.9.6.6.6.6" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M249.8 251.7s-.7.8-.8 1.5v1.7s0-.8.7-1c.7-.2.6 1.9.6 2.1l.4-3.8zm.4 7.7-3.5-.8c-1.9-.8-2.8-1.5-2.8-2 0-.4 3.2.2 3.7.3.5.1 1.9.8 1.9.8h.8l1.5-.6.2 1.6zm-6-.7s1 .6.5.9c-.4.3-1.5.3-1.8.2l3.4.8.6-.6a279.8 279.8 0 0 0-2.6-1.3z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M243.4 257.8c0-.2.2.5 1.4.6 1.2.2 1.8-.2 1.8-.2l.5.4.6.1-.5.9-2.3-.7-1.2-.6z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "m251.3 256.2.6.9.4-2v-2l-1.3-.8z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m247.8 253-1-1.8-1.4-2.5.8-1.4 1 1.4s-.3 1 0 2c0 1 .6 2.2.6 2.2z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M240.6 259.2s.5-.7 1.5-.8c1.1-.1 2 .1 2 .1l2 1.2.5.7-4-.6z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "m251.2 252 .1 3.3c.1.7.6 1.5.5 1.8 0 .3-.2.4-.8.6-.5.2-1.5 0-1.5 0s1-.1 1-.3c.1-.2-.2-1.1-.3-2 0-.8 0-1.7-.2-1.7-.3 0-.6.3-.7.4 0 .1.3-3 .6-3.3.4-.4 1.3 1.3 1.3 1.3z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M243.8 258.4s-.4-.3-.4-.6.4 1.3 2.7 1.2c2.2-.1 2-.2 2-.2h1.1s-.2 1-.4 1.1c-.2 0-1.7 1.1-1.8 1.2l-.5.3v-.2l-.3-1.7-1.9-.7z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M247.8 253s-2.6-2.8-3.5-4.5c-.8-1.8-.3-4.2-.3-4.2l2.4 3.2s-.3.6-.2 1.6c.1 1 1.6 3.8 1.6 3.8z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M246.1 262.6c0-.2-.2-.8.3-1.4a15 15 0 0 1 5.4-3.3v2.4l-5 2.4z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "m246.4 260.8 1.1-1c0-.3-.6-.4-1.7-.6a8 8 0 0 1-2-.8s1.3 1.1 1.9 1.3c.5.2.5.4.4.6zm6.6.6-1-1.7-.2-1.8-.8.6-1.5.5s1.6 0 1.6.5c0 .6-2.4.8-2.4.9 0 0 1.9-.4 1.8 0-.2.5-1 .5-2 1a14.8 14.8 0 0 0-2.4 1.2s.4.3 1.2.2c.7 0 2.3-.4 2.3-.4l3-1.2z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M253 261.4s-.8-.3-1.4-3.9c-.6-3.6-.5-4.5-.5-4.5l1.5 1 1.3 2.3z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M253.5 255.4s-.7 2-.7 3.2c0 1.2 0 2 .2 2.8a6.9 6.9 0 0 0 1.5 1.8l.5-.5.3-1.6v-2.7z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M255.5 258.2s.4 5-1 5.1c-.5.1-1.4-1.9-1.5-2 0 0 1.1 2 1.6 1.7.8-.3.5-5.2.5-5.2zm-2.5 3.2-.5-.7c-.4-.6 0 .5-2.8 1.5s-3.6.4-3.6.4.9.7 3.6-.1c2.7-.8 2.5-1 2.8-1z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M248 255s.5.3 1 1.3l.8 1.7.1-.1-.8-1.7-1.7-2.6z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M246.4 261.2s.3-1 0-1.1c-.3-.2-.5 0-2.4-.2a27.3 27.3 0 0 1-3.4-.7s1.3.8 2.5 1.1a95.3 95.3 0 0 0 2.7.7h.5z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "m246.4 261.2-.2-.4c-.2-.2-.5 0-2.8-.5l-2.8-1s.8.6 2.8 1.1z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M247.4 254.6s-1.7 0-2.2.5c-.5.4-1.3 1.6-1.3 1.6l1.1.1s-.1-1 .4-1.5 1.3-.6 2-.7" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M244.2 251.4s.7.9 1.4 1.2c.7.3 1.4.6 1.7 1 .4.3.7 1.4.7 1.4s-2.4-1.1-2.8-1.6c-.5-.6-1-2-1-2" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M246.6 252s-.3-.4-1-.7c-.6-.3-1-.3-1.3-.1-.1.1 0 .2 0 .2l.8 1.3.5-.1s-1.3-.8-1-1c.6-.6 2 .3 2 .3z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "m253 248.9 13.6-7 6.4 9-11.7 3-6.2.6-3-2.2z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m271.2 252.7 16.8 14.6-1.8 1.3-4-1.1-8.2-8.1-3-3.1z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m292.8 264.4-9.7-7.3L271 248l.3 4.3 13.9 12.8 4.6 2.2 2.3-.7 1.2-1.2z" }),
+    import_react26.default.createElement("path", { fill: "#803f1d", d: "M271.1 254.1s4.9 5.5 8.6 8.3c3.7 2.8 7.2 5.8 8 5.4.7-.4.4-.9.4-.9l-17-13.9z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m283 268.1-1.6 1.3-2-.8L269 258l.5-2 1.5.3z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M292.8 264.4s-1.3 3-4 2.3c-2.7-.7-17.6-14.8-17.6-14.8v1.5s15 13.8 18 14.3c2.9.6 5.3-2 5-2.2a36 36 0 0 0-1.4-1z" }),
+    import_react26.default.createElement("path", { fill: "#803f1d", d: "M269.5 256.3s4.8 6.2 7.3 8.4c2.6 2.3 4.8 4.1 5.8 3.9 1-.2-.6-1.4-.6-1.4l-7.3-7.1-3.7-3.8s-1.5-.6-1.5 0" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M270.7 256.3s12.2 12.4 13.1 12.7c2 .6 5-1.5 5-1.5l-1-.6-.2.4s-.5 1.2-3.2.7a82 82 0 0 1-13.3-12.1z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m275.3 268.2-4.5-5.1-1-1.7-.2-2.2 8.8 9-1.2.8-1.1-.4z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M283.3 268.4s-1 1.6-2.5 1.3a4.3 4.3 0 0 1-2.3-1.4L270 260l-.2-1.3s9.3 9.9 11 10.3c1.2.3 2-1.2 2-1.2z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M278.6 268.1s-.4 1.2-1.7 1c-1.2-.1-1.6-.6-1.6-.6l-5.2-6.2-.1-1.6s5.4 7.4 6.6 7.9c1.3.4 1.6-.9 1.6-.9z" }),
+    import_react26.default.createElement("path", { fill: "#b07229", d: "M273 251.9s5 4.3 5.5 4.5c.4.2 2.2.3 2.3.6 0 .2-1.2 0-1.3.2 0 .3 2.6 2.4 3 2.5.4 0 2.5 0 2.5.3s-1.5 0-1.5.3 2.2 2.2 2.7 2.2c.4.1 3 .1 3 .4s-2.1 0-2 .4c0 .4 3.6 2.7 3.5 3-.2.3-4.4-2.8-4.5-2.7a4 4 0 0 1-.5 1.4c-.3.1 0-1.4-.2-2-.2-.6-2.7-2.5-3-2.3-.2.3 0 1.4-.2 1.4s0-1.4-.2-1.9c-.3-.5-2.6-2.4-2.9-2.4-.3 0-.1 1-.3 1.2-.2.2-.2-1.2-.5-1.6-.3-.4-5.6-5.2-5.4-5.5" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M264.4 265.9s0 1.9-.8 2.2-2.5-3.5-2.5-3.5l-.4-3.6 2.5 2.4zm6.7-1v-1l-.2-1.2-.2-2-.4-1.2-.4-.9h-.6l-1.3 1-.4 1.3.7 2.4.6 2.1 1 .4z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M269.4 268.3c.3-.2-.3-2.8-.3-2.8l-1.5-3.8-.5-1.4-1.2-.5-.8 1 .1 1.5 1.9 3.5c.5.8 1.8 2.6 2.3 2.4z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M268 260c.5.4 1 1.4 1.1 2.1 0 0 1 2.9.9 3.1-.1.3-.8.3-.8.3s1.4 1.5 1.8 1.3c.5-.2.3-1.6.1-1.9-.1-.3-.5 0-.7-.4-.2-.3-.7-2.2-.7-3.3V259c.2-.3 1.2 2.3 1.2 3.7l.5.6-.5-2.6-.5-1.8.2-1.2v-.8l.7.4c.2 0 .5-.4.6-1.6s-.1-4.8-.1-4.8l-5.4 7.1z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M268 259.4s-.2 2 .5 4c.7 1.9.9 2 1 2.2.2.3.2 2.4 0 2.6 0 0-1.5-3.5-2-5.2-.4-1.8-.5-2.4-.8-2.6l-.6-.1z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M267.5 269.6c.1 0 0-.8 0-.8l-.2-1.8-1.9-4-2-1.8-1.1-1.7-.2 3.2s1.5 3.2 2.5 4.2c1 .9 2.6 2.8 2.9 2.7" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M259.7 260.9s.4.8.4 1.4v1l1.4 2.8c.7 1.3 1.4 2.5 2 2.3.5-.3.7-1.2.8-1.3 0-.1-.7 1-1 .8-.4-.1-2-5.2-1.9-5.3l-.8-.6zm5.7 4.3-1.4-2.5c-.4-.8-1-1.4-1.1-1.4-.2 0-.4-1.5-.4-1.5s.5 1 1.3 1.4c.7.3 1.1.6 1.5.5l.2 1.6-.1 2z" }),
+    import_react26.default.createElement("path", { fill: "#5c3a1d", d: "M262 262.6s.3 1.1 1 2.2l1.9 2.3s-1.3-1.2-2-2.2c-.7-1-1.1-2.3-1.1-2.3h.1z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M265.6 261.3s.4-1 .7-1l.9-.2s-.5-.1-1-.6c-.4-.6-.5-.5-1-1l.3 1.5zm-.3.3 2 4.4c.3 1.2.3 2.8.3 2.8l-.6-2.1c-.3-1-1.7-3.7-1.8-4-.2-.3 0-1 0-1z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m267.4 259.5.4-4.8-.4-1.8-2.2-4.8s-.1.7-.7.7a5 5 0 0 1-2.4-1.5 7.3 7.3 0 0 0-.2 3.9l4.3 7.9z" }),
+    import_react26.default.createElement("path", { fill: "#8b441f", d: "M259 262.7s.7.8 1 .7c.4-.1.3-1.6-.2-2.5-.5-.8-5.6-7.7-6.4-8.1-.7-.4 5.6 9.9 5.6 9.9" }),
+    import_react26.default.createElement("path", { fill: "#8b441f", d: "M262.5 259.9c.1.3.5 2.5-.4 2.7-1.2.2-6.9-7.5-7.7-8.6 0 0-3.6-2.2-3.6-2.8 0-.5 3.8.8 3.8.8l7.5 7.2z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M259 262.7s-.6-1.1-.7-2c0-.7-.3-1.1-.3-1.4a91.2 91.2 0 0 0-4.6-6.6l-1.8-1.1a12.4 12.4 0 0 0 .2 1.9s1.3 2.4 3.2 4.6z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M265.3 261.6c.5-.3.3-2.2 0-2.8-.1-.6-3.5-7.6-3.5-7.6l-1 .4-1.9-1.5-1-1.1.3 2.5v1.3l2.6 4.6zm3.8-4.2.8-1-.5-3.5-2.2-7.6s-.5.2-1-.2a6.3 6.3 0 0 1-1.2-1l.5 4.5 2.3 6.4.2 1.9z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M262.1 259.2s-2.2-2.4-3-3.6l-1.3-2.4s-.6.3-1.4 0c-.7-.4-1.8-1.5-1.8-1.5s-.6 1.2 2.6 4.5c3.7 3.7 5 3 5 3z" }),
+    import_react26.default.createElement("path", { fill: "#8b441f", d: "M267.5 260c1-.4 1-4.3 0-7-.9-2.6-2.3-5-2.3-5s1.8 4.4 2.2 6c.4 1.8 0 3-.3 3-.3-.1-.3-1-1-2.7-.8-1.7-1.3-2.1-1.3-2.1s2.6 7 1.9 6.9c-.7-.2-4.3-8-4.5-8.2-.1-.2-.2.3-.2.3s3.2 9.8 5.5 8.8" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m269.6 241 1.6 3.4.5 3.5.1 3s.1 6-.6 6c-.7.2-1.1-.5-1.1-.7l-1.4-6.6-1.4-6.8.5-.4.2-1 1-.1z" }),
+    import_react26.default.createElement("path", { fill: "#8b441f", d: "M265.3 261.6c.6 0 0-1.6 0-1.6s-.5.7-1 .2c-.4-.5-1-2.5-1-2.5l-.4-1.2s-.5 1.3-1 1.3c-.7 0-3.7-5.1-3.7-5.1l-.4.5s4.3 8.9 7.5 8.4" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M263.3 257.7s.5-1.2.3-2.4a23 23 0 0 0-1.8-4l-1-.1-1.9-1a30 30 0 0 0 4.4 7.5m2.5-1.8s-.4-2.7-1.7-5.2a13 13 0 0 0-2-3.4v2.8s1.2.5 2 2a27.8 27.8 0 0 1 1.7 3.8m3.4-4.6s-.2-3-.7-4.7l-1-4 .3-.2h.5c.7.1 1 1.7 1 1.7l-.2-2.5a11.2 11.2 0 0 0-.2-.4h-1.1s.2.7-.1 1c-.3.3-.5-.1-.6-.2l-.1.3.2 1.6v1.4s.4 1.7 1 2.8zm2.6-.4s.5-4.2-.4-7a9 9 0 0 0-1.8-3.4l-.5.6s1.5 2.3 2 4.4c.4 2.3.7 5.4.7 5.4m-4.3 2.2s-.4-3.4-1-5.5l-.8-3-.9-.7s.5 2.2.5 2.9l-.1 1s.4 1.2 1 2.2c.6 1 1.3 3 1.3 3z" }),
+    import_react26.default.createElement("path", { fill: "#904720", d: "M269.8 258.3c.8 0 0-4.8-.3-6l-2.3-7s2.4 8.2 2.2 8.6c-.3.6-1.2-2.5-1.4-2.4-.2 0 1.8 5.5 1 5.6-.6 0-1-1.2-1-1.2v1.2s.5 1.2 1.8 1.2" }),
+    import_react26.default.createElement("path", { fill: "#904720", d: "M270.8 255.9c.6 0-.2-4.5-.6-6.6l-1.5-6s1.1 2.8 1.8 6c.6 3.2 1 7.3.5 7.4-.7 0-1-.6-1-.6v-.7s.2.5.8.5" }),
+    import_react26.default.createElement("path", { fill: "#312317", d: "M263 261.2c0 .3 0 1.9-.8 1.8-.8-.1-2.3-1.5-2.6-2.5 0 0 1.8 2 2.4 2 .6 0 .6-2 .5-2.6 0-.5.5 1.3.5 1.3" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M267.3 239.6s1 .7 2 .2a3.1 3.1 0 0 0 1.3-2.4c0-.6 0-1.2-.5-1.9-.6-.7.8.6.8 1.9 0 1.2 0 3.4-2 3.9s-1.1-.1-1.1-.1z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M265.7 235.8s1.3 2 1.8 4c.5 1.8.4 2.5 0 2.6-.3 0-.4-.2-.4-.7z" }),
+    import_react26.default.createElement("path", { fill: "#1e2121", d: "m243.3 238.3 8.4 12.3 10.7-12-6.7-6.8z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m254 230.8-.5 2 1 3.2 1.8 1.8 2 1.4.5-1.5.5-1.8.5-.2 1.3.5.9-1.3 1.4-2.4-.3-1-.4-.7-2.1-3.7-.7 1.4-.7.4-1.2-.7-1.5 2-1.9-.9z" }),
+    import_react26.default.createElement("path", { fill: "#5c3818", d: "M258.4 239.2s.3-.3.5-1.2c.1-1 .2-4-.1-5.2-.3-1.2-1-3.5-1.2-3.3-.2.1 1.2 2.5 1 5.5-.2 2.9 0 3.7-.7 4-.6.3.5.2.5.2" }),
+    import_react26.default.createElement("path", { fill: "#5c3818", d: "M258.8 234.3s1.4 2 2.1 1.2c.7-.7.3-3.2 0-4.2l-1-2.5.4-.4.7 2.7c.3 1.1 1 4.2.1 4.8-.9.5-2.2-1.2-2.2-1.2v-.4z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M254.3 235.6s.5-.7 1.1-.7c.7 0 .8.2.8.2l.6 1.6.9 1.7.8.9-.4.5h-.7l-2-1-.6-.8z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M257.6 253c-.6.4-2.1-.3-3-1.1l-5.4-5.4-.6-2.5 1.8.4 3-1.3.6-1 3.7-2 2-1 4.5-.2 1-2.1s1.6 2.6 1.8 3.6.2 4.3-.2 4.5c-.4.3-1.8-1-2-1-.3 0 1 4.6 0 4.8-1.1.1-3-1.8-3-1.8s.8 4.2 0 4.2c-1 0-3.2-1-4.1-2 0 0 1 3.4 0 4z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "m256.8 247.7.9 1.4c.2.3 0 2.3-.2 2.6-.3.8-1.3-.9-1.8-2.3l-1.8-3c0-.4 2.9 1.3 2.9 1.3m8.7-10.3s1.5 6.5.8 6.7c-.8.2-3-2-3.2-2.4l-3.3-5.1-.6-.7.2-.3 1.3.5z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M254.3 249.8c-.3.3-1-.8-1.3-1l-2.4-2.7c-1-1-1.8-1.8-1.8-2 0-.3-.7-1-.7-1l.6-.6.7-.1s4.3 3.4 4.6 4c.3.5.5 3.3.3 3.5zm6.5.1c-.2.2-3-1.9-4.3-3.6-1.2-1.7-2.4-3.2-2.7-4a58.6 58.6 0 0 1-.5-1.5l.8.2s7 8.6 6.7 8.9m1-3c-.2.2-1.4-.7-2.2-1.7-.7-1-.3-2.3-.3-2.3s2.6 3.8 2.5 4m1.6-.4c-.4.2-2-1.8-3.4-4-1-1.6-1.3-1.9-1.5-2a3.7 3.7 0 0 0-1-.3l-.2-.2.7-.2.6-.7.8-1 3.4 6.8s.8 1.5.6 1.6" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M254.6 251.9c0 .3 0 .5-1 .4-.8 0-5.7-2.7-7.8-6.2a1712 1712 0 0 1-2.5-4l1-1.1 7.6 8.7z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M254.6 251.9c.1.4-.4.5-.8.4-.6-.1-2.5-.8-5.5-4.2-3-3.4-4.3-5.9-4.3-6l-.1-1.4.9-.4 5.2 8z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M259.7 248.5s-1.6-1.2-2.6-2.4-3-4-3-4.6c0-.5 1-.5 1-.5l-.1-1.5.2-.4 1.5.6 1.9 2.3.7 1s1.2 2.8 1 3c-.3.4-2-1.5-2.2-1.3-.2.2 2 3.5 1.6 3.8m-3-.8s.6.8.3 1.3c-.2.6-.4.9-1.2-.3s-1.7-2.5-1.8-2.4c0 .1.1 1.8-.3 1.8s-1.6-1.4-2.4-2.6l-2-3s.2-.5.1-1.8l-.1-2s0 .4.2.7l.4.6 2.8 3.3.8-.5 1.7 3.3zm-10.8-5s2.2 4 4.3 6.1a14 14 0 0 0 4.4 3.1L248 244l-2-1.2zm17 2.4c-.1 0-1.5-1.4-2.4-2.7a8.8 8.8 0 0 1-1.4-4l.2-2.8s2.3 2.4 2.8 3.5c.4 1 1.3 2.6 1.1 2.8-.2.1-1.7-1-1.9-.8-.2.3 1.8 3.8 1.6 4m2.6-2.5c-.3.1-1.5-1.2-1.8-2-.3-1-.4-2.6-.4-2.6l-1-2.4.1-2.6 1-.2 1.5 2.1s.6 1.3.6 3c0 1.9.3 4.5 0 4.7m-18 6.5c-2-2.5-3.3-5-3.3-5l-.7-2.2.4.3s.6 2.6 3.7 5.7c3.2 3.1 3.9 3.4 3.9 3.4s.6 1.7.3 2.3c0 0-2.3-2-4.3-4.5" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M250.9 252.7s-2.7-2.4-4.9-5c-2.1-2.8-3.5-5.4-3.5-5.4l1-.9s1.8 4.2 3 5.9a609.9 609.9 0 0 0 4.4 5.4m3.7-.8L250 247a17.5 17.5 0 0 1-2.5-3.5l1.3.5s.5 1.4 1.7 2.8zm-.6-5.6s-1.7-2-2.5-3.4l-1.7-3s2.3 2.7 3 2.8c.7.2.7 0 .7 0s-.3 1 0 1.8c.1.8.5 1.8.5 1.8m.7-8.4s.3 1.4.1 2.3c-.2.9-.7.8-.7.8l1.5 1.8c.5.6 1.8 1.5 1.8 1.5l-1.5-2.2c-.4-.7-1-1.6-.7-2.3.2-.7 1.6.5 2 .8l2 2.3s-.5-2-1.4-2.7a43 43 0 0 0-3-2.3z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "m261.6 242.3-1.4-3.5-1.3-4v2.2c0 1-.4 2.4-.8 2.6-.4.2-.5.2-1.3 0-.7-.2.6.4.6.4s.8 0 1-.4c.4-.4.5-1.2.9-1.1.3.1.7 1.3 1 1.9z" }),
+    import_react26.default.createElement("path", { fill: "#202020", d: "M259 234.7s1.6 1.9 2.3 1c.7-.8.3-3.1.3-3.1s1 .3 1.3 0c.3-.2.2-1 .2-1s1.8 2.5 2.6 4.2c.9 1.6 1.3 4.6 1.3 4.6s-1.5-2.4-2.2-4.6c-.7-2.1-1.7-3-1.9-2.8-.1.2-.4 1.6-.2 2.4.2.7.8 1.7 1.2 2.7.5 1.1 1 2.8 1 2.8l-1.4-2c-.5-.7-1-1-1.4-1.3-.3-.3-.8-1-1.3-1.1-.5-.2-1.5-.7-1.5-.3l-.2-.8z" }),
+    import_react26.default.createElement("path", { fill: "#171717", d: "m253.4 242.6 1.6 2.8 1.8 2.3s-1.6-1.4-2.2-2.3c-.6-1-1.2-2.8-1.2-2.8" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M264.1 243c-.2.2-1-.1-1 .2-.1.3.4 1.3 1 1.9.5.6.7.6.9.5l-.2-1.1V243c-.1-.2-.7 0-.7 0" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "m244.7 231.5-1 .6-1 2.3.3 4.3 1.7 2.4c.6 1 2.8 3.4 3.3 3.2.6-.1 1.2-1.8 1.2-2.7l.2-2.6s.5 1 1.4 1.9c.9 1 1.7 1.9 2 1.8.5 0 1.7-2.5 1.8-2.9 0-.3-3.2-8-3.2-8l-1.4-.7z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "m251.8 238 .9 2.9c.3 1 0 1.8.2 1.8.1 0 1.8-2.2 1.8-3.2s0-2-.4-5c-.5-3.1.1-4 .1-4l-1-.8-1.5 3.3zm-5.5-1.8.5 4c.2 1 .8 2.6 1.1 2.5.3 0 1.3-2.6 1.4-3.5 0 0-.7-1.3-.7-4.4 0-3.2-.3-3.5-.3-3.5z" }),
+    import_react26.default.createElement("path", { fill: "#45392d", d: "M242 230s-2.5 3.6-2.4 5.6c0 2 .3 1.6 1 3.4.5 1.8.8 4.4.8 4.6 0 .3.4 0 .5-.3z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M242 230.5s-2.2 3.3-2 5.2c.1 1.9.4 1.8 1 3.5.7 1.6.7 4.4.7 4.4s.7-.2 1.5-.8a7 7 0 0 0 1.5-1.7l-.8-1.7-.6-1.5-.6-1 .2-3.1.6-2.4v-.8z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "m253.8 236.3-1.6-.5c-.4-.3-.6-1-.6-1l.3-.6z" }),
+    import_react26.default.createElement("path", { fill: "#d2a567", d: "M242.4 230.8s-1.5 3.4-1.4 5.8a16.2 16.2 0 0 0 1.7 5.3v-7.7l.7-2.3v-1.2z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M246.3 231.6v1.4c-.1.5-1 1-1.3 1.6l-.8 2.3s.3-1 .9-1.5c.5-.5.7-1 .8-.6.1.3.3 1.6.2 1.9-.1.2-.6.6-.8 1.6a3.3 3.3 0 0 0 0 1.9l.4-1.8c.1-.5.5-.7.5-.7l1 1.8V238c.2-.7 1-1.6 1.1-1.6.3 0 .6-.2-.2-.6-.3-.2-.1-3.4 0-3.6.3-.1 1.5-.1 1.4-.6a8.7 8.7 0 0 0-1.3-1.7l-2 1.7z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "m253.6 238.5-1.2-.2a.6.6 0 0 1-.4-.5v-.5l1 .5z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M243.6 238.9c0 .3-.3.7-.5 1.2l-.3 1.2-.3-2.6-.3-1.9-.5.5s0-1.2.2-1.8c.3-.6.4-1.4.2-1.6-.2 0-.6.3-.8.6l-.6 1 .5-1.5c.3-.4 1.4-1.7 1.7-2.3l.2-1 .8-.1s.9.7.9 1.3c0 .3-.9.6-.9.7 0 0-.7 0-.8 2.6-.2 2.7.5 2.5.5 3.7m7.4-7s.2 1.5 0 2c-.1.4-.5.8-.8 1.3-.4.6-.3 2-.3 2l.4-1 .5-.9c.1 0 .5.5.7 1.3l.6 2s-.2-1 0-1 .4 0 .8.3l.7.6s0-.4-.5-1-.8-.4-1-1.1c-.1-.7-.2-1.5-.1-1.7 0-.3.4.1.7.5l1.2 1.1-.5-.8v-2.3c0-.8 0-1.6.2-1.8.3-.2.4-1.2.2-1.4 0-.2-2.8 2-2.8 2z" }),
+    import_react26.default.createElement("path", { fill: "#1e2121", d: "M259.7 228.9s0 1.6.3 2.6l.9 3s-.9-1.5-1.3-2.8c-.4-1.4-.7-2.8-1-3-.4 0-.8.7-.8 1.3a10 10 0 0 0 .8 3.4c.5.7-.7-1-1-1.9l-.6-1.7s-.3.7-.2 1.6c.2.9.9 2.1.9 2.1l-.8-.8-.5-.5s0 1.2.3 1.7l1 1.3-1-.9a2 2 0 0 1-.4-.5s.1 1.7.5 2.6l1.2 2.3s-1-.7-1.6-2.2a21 21 0 0 1-.8-6.5l1-1.5c.4-.7 1-3.8 1-3.8s.6 2.9 1.1 3.5c.5.5 1 .7 1 .7m-6.9-.9.6 1.1.5.8s-.9 1-1.8 1.7c-1 .7-2.2 1.5-2.5 1.1-.3-.4-.3-.8-.3-.8s1-.6 1.9-1.5a5.3 5.3 0 0 0 1.3-1.7zm-8.7 2.9s.1 1.8.9 1.7c.8 0 3-2.3 3.1-2.4.2 0 .3-.6.3-.8v-.6s-2.5 2.4-3.3 2.5a1 1 0 0 1-1-.4m0-2.4-.2 1.6c0 .4.2.7.2.7s-1.7.6-2 0c-.3-.5-.1-1.2-.1-1.2l1.2-.1c.4-.1 1-1 1-1zm16.3-2.5s.7 1.8 1.2 2.6l1.1 2.2-1.5-1.6a120.9 120.9 0 0 1-1-.8l.2-.9z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "M241.7 229.6h1l.7-.1.6-1s-.3 1.1 0 2c.2.8.6.9.8.9a3 3 0 0 0 1.8-1l1.7-1.4s-.2 1 .2 2c.3 1.1 1 1.1 1.8.5.8-.7 1.6-1.8 2-2.3l.6-.8.9-.7.8-4.4-.5-.6-1 .6-1.4-.6-.4-.5-.8 1.3-.8.5h-.4l-1 .3-.4-.9-.2-.6-.5-.2-2 2-1-.1-1.1 1.7-.8 1-.8 2z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M251.1 225.2s.2 1-.4 2.9-1.3 3-1.3 3 2-1.1 2.9-3.2c1-2.2.7-4.6.7-4.6zm2.4-2s.2.3 0 2l-.6 3.2.5.9c.2.5.9 1.4 1.4 1.3.4-.2 1.2-.7 1.7-1.8l1-2.3c.3-.2.3 0 .4.2 0 0 .2 1 .7 1.4.5.4 1 1 1.4.8.3-.2.5-.7.5-1l-1-3.2-1.3-3.2-.8-1.2-2.3.2z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M257.4 220.3s.6 1.3.7 2.8c0 1.5-.3 3-.3 3v-3c-.1-1.2-.6-1.7-.6-2z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M260.5 226v2c-.2.5-1-.5-1.6-2.5-.5-2-.4-2.4-.8-3.4-.5-1-.7-1.8-.7-1.8l1.1-.2zm-5.6 3.8s2.2-1.3 2.5-5c0-1.7-1-4.5-1-4.5s0 3-.8 5l-1.5 3.1.8-.5.6-.9v1.3zm-1.9-6.5s0 .8-1 1.5c-.9.8-2.5 1.6-2.5 1.6s1.2-1.1 1.6-2.1c.5-1 .1-1.6.1-1.6s-.1.5-.6 1-1.3.4-1.3.4 0-.5.5-1c.1-.1 0-.4.2-.6.2-.8.9-1.9.9-1.9s.5 1.2 1 1.7z" }),
+    import_react26.default.createElement("path", { fill: "#1e2121", d: "M259.8 218.9s.5 1.3.7 3.2c.2 1.8 0 4 0 4l-1.4-2.5c-.3-.7-.3-1.7-.5-2.3a2.6 2.6 0 0 0-.9-.8l-.8-.1s.7-.3.7-.9v-.8a3.5 3.5 0 0 0 2.2.2m-4.9 7.8s1.2-1.6 1.5-3.7c.3-2 0-2.7 0-2.7s-.5-.1-1-.5-1-1.4-1-1.4.2 1 0 2.4c-.2 1.3-1.4 2.5-1.4 2.5s.6.2 1.2-.1c1.2-.7 1-2 1-2s.3.2.3 1.8-.6 3.7-.6 3.7" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M241 229.5c-.3 0 .7-1.6 1.4-2.7l1.7-2.7s.2.2.6.2a2.9 2.9 0 0 0 2-1.3 8.2 8.2 0 0 0 .7-2c0-.3 0 1.4.8 2.3.8 1 .7.9 1 .8 0 0 0 1.2-.3 2.2l-.6 2.7s.1-2-.2-2.6c-.3-.6-.5 0-.8.8-.3.7-.9 1.2-.9 1.2l.8-1.8c.3-1 .1-1 0-1 0 0-.2 0-.5.3-.3.4-.7.5-.7.5s.4-.3.6-.8c0-.5.5-1.2.7-1.4l.4-.8c0-.2 0-.6-.2-.6s-.4.3-1.1 1c-.8.7-1 .7-1 1l-.7 2a12.8 12.8 0 0 1-.9 2.3l-.4.4.6-2c.4-1 1-2.5.8-2.7-.1-.2-.4-.2-.5 0-.1.2-1 1.1-1.7 2.2s-.7 2.5-.9 2.6z" }),
+    import_react26.default.createElement("path", { fill: "#874f20", d: "M260.5 217.7c0 .1.1 1-.7 1.2a3 3 0 0 1-2-.1v-1.2z" }),
+    import_react26.default.createElement("path", { fill: "#b27129", d: "m244.8 220.3-.6 1.7c-.5 1-1.2 1.7-1.1 1.8 0 .1.5.6 1.2.5.6 0 .8-3.8.8-3.8v-.2z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "M254.8 218.2s-.4 5-1.8 5-2-2.5-2-2.5-.2 3.5-2 3.5c-.9 0-1.7-2.7-1.6-3.2 0 0-.3 1.8-1.2 2.5-1.7 1.4-2.8.7-2.8.5-.1-.2 1.4-1.7 1.6-3.7 0 0 .3.1.7-.5.4-.6.7-1.2 1-1.1.5 0 2.6-.9 2.6-.9l1-1.3s.2.4 1-.1a3 3 0 0 0 1-1.4l2.2 1.8.2 1.4z" }),
+    import_react26.default.createElement("path", { fill: "#b27129", d: "m249.1 213.3 2.2 3 .5-.4c.2.4.4.7.3 1-.3.7-1 1.8-.5 3 0 0-.1-.7.2-1.5.3-.8.5-1.1.7-1 .2 0 .5 4.6.8 4.6.3 0 .7-2.1.7-3.6s.3-.3.5 0c.1.3 1.4 2.4 2.5 2 1-.2 1-2.2.9-2.6 0-.4-.8-3-.8-3l-4.9-3-.4 1.2c-.3.8-2.7.3-2.7.3" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M256 212.8s.3.3.8 1.5.5 5.1 0 5.1c-.7 0-2-.7-2.2-1.3-.2-.5.1-2.4-.3-3a6.5 6.5 0 0 1-1-2.2l.1-1.5 1.1-.4 1.6 1.8z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m255.7 211.6 2 3.1 2 2.6.8.4a2 2 0 0 1-2.5.4c-.7-.4-.3-1.6-1.2-3.6a8 8 0 0 0-2.6-3l.6-.5 1 .6z" }),
+    import_react26.default.createElement("path", { fill: "#1e2121", d: "M254.6 210s1.8 1.1 2.5 2.5l1.8 3.4c.8 1.3 1.7 1.7 1.6 1.8 0 .1-.5.2-1 0a3.8 3.8 0 0 1-1-1.3l-2-3.4a6.7 6.7 0 0 0-1.9-1.5c0 .1.5.4 1.3 1.7a5.6 5.6 0 0 1 .9 2.5l-1-1.6c-.6-1.2-2.1-2.7-2.2-2.5l1.2 2.4 1 2.6-1.4-2.3c-.8-1.3-1-1.1-1.3-1.5l-1.1-1.4s.7.2 1.5-.3c.7-.5 1-1.2 1-1.2z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M249.8 213.3s1.2.3 1.9.2h.9s.4.5.4 1.1c0 .6-.5 1.7-.6 1.8-.2 0-.2-1-.5-1.4a20.7 20.7 0 0 0-2-1.7z" }),
+    import_react26.default.createElement("path", { fill: "#b27129", d: "M250.5 216.5s.4 1.3 0 3c-.2 1.9-1.3 3.7-1.5 3.7-.3 0-.2-2-.3-3a31 31 0 0 0 0-.4l-.5 1.2c0-.1.4-1.9.3-2v-.7l1.3-1.6z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M248.2 217.8c-.4.5-1 .3-1.4.5-.5.1-.7.9-.7.9s.4-.3.6-.2c.2 0 .4 0 0 1-.4.8-1.8 2.3-1.7 2.4 0 0 1.6-1.3 2-2 .6-.8.5-1.2.6-1.5.1-.3.7-.6.9-.6 0 0 .4 0 .5.6l.4 2a9 9 0 0 0 .7-2l.1-2.3-.5-.1-1.2-.7s.2 1.4-.3 2" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "M254.6 208.6s.5 1.3-.5 2.1c-.3.3-.6.4-1.1.5-.6 0-1.4-.5-1.4-.5l-3.1-1.3-1.7-.5-.8-.2.1-.9 2.5.1 2.4 1 1 .3 1 .1h.6l.6-.1.3-.3z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M254.6 208.6c.1.2-.2 1-.4 1-.2.1-.7.3-1.6.1-1-.2-1.9-.8-3-1-1-.4-1.7-.6-2.5-.6s-.5-.4-.5-.4 1.9-.2 3.5.4c1.6.6 2.3 1 3.1 1 1.2 0 1.4-.5 1.4-.5" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M246.1 207.7h.7c.3 0 .5-.2.5-.2l-.1.5h-1z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "M252.2 211.5s1.1 1 .8 2l-2-1-3.5-1.4-1.8-.6-.3-.3.6-.6v-.6l2.3.3 2.4.7z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "M249.9 213s2 2.5 1.5 3.4l-4.5-3-1.7 2.7-3.7-1.8s3-2.3 3.4-2.8l.3-.6 1.7.4 2.7.8z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M248.8 209.3s1.6.4 2.7 1c1 .4 2.4.6 2.4.6s-.6.6-1.7.6c-.3 0-1.1-.6-1.6-1s-2-.8-2-.8z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "m246 208.4 1.9.6c.7.3.7.2 1 .2l.1-.2s.2.7-.4.7-.7-.2-1.4-.5-1.2 0-1.2 0z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M252.3 212.9s.9.5.7.6c-.1 0-.6.3-1.3.3-.7 0-1 0-1.5-.2s-.8-1.1-2-1.6a14.5 14.5 0 0 0-2.3-.8l-1-.2.8-.3 2.6.5 2.2.7 1.3.6zm-4.3 1.5.5 2-.3 1.3-.7.4-.6-.2-.2-.4s.3-.5 0-.9-1.6-1-1.6-1 .5-1 1-1.2c.7-.2.4-1 .4-1z" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M245.4 210.2s.4.4 1.3.5l1.7.3c.2.1.8-.2.9-.2l-.5.3 2 .7c.9.4 1.6 1 1.6 1l-1.6-.7a14 14 0 0 0-2.4-.7c-1.6-.3-3.1-.2-3.5-.3-.3-.1.2-.1.3-.3.2-.2.2-.6.2-.6" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M251.2 215.8s.5.6 0 .8c-.5.2-2 .1-2.6-.6l-.4-1c-.3-.3-1.3-1-2-1.3-.5-.4.3-.5.3-.5l2.9 1.3c.8.4 1.8 1.3 1.8 1.3" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M251.3 215.9s-1-1.4-4-2.6l.9-.2h-1.5a22.2 22.2 0 0 0-.7-.3c-1.6-.4-1.7-.4-1.8-.6 0-.2-.3 0-.4.3a10.5 10.5 0 0 1-.6.8 4 4 0 0 1 2-.1c.9.2.9.5.8.9 0 .3-1.1 1.6-1 1.6.1 0 .7-1.2 1.5-1 .8.2 1 .6 1 .6l-.1-.7c-.2-.2-1-1-.8-1s1.2.3 2.6 1c1.4.7 1.6.9 2 1.3z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "M246.5 213.6s2.2.7 2.1 3c0 2.4-1.8 2-2 1.1-.1-.9.3.4.9.3.7-.1.8-.8.8-1.7 0-.9-.3-1.3-.8-1.8a9.6 9.6 0 0 0-1-.9" }),
+    import_react26.default.createElement("path", { fill: "#6c3f18", d: "M236.8 208s.3 0-.4 1.8a8.5 8.5 0 0 1-1.9 3.3c-1.8 2-2.6 2-2.4 2.8.2.9.9.7 1 .7.2 0 3.5-4.8 3.5-4.8l.7-2.8-.2-.8-.2-.3z" }),
+    import_react26.default.createElement("path", { fill: "#dbad6c", d: "M244.9 204.5s1 1.4.6 4c-.3 2.7-3.8 5-3.8 5l-5 3.6-2.2-.2h-.6c-.4-.1-.7-.4-.7-.4-.2 0-.4-1-.4-1l.6-.8 1.9-1.8 1.1-1.7s.6-1 .6-1.9c.1-1-.1-1.4-.1-1.4l.4.7.2 1.4-.2 1.6 1.4-1 1.7-.7s.5-.1.9-1c.3-1 .6-2.5.6-3.2v-1.4h.2c0 .1.5 1 .5 1.4l.3 2.2.9-.8.7-1.2c.2-.4.4-1 .4-1.4" }),
+    import_react26.default.createElement("path", { fill: "#904720", d: "M245.5 217.8s.3.2.2 1.2c-.1 1-1 1.5-1.3 1.5v-1.3l-1.1-1-1.2-.3.2-.2c.1-.2 1.4-.7 1.4-.7z" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M244.6 217.8s.3.3.9.2.8-1 .5-1.4c-.3-.4-.2.8-.5 1-.4 0-.8-1-1.3-1-.5-.2-1.3.2-1.5.5-.2.3.8 0 .8 0l.6.2.4.1z" }),
+    import_react26.default.createElement("path", { fill: "#904720", d: "M237.2 214.1s.7.2 1.4.1 2.5-.8 2.5-.8l1.4-1c.6-.7 2.5-1.8 2.7-4.2.2-2.3-.3-3.7-.3-3.7s2.8 3 .3 6.5c-1.6 2.3-3 3-3 3s2.8-.8 3-.1c.2.6-.1 1.6-.2 1.8 0 0 1.5.3 1.8 1.1.1.5-1.8-.5-3.2-.2a3.7 3.7 0 0 0-2 1.2s-.3-.4-1.5-.4c-1.3 0-1.9.6-2.6.5-.7 0-3-.5-3.4-1.1l1.5-1.7c.7-1.3 1.6-1 1.6-1" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M243 207.8s1.1-1 1.5-1.9l.4-1.4s.1.8-.5 1.8a10.3 10.3 0 0 1-1.4 1.6z" }),
+    import_react26.default.createElement("path", { fill: "#904720", d: "M242.7 205.4s1 3.4 0 4.9c-1 1.4-5.1 3.2-5.1 3.2s3.1-1.7 4-3.6c1-2 1-3.6 1-3.6z" }),
+    import_react26.default.createElement("path", { fill: "#1e2121", d: "M238.6 214.2s1.3 0 2-.5c.8-.4 1.9-1.4 1.9-1.4s-1 .9-1.3.9c-.3 0-.5-.5-.4-.8 0 0-.2.7-.8 1.1a4 4 0 0 1-1.4.7m3-4.3s1.2-1.2 1.2-3.6c0-2.4-1-2-1-2s.8.6.6 2.4c-.1 1.9-.7 3.2-.7 3.2zm1.4.2s1.3-.3 1.7-1c.5-.8.5-2.2.5-2.2s-.2 1.3-.5 1.8c-.4.5-1.7 1.4-1.7 1.4m-.7 7.6s.6-1.2 1.4-1c.9.4.9 1 .9 1s-.3-.4-1-.5a2.6 2.6 0 0 0-1.3.5m-2.4-2.2 3-.8 2.3-.8s-.9 1-2.2 1.9c-1.4.7-2.5.8-2.5.8s2.5-1.1 2.7-1.6c0 0-2.4.7-3.3.5" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M237 212.7a2.1 2.1 67.8 0 1-2.4 3.5" }),
+    import_react26.default.createElement("path", { fill: "#f16e16", d: "M236.9 212.9a1.9 1.9 67.8 0 1-2.2 3" }),
+    import_react26.default.createElement("path", { d: "M236 214a.8.8 0 1 1-.7 1" }),
+    import_react26.default.createElement("path", { fill: "#d5d3ca", d: "M236.2 214.9a.2.2 0 1 1-.5-.1.2.2 0 0 1 .3-.2s.2.1.2.3" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M237.5 211.3s1.2-1.2 1.5-2.8c.2-1.6 0-2.5 0-2.5l.7.7.3 1.2-.4 2 1.3-.6a10 10 0 0 0 1-5s.3.7-.2 3-.9 2.6-2.6 3.6a7.6 7.6 0 0 0-3 3.3 13 13 0 0 1-1.9 2.5s.9-1.2 1.3-2.2c.7-1.4 1.4-2.2 1.4-2.2z" }),
+    import_react26.default.createElement("path", { fill: "#904720", d: "M236.9 212.3s.5-1.6.5-2.5c0-.9-.6-1.9-.6-1.9s.8 0 .9 1.8c0 2-.3 2-.8 2.6" }),
+    import_react26.default.createElement("path", { fill: "#4d2a15", d: "M239.3 210.3s.6-1.5.6-2.4c0-1-.8-1.9-.8-1.9s1 .2 1 2c0 1.7-.2 1.7-.8 2.3" }),
+    import_react26.default.createElement("path", { fill: "#ab6d29", d: "M233.7 216.8s-.5-.6-.4-1c0-.5 0-.6 1.1-1.8a8.9 8.9 0 0 0 2-2.5c.3-.6 1.2-2.3.5-3.6 0 0 .5 2-.6 3.4a12.7 12.7 0 0 1-2.7 3c-1 .7-1 1-1 1.4 0 .4.1.7.3.8.3.2.8.2.8.2z" }),
+    import_react26.default.createElement("path", { fill: "#6c4119", d: "M244.4 220.5s.2 0 .4-.3c.1-.2.1-.7-.3-1.2a2.6 2.6 0 0 0-1.3-1l-1.6-.2s.3.6 1 1c.4.2 1 0 1.4.3.3.4.4 1.4.4 1.4" }),
+    import_react26.default.createElement("path", { fill: "#6c4119", d: "M244.4 220.5s1.2-.4 1.3-1.6l-.1-1s.2.4.7.6l.4-.2s-.7 2.3-2.3 2.2" }),
+    import_react26.default.createElement("path", { fill: "#bf802d", d: "m235.8 220.3.7.6.7.7 3-.8 1-.9-.9-1.3h-2.1z" }),
+    import_react26.default.createElement("path", { fill: "#f9c83a", stroke: "#8f4620", strokeWidth: ".3", d: "m243 219.3-.5-.8s-.2-.3-.6-.5c-.4-.3-2.2-.2-2.2-.2l-1.3.2s-.4.4-1 .2l-2.2-.7-1.4-.7s-1.1-.4-1.4-.3c-.2 0-1 1-1 1s-.3.6.1.6c.3 0-.5.2-.5.2s-2.3 1.2-2.6 3.4c-.4 2.2 3.7 5.5 5.2 3.8 0 0-2.2-1.6-1.8-3 .4-1.3 1.5-2.2 3.2-2.3 1.7 0 1.8-.3 2.6-.8.7-.6 2.1-.9 3.2.2 1 1.1-4 2.1-4 2.1l.6.8s6.1-2.1 5.6-3.2z" }),
+    import_react26.default.createElement("path", { fill: "#fcf3d8", d: "M231.5 224.5s-2.5-.6-2.3-2.9a4 4 0 0 1 2.7-3.2c.4-.1.3-1.3.7-1.4.4-.1 1.2 0 1.6.3.3.4 1.1.7 1.1.7s-4.4 2-4.5 4.5c0 1.7.7 2 .7 2" }),
+    import_react26.default.createElement("path", { fill: "#fdeaaf", d: "M243 219s-.3.2-.4 0c-.4-.8-1.5-1-2.4-1-1.1 0-1.9.4-2.7.4l-1.4-.2c-1 0-2.8-1.4-3.3-1.3-.4.2-.6.7-.5 1 0 .2-.8.3-1 0s.7-1.4 1.5-1.4c2.1 0 3.7 1.4 4.7 1.4s1.3-.5 2.7-.5 2.8.6 2.8 1.6" }),
+    import_react26.default.createElement("path", { fill: "#513625", d: "m236.2 220.7 1.7-.6 1.8-.6-1.6 1-1.7.4z" }),
+    import_react26.default.createElement("path", { fill: "#f9c83a", d: "M232.6 225.8c-.1.1-1 0-2.4-.9s-1.8-2.5-1.8-2.5-.3-1.5 1.2-3c1.4-1.6 1.6-1.1 1.7-1v.1l-1.3 1-.7 1.1-.5 1v1l.7 1.2 2 1.3z" }),
+    import_react26.default.createElement("path", { fill: "#8b5122", d: "m231.9 217.2-.1-.2zv-.2zv-.2l-.2.1zl-.2.1zh-.2v.1zh-.2zl-.2-.1zh-.2zh-.2zh-.2a3.6 3.6 0 0 0-.4.5 1 1 0 0 0-.2.5c0 .2.2.4.3.5h1.2a.2.2 0 0 0 0-.3.2.2 0 0 0-.2-.1h-.5a.6.6 0 0 1-.3 0v-.1a.4.4 0 0 1 0-.2 2.4 2.4 0 0 1 .3-.4zv-.2a.2.2 0 0 0-.1-.2.2.2 0 0 0-.2.3.2.2 0 0 0 .3 0z" }),
+    import_react26.default.createElement("path", { fill: "#f9c83a", d: "m236.1 219.3-3 .9c-.3.2.9 0 1.8 0a3.5 3.5 0 0 1 1.1 0h.7c1.2-.5 3.6-1.4 3.8-.4.2 1-3.3 1.7-3.3 1.7v.3l2.8-.7 1.4-.7.5-.8-1.4-1h-2l-1 .3z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M231.8 223.6c.2.6.7 1.5 1.2 1.8 0 0 .1 0 0 0 0 .2-.4.4-1.3.2-1-.3-2.4-.7-3.3-3.3v.5l.5 1 1 1 1.4 1 1 .2.9-.2.4-.3-.9-.8-1-1.8v.7z" }),
+    import_react26.default.createElement("path", { fill: "#fcca3d", d: "M241.7 250.1v1h-.6l.1-1.3zm-3.8-27.5-1-1.1h-.6l1 1.4z" }),
+    import_react26.default.createElement("path", { fill: "#816c2a", d: "m241.6 252.4-1.3-.8-2-.5v.3h.2a5 5 0 0 1 1.7.5 11.4 11.4 0 0 1 1.3.7zm0-2.5h-2.2c-.8.2-1.2.6-1.2.6l.1.2a3 3 0 0 1 2.1-.6 17.7 17.7 0 0 1 1.1 0zm-.3-2.1-2 1-1.4 1 .2.2.4-.3.9-.6a14.7 14.7 0 0 1 2-1zm-1.4-2.2a2 2 0 0 1-.2 1 6.9 6.9 0 0 1-.5.6l-1.3 1.4-.7.7.1.2a165 165 0 0 0 1.2-1.2l.9-1 .5-.6c.3-.5.3-1 .3-1h-.3zm-1.7-1a3.4 3.4 0 0 1-.1 1.8l-.8 1.7-.4.8-.1.3h.2s1-1.7 1.3-2.7a3.6 3.6 0 0 0 .2-1.2v-.7zm-1.7-.2a7.4 7.4 0 0 0 0 1 4.5 4.5 0 0 1-.1 1.3 97 97 0 0 1-.5 1.5l-.3.8h.2l.8-2.2c.2-.4.2-1 .2-1.5v-.9zm-1.3 0v1l-.1 1.5a41.4 41.4 0 0 0-.4 2h.2l.1-.6.3-1.3c.2-.9.2-2.6.2-2.6zm-1.3.3a9.8 9.8 0 0 0 0 2.2c-.3.8-.4 2-.4 2h.3a16.9 16.9 0 0 1 .3-1.9v-2.4zm-1.1 0v.2c0 .3 0 1-.3 1.8l-.4 1.5-.2.8.2.1.7-2.3a7 7 0 0 0 .2-1.9v-.1h-.2zm-1.3.1v.5c0 .5 0 1.2-.3 1.7-.2.5-.7.9-1 1.2a7.6 7.6 0 0 1-.7.5h-.1l.1.2s1.4-.8 2-1.8a4.6 4.6 0 0 0 .3-2.3zm-.7-.2v.1a5.3 5.3 0 0 1-.8 1.5l-1 1-.5.2-.2.1.1.3s1.2-.7 1.8-1.4c.5-.7.8-1.8.8-1.8zm-1.2-.6v.1a7.3 7.3 0 0 1-.4.5c0 .2-.2.4-.3.5l-.8.5a16.2 16.2 0 0 1-.5.3l.1.2.5-.3.8-.5.6-.7.2-.5zm-.6-.8-.2.3a13.8 13.8 0 0 1-.7.7 5.2 5.2 0 0 1-.4.4l-.3.2v.2l.6-.3 1.2-1.3zm-.2-.5-.2.2-.7.4-.7.3v.3c.2 0 .3 0 .5-.2l1.2-.8zm-.3-.5-.6.3a9.3 9.3 0 0 1-.4.2 1.5 1.5 0 0 1-.4.2v.2l.5-.1 1-.6zm-.2-1.1a2.7 2.7 0 0 1-.5.4l-.7.3v.2c.4 0 .7-.2 1-.4a2.9 2.9 0 0 0 .4-.3zm0-1.8-.4.4-.6.8a.4.4 0 0 1-.1.1v.3l.2-.1a.6.6 0 0 0 .1-.2c0-.2.3-.4.6-.7l.3-.2.1-.2zm8.6-10.2h1.3v-.2.2-.1.1-.1.1-.1l-.1.1v-.1.1-.1h-.1.1-.1v-.1h.1-1.2zm0-.8.6-.1.8-.5.3-.3a.6.6 0 0 1 .3 0v-.3l-.5.2-.8.5-.7.3zm0-1.2c.1 0 .3 0 .5-.2l1-.6.7-.3v-.3l-.5.2-1 .6-.8.4v.2zm-.5-1 1.2-1 1.3-.9-.1-.2-1.3 1-1.2.8zm-.8-1.3 2.6-1.9-.2-.2-2.6 1.9zm-1.2-1.3 1.5-1 1.2-.8-.1-.2-1.2.8-1.5 1zm-.8-.7a93.2 93.2 0 0 1 2.1-1.5l.6-.4v-.2a6.2 6.2 0 0 0-.7.3 90.4 90.4 0 0 0-2.2 1.6z" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "M235.6 220.3a13.8 13.8 0 0 1 2 2c.8 1 1.4 2.2 1.4 3.3v.4a7.7 7.7 0 0 1-2 4c-1.5 1.9-3.8 3.5-5.6 5.1a14.4 14.4 0 0 0-2.4 2.5 5 5 0 0 0-1 2.8v.1c0 1 .4 2 1 2.7a3.5 3.5 0 0 0 2.5 1.6 5.5 5.5 0 0 0 .6 0c1.4 0 3-.5 4.5-.5 1.2 0 2.4.3 3.5 1.5 1 1.1 1.3 2.9 1.3 4.6a19 19 0 0 1-.3 3.3 20.5 20.5 0 0 1-.3 1.5h.2s.7-2.3.7-4.8c0-1.7-.4-3.6-1.4-4.8a4.7 4.7 0 0 0-3.7-1.5c-1.6 0-3.1.4-4.5.4h-.6a3.3 3.3 0 0 1-2.3-1.4 4.9 4.9 0 0 1-.9-2.6v-.1c0-1.3.6-2.4 1.6-3.5 1.4-1.6 3.6-3.2 5.5-5 2-1.6 3.6-3.5 3.9-6v-.3c0-1.4-1-2.8-1.9-3.9a13.8 13.8 0 0 0-1.8-1.7z" }),
+    import_react26.default.createElement("path", { fill: "#a8ac71", d: "m233.7 222.8-.3-.3-.3.1.5.4zm.8.7-.2-.2h-.2l.2.3z" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "m235.6 224.8-.2-.3-.1.2zm.8 1.2v-.2h-.3l.3.3zm.5 1.2v-.3h-.1zm0 1.2v-.4zm0 .7v-.3zm-9.7 11.9.1-.6c.1-.3-.2.1-.2.1v.4h.1z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M227.1 241.7v.4h.1z" }),
+    import_react26.default.createElement("path", { fill: "#78732e", d: "M227.2 243.1v-.3h-.2v.5z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M227.3 243.9v-.3h-.2v.3zm.2 1.1-.1-.3zm.3 1.2-.2-.4v.4z" }),
+    import_react26.default.createElement("path", { fill: "#a8ac71", d: "m228.5 247.8-.1-.3h-.2zm1.2 1.1-.4-.3c-.2-.2-.1.2-.1.2l.3.2zm7.8.6-.3-.2.2.3v-.1z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "m238.2 250-.3-.2v.2h.2z" }),
+    import_react26.default.createElement("path", { fill: "#a8ac71", d: "m238.3 250.3-.2.2.3.2zm0 1.1v-.4c0-.1 0 0 0 0z" }),
+    import_react26.default.createElement("path", { fill: "#fff", d: "M238 252.6v-.3l-.2.3zm-12-41.7s.5-.1.1.4l.3-.4-.2-.1z" }),
+    import_react26.default.createElement("path", { fill: "#f9c83a", d: "m235.7 220 .3.3-.4-.1z" }),
+    import_react26.default.createElement("path", { fill: "#8f4620", d: "M236 220.3h-.6l.2-.1z" }),
+    import_react26.default.createElement("path", { fill: "#977c2e", d: "M240.7 255.3s.4 0 .5-.3c.2-.2 0 .3 0 .3l-.3.1z" })
+  );
+
+  // build/client/assets/flags/icons/1x1/ua.js
+  var import_react27 = __toESM(require_react(), 1);
+  var Icon20 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react27.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", id: "flag-icons-ua", viewBox: "0 0 512 512" },
+    import_react27.default.createElement(
+      "g",
+      { fillRule: "evenodd", strokeWidth: "1pt" },
+      import_react27.default.createElement("path", { fill: "gold", d: "M0 0h512v512H0z" }),
+      import_react27.default.createElement("path", { fill: "#0057b8", d: "M0 0h512v256H0z" })
+    )
+  );
+
+  // build/client/assets/flags/icons/1x1/us.js
+  var import_react28 = __toESM(require_react(), 1);
+  var Icon21 = ({ height: height2 = "24px", width: width2 = "24px" }) => import_react28.default.createElement(
+    "svg",
+    { width: width2, height: height2, xmlns: "http://www.w3.org/2000/svg", id: "flag-icons-us", viewBox: "0 0 512 512" },
+    import_react28.default.createElement("path", { fill: "#bd3d44", d: "M0 0h512v512H0" }),
+    import_react28.default.createElement("path", { stroke: "#fff", strokeWidth: "40", d: "M0 58h512M0 137h512M0 216h512M0 295h512M0 374h512M0 453h512" }),
+    import_react28.default.createElement("path", { fill: "#192f5d", d: "M0 0h390v275H0z" }),
+    import_react28.default.createElement(
+      "marker",
+      { id: "us-a", markerHeight: "30", markerWidth: "30" },
+      import_react28.default.createElement("path", { fill: "#fff", d: "m15 0 9.3 28.6L0 11h30L5.7 28.6" })
+    ),
+    import_react28.default.createElement("path", { fill: "none", "marker-mid": "url(#us-a)", d: "m0 0 18 11h65 65 65 65 66L51 39h65 65 65 65L18 66h65 65 65 65 66L51 94h65 65 65 65L18 121h65 65 65 65 66L51 149h65 65 65 65L18 177h65 65 65 65 66L51 205h65 65 65 65L18 232h65 65 65 65 66z" })
+  );
+
+  // build/api/getExchangeEndpoint.js
+  var getExchangeEndpoint = class extends Endpoint.Definition {
+    constructor() {
+      super(Network.Method.GET, "/exchange", false);
+      this.datamap = {
+        base: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
+        targets: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true }
+      };
+    }
+    reset() {
+      this.request = {
+        base: Endpoint.InitValue,
+        targets: Endpoint.InitValue
+      };
+    }
+    failure(status, code, message) {
+      return super.failure(status, code, message);
+    }
+  };
+  (function(getExchangeEndpoint2) {
+    let Error2;
+    (function(Error3) {
+      Error3["INVALID_IDENTIFIER"] = "invalid_identifier";
+      Error3["MISSING_OR_BAD_DATA"] = "missing_or_bad_data";
+      Error3["NOT_AUTHORIZED"] = "not_authorized";
+    })(Error2 = getExchangeEndpoint2.Error || (getExchangeEndpoint2.Error = {}));
+  })(getExchangeEndpoint || (getExchangeEndpoint = {}));
+
+  // build/client/modules/exchange/Exchange.js
   var __awaiter7 = function(thisArg, _arguments, P, generator) {
     function adopt(value) {
       return value instanceof P ? value : new P(function(resolve) {
@@ -46124,58 +46776,656 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
   };
-  function Page(props) {
-    const [appdata2, setAppData] = React80.useState(AppData.instance());
-    function onLogin() {
+  var Direction2;
+  (function(Direction4) {
+    Direction4["HORIZONTAL"] = "horizontal";
+    Direction4["VERTICAL"] = "vertical";
+  })(Direction2 || (Direction2 = {}));
+  function Exchange(props) {
+    const [appdata2, setAppData] = React94.useState(AppData.instance());
+    const [rates, setRates] = React94.useState([]);
+    React94.useEffect(() => pageLoaded(), []);
+    React94.useEffect(() => () => pageUnloaded(), []);
+    function pageLoaded() {
+      refresh();
+    }
+    function pageUnloaded() {
+    }
+    function Icon29(value, size) {
+      switch (value) {
+        case "CAD":
+          return React94.createElement(Icon12, { width: size + "px", height: size + "px" });
+          break;
+        case "EUR":
+          return React94.createElement(Icon13, { width: size + "px", height: size + "px" });
+          break;
+        case "GBP":
+          return React94.createElement(Icon14, { width: size + "px", height: size + "px" });
+          break;
+        case "AUD":
+          return React94.createElement(Icon15, { width: size + "px", height: size + "px" });
+          break;
+        case "CHF":
+          return React94.createElement(Icon16, { width: size + "px", height: size + "px" });
+          break;
+        case "HKD":
+          return React94.createElement(Icon17, { width: size + "px", height: size + "px" });
+          break;
+        case "JPY":
+          return React94.createElement(Icon18, { width: size + "px", height: size + "px" });
+          break;
+        case "MXN":
+          return React94.createElement(Icon19, { width: size + "px", height: size + "px" });
+          break;
+        case "UAH":
+          return React94.createElement(Icon20, { width: size + "px", height: size + "px" });
+          break;
+        case "USD":
+          return React94.createElement(Icon21, { width: size + "px", height: size + "px" });
+          break;
+      }
+    }
+    function refresh() {
       return __awaiter7(this, void 0, void 0, function* () {
+        const endpt = new getExchangeEndpoint();
+        endpt.request.base = props.config.base;
+        endpt.request.targets = props.config.targets.join(",");
+        const reply = yield appdata2.webserver.fetch(endpt, { cache: true, lifespan: 240 });
+        if (reply.ok) {
+          const data = reply.data;
+          setRates(data.rates);
+        }
+        setTimeout(refresh, appdata2.nextUpdate(props.config.update_hours * Constants.HOURS_TO_MS));
+      });
+    }
+    function renderRate(rate, index) {
+      let elem = React94.createElement(
+        Box_default,
+        { key: rate.currency, sx: { display: "flex", justifyContent: "center", alignItems: "center" } },
+        React94.createElement(
+          Stack_default,
+          { direction: "column", spacing: 0, gap: 0.5, sx: { display: "flex", justifyContent: "center", alignItems: "center" }, width: "100%" },
+          React94.createElement(Typography_default, { component: "div", color: "text.primary" }, rate.currency),
+          Icon29(rate.currency, 50),
+          React94.createElement(Typography_default, { component: "div", color: "text.secondary", sx: { fontSize: 16, lineHeight: 1, paddingTop: "4px" } }, rate.conversion.toFixed(2))
+        )
+      );
+      return elem;
+    }
+    return React94.createElement(
+      Stack_default,
+      { direction: "column", spacing: 0, gap: 0, width: "100%" },
+      props.config.title ? React94.createElement(Title, { label: "Exchange" }) : null,
+      React94.createElement(Stack_default, { direction: props.config.direction == Direction2.HORIZONTAL ? "row" : "column", spacing: 0, gap: props.config.gap, width: "100%" }, rates.map((day, index) => {
+        return renderRate(day, index);
+      }))
+    );
+  }
+
+  // build/client/modules/map/MapGoogle.js
+  var React95 = __toESM(require_react(), 1);
+
+  // node_modules/google-maps/lib/esm/loader.js
+  var Loader = class _Loader {
+    constructor(apiKey = null, options = {}) {
+      this.apiKey = apiKey;
+      this.options = options;
+      if (typeof window === "undefined") {
+        throw new Error("google-maps is supported only in browser environment");
+      }
+    }
+    load() {
+      if (typeof this.api !== "undefined") {
+        return Promise.resolve(this.api);
+      }
+      if (typeof this.loader !== "undefined") {
+        return this.loader;
+      }
+      window[_Loader.CALLBACK_NAME] = () => {
+        this.api = window["google"];
+        if (typeof this.resolve === "undefined") {
+          throw new Error("Should not happen");
+        }
+        this.resolve(this.api);
+      };
+      window["gm_authFailure"] = () => {
+        if (typeof this.reject === "undefined") {
+          throw new Error("Should not happen");
+        }
+        this.reject(new Error("google-maps: authentication error"));
+      };
+      return this.loader = new Promise((resolve, reject) => {
+        this.resolve = resolve;
+        this.reject = reject;
+        const script = document.createElement("script");
+        script.src = this.createUrl();
+        script.async = true;
+        script.onerror = (e) => reject(e);
+        document.head.appendChild(script);
+      });
+    }
+    createUrl() {
+      const parameters = [
+        `callback=${_Loader.CALLBACK_NAME}`
+      ];
+      if (this.apiKey) {
+        parameters.push(`key=${this.apiKey}`);
+      }
+      for (let name in this.options) {
+        if (this.options.hasOwnProperty(name)) {
+          let value = this.options[name];
+          if (name === "version") {
+            name = "v";
+          }
+          if (name === "libraries") {
+            value = value.join(",");
+          }
+          parameters.push(`${name}=${value}`);
+        }
+      }
+      return `https://maps.googleapis.com/maps/api/js?${parameters.join("&")}`;
+    }
+  };
+  Loader.CALLBACK_NAME = "_dk_google_maps_loader_cb";
+
+  // build/client/modules/map/MapGoogle.js
+  var __awaiter8 = function(thisArg, _arguments, P, generator) {
+    function adopt(value) {
+      return value instanceof P ? value : new P(function(resolve) {
+        resolve(value);
+      });
+    }
+    return new (P || (P = Promise))(function(resolve, reject) {
+      function fulfilled(value) {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function rejected(value) {
+        try {
+          step(generator["throw"](value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function step(result) {
+        result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+      }
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+  };
+  function MapGoogle(props) {
+    const map = React95.useRef(null);
+    React95.useEffect(() => pageLoaded(), []);
+    function pageLoaded() {
+      loadMap();
+    }
+    function loadMap() {
+      return __awaiter8(this, void 0, void 0, function* () {
+        const options = {};
+        const loader = new Loader("AIzaSyAh7YwRm96CWF8eftoTrnvt1kfhNDYB7fY", options);
+        const google2 = yield loader.load().then(asyncMap);
+      });
+    }
+    function asyncMap(google2) {
+      const styles4 = [
+        { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+        { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+        { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+        { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#d59563" }] },
+        { featureType: "poi", elementType: "labels.text.fill", stylers: [{ color: "#d59563" }] },
+        { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#263c3f" }] },
+        { featureType: "poi.park", elementType: "labels.text.fill", stylers: [{ color: "#6b9a76" }] },
+        { featureType: "road", elementType: "geometry", stylers: [{ color: "#38414e" }] },
+        { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#212a37" }] },
+        { featureType: "road", elementType: "labels.text.fill", stylers: [{ color: "#9ca5b3" }] },
+        { featureType: "road.highway", elementType: "geometry", stylers: [{ color: "#746855" }] },
+        { featureType: "road.highway", elementType: "geometry.stroke", stylers: [{ color: "#1f2835" }] },
+        { featureType: "road.highway", elementType: "labels.text.fill", stylers: [{ color: "#f3d19c" }] },
+        { featureType: "transit", elementType: "geometry", stylers: [{ color: "#2f3948" }] },
+        { featureType: "transit.station", elementType: "labels.text.fill", stylers: [{ color: "#d59563" }] },
+        { featureType: "water", elementType: "geometry", stylers: [{ color: "#17263c" }] },
+        { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#515c6d" }] },
+        { featureType: "water", elementType: "labels.text.stroke", stylers: [{ color: "#17263c" }] }
+      ];
+      const options = {
+        center: { lat: props.config.lat, lng: props.config.lon },
+        zoom: props.config.zoom,
+        styles: styles4,
+        zoomControl: props.config.zoomControl,
+        mapTypeControl: props.config.mapTypeControl,
+        scaleControl: props.config.scaleControl,
+        streetViewControl: props.config.streetViewControl,
+        fullscreenControl: props.config.fullscreenControl
+      };
+      map.current = new google2.maps.Map(document.getElementById("map"), options);
+      const trafficLayer = new google2.maps.TrafficLayer();
+      trafficLayer.setMap(map.current);
+    }
+    return React95.createElement("div", { id: "map", style: { width: "100%", height: props.config.height } });
+  }
+
+  // build/client/modules/commute/Commute.js
+  var React103 = __toESM(require_react(), 1);
+
+  // build/client/modules/commute/icons/AirplaneIcon.js
+  var import_react29 = __toESM(require_react(), 1);
+  var Icon22 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react29.default.createElement(
+    "svg",
+    { fill: color2, width: width2, height: height2, viewBox: "0 2 24 24", version: "1.1", xmlns: "http://www.w3.org/2000/svg" },
+    import_react29.default.createElement("path", { d: "M6.72 26.2c-0.040 0-0.080 0-0.12 0-0.28-0.040-0.48-0.2-0.64-0.44l-1.96-3.56-3.56-1.96c-0.24-0.12-0.4-0.36-0.44-0.64s0.040-0.52 0.24-0.72l1.8-1.8c0.2-0.2 0.48-0.28 0.76-0.24l2.040 0.36 2.68-2.68-6.48-3.2c-0.24-0.12-0.4-0.36-0.48-0.64s0.040-0.56 0.24-0.76l2-2c0.2-0.2 0.52-0.28 0.8-0.24l8.48 2.2 2.96-2.96c1.040-1.040 3.48-1.8 4.72-0.56 0.56 0.56 0.76 1.48 0.56 2.52-0.16 0.84-0.6 1.64-1.12 2.16l-2.96 2.96 2.2 8.48c0.080 0.28 0 0.6-0.24 0.8l-2 2c-0.2 0.2-0.48 0.28-0.76 0.24s-0.52-0.2-0.64-0.48l-3.2-6.48-2.68 2.68 0.36 2.040c0.040 0.28-0.040 0.56-0.24 0.76l-1.8 1.8c-0.080 0.28-0.28 0.36-0.52 0.36zM2.24 19.28l2.8 1.52c0.16 0.080 0.24 0.2 0.32 0.32l1.52 2.8 0.68-0.68-0.32-2.040c-0.040-0.28 0.040-0.56 0.24-0.76l3.84-3.84c0.2-0.2 0.48-0.28 0.76-0.24s0.52 0.2 0.64 0.48l3.2 6.48 0.8-0.8-2.2-8.48c-0.080-0.28 0-0.6 0.24-0.8l3.28-3.28c0.6-0.6 0.92-1.96 0.56-2.32s-1.72 0-2.32 0.56l-3.28 3.28c-0.2 0.2-0.52 0.28-0.8 0.24l-8.52-2.2-0.8 0.8 6.48 3.2c0.24 0.12 0.4 0.36 0.48 0.64s-0.040 0.56-0.24 0.76l-3.84 3.84c-0.2 0.2-0.48 0.28-0.76 0.24l-2.040-0.36-0.72 0.64z" })
+  );
+
+  // build/client/modules/commute/icons/WorkIcon.js
+  var import_react30 = __toESM(require_react(), 1);
+  var Icon23 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react30.default.createElement(
+    "svg",
+    { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    import_react30.default.createElement("path", { d: "M9 7H5C3.89543 7 3 7.89543 3 9V18C3 19.1046 3.89543 20 5 20H19C20.1046 20 21 19.1046 21 18V9C21 7.89543 20.1046 7 19 7H15M9 7V5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7M9 7H15", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+  );
+
+  // build/client/modules/commute/icons/ShopIcon.js
+  var import_react31 = __toESM(require_react(), 1);
+  var Icon24 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react31.default.createElement(
+    "svg",
+    { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    import_react31.default.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M5.13238 1C4.07859 1 3.10207 1.5529 2.5599 2.45651L0.615776 5.69672C0.17816 6.42608 0.0121122 7.42549 0.508798 8.32014C0.789678 8.82607 1.27459 9.55181 2 10.1205V20C2 21.6569 3.34315 23 5 23H8C9.10457 23 10 22.1046 10 21V15H14V21C14 22.1046 14.8954 23 16 23H19C20.6569 23 22 21.6569 22 20V10.1205C22.7254 9.55181 23.2103 8.82607 23.4912 8.32014C23.9879 7.42548 23.8218 6.42608 23.3842 5.69672L21.4401 2.45651C20.8979 1.5529 19.9214 1 18.8676 1H5.13238ZM20 10.9697C19.8391 10.9895 19.6725 11 19.5 11C18.1259 11 17.1126 10.3216 16.4364 9.60481C16.2632 9.4211 16.1082 9.23119 15.9705 9.04325C15.2167 9.98812 13.9542 11 12 11C10.0458 11 8.7833 9.98812 8.02952 9.04325C7.89183 9.23119 7.73684 9.4211 7.56355 9.60481C6.8874 10.3216 5.87405 11 4.5 11C4.32752 11 4.16089 10.9895 4 10.9697V20C4 20.5523 4.44772 21 5 21H8V15C8 13.8954 8.89543 13 10 13H14C15.1046 13 16 13.8954 16 15V21H19C19.5523 21 20 20.5523 20 20V10.9697ZM4.27489 3.4855C4.45561 3.1843 4.78112 3 5.13238 3H18.8676C19.2189 3 19.5444 3.1843 19.7251 3.4855L21.6692 6.72571C21.8324 6.99765 21.8127 7.2231 21.7426 7.34937C21.2851 8.17345 20.5493 9 19.5 9C18.8448 9 18.323 8.69006 17.8913 8.23245C17.4506 7.76524 17.1659 7.20393 17.0284 6.88399C16.8114 6.37951 16.3329 6.21388 16.0033 6.21248C15.674 6.21109 15.1982 6.37172 14.9752 6.8683C14.6702 7.54754 13.7982 9 12 9C10.2018 9 9.32978 7.54754 9.0248 6.8683C8.80182 6.37172 8.32598 6.21109 7.99667 6.21248C7.66706 6.21388 7.18855 6.37951 6.97164 6.88399C6.83407 7.20393 6.5494 7.76524 6.10869 8.23245C5.67703 8.69006 5.15524 9 4.5 9C3.45065 9 2.71491 8.17345 2.2574 7.34937C2.1873 7.2231 2.1676 6.99765 2.33076 6.72571L4.27489 3.4855Z", fill: color2 })
+  );
+
+  // build/client/modules/commute/icons/SchoolIcon.js
+  var import_react32 = __toESM(require_react(), 1);
+  var Icon25 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react32.default.createElement(
+    "svg",
+    { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    import_react32.default.createElement("path", { d: "M6 15.5002H7M6 18.5002H7M17 18.5002H18M17 15.5002H18M10 22.0002V18.0002C10 16.8956 10.8954 16.0002 12 16.0002C13.1046 16.0002 14 16.8956 14 18.0002V22.0002M12 5H16.84C16.896 5 16.924 5 16.9454 4.9891C16.9642 4.97951 16.9795 4.96422 16.9891 4.9454C17 4.92401 17 4.89601 17 4.84V2.16C17 2.10399 17 2.07599 16.9891 2.0546C16.9795 2.03578 16.9642 2.02049 16.9454 2.0109C16.924 2 16.896 2 16.84 2H12.16C12.104 2 12.076 2 12.0546 2.0109C12.0358 2.02049 12.0205 2.03578 12.0109 2.0546C12 2.07599 12 2.10399 12 2.16V5ZM12 5V7.69092M12.03 12.25H12.0375M12 7.69092C12.1947 7.69092 12.3895 7.71935 12.5779 7.77623C13.0057 7.90536 13.3841 8.24585 14.1407 8.92681L17 11.5002L18.5761 11.8942C19.4428 12.1109 19.8761 12.2192 20.1988 12.4608C20.4834 12.674 20.7061 12.9592 20.8439 13.2871C21 13.6587 21 14.1053 21 14.9987V18.8002C21 19.9203 21 20.4804 20.782 20.9082C20.5903 21.2845 20.2843 21.5905 19.908 21.7822C19.4802 22.0002 18.9201 22.0002 17.8 22.0002H6.2C5.0799 22.0002 4.51984 22.0002 4.09202 21.7822C3.71569 21.5905 3.40973 21.2845 3.21799 20.9082C3 20.4804 3 19.9203 3 18.8002V14.9987C3 14.1053 3 13.6587 3.15613 13.2871C3.29388 12.9592 3.51657 12.674 3.80124 12.4608C4.12389 12.2192 4.55722 12.1109 5.42388 11.8942L7 11.5002L9.85931 8.92681C10.6159 8.24584 10.9943 7.90536 11.4221 7.77623C11.6105 7.71935 11.8053 7.69092 12 7.69092ZM12.03 13C11.6158 13 11.28 12.6642 11.28 12.25C11.28 11.8358 11.6158 11.5 12.03 11.5C12.4442 11.5 12.78 11.8358 12.78 12.25C12.78 12.6642 12.4442 13 12.03 13Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+  );
+
+  // build/client/modules/commute/icons/TrainIcon.js
+  var import_react33 = __toESM(require_react(), 1);
+  var Icon26 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react33.default.createElement(
+    "svg",
+    { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    import_react33.default.createElement("path", { d: "M5 11H19M9 18L6 21M15 18L18 21M12 11V4M8 15H8.01M16 15H16.01M8.2 18H15.8C16.9201 18 17.4802 18 17.908 17.782C18.2843 17.5903 18.5903 17.2843 18.782 16.908C19 16.4802 19 15.9201 19 14.8V6.2C19 5.0799 19 4.51984 18.782 4.09202C18.5903 3.71569 18.2843 3.40973 17.908 3.21799C17.4802 3 16.9201 3 15.8 3H8.2C7.0799 3 6.51984 3 6.09202 3.21799C5.71569 3.40973 5.40973 3.71569 5.21799 4.09202C5 4.51984 5 5.07989 5 6.2V14.8C5 15.9201 5 16.4802 5.21799 16.908C5.40973 17.2843 5.71569 17.5903 6.09202 17.782C6.51984 18 7.07989 18 8.2 18Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+  );
+
+  // build/client/modules/commute/icons/HospitalIcon.js
+  var import_react34 = __toESM(require_react(), 1);
+  var Icon27 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react34.default.createElement(
+    "svg",
+    { width: width2, height: height2, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+    import_react34.default.createElement("path", { d: "M7 6H5.2C4.0799 6 3.51984 6 3.09202 6.21799C2.71569 6.40973 2.40973 6.71569 2.21799 7.09202C2 7.51984 2 8.0799 2 9.2V17.8C2 18.9201 2 19.4802 2.21799 19.908C2.40973 20.2843 2.71569 20.5903 3.09202 20.782C3.51984 21 4.0799 21 5.2 21H18.8C19.9201 21 20.4802 21 20.908 20.782C21.2843 20.5903 21.5903 20.2843 21.782 19.908C22 19.4802 22 18.9201 22 17.8V9.2C22 8.07989 22 7.51984 21.782 7.09202C21.5903 6.71569 21.2843 6.40973 20.908 6.21799C20.4802 6 19.9201 6 18.8 6H17M2 10H4M20 10H22M2 14H4M20 14H22M12 6V10M10 8H14M17 21V6.2C17 5.0799 17 4.51984 16.782 4.09202C16.5903 3.71569 16.2843 3.40973 15.908 3.21799C15.4802 3 14.9201 3 13.8 3H10.2C9.07989 3 8.51984 3 8.09202 3.21799C7.71569 3.40973 7.40973 3.71569 7.21799 4.09202C7 4.51984 7 5.0799 7 6.2V21H17ZM14 21V17C14 15.8954 13.1046 15 12 15C10.8954 15 10 15.8954 10 17V21H14Z", stroke: color2, strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })
+  );
+
+  // build/client/modules/commute/icons/GymIcon.js
+  var import_react35 = __toESM(require_react(), 1);
+  var Icon28 = ({ height: height2 = "24px", width: width2 = "24px", color: color2 = "black" }) => import_react35.default.createElement(
+    "svg",
+    { fill: color2, width: width2, height: height2, viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg" },
+    import_react35.default.createElement("path", { d: "M22.942,6.837,20.76,4.654l.947-.947a1,1,0,1,0-1.414-1.414l-.947.947L17.163,1.058a3.7,3.7,0,0,0-5.105,0,3.609,3.609,0,0,0,0,5.106L14.24,8.346,8.346,14.24,6.163,12.058a3.7,3.7,0,0,0-5.105,0,3.609,3.609,0,0,0,0,5.106L3.24,19.346l-.947.947a1,1,0,1,0,1.414,1.414l.947-.947,2.183,2.182a3.609,3.609,0,0,0,5.105,0h0a3.608,3.608,0,0,0,0-5.105L9.76,15.655l5.9-5.895,2.182,2.182a3.609,3.609,0,0,0,5.105,0h0a3.608,3.608,0,0,0,0-5.105ZM11,20.39a1.6,1.6,0,0,1-.472,1.138,1.647,1.647,0,0,1-2.277,0L2.472,15.749a1.61,1.61,0,1,1,2.277-2.277l5.779,5.779A1.6,1.6,0,0,1,11,20.39Zm10.528-9.862a1.647,1.647,0,0,1-2.277,0L13.472,4.749a1.61,1.61,0,1,1,2.277-2.277l5.779,5.779a1.609,1.609,0,0,1,0,2.277Z" })
+  );
+
+  // build/client/modules/commute/Commute.js
+  var __awaiter9 = function(thisArg, _arguments, P, generator) {
+    function adopt(value) {
+      return value instanceof P ? value : new P(function(resolve) {
+        resolve(value);
+      });
+    }
+    return new (P || (P = Promise))(function(resolve, reject) {
+      function fulfilled(value) {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function rejected(value) {
+        try {
+          step(generator["throw"](value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function step(result) {
+        result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+      }
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+  };
+  var Direction3;
+  (function(Direction4) {
+    Direction4["HORIZONTAL"] = "horizontal";
+    Direction4["VERTICAL"] = "vertical";
+  })(Direction3 || (Direction3 = {}));
+  function Commute(props) {
+    const [appdata2, setAppData] = React103.useState(AppData.instance());
+    const map = React103.useRef(null);
+    const [routes, setRoutes] = React103.useState([]);
+    React103.useEffect(() => pageLoaded(), []);
+    function pageLoaded() {
+      refresh();
+    }
+    function load() {
+      return __awaiter9(this, void 0, void 0, function* () {
+        const options = {};
+        const loader = new Loader("AIzaSyAh7YwRm96CWF8eftoTrnvt1kfhNDYB7fY", options);
+        map.current = yield loader.load().then(asyncLoad);
+      });
+    }
+    function asyncLoad(google2) {
+      refresh();
+    }
+    function getRoute(destination) {
+      const dir = new google.maps.DirectionsService();
+      const request = {
+        drivingOptions: { departureTime: /* @__PURE__ */ new Date(), trafficModel: google.maps.TrafficModel.PESSIMISTIC },
+        origin: props.config.from,
+        destination,
+        travelMode: google.maps.TravelMode["DRIVING"]
+      };
+      dir.route(request, function(result, status) {
+        if (status == "OK") {
+          console.log(destination, result.routes[0].legs[0].duration, result.routes[0].legs[0].duration_in_traffic);
+        }
+      });
+    }
+    function refresh() {
+      return __awaiter9(this, void 0, void 0, function* () {
+        let to_adr = [];
+        props.config.to.forEach((rt) => {
+          to_adr.push(rt.address);
+        });
+        let i;
+        for (i = 0; i < to_adr.length; i++) {
+          getRoute(to_adr[i]);
+        }
+        setTimeout(refresh, appdata2.nextUpdate(props.config.update_hours * Constants.HOURS_TO_MS));
+      });
+    }
+    function renderIcon(id, size) {
+      switch (id) {
+        case "plane":
+          return React103.createElement(Icon22, { width: size, height: size, color: "white" });
+          break;
+        case "work":
+          return React103.createElement(Icon23, { width: size, height: size, color: "white" });
+          break;
+        case "shop":
+          return React103.createElement(Icon24, { width: size, height: size, color: "white" });
+          break;
+        case "school":
+          return React103.createElement(Icon25, { width: size, height: size, color: "white" });
+          break;
+        case "train":
+          return React103.createElement(Icon26, { width: size, height: size, color: "white" });
+          break;
+        case "hospital":
+          return React103.createElement(Icon27, { width: size, height: size, color: "white" });
+          break;
+        case "gym":
+          return React103.createElement(Icon28, { width: size, height: size, color: "white" });
+          break;
+      }
+    }
+    function hoursLabel(hours) {
+      const hrs = Math.abs(hours);
+      const hour = Math.floor(hrs / 60);
+      const minutes = Math.ceil(hrs - hour * 60);
+      let label = hours > 0 ? "" : "-";
+      if (hour > 0)
+        label = StringUtils_default.format("{0} hour{1}", hour, hour > 1 ? "s" : "");
+      label += " ";
+      label += StringUtils_default.format("{0} mins", StringUtils_default.leadingZero(minutes, 2));
+      return label;
+    }
+    function renderPath(route, index) {
+      const label = hoursLabel(route.time);
+      const delay = hoursLabel(route.delay);
+      const elem = React103.createElement(
+        "tr",
+        { key: index },
+        React103.createElement("td", null, renderIcon(route.icon, "25px")),
+        React103.createElement(
+          "td",
+          null,
+          React103.createElement(Typography_default, { component: "div", color: "text.primary" }, route.name)
+        ),
+        React103.createElement(
+          "td",
+          null,
+          React103.createElement(Typography_default, { component: "div", color: "text.secondary" }, label)
+        ),
+        React103.createElement(
+          "td",
+          null,
+          React103.createElement(Typography_default, { component: "div", color: "error" }, route.delay > 1 ? "+" + delay : "")
+        )
+      );
+      return elem;
+    }
+    return React103.createElement(
+      Stack_default,
+      { direction: "column", spacing: 0, gap: 0, width: "100%" },
+      props.config.title ? React103.createElement(Title, { label: "Commute" }) : null,
+      React103.createElement(
+        "table",
+        null,
+        React103.createElement("tbody", null, routes.map((route, index) => {
+          return renderPath(route, index);
+        }))
+      )
+    );
+  }
+
+  // build/client/modules/word/WordOfDay.js
+  var React104 = __toESM(require_react(), 1);
+
+  // build/api/getWordOfDayEndpoint.js
+  var getWordOfDayEndpoint = class extends Endpoint.Definition {
+    constructor() {
+      super(Network.Method.GET, "/wordofday", false);
+      this.datamap = {
+        date: { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true }
+      };
+    }
+    reset() {
+      this.request = {
+        date: Endpoint.InitValue
+      };
+    }
+    failure(status, code, message) {
+      return super.failure(status, code, message);
+    }
+  };
+  (function(getWordOfDayEndpoint2) {
+    let Error2;
+    (function(Error3) {
+      Error3["INVALID_IDENTIFIER"] = "invalid_identifier";
+      Error3["MISSING_OR_BAD_DATA"] = "missing_or_bad_data";
+      Error3["NOT_AUTHORIZED"] = "not_authorized";
+    })(Error2 = getWordOfDayEndpoint2.Error || (getWordOfDayEndpoint2.Error = {}));
+  })(getWordOfDayEndpoint || (getWordOfDayEndpoint = {}));
+
+  // build/client/modules/word/WordOfDay.js
+  var __awaiter10 = function(thisArg, _arguments, P, generator) {
+    function adopt(value) {
+      return value instanceof P ? value : new P(function(resolve) {
+        resolve(value);
+      });
+    }
+    return new (P || (P = Promise))(function(resolve, reject) {
+      function fulfilled(value) {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function rejected(value) {
+        try {
+          step(generator["throw"](value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function step(result) {
+        result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+      }
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+  };
+  function WordOfDay(props) {
+    const [appdata2, setAppData] = React104.useState(AppData.instance());
+    const [word, setWord] = React104.useState("");
+    const [definition, setDefinitiion] = React104.useState("");
+    const [type, setType] = React104.useState("");
+    React104.useEffect(() => pageLoaded(), []);
+    function pageLoaded() {
+      refresh();
+    }
+    function refresh() {
+      return __awaiter10(this, void 0, void 0, function* () {
+        const today = /* @__PURE__ */ new Date();
+        const endpt = new getWordOfDayEndpoint();
+        endpt.request.date = today.toDateString();
+        const reply = yield appdata2.webserver.fetch(endpt, { cache: true, lifespan: 240 });
+        if (reply.ok) {
+          const data = reply.data;
+          setWord(data.word);
+          setDefinitiion(data.definition);
+          setType(data.type);
+        }
+        setTimeout(refresh, appdata2.nextUpdate(props.config.update_hours * Constants.HOURS_TO_MS));
+      });
+    }
+    return React104.createElement(
+      Stack_default,
+      { direction: "column", spacing: 0, gap: 0, width: "100%" },
+      React104.createElement(Title, { label: "Word of the Day" }),
+      React104.createElement(
+        Stack_default,
+        { direction: "row", spacing: 0, gap: 2, width: "100%" },
+        React104.createElement(Typography_default, { component: "div", color: "text.primary", sx: { fontSize: 24, lineHeight: 1 } }, word),
+        React104.createElement(Typography_default, { component: "div", color: "text.primary", sx: { fontSize: 16, lineHeight: 1 } }, definition),
+        React104.createElement(Typography_default, { component: "div", color: "text.secondary", sx: { fontSize: 16, lineHeight: 1 } }, type)
+      )
+    );
+  }
+
+  // build/client/Page.js
+  var __awaiter11 = function(thisArg, _arguments, P, generator) {
+    function adopt(value) {
+      return value instanceof P ? value : new P(function(resolve) {
+        resolve(value);
+      });
+    }
+    return new (P || (P = Promise))(function(resolve, reject) {
+      function fulfilled(value) {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function rejected(value) {
+        try {
+          step(generator["throw"](value));
+        } catch (e) {
+          reject(e);
+        }
+      }
+      function step(result) {
+        result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+      }
+      step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+  };
+  function Page(props) {
+    const [appdata2, setAppData] = React105.useState(AppData.instance());
+    function onLogin() {
+      return __awaiter11(this, void 0, void 0, function* () {
       });
     }
     function renderWidget(widget) {
       switch (widget.module) {
         case "space":
-          return React80.createElement(Space, null);
+          return React105.createElement(Space, null);
         case "clock":
-          return React80.createElement(Clock, { config: widget.config });
+          return React105.createElement(Clock, { config: widget.config });
         case "timezones":
-          return React80.createElement(TimeZones, { config: widget.config });
+          return React105.createElement(TimeZones, { config: widget.config });
         case "wxnow":
-          return React80.createElement(Weather, { config: widget.config });
+          return React105.createElement(Weather, { config: widget.config });
         case "wxforecast":
-          return React80.createElement(WeatherForecast, { config: widget.config });
+          return React105.createElement(WeatherForecast, { config: widget.config });
         case "calendar":
-          return React80.createElement(Calendar, { config: widget.config, warm: props.warm });
+          return React105.createElement(Calendar, { config: widget.config, warm: props.warm });
+        case "exchange":
+          return React105.createElement(Exchange, { config: widget.config });
+        case "map":
+          return React105.createElement(MapGoogle, { config: widget.config });
+        case "commute":
+          return React105.createElement(Commute, { config: widget.config });
+        case "word":
+          return React105.createElement(WordOfDay, { config: widget.config });
       }
       return null;
     }
     function renderRow(row_index, widgets) {
       let row = [];
       widgets.forEach((widget, index) => {
-        row.push(React80.createElement(Box_default, { key: row_index + "." + index, sx: { width: widget.width } }, renderWidget(widget)));
+        row.push(React105.createElement(Box_default, { key: row_index + "." + index, sx: { width: widget.width } }, renderWidget(widget)));
       });
       return row;
     }
-    return React80.createElement(
+    return React105.createElement(
       "div",
       { style: { width: "100%" } },
-      React80.createElement(Stack_default, { direction: "column" }, props.rows ? props.rows.map((row, index) => {
-        return React80.createElement(Stack_default, { key: index, direction: "row" }, renderRow(index, row.widgets));
+      React105.createElement(Stack_default, { direction: "column" }, props.rows ? props.rows.map((row, index) => {
+        return React105.createElement(Stack_default, { key: index, direction: "row" }, renderRow(index, row.widgets));
       }) : null)
+    );
+  }
+
+  // build/client/settings/SettingsPage.js
+  var React106 = __toESM(require_react(), 1);
+  function SettingsPage(props) {
+    const [appdata2, setAppData] = React106.useState(AppData.instance());
+    function onBack() {
+      props.onClose();
+    }
+    return React106.createElement(
+      Stack_default,
+      { direction: "column" },
+      React106.createElement(
+        Stack_default,
+        { direction: "row" },
+        React106.createElement(
+          IconButton_default,
+          { size: "large", onClick: onBack },
+          React106.createElement(ArrowBack_default, null)
+        ),
+        React106.createElement(Typography_default, { component: "div", color: "text.primary", sx: { fontSize: 32, lineHeight: 1, paddingTop: 2 } }, "Settings")
+      )
     );
   }
 
   // build/client/Main.js
   function Main(props) {
-    const [appdata2, setAppData] = React81.useState(AppData.instance());
-    const warm_timer = React81.useRef(null);
-    const [tab, setTab] = React81.useState("");
-    const [tabs, setTabs] = React81.useState([]);
-    const [warm, setWarm] = React81.useState(false);
-    const [anchorEl, setAnchorEl] = React81.useState(null);
-    React81.useEffect(() => pageLoaded(), []);
+    const [appdata2, setAppData] = React107.useState(AppData.instance());
+    const warm_timer = React107.useRef(null);
+    const [settings, showSettings] = React107.useState(false);
+    const [tab, setTab] = React107.useState("");
+    const [tabs, setTabs] = React107.useState([]);
+    const [warm, setWarm] = React107.useState(false);
+    const [anchorEl, setAnchorEl] = React107.useState(null);
+    React107.useEffect(() => pageLoaded(), []);
     function pageLoaded() {
       let new_tabs = [];
       appdata2.layout.pages.forEach((page, index) => {
-        new_tabs.push(React81.createElement(Tab_default, { key: page.name, value: page.name, label: page.name }));
+        new_tabs.push(React107.createElement(Tab_default, { key: page.name, value: page.name, label: page.name }));
       });
       setTab(appdata2.layout.pages[0].name);
       setTabs(new_tabs);
@@ -46204,57 +47454,58 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
       window.location.reload();
       onCloseMenu();
     }
-    return React81.createElement(
+    function onSettings() {
+      showSettings(true);
+      onCloseMenu();
+    }
+    function onSettingsClose() {
+      showSettings(false);
+    }
+    return React107.createElement(
       "div",
       null,
-      React81.createElement(
-        Box_default,
-        { sx: { width: "100%", typography: "body1" } },
-        React81.createElement(
-          TabContext,
-          { value: tab },
-          appdata2.layout.pages.map((page, index) => {
-            return React81.createElement(
-              TabPanel_default,
-              { key: index, value: page.name },
-              React81.createElement(Page, { name: page.name, rows: page.rows, warm })
-            );
-          }),
-          warm ? React81.createElement(
-            Box_default,
-            { sx: { borderBottom: 1, borderColor: "divider" } },
-            React81.createElement(
-              AppBar_default,
-              { position: "fixed", color: "primary", sx: { top: "auto", bottom: 0 } },
-              React81.createElement(
-                Stack_default,
-                { direction: "row" },
-                React81.createElement(TabList_default, { onChange: onTabChange }, tabs),
-                React81.createElement(Box_default, { sx: { flexGrow: 1 } }),
-                React81.createElement(
-                  IconButton_default,
-                  { onClick: onOpenMenu },
-                  React81.createElement(Settings_default, null)
-                )
+      React107.createElement(Box_default, { sx: { width: "100%", typography: "body1" } }, settings ? React107.createElement(SettingsPage, { onClose: onSettingsClose }) : React107.createElement(
+        TabContext,
+        { value: tab },
+        appdata2.layout.pages.map((page, index) => {
+          return React107.createElement(
+            TabPanel_default,
+            { key: index, value: page.name },
+            React107.createElement(Page, { name: page.name, rows: page.rows, warm })
+          );
+        }),
+        warm ? React107.createElement(
+          Box_default,
+          { sx: { borderBottom: 1, borderColor: "divider" } },
+          React107.createElement(
+            AppBar_default,
+            { position: "fixed", color: "primary", sx: { top: "auto", bottom: 0 } },
+            React107.createElement(
+              Stack_default,
+              { direction: "row" },
+              React107.createElement(TabList_default, { onChange: onTabChange }, tabs),
+              React107.createElement(Box_default, { sx: { flexGrow: 1 } }),
+              React107.createElement(
+                IconButton_default,
+                { onClick: onOpenMenu },
+                React107.createElement(Settings_default, null)
               )
             )
-          ) : null
-        )
-      ),
-      React81.createElement(
+          )
+        ) : null
+      )),
+      React107.createElement(
         Menu_default,
-        { id: "action-menu", anchorEl, open: anchorEl != null, onClose: onCloseMenu, MenuListProps: {
-          "aria-labelledby": "basic-button"
-        } },
-        React81.createElement(MenuItem_default, { onClick: onCloseMenu }, "TBD"),
-        React81.createElement(MenuItem_default, { onClick: onCloseMenu }, "TBD"),
-        React81.createElement(MenuItem_default, { onClick: onRefresh }, "Refresh")
+        { id: "action-menu", anchorEl, open: anchorEl != null, onClose: onCloseMenu, MenuListProps: { "aria-labelledby": "basic-button" } },
+        React107.createElement(MenuItem_default, { onClick: onCloseMenu }, "TBD"),
+        React107.createElement(MenuItem_default, { onClick: onSettings }, "Settings"),
+        React107.createElement(MenuItem_default, { onClick: onRefresh }, "Refresh")
       )
     );
   }
 
   // build/client/App.js
-  var __awaiter8 = function(thisArg, _arguments, P, generator) {
+  var __awaiter12 = function(thisArg, _arguments, P, generator) {
     function adopt(value) {
       return value instanceof P ? value : new P(function(resolve) {
         resolve(value);
@@ -46282,17 +47533,17 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
     });
   };
   function App() {
-    React82.useEffect(() => pageLoaded(), []);
+    React108.useEffect(() => pageLoaded(), []);
     function pageLoaded() {
     }
     function aboutToLogout() {
-      return __awaiter8(this, void 0, void 0, function* () {
+      return __awaiter12(this, void 0, void 0, function* () {
       });
     }
-    return React82.createElement(
+    return React108.createElement(
       ThemeProvider5,
       { theme: theme_default },
-      React82.createElement(Main, null)
+      React108.createElement(Main, null)
     );
   }
 
@@ -46302,7 +47553,7 @@ Please use another name.` : (0, import_formatMuiErrorMessage.default)(18));
   function main() {
     const container = document.getElementById("root");
     const root = (0, import_client.createRoot)(container);
-    root.render(React83.createElement(App, null));
+    root.render(React109.createElement(App, null));
   }
 })();
 /*! Bundled license information:

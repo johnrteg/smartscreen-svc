@@ -1,3 +1,6 @@
+//
+
+
 import { smartScreenService } from "../../smartScreenService.js";
 import { Module } from "../Module.js";
 
@@ -22,5 +25,8 @@ export class CalendarModule extends Module
         //console.log("CalendarModule::setConfig", config );
         this.key = config.key;
     }
+
+    
+
 }
 

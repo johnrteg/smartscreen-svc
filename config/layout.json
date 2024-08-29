@@ -1,20 +1,54 @@
 {
     "pages" : [
         { "name" : "Home"   , "rows" : [    { "widgets" :   [   { "module": "clock"     , "width" : "40%", "config" : { "date" : "MD", "seconds" : true } },
-                                                                { "module": "wxnow"     , "width" : "25%", "config" : { "lat" : 39.11, "lon" : -77.23,
+                                                                { "module": "wxnow"     , "width" : "25%", "config" : { "location" : "20878",
                                                                                                                         "name" : "Gaithersburg",
                                                                                                                         "units" : "imperial",
-                                                                                                                        "update" : 60 } },
+                                                                                                                        "update_hours" : 0.25 } },
                                                                 { "module": "timezones" , "width" : "35%", "config" : { "tzs" : ["America/New_York","Europe/Paris","America/Denver","America/Los_Angeles","Pacific/Honolulu"] } }
-                                                            ] },
-                                            { "widgets" :   [   { "module": "calendar"  , "width" : "100%", "config" : { "days": 60 } }
-                                                            ] },
-                                            { "widgets" :   [   { "module": "wxforecast", "width" : "50%", "config" : { "lat" : 39.11, "lon" : -77.23,
-                                                                                                                    "name" : "Gaithersburg",
-                                                                                                                    "units" : "imperial",
-                                                                                                                    "update" : 60,
-                                                                                                                    "days" : 2 } }
-                                                        ] }
+                                                            ]
+                                            },
+                                            { "widgets" :   [   { "module": "calendar"  , "width" : "95%", "config" : { "days": 65 } },
+                                                                { "module": "exchange", "width" : "5%", "config" : {    "base" : "USD",
+                                                                                                                        "targets" : ["GBP","CAD","EUR","AUD","CHF","HKD","JPY"],
+                                                                                                                        "direction" : "vertical",
+                                                                                                                        "title" : false,
+                                                                                                                        "gap" : 2,
+                                                                                                                        "update_hours" : 24 } }
+                                                            ]
+                                            },
+                                            { "widgets" :   [   { "module": "wxforecast", "width" : "75%",  "config" : {    "location" : "20878",
+                                                                                                                            "name" : "Gaithersburg",
+                                                                                                                            "units" : "imperial",
+                                                                                                                            "direction" : "horizontal",
+                                                                                                                            "update_hours" : 2,
+                                                                                                                            "title" : false,
+                                                                                                                            "days" : 8 } },
+                                                                { "module": "word", "width" : "25%",        "config" : {    "update_hours" : 2 } }
+                                                                
+                                                        ]
+                                            },
+                                            { "widgets" :   [   { "module": "map", "width" : "80%", "config" : {    "height": "475px",
+                                                                                                                    "zoom" : 11,
+                                                                                                                    "lat" : 39.0, "lon" : -77.3,
+                                                                                                                    "zoomControl" : true,
+                                                                                                                    "mapTypeControl" : false,
+                                                                                                                    "scaleControl" : false,
+                                                                                                                    "streetViewControl" : false,
+                                                                                                                    "fullscreenControl" : false } },
+                                                                { "module": "commute", "width" : "20%", "config" : { "from" : "4 Deer Trail Ct, Gaithersburg, MD",
+                                                                                                                    "to" : [ { "name" : "Work", "address" : "7642 Arlington Rd, Bethesda, MD", "icon" : "work" },
+                                                                                                                             { "name" : "Tysons", "address" : "7920 Jones Branch Dr, McLean, VA", "icon" : "shop" },
+                                                                                                                             { "name" : "DCA", "address" : "DCA, Virginia", "icon" : "plane" },
+                                                                                                                             { "name" : "BWI", "address" : "BWI, Maryland", "icon" : "plane" },
+                                                                                                                             { "name" : "IAD", "address" : "IAD, Virginia", "icon" : "plane" }
+                                                                                                                            ],
+                                                                                                                    "direction" : "vertical",
+                                                                                                                    "update_hours" : 2,
+                                                                                                                    "title" : true } }                                                   
+                                                                
+                                                        ]
+                                            }
                                         ] },
         { "name" : "Travel" , "rows" : [    { "widgets" :   [   { "module": "clock"     , "width" : "35%", "config" : { "date" : "DM", "seconds" : false } },
                                                                 { "module": "timezones" , "width" : "35%", "config" : { "tzs" : ["America/New_York","Europe/Paris"] } }
@@ -24,14 +58,54 @@
                                                             ] }
                                         ] },
         { "name" : "Household" },
-        { "name" : "Weather", "rows" :  [    { "widgets" :   [  { "module": "clock"     , "width" : "40%", "config" : { "date" : "MD", "seconds" : true } },
-                                                                { "module": "wx"        , "width" : "25%", "config" : { "days" : 0,
-                                                                                                                        "lat" : 39.11, "lon" : -77.23,
-                                                                                                                        "name" : "Gaithersburg",
+        { "name" : "Weather", "rows" :  [   { "widgets" :   [  { "module": "clock"     , "width" : "40%", "config" : { "date" : "MD", "seconds" : true } },
+                                                                { "module": "wxnow"     , "width" : "25%", "config" : { "location" : "20878",
+                                                                                                                        "name" : "Home",
                                                                                                                         "units" : "imperial",
-                                                                                                                        "update" : 60 } }
-                                                                                                                                            ] }
+                                                                                                                        "update_hours" : 0.25 } }
+                                                                                                                                            ] },
+                                            { "widgets" :   [   { "module": "wxforecast", "width" : "100%", "config" : {    "location" : "20878",
+                                                                                                                            "name" : "Gaithersburg",
+                                                                                                                            "units" : "imperial",
+                                                                                                                            "direction" : "horizontal",
+                                                                                                                            "update_hours" : 2,
+                                                                                                                            "title" : true,
+                                                                                                                            "days" : 8 } }
+                                                                                    
+                                                            ]
+                                            },
+                                            { "widgets" :   [   { "module": "wxforecast", "width" : "100%", "config" : {    "location" : "Water Mill, NY",
+                                                                                                                            "name" : "Water Mill",
+                                                                                                                            "units" : "imperial",
+                                                                                                                            "direction" : "horizontal",
+                                                                                                                            "update_hours" : 2,
+                                                                                                                            "title" : true,
+                                                                                                                            "days" : 8 } }
+                                                                                    
+                                                            ]
+                                            },
+                                            { "widgets" :   [   { "module": "wxforecast", "width" : "100%", "config" : {    "location" : "Venice, FL",
+                                                                                                                            "name" : "Venice, FL",
+                                                                                                                            "units" : "imperial",
+                                                                                                                            "direction" : "horizontal",
+                                                                                                                            "update_hours" : 2,
+                                                                                                                            "title" : true,
+                                                                                                                            "days" : 8 } }
+                                                                                    
+                                                            ]
+                                            } ,
+                                            { "widgets" :   [   { "module": "wxforecast", "width" : "100%", "config" : {    "location" : "Omaha, NE",
+                                                                                                                            "name" : "Omaha",
+                                                                                                                            "units" : "imperial",
+                                                                                                                            "direction" : "horizontal",
+                                                                                                                            "update_hours" : 2,
+                                                                                                                            "title" : true,
+                                                                                                                            "days" : 8 } }
+                                                                                    
+                                                            ]
+                                            }                                                                                                
                                         ]  },
+                                        
         { "name" : "Other" }
     ]
 }

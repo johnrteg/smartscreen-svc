@@ -28,9 +28,9 @@ export default class getLoginGoogle extends getLoginGoogleEndpoint
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public async execute( authenticated : Endpoint.Authenticated ) : Promise<Endpoint.Reply>
     {
-        //let layout : any = this.server.readJsonFile( "config/layout.json", {} );
         console.log( "getLoginGoogleEndpoint", this.request );
 
+        /*
         const params : any = { client_id : "107675219120146503094",
             redirect_uri : "https://www.example.com/authenticate/google",
             scope: [
@@ -50,6 +50,7 @@ export default class getLoginGoogle extends getLoginGoogleEndpoint
             console.log("login", response.data );
 
         }
+            */
         
         // reply
         let reply : getLoginGoogleEndpoint.ReplyData = {};

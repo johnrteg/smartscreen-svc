@@ -3,11 +3,11 @@ import { smartScreenService } from "../smartScreenService.js";
 
 export class Module
 {
-    protected server : smartScreenService;
+    public server : smartScreenService;
     
+    /////////////////////////////////////////////////////////
     constructor( svr : smartScreenService )
     {
-        console.log("Module");
         this.server = svr;
     }
 

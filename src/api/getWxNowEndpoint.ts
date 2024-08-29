@@ -12,17 +12,15 @@ export class getWxNowEndpoint extends Endpoint.Definition
     constructor()
     {
         super( Network.Method.GET, "/wx/now", false );
-        this.datamap =  {   lat : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-                            lon : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-                            units : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
+        this.datamap =  {   location : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
+                            units    : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
                         };
     }
 
     public reset() : void
     {
         this.request =  {
-                            lat: Endpoint.InitValue,   
-                            lon: Endpoint.InitValue,  
+                            location: Endpoint.InitValue,  
                             units: Endpoint.InitValue,   
                         };                
     }
@@ -46,33 +44,40 @@ export namespace getWxNowEndpoint
 
     export interface RequestData
     {
-        lat : number;
-        lon : number;
+        location : string;
         units : Units;
     }
 
     export enum Conditions
     {
         CLEAR = "clear",
-        FEW_ClOUDS = "fewclouds",
-        SCATTERED_ClOUDS = "scattered_clouds",
-        BROKEN_ClOUDS = "broken_clouds",
-        SHOWWERS = "showers",
+
+        PARTLY_ClOUDY = "partly_cloudy",
+        CLOUDY = "cloudy",
+        OVERCAST = "overcast",
+
+        DRIZZLE = "drizzle",
+        SHOWERS = "showers",
         RAIN = "rain",
         THUNDERSTORM = "thunderstorms",
+
         SNOW = "snow",
+        SLEET = "sleet",
+
         MIST = "mist",
+        FOG = "fog",
     }
 
     export interface Report
     {
-        temperature    : number;
-        feels_like : number;
-        humidity : number;
-        conditions : Conditions;
-        dew_point : number;
-        wind : { speed: number; direction: number, gust : number };
-        cloud_coverage : number;        // 0-1 (percent)
+        temperature     : number;
+        feels_like      : number;
+        humidity        : number;
+        conditions      : Conditions;
+        dew_point?      : number;
+        wind            : { speed: number; direction: number, gust : number };
+        cloud_coverage  : number;        // 0-1 (percent)
+        percipitation   : number;
     }
 
     export interface ReplyData

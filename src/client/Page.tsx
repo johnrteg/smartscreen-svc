@@ -14,6 +14,10 @@ import TimeZones        from "./modules/TimeZones/TimeZones.js";
 import Weather          from "./modules/Weather/Weather.js";
 import WeatherForecast  from "./modules/Weather/WeatherForecast.js";
 import Calendar         from "./modules/Calendar/Calendar.js";
+import Exchange         from "./modules/exchange/Exchange.js";
+import MapGoogle        from "./modules/map/MapGoogle.js";
+import Commute          from "./modules/commute/Commute.js";
+import WordOfDay        from "./modules/word/WordOfDay.js";
 
 
 
@@ -42,8 +46,6 @@ export default function Page( props : PageProps ) : JSX.Element
         //console.log('button pressed', response );
     }
 
-    
-
     ///////////////////////////////////////////////////////////////////////////////
     function renderWidget( widget: Interfaces.Widget ) : JSX.Element
     {
@@ -55,17 +57,19 @@ export default function Page( props : PageProps ) : JSX.Element
             case "wxnow"        : return <Weather config={widget.config}/>;
             case "wxforecast"   : return <WeatherForecast config={widget.config}/>;
             case "calendar"     : return <Calendar config={widget.config} warm={props.warm}/>;
+            case "exchange"     : return <Exchange config={widget.config}/>;
+            case "map"          : return <MapGoogle config={widget.config}/>;
+            case "commute"      : return <Commute config={widget.config}/>;
+            case "word"         : return <WordOfDay config={widget.config}/>;
         }
         return null;
     }
 
-    ///////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
     function renderRow( row_index: number, widgets: Array<Interfaces.Widget> ) : Array<JSX.Element>
     {
         let row : Array<JSX.Element> = [];
-
         widgets.forEach( ( widget: Interfaces.Widget, index: number ) => { row.push( <Box key={row_index + "." + index} sx={{width:widget.width}} >{renderWidget( widget )}</Box> ) } );
-
         return row;
     }
 

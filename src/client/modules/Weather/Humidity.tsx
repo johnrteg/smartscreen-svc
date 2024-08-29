@@ -51,9 +51,9 @@ export default function Humidity( props : HumidityProps ) : JSX.Element
     function describeArc(x:number, y:number, radius:number, spread:number, startAngle:number, endAngle: number ) : string
     {
         var innerStart : any = polarToCartesian(x, y, radius, endAngle);
-        var innerEnd : any  = polarToCartesian(x, y, radius, startAngle);
+        var innerEnd   : any  = polarToCartesian(x, y, radius, startAngle);
         var outerStart : any  = polarToCartesian(x, y, radius + spread, endAngle);
-        var outerEnd : any  = polarToCartesian(x, y, radius + spread, startAngle);
+        var outerEnd   : any    = polarToCartesian(x, y, radius + spread, startAngle);
     
         var largeArcFlag : string = endAngle - startAngle <= 180 ? "0" : "1";
     
@@ -77,11 +77,12 @@ export default function Humidity( props : HumidityProps ) : JSX.Element
         color = "red";
 
     // ===============================================================================================
+    // note 359.9 is used for ring since 360 also is 0 and no ring would be shown
     return (
         <div>
             <svg width={props.size} height={props.size}>
                 <g>
-                    <path d={ describeArc(props.size/2,props.size/2,(props.size/2)-9, 6, 0, 360*(props.value/100)) } fill={color} fillOpacity={0.6} />
+                    <path d={ describeArc(props.size/2,props.size/2,(props.size/2)-9, 6, 0, 359.9*(props.value/100)) } fill={color} fillOpacity={0.6} />
                     <circle stroke="white" cx={props.size/2} cy={props.size/2} r={(props.size/2)-2} strokeWidth={2} fillOpacity={0} ></circle> 
                     <text x="50%" y="30%" textAnchor="middle" fill="white" fontSize="10" strokeWidth="2px" dy=".3em">{"Humidity"}</text>
                     <text x="50%" y="60%" textAnchor="middle" fill="white" fontSize="20" strokeWidth="2px" dy=".3em">{props.value}{"%"}</text>

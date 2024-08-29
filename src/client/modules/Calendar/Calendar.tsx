@@ -16,7 +16,7 @@ import AppData from "../../AppData.js";
 import { getCalendarEndpoint } from "../../../api/getCalendarEndpoint.js";
 import { netClient } from "../../../net/netClient.js";
 import { Constants } from "../../../utils/Constants.js";
-import { getLoginGoogleEndpoint } from "../../../api/getLoginGoogleEndpoint.js";
+//import { getLoginGoogleEndpoint } from "../../../api/getLoginGoogleEndpoint.js";
 
 import MonthlyView from "./MonthlyView.js";
 
@@ -28,8 +28,14 @@ export interface CalendarConfig
 
 export interface CalendarProps
 {
-    config : CalendarConfig;
-    warm : boolean;
+    config  : CalendarConfig;
+    warm    : boolean;
+}
+
+enum CalendarView
+{
+    MONTHLY = "monthly",
+    WEEKLY  = "weekly",
 }
 
 
@@ -38,72 +44,49 @@ export interface CalendarProps
 //
 export default function Calendar( props : CalendarProps ) : JSX.Element
 {
-    const [appdata,setAppData]      = React.useState< AppData >( AppData.instance() );
+    const [appdata,setAppData]          = React.useState< AppData >( AppData.instance() );
 
-    const [login, setLogin]       = React.useState<string>("");
-    //const [seconds, setSeconds] = React.useState<string>("");
-    //const [date,setDate]        = React.useState< string >( "" );
-    //const [dow,setDow]          = React.useState< string >( "" );
-    //const [ampm,setAmPm]        = React.useState< string >( "" );
-    const [start_date, setStartDate]         = React.useState<Date>(null);
+    const [login, setLogin]             = React.useState<string>("");
+    const [view, setView]               = React.useState<CalendarView>(CalendarView.MONTHLY);
+    const [events, setEvents]           = React.useState< Array<getCalendarEndpoint.Event> >([]);
+    
 
+    const oauth_window                  = React.useRef<Window>(null);
+    const oauth_timer_id                = React.useRef<NodeJS.Timeout>(null);
+
+    const [start_date, setStartDate]    = React.useState<Date>(null);
+
+    //
     React.useEffect( () => pageLoaded(), [] );
     React.useEffect( () => () => pageUnloaded(), [] );
+    React.useEffect( onStartChange, [start_date] );
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function pageLoaded() : void
     {
-        console.log( "config", props.config );
-
+        //console.log( "config", props.config );
         let today : Date = new Date();
         let start : Date = new Date( today.getFullYear(), today.getMonth(), 1, 0, 0, 0, 0 );
         setStartDate( start );
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
-    async function refresh() : Promise<void>
-    {
-        const now : Date = new Date();
-        const until : Date = new Date( now.getTime() + 30*Constants.DAYS_TO_MS );
-
-        // AIzaSyB57DgYEFg8UT2jek_GQBKd07OTGPXpiIM
-        // key: 251787141802-2kkgk02405mb3p0jslkogb7c6nec16ku.apps.googleusercontent.com
-        // <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&bgcolor=%23ffffff&src=amxhanJ0QGdtYWlsLmNvbQ&src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23cca300&color=%230B8043" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-        // https://calendar.google.com/calendar/ical/jlajrt%40gmail.com/private-26d71f3e1239d646f4cc2470477562b6/basic.ics
-
-        const endpt : getCalendarEndpoint = new getCalendarEndpoint();
-        endpt.request.address = "jlajrt@gmail.com";
-        endpt.request.service = "google";
-        endpt.request.start_date = now.toDateString();
-        endpt.request.end_date = until.toDateString();
-
-        const reply  : netClient.Reply = await appdata.webserver.fetch( endpt );
-        if( reply.ok )
-        {
-            console.log("cal", reply.data );
-            const data : getCalendarEndpoint.ReplyData = reply.data;
-
-        }
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
     function pageUnloaded() : void
     {
-        console.log("cal unloaded");
+        //console.log("cal unloaded");
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function onLogin() : void
     {
-        console.log("login");
         googleLogin();
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function onToday() : void
     {
         let today : Date = new Date();
-        let start : Date = new Date( today.getFullYear(), today.getMonth(), 1, 0, 0, 0, 0 );
-        setStartDate( start );
+        today.setHours( 0, 0, 0, 0 )
+        setStartDate( today );
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function onPrevious() : void
@@ -122,43 +105,91 @@ export default function Calendar( props : CalendarProps ) : JSX.Element
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     async function googleLogin() : Promise<void>
     {
-        /*
-        let endpt : getLoginGoogleEndpoint = new getLoginGoogleEndpoint();
-        const reply  : netClient.Reply = await appdata.webserver.fetch( endpt );
-        if( reply.ok )
-        {
-            console.log("login", reply.data );
-
-        }
-        */
-
         const params : string = queryString.stringify({
-                        client_id: "251787141802-8lm7p0g9r8ph27lt54v0tjl0if521bjp.apps.googleusercontent.com",
+                        client_id: "1067509946324-up5h3eqksr1hkihtb1ujte4h4i93iutj.apps.googleusercontent.com",
                         redirect_uri: 'http://localhost:8080/auth/google',
                         scope: [
                         'https://www.googleapis.com/auth/userinfo.email',
                         'https://www.googleapis.com/auth/userinfo.profile',
                         'https://www.googleapis.com/auth/calendar.events'
                         ].join(' '), // space seperated string
-                        response_type: 'code',
+                        response_type: 'code', // 'token', // code
+                        include_granted_scopes: true,
                         access_type: 'offline',
                         prompt: 'consent',
                     });
 
         const url : string = StringUtils.format( "https://accounts.google.com/o/oauth2/v2/auth?{0}", params );
 
-        //setLogin( StringUtils.format("<iframe src=\"{0}\" width=\"100%\" height=\"300px\"></iframe>", url ) );
-        //setLogin( url );
+        oauth_window.current = window.open( url, '_blank', "width=600,height=750,top=100,left=100,location=false" );
+        oauth_window.current.focus();
+        //oauth_window.current.onclose = onClose;
 
-        var win = window.open( url, '_blank', "width=600,height=700,location=false" );
-        win.focus();
+        // add timer to capture exit
+        oauth_timer_id.current = setInterval( onCheckWindow, 500 );
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    function onCheckWindow() : void
+    {
+        try
+        {
+            //console.log("auth change", oauth_window.current.location );
+            if( oauth_window.current.location.host === "localhost:8080" )
+            {
+                clearInterval( oauth_timer_id.current );
+                oauth_timer_id.current  = null;
+                oauth_window.current.close();
+            }
+        }
+        catch( err: any )
+        {
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    function onClose( event : any ) : void
+    {
+        if( oauth_timer_id.current )clearInterval( oauth_timer_id.current );
+        oauth_timer_id.current  = null;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    function onStartChange() : void
+    {
+        console.log("onStartChange", start_date );
+        getEvents();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+    async function getEvents() : Promise<void>
+    {
+        if( start_date == null )return;
+
+        let end_date : Date = new Date( start_date.getTime() + 30*Constants.DAYS_TO_MS );
+
+        const endpt : getCalendarEndpoint = new getCalendarEndpoint();
+        endpt.request.start_date = start_date.toISOString();
+        endpt.request.end_date   = end_date.toISOString();
+
+        const reply  : netClient.Reply = await appdata.webserver.fetch( endpt, { cache: true, lifespan: 15 } ); // 15 minute force update
+        if( reply.ok )
+        {
+            const data : getCalendarEndpoint.ReplyData = reply.data;
+            console.log("event", data );
+
+            // convert here...
+            setEvents( data.events );
+        }
+    }
+
+
 
     // ===============================================================================================
     return (
         <Stack direction={"column"} spacing={0} gap={0}>
             <Stack direction={"row"} spacing={0} gap={0} justifyContent="center" alignItems="center">
-                <Button variant="outlined" size="large" onClick={onLogin} startIcon={<GoogleIcon />} sx={{ width: "250px" }} >{"Google Login"}</Button>
+                <Button variant="outlined" size="large" onClick={onLogin} startIcon={<GoogleIcon />} sx={{ width: "275px" }} >{"Sign in with Google"}</Button>
 
                 { props.warm ? <div>
                     <IconButton size="large" onClick={onPrevious}><ArrowCircleLeftOutlinedIcon /></IconButton>
@@ -168,7 +199,7 @@ export default function Calendar( props : CalendarProps ) : JSX.Element
                 
             </Stack>
             
-            <MonthlyView start_date={start_date} days={props.config.days} />
+            { view == CalendarView.MONTHLY ? <MonthlyView start_date={start_date} days={props.config.days} events={events} /> : null }
         </Stack>       
     );
     // ===============================================================================================

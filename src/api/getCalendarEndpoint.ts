@@ -12,18 +12,14 @@ export class getCalendarEndpoint extends Endpoint.Definition
     constructor()
     {
         super( Network.Method.GET, "/calendar", false );
-        this.datamap =  {   address : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-                            service : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-                            start_date : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
-                            end_date : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
+        this.datamap =  {   start_date : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
+                            end_date   : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
                         };
     }
 
     public reset() : void
     {
-        this.request =  {
-            address: Endpoint.InitValue,   
-            service: Endpoint.InitValue,  
+        this.request =  { 
             start_date: Endpoint.InitValue,   
             end_date: Endpoint.InitValue,   
                         };                
@@ -41,15 +37,28 @@ export namespace getCalendarEndpoint
 {
     export interface RequestData
     {
-        address : string;
-        service : string;
         start_date : string;
         end_date : string;
     }
 
+    export interface EventTime
+    {
+        dt      : string;
+        tz?     : string;
+        allday? : boolean;
+    }
+
+    export interface Event
+    {
+        id      : string;
+        summary : string;
+        start   : EventTime;
+        end     : EventTime;
+    }
+
     export interface ReplyData
     {
-        //reports : Array<Report>;
+        events : Array<Event>;
     }
 
     export enum Error

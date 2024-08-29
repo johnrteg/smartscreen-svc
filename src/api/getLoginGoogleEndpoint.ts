@@ -5,21 +5,30 @@ import { Endpoint } from "../net/Endpoint.js";
 import { Network  } from "../net/Network.js";
 
 // -------------------------------------------------------------------------------------------------------------
-//
+// clientid: 1067509946324-up5h3eqksr1hkihtb1ujte4h4i93iutj.apps.googleusercontent.com
+// client secret: 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
 //
 export class getLoginGoogleEndpoint extends Endpoint.Definition
 {
     constructor()
     {
         super( Network.Method.POST, "/login/google", false );
-        this.datamap =  {   //code : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: false }
+        this.datamap =  {   access_token    : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: false },
+                            token_type      : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: false },
+                            expires_in      : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: false },
+                            refresh_token   : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: false },
+                            scope           : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: false }
                         };
     }
 
     public reset() : void
     {
         this.request =  {
-                            //code: Endpoint.InitValue,    
+                            access_token : Endpoint.InitValue,
+                            token_type : Endpoint.InitValue,
+                            expires_in : Endpoint.InitValue,
+                            refresh_token : Endpoint.InitValue, 
+                            scope : Endpoint.InitValue,   
                         };                
     }
 
@@ -35,7 +44,11 @@ export namespace getLoginGoogleEndpoint
 {
     export interface RequestData
     {
-        //code : string;
+        access_token : string;
+        token_type : string;
+        expires_in : string;
+        refresh_token : string;
+        scope : string;
     }
 
     export interface ReplyData

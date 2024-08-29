@@ -9,6 +9,7 @@ import { getWxForecastEndpoint }  from '../../../api/getWxForecastEndpoint.js';
 
 import { WxModule } from './WxModule.js';
 import { netClient } from '../../../net/netClient.js';
+import getWx from './getWx.js';
 
 
 
@@ -53,43 +54,45 @@ export default class getWxForecast extends getWxForecastEndpoint
     {
         //console.log( "getWx", this.module.key, this.request );
 
+        // alternative
+        // https://www3.visualcrossing.com/
+        //
+
+        // weather radar
+        // https://docs.meteoblue.com/en/weather-apis/maps-api/examples
+
         let reports : Array<getWxForecastEndpoint.Report> = [];
 
-        // https://openweathermap.org/forecast16
-        const endpt : netClient = new netClient( "" );
-        const response : netClient.Reply = await endpt.get( "https://api.openweathermap.org/data/2.5/forecast/daily",
-                        {   lat     : this.request.lat,
-                            lon     : this.request.lon,
-                            cnt     : Math.min( 16, this.request.days ),
-                            units   : this.request.units,
-                            appid   : this.module.key } );                   
-        console.log( "getWxForecastEndpoint", this.module.key, response.ok, JSON.stringify( response.data, null, 4 ) );
+        const endpt : netClient = new netClient( "", null, 1000 );
+        const response : netClient.Reply = await endpt.get( "http://api.weatherapi.com/v1/forecast.json",
+            {   q     : this.request.location,
+                days  : Math.min( this.request.days, 14 ),
+                hour  : 13, // 1 pm
+                key   : this.module.key } );                
+        //console.log( "getWxForecastEndpoint", this.module.key, response.ok, JSON.stringify( response.data, null, 4 ) );
+
         if( response.ok )
         {
-
             try
             {
-                const nbr : number = response.data.list.length;
+                const nbr : number = response.data.forecast.forecastday.length;
                 let i : number;
                 let dt : Date;
                 for( i=0; i < nbr; i++ )
                 {
-                    dt = new Date( response.data.list[i].dt*1000 );
-                    console.log( "getWxForecastEndpoint", i, dt );
-                    console.log( "temp", response.data.list[i].main.temp.min, response.data.list[i].main.temp.max );
-                    console.log( "icon", response.data.list[i].weather[0].icon );
-                    console.log( "pop", response.data.list[i].pop );
+                    dt = new Date( response.data.forecast.forecastday[i].date_epoch * 1000 );
+
+                    reports.push( { date        : response.data.forecast.forecastday[i].date_epoch,
+                                    date_str : response.data.forecast.forecastday[i].date,
+                                    min_temp    : response.data.forecast.forecastday[i].day.mintemp_f,
+                                    max_temp    : response.data.forecast.forecastday[i].day.maxtemp_f,
+                                    humidity    : response.data.forecast.forecastday[i].day.avghumidity,
+                                    conditions  : getWx.Coverage( response.data.forecast.forecastday[i].day.condition.code.toString() ),
+                                    wind        : response.data.forecast.forecastday[i].day.maxwind_mph,
+                                    rain_chance : response.data.forecast.forecastday[i].day.daily_chance_of_rain / 100,
+                                    snow_chance : response.data.forecast.forecastday[i].day.daily_chance_of_snow / 100
+                                } );
                 }
-                /*
-                reports.push( { temperature : response.data.main.temp,
-                                feels_like : response.data.main.feels_like,
-                                humidity : response.data.main.humidity,
-                                dew_point : 0,
-                                conditions :this.Coverage( response.data.weather[0].icon ),
-                                wind : { speed: response.data.wind.speed, direction: response.data.wind.deg, gust : response.data.wind.gust ? response.data.wind.gust : 0 },
-                                cloud_coverage : ( response.data.clouds.all / 100 )
-                            } );
-                             */
             }
             catch( err: any )
             {
@@ -102,6 +105,7 @@ export default class getWxForecast extends getWxForecastEndpoint
         {
             console.error( response.error );
         }
+
 
         // reply
         let reply : getWxForecastEndpoint.ReplyData = { reports : reports };
