@@ -1,3 +1,4 @@
+//
 import * as React from "react";
 
 import StringUtils from "../../../utils/StringUtils.js";
@@ -44,9 +45,7 @@ export default function Wind( props : WindProps ) : JSX.Element
     let speed : string = props.minSpeed + "-" + props.maxSpeed;
     if( props.minSpeed == props.maxSpeed || props.maxSpeed == 0 )speed = props.minSpeed.toString();
 
-    //const ang : number = 45;
     const arrow : Array<string> = [ ((props.size/2)-5)+",0", ((props.size/2)+5)+",0", ((props.size/2))+",15" ];
-    //const tranform : string = StringUtils.format( "translate({0} {1}) rotate({2} {3} {4})", (props.size/2), 0, ang, (props.size/2), (props.size/2) );
     const tranform : string = StringUtils.format( "rotate({0} {1} {2})", props.direction, (props.size/2), (props.size/2) );
 
     // ===============================================================================================

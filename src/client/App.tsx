@@ -49,6 +49,38 @@ export default function App(): JSX.Element
         //appdata.setPage( "login" );
     }
 
+    //
+    // set up view
+    //
+    //console.log( "mode", language, mode, appdata.uri.uri );
+
+    /*
+    let page: JSX.Element = <div></div>;
+    switch( mode )
+    {
+        case SessionModel.Mode.APPLICATION  : page = <ApplicationPage   depth={ROOT_DEPTH} />; break;
+        case SessionModel.Mode.CLIENT       : page = <ClientPage        depth={ROOT_DEPTH} />; break;
+        case SessionModel.Mode.DIVISION     : page = <DivisionPage      depth={ROOT_DEPTH} />; break;
+        case SessionModel.Mode.SYSTEM       : page = <SystemPage        depth={ROOT_DEPTH} />; break;
+
+        case SessionModel.Mode.NONE         : page = <PublicPage depth={ROOT_DEPTH} />; break;
+        case SessionModel.Mode.UNKNOWN      : page = <PublicPage depth={ROOT_DEPTH} />; break;
+        default                             : page = <PublicPage depth={ROOT_DEPTH} />; break;
+    }
+        */
+
+
+
+  /*
+   <React.StrictMode>
+   </React.StrictMode>
+
+    <CookiesProvider defaultSetOptions={{ path: '/' }}>
+      <ThemeProvider theme={theme}>
+        {page}
+      </ThemeProvider>
+    </CookiesProvider>
+  */
 
   // ==============================================================================
   return <ThemeProvider theme={theme}><Main/></ThemeProvider>;

@@ -1,5 +1,3 @@
-
-
 export default class ObjectUtils
 {
 
@@ -55,7 +53,11 @@ export default class ObjectUtils
     }
     public static getNumber( value : any ) : number
     {
-        if( ObjectUtils.isNumber( value ) )
+        if( ObjectUtils.isString( value ) )
+        {
+            return parseInt( value );
+        }
+        else if( ObjectUtils.isNumber( value ) )
         {
             return value as number;
         }

@@ -29,7 +29,7 @@ export default class getAuthGoogle extends getAuthGoogleEndpoint
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public async execute( authenticated : Endpoint.Authenticated ) : Promise<Endpoint.Reply>
     {
-        console.log( "getAuthGoogle", this.request );
+        //console.log( "getAuthGoogle", this.request );
 
         await this.server.authorizeFromCode( this.request.code );
         

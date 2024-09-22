@@ -4,9 +4,6 @@
 import { Endpoint } from "../net/Endpoint.js";
 import { Network  } from "../net/Network.js";
 
-// -------------------------------------------------------------------------------------------------------------
-// clientid: 1067509946324-up5h3eqksr1hkihtb1ujte4h4i93iutj.apps.googleusercontent.com
-// client secret: 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
 //
 export class getLoginGoogleEndpoint extends Endpoint.Definition
 {
@@ -24,11 +21,11 @@ export class getLoginGoogleEndpoint extends Endpoint.Definition
     public reset() : void
     {
         this.request =  {
-                            access_token : Endpoint.InitValue,
-                            token_type : Endpoint.InitValue,
-                            expires_in : Endpoint.InitValue,
-                            refresh_token : Endpoint.InitValue, 
-                            scope : Endpoint.InitValue,   
+                            access_token    : Endpoint.InitValue,
+                            token_type      : Endpoint.InitValue,
+                            expires_in      : Endpoint.InitValue,
+                            refresh_token   : Endpoint.InitValue, 
+                            scope           : Endpoint.InitValue,   
                         };                
     }
 
@@ -44,11 +41,11 @@ export namespace getLoginGoogleEndpoint
 {
     export interface RequestData
     {
-        access_token : string;
-        token_type : string;
-        expires_in : string;
-        refresh_token : string;
-        scope : string;
+        access_token    : string;
+        token_type      : string;
+        expires_in      : string;
+        refresh_token   : string;
+        scope           : string;
     }
 
     export interface ReplyData

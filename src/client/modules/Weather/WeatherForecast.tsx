@@ -18,19 +18,19 @@ import { WxIcon } from "./WxIcon.js";
 
 enum Direction
 {
-    HORIZONTAL = "horizontal",
-    VERTICAL = "vertical",
+    HORIZONTAL  = "horizontal",
+    VERTICAL    = "vertical",
 }
 
 export interface WeatherForecastConfig
 {
-    location : string;
-    name : string;
-    units : string;
+    location    : string;
+    name        : string;
+    units       : string;
     update_hours : number;
-    direction : Direction;
-    days : number;
-    title : boolean;
+    direction   : Direction;
+    days        : number;
+    title       : boolean;
 }     
 
 export interface WeatherForecastProps

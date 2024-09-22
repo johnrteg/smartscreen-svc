@@ -27,7 +27,7 @@ export default class getLayout extends getLayoutEndpoint
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public async execute( authenticated : Endpoint.Authenticated ) : Promise<Endpoint.Reply>
     {
-        let layout : any = this.server.readJsonFile( "config/layout.json", {} );
+        const layout : any = this.server.readJsonFile( "config/layout.json", {} );
         //console.log( "getLayout", layout );
         
         // reply

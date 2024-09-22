@@ -1,6 +1,8 @@
 //
 import StringUtils          from '../../../utils/StringUtils.js';
 import ObjectUtils          from '../../../utils/ObjectUtils.js';
+import { Constants }        from '../../../utils/Constants.js';
+
 import { Network }          from '../../../net/Network.js';
 import { Endpoint }         from '../../../net/Endpoint.js';
 
@@ -10,6 +12,7 @@ import { getWxForecastEndpoint }  from '../../../api/getWxForecastEndpoint.js';
 import { WxModule } from './WxModule.js';
 import { netClient } from '../../../net/netClient.js';
 import getWx from './getWx.js';
+import { getWxNowEndpoint } from '../../../api/getWxNowEndpoint.js';
 
 
 
@@ -49,6 +52,8 @@ export default class getWxForecast extends getWxForecastEndpoint
     }
         */
 
+    
+    /*
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public async execute( authenticated : Endpoint.Authenticated ) : Promise<Endpoint.Reply>
     {
@@ -60,6 +65,8 @@ export default class getWxForecast extends getWxForecastEndpoint
 
         // weather radar
         // https://docs.meteoblue.com/en/weather-apis/maps-api/examples
+
+        await this.altexecute( authenticated );
 
         let reports : Array<getWxForecastEndpoint.Report> = [];
 
@@ -111,6 +118,58 @@ export default class getWxForecast extends getWxForecastEndpoint
         let reply : getWxForecastEndpoint.ReplyData = { reports : reports };
         return { status: Network.Status.OK, data: reply };
     }
+        */
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public async execute( authenticated : Endpoint.Authenticated ) : Promise<Endpoint.Reply>
+    {
+        let reports : Array<getWxForecastEndpoint.Report> = [];
+
+        const today : Date = new Date();
+        today.setHours( 12, 0, 0, 0 );
+
+        const end_date : Date = new Date( today.getTime() + this.request.days * Constants.DAYS_TO_MS );
+        const endpt    : netClient = new netClient( "", null, 1000 );
+        const url      : string = StringUtils.format( "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{0}/{1}/{2}", this.request.location, today.getTime()/1000, end_date.getTime()/1000 );
+        //console.log("url", url );
+        const response : netClient.Reply = await endpt.get( url, { key : this.module.key, iconSet : 'icons2' } );
+
+        if( response.ok )
+        {
+            //console.log( response.data );
+            
+            try
+            {
+                const nbr : number = response.data.days.length;
+                let i : number;
+
+                for( i=0; i < nbr; i++ )
+                {
+                    reports.push( { date        : response.data.days[i].datetimeEpoch,
+                                    date_str    : response.data.days[i].datetime,
+                                    min_temp    : response.data.days[i].tempmin,
+                                    max_temp    : response.data.days[i].tempmax,
+                                    humidity    : response.data.days[i].humidity,
+                                    conditions  : getWx.Coverage( response.data.days[i].icon ),
+                                    wind        : response.data.days[i].windspeed,
+                                    rain_chance : response.data.days[i].precipprob / 100,
+                                    // response.data.days[i].preciptype // rain, snow, freezingrain and ice.
+                                    snow_chance : 0
+                    } );
+                }
+            }
+            catch( err: any )
+            {
+                console.error( "wxforecast: error parsing JSON response" );
+            }
+
+        }
+
+        // reply
+        let reply : getWxForecastEndpoint.ReplyData = { reports : reports };
+        return { status: Network.Status.OK, data: reply };
+    }
+
 }
 
 //

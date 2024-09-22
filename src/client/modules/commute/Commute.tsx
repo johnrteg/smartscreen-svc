@@ -3,6 +3,7 @@ import * as React from "react";
 
 //
 import {Loader, LoaderOptions} from 'google-maps';
+import {APIProvider, Map, MapEvent} from '@vis.gl/react-google-maps';
 
 
 //
@@ -23,11 +24,8 @@ import Title from "../../widgets/Title.js";
 //
 import AppData from "../../AppData.js";
 
-import { netClient } from "../../../net/netClient.js";
-import { Constants } from "../../../utils/Constants.js";
-
-import { getCommuteEndpoint } from "../../../api/getCommuteEndpoint.js";
 import StringUtils from "../../../utils/StringUtils.js";
+import { Constants } from "../../../utils/Constants.js";
 
 enum Direction
 {
@@ -44,7 +42,7 @@ interface Route
 
 export interface CommuteConfig
 {
-    from         : string;
+    //from         : string;
     to           : Array<Route>;
     update_hours : number;
     direction    : string;
@@ -74,105 +72,94 @@ export default function Commute( props : CommuteProps ) : JSX.Element
 {
     const [appdata,setAppData]      = React.useState< AppData >( AppData.instance() );
     
-    const map               = React.useRef<any>(null);
-    const [routes, setRoutes]         = React.useState< Array<CommuteRoute> >( [] );
+    const map                       = React.useRef<any>(null);
+    const [routes, setRoutes]       = React.useState< Array<CommuteRoute> >( [] );
+    const [since, setSince]         = React.useState< string >( "" );
+    const last_refresh              = React.useRef<Date>(null);
+
+    const directions                = React.useRef<google.maps.DirectionsService>(null);
 
     //
     React.useEffect( () => pageLoaded(), [] );
-    //React.useEffect( () => () => pageUnloaded(), [] );
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function pageLoaded() : void
     {
-        //load();
-        refresh();
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
-    async function load() : Promise<void>
+    ///////////////////////////////////////////////////////////////////////////////////
+    async function getRoute( route : Route ) : Promise<CommuteRoute>
     {
-        const options: LoaderOptions = {};
-        const loader : Loader = new Loader('AIzaSyAh7YwRm96CWF8eftoTrnvt1kfhNDYB7fY', options);
+        return new Promise( (resolve) => {
 
-        map.current = await loader.load().then( asyncLoad );
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function asyncLoad( google : any ) : void
-    {
-        refresh();
-    }
+            const request : google.maps.DirectionsRequest = {
+                drivingOptions  : { departureTime: new Date(),
+                                    trafficModel : google.maps.TrafficModel.BEST_GUESS
+                                    },
+                origin          : appdata.settings.location.address,
+                destination     : route.address,
+                travelMode      : google.maps.TravelMode['DRIVING']
+            };
 
-    //////////////////////////////////////////////////////
-    function getRoute( destination : string ) : void
-    {
-        const dir : google.maps.DirectionsService = new google.maps.DirectionsService();
-        const request : google.maps.DirectionsRequest = {
-                                drivingOptions: { departureTime: new Date(), trafficModel : google.maps.TrafficModel.PESSIMISTIC },
-                                origin: props.config.from,
-                                destination: destination,
-                                travelMode: google.maps.TravelMode['DRIVING']
-                            };
-          dir.route( request, function(result:google.maps.DirectionsResult, status:google.maps.DirectionsStatus)
-          {
-            if( status == 'OK')
+            directions.current.route( request, function( result : google.maps.DirectionsResult, status : google.maps.DirectionsStatus )
             {
-              console.log( destination, result.routes[0].legs[0].duration, result.routes[0].legs[0].duration_in_traffic );
-            }
-          });
+                if( status == 'OK')
+                {
+                    //console.log( route.address, result.routes[0].legs[0].duration, result.routes[0].legs[0].duration_in_traffic );
+                    const rt : CommuteRoute = { name    : route.name,
+                                                icon    : route.icon,
+                                                distance: result.routes[0].legs[0].distance.value,
+                                                time    : result.routes[0].legs[0].duration_in_traffic.value / 60,
+                                                delay   : ( result.routes[0].legs[0].duration_in_traffic.value - result.routes[0].legs[0].duration.value ) / 60 };
+                    
+                    //new_routes.current.push( rt );
+                    //console.log( new_routes.current );
+                    //if( timer_id.current )clearTimeout( timer_id.current );
+                    //timer_id.current = setTimeout( update, 100 );
+                    resolve( rt );
+                }
+                else
+                {
+                    resolve( null );
+                }
+            });
+
+        });
+
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async function refresh() : Promise<void>
     {
-        // destinations
-        let to_adr : Array<string> = [];
-        props.config.to.forEach( ( rt : Route )=> { to_adr.push( rt.address ) } );
+        let rts : Array<CommuteRoute> = [];
 
         let i : number;
-        for( i=0; i < to_adr.length; i++ )
+        let rt : CommuteRoute;
+        for( i=0; i < props.config.to.length; i++ )
         {
-            getRoute( to_adr[i] );
+            rt = await getRoute( props.config.to[i] );
+            if( rt )rts.push( rt );
         }
 
-        /*
-        const endpt : getCommuteEndpoint = new getCommuteEndpoint();
-        endpt.request.from = props.config.from;
-        endpt.request.to   = to_adr.join('|');
-        endpt.request.mode = "car";
+        last_refresh.current = new Date();
+        setRoutes( rts );
+        updateSince();
+        
+        setTimeout( refresh, appdata.nextUpdate( props.config.update_hours * Constants.HOURS_TO_MS ) );   
+    }
 
-        //console.log( endpt.request );
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function updateSince() : void
+    {
+        const now : Date = new Date();
+        const min_diff : number = ( now.getTime() - last_refresh.current.getTime() ) / (60*1000);
+        //console.log("updateSince", min_diff, hoursLabel( min_diff ) );
 
-        const reply  : netClient.Reply = await appdata.webserver.fetch( endpt, { cache: true, lifespan: 240, timeout: endpt.request.to.length*1000 } ); // 240 minute force update
-        if( reply.ok )
-        {
-            
-            const data : getCommuteEndpoint.ReplyData = reply.data;
-
-            //console.log("commute", data );
-
-            let rts : Array<CommuteRoute> = [];
-            let rt : CommuteRoute;
-
-            let i : number;
-            for( i=0; i < data.paths.length; i++ )
-            {
-                rt = {  name    : props.config.to[i].name,
-                        icon    : props.config.to[i].icon,
-                        distance: data.paths[i].distance,
-                        time    : data.paths[i].time,
-                        delay   : data.paths[i].delay
-                    };
-                rts.push( rt );
-            }
-
-            setRoutes( rts );
-        }
-        else
-        {
-            console.error("commute", reply.error );
-        }
-        */
-        setTimeout( refresh, appdata.nextUpdate( props.config.update_hours * Constants.HOURS_TO_MS ) );
+        // break to catch if refresh is not triggering due to screen hibernation
+        if( min_diff > 180 )refresh();
+        
+        setSince( hoursLabel( min_diff ) );
+        setTimeout( updateSince, Constants.MINUTES_TO_MS );
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -191,15 +178,17 @@ export default function Commute( props : CommuteProps ) : JSX.Element
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function hoursLabel( hours : number ) : string
+    function hoursLabel( input_minutes : number ) : string
     {
-        const hrs     : number = Math.abs( hours );
+        const hrs     : number = Math.abs( input_minutes );
         const hour    : number = Math.floor( hrs / 60 );
         const minutes : number = Math.ceil( hrs - hour*60 );
-        let label     : string = hours > 0 ? "" : "-";
-        if( hour > 0 )label = StringUtils.format( "{0} hour{1}", hour, hour > 1 ? "s" : "" );
-        label += " ";
-        label += StringUtils.format( "{0} mins", StringUtils.leadingZero( minutes, 2 ) );
+        //console.log( hrs, hrs*60, "hour", hour, "minutes", minutes );
+        let label     : string = input_minutes > 0 ? "" : "-";
+        if( hour > 0 )
+            label = StringUtils.format( "{0}:{1}", hour, StringUtils.leadingZero( minutes, 2 ) );
+        else
+            label = StringUtils.format( "{0} mins", StringUtils.leadingZero( minutes, 2 ) );
         return label;
     }
 
@@ -214,30 +203,48 @@ export default function Commute( props : CommuteProps ) : JSX.Element
             <td>{ renderIcon( route.icon, "25px" ) }</td>
             <td><Typography component="div" color={"text.primary"}>{ route.name }</Typography></td>
             <td><Typography component="div" color={"text.secondary"} >{ label }</Typography></td>
-            <td><Typography component="div" color={"error"} >{ route.delay > 1 ? '+'+delay : '' }</Typography></td>
+            <td><Typography component="div" color={"error"} >{ route.delay > 1 ? '+' + delay : '' }</Typography></td>
         </tr>;
-
-// <Grid item xs={5}><Typography component="div" color={"text.secondary"} >{ route.delay.toFixed(1) }</Typography></Grid>
-        /*
-        const elem : JSX.Element = <Stack key={index} direction={"row"} spacing={0} gap={0.5} >
-            { renderIcon( route.icon ) }
-            <Typography component="div" color={"text.primary"}>{ route.name }</Typography>
-            <Typography component="div" color={"text.secondary"} >{ label }</Typography>
-        </Stack>;
-        */
-            
+  
         return elem;
     }
 
-    /*
-    <Stack direction={ props.config.direction == Direction.HORIZONTAL ? "row" : "column" } spacing={0} gap={props.config.gap} width={"100%"}>
-                { routes.map( ( route : CommuteRoute, index : number ) => { return renderPath( route, index ) } ) }
-            </Stack>
-    */
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    function onTileLoaded( event: MapEvent<unknown> ) : void
+    {
+        if( map.current == null )
+        {
+            map.current = event.map;
+            const trafficLayer : any = new google.maps.TrafficLayer();
+            trafficLayer.setMap( map.current );
+
+            directions.current = new google.maps.DirectionsService();
+
+            refresh();
+        }
+            
+    }
+
+
     // ===========================================================================================================
     return (
         <Stack direction={ "column" } spacing={0} gap={0} width={"100%"}>
-            { props.config.title ? <Title label="Commute" /> : null }
+            <div style={ { width: "2", height: "1px" } } >
+            <APIProvider apiKey={ appdata.config.google.map.key }>
+                <Map 
+                        defaultZoom         = { 8 }
+                        defaultCenter       = { { lat: 37, lng: -77 } }
+                        zoomControl         = { false }
+                        mapTypeControl      = { false }
+                        scaleControl        = { false }
+                        streetViewControl   = { false }
+                        fullscreenControl   = { false }
+                        onTilesLoaded={ onTileLoaded }
+                        >
+                </Map>
+            </APIProvider>
+            </div>  
+            { props.config.title ? <Title label={ "Commute: " + since + " ago" } /> : null }
             <table>
                 <tbody>
                     { routes.map( ( route : CommuteRoute, index : number ) => { return renderPath( route, index ) } ) }

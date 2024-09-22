@@ -1,13 +1,12 @@
 //
 //
-
 //
 import * as React from "react";
 import { createRoot } from 'react-dom/client';
 
 //
-import AppData from "./AppData.js";
 import App from "./App.js";
+import AppData from "./AppData.js";
 
 //
 // Centralized state

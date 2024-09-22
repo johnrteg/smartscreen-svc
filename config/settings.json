@@ -1,0 +1,73 @@
+{
+  "device": {
+    "id": "1234",
+    "name": "Home"
+  },
+  "location": {
+    "address": "4 Deer Trail Ct, Gaithersburg, MD",
+    "timezone": "America/New_York"
+  },
+  "background": {
+    "color": "#121212",
+    "image_url": "https://coronadotimes.com/wp-content/uploads/import/photos/3001-4000/3589-ADarkSkyline.jpg",
+    "opacity": 20
+  },
+  "calendar": {
+    "ids": [
+      "primary",
+      "en.usa#holiday@group.v.calendar.google.com"
+    ],
+    "start_dow": 1
+  },
+  "events": {
+    "default_duration": 15,
+    "dim_past": true
+  },
+  "persons": [
+    {
+      "name": "",
+      "colorId": 0
+    },
+    {
+      "name": "Jen",
+      "colorId": 1
+    },
+    {
+      "name": "",
+      "colorId": 2
+    },
+    {
+      "name": "Madison & Mike",
+      "colorId": 3
+    },
+    {
+      "name": "Cats",
+      "colorId": 4
+    },
+    {
+      "name": "Evan",
+      "colorId": 5
+    },
+    {
+      "name": "John",
+      "colorId": 6
+    },
+    {
+      "name": "Izzy",
+      "colorId": 7
+    },
+    {
+      "name": "Carter",
+      "colorId": 8
+    },
+    {
+      "name": "",
+      "colorId": 9
+    },
+    {
+      "name": "J&J",
+      "colorId": 10
+    }
+  ],
+  "units": "standard"
+}

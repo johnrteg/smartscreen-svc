@@ -7,7 +7,6 @@ import { Endpoint }         from '../../net/Endpoint.js';
 //
 import { getLoginGoogleEndpoint }  from '../../api/getLoginGoogleEndpoint.js';
 import { smartScreenService } from '../smartScreenService.js';
-import { netClient } from '../../net/netClient.js';
 
 
 
@@ -30,27 +29,6 @@ export default class getLoginGoogle extends getLoginGoogleEndpoint
     {
         console.log( "getLoginGoogleEndpoint", this.request );
 
-        /*
-        const params : any = { client_id : "107675219120146503094",
-            redirect_uri : "https://www.example.com/authenticate/google",
-            scope: [
-                'https://www.googleapis.com/auth/userinfo.email',
-                'https://www.googleapis.com/auth/userinfo.profile',
-                'https://www.googleapis.com/auth/calendar.events'
-              ].join(' '), // space seperated string
-              response_type: 'code',
-              access_type: 'offline',
-              prompt: 'consent',
-        };
-
-        const endpt : netClient = new netClient("");
-        const response  : netClient.Reply = await endpt.get( "https://accounts.google.com/o/oauth2/v2/auth", params );
-        if( response.ok )
-        {
-            console.log("login", response.data );
-
-        }
-            */
         
         // reply
         let reply : getLoginGoogleEndpoint.ReplyData = {};

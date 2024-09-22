@@ -28,8 +28,8 @@ export default class getExchange extends getExchangeEndpoint
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public async execute( authenticated : Endpoint.Authenticated ) : Promise<Endpoint.Reply>
     {
-        https://app.exchangerate-api.com/dashboard/confirmed
-        console.log( "getExchange", this.module.key, this.request, new Date().toLocaleString() );
+        //https://app.exchangerate-api.com/dashboard/confirmed
+        //console.log( "getExchange", this.module.key, this.request, new Date().toLocaleString() );
 
         let rates : Array<getExchangeEndpoint.Rate> = [];
 

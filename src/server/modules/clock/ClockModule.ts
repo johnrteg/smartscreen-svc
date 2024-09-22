@@ -11,4 +11,3 @@ export class ClockModule extends Module
         console.log("new clock");
     }
 }
-

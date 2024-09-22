@@ -33,20 +33,19 @@ export default function TimeZone( props : TimeZoneProps ) : JSX.Element
         let locale : string = StringUtils.replaceAll( parts[1], "_", " " );
         setLocation( locale );
 
-        //updateClock();
+        updateClock();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function updateClock() : void
     {
-        const utc : Date = new Date( props.time.toLocaleString('en', {timeZone: props.city }));
-        //console.log( "updateClock a", a.toLocaleTimeString() );
+        const utc : Date = new Date( props.time.toLocaleString('en', { timeZone: props.city }));
+        //console.log( "updateClock ", props.city, props.time.toLocaleTimeString(), utc.toLocaleTimeString() );
 
         let hrs : number = utc.getHours() >= 12 ? utc.getHours()-12 : utc.getHours();
         if( hrs == 0 )hrs = 12;
         const fmt : string = StringUtils.format( "{0}:{1} {2}", hrs, StringUtils.leadingZero( utc.getMinutes(), 2 ), utc.getHours() >= 12 ? "PM" : "AM" )
         setClock( fmt );
-        //setTimeout( updateClock, 30000 );
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,6 +54,7 @@ export default function TimeZone( props : TimeZoneProps ) : JSX.Element
         console.log("TimeZone unloaded");
     }
 
+// align="right" textAlign={"right"} sx={{ fontSize: 24, lineHeight:1.0, paddingTop:"10px" }}
     // ===============================================================================================
     return (
         <Stack direction={"row"} spacing={0} gap={0} sx={{width:"100%", paddingTope:"5px"}}>

@@ -12,16 +12,18 @@ export class getCalendarEndpoint extends Endpoint.Definition
     constructor()
     {
         super( Network.Method.GET, "/calendar", false );
-        this.datamap =  {   start_date : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
-                            end_date   : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: true },
+        this.datamap =  {   start_date  : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
+                            end_date    : { type: Endpoint.PropertyType.NUMBER, source: Endpoint.Source.QUERY, required: true },
+                            ids         : { type: Endpoint.PropertyType.STRING, source: Endpoint.Source.QUERY, required: false },
                         };
     }
 
     public reset() : void
     {
         this.request =  { 
-            start_date: Endpoint.InitValue,   
-            end_date: Endpoint.InitValue,   
+                            start_date: Endpoint.InitValue,   
+                            end_date: Endpoint.InitValue,
+                            ids: Endpoint.InitValue   
                         };                
     }
 
@@ -37,8 +39,9 @@ export namespace getCalendarEndpoint
 {
     export interface RequestData
     {
-        start_date : string;
-        end_date : string;
+        start_date : number;    // epoch seconds
+        end_date   : number;
+        ids        : string;    // endcoded array
     }
 
     export interface EventTime
@@ -50,10 +53,12 @@ export namespace getCalendarEndpoint
 
     export interface Event
     {
+        calendarId : string;
         id      : string;
         summary : string;
         start   : EventTime;
         end     : EventTime;
+        color   : string; // hex color
     }
 
     export interface ReplyData

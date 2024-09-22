@@ -28,24 +28,34 @@ export default class getWordOfDay extends getWordOfDayEndpoint
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public async execute( authenticated : Endpoint.Authenticated ) : Promise<Endpoint.Reply>
     {
-        //console.log( "getExchange", this.module.key, this.request, new Date().toLocaleString() );
-
         const endpt : netClient = new netClient( "" );
 
-        //const key : string = "c3bae5e76d0640bb8c5153708242208";
         const response : netClient.Reply = await endpt.get( "https://api.wordnik.com/v4/words.json/wordOfTheDay",
-            { date  : this.request.date,
-                key : this.module.key
+            {   date    : this.request.date,
+                api_key : this.module.key
             } );                   
         //
 
+        //console.log( "getWordOfDay", this.request, this.module.key, response );
+
+        let word        : string = "";
+        let definition  : string = "";
+        let type        : string = "";
+
         if( response.ok )
         {
-            console.log( "getWordOfDay", JSON.stringify( response.data, null, 4 ) );
+            //console.log( "getWordOfDay", JSON.stringify( response.data, null, 4 ) );
+            word       = response.data.word;
+            definition = response.data.definitions[0].text;
+            type       = response.data.definitions[0].partOfSpeech;
+        }
+        else
+        {
+            console.error("word", response.error );
         }
        
         // reply
-        let reply : getWordOfDayEndpoint.ReplyData = { word : "", definition: "", type: "" };
+        let reply : getWordOfDayEndpoint.ReplyData = { word : word, definition: definition, type: type };
         return { status: Network.Status.OK, data: reply };
     }
 }

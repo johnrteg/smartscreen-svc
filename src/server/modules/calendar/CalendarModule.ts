@@ -1,10 +1,12 @@
 //
-
-
 import { smartScreenService } from "../../smartScreenService.js";
 import { Module } from "../Module.js";
 
-import getCalendar from "./getCalendar.js";
+import getCalendar          from "./getCalendar.js";
+import getCalendarIds       from "./getCalendarIds.js";
+import postCalendarEvent    from "./postCalendarEvent.js";
+import putCalendarEvent     from "./putCalendarEvent.js";
+import deleteCalendarEvent  from "./deleteCalendarEvent.js";
 
 export class CalendarModule extends Module
 {
@@ -17,12 +19,15 @@ export class CalendarModule extends Module
 
         // endpoints
         this.server.route( new getCalendar( this ) );
+        this.server.route( new getCalendarIds( this ) );
+        this.server.route( new postCalendarEvent( this ) );
+        this.server.route( new putCalendarEvent( this ) );
+        this.server.route( new deleteCalendarEvent( this ) );
     }
 
     /////////////////////////////////////////////////////////
     public setConfig( config : any ) : void
     {
-        //console.log("CalendarModule::setConfig", config );
         this.key = config.key;
     }
 

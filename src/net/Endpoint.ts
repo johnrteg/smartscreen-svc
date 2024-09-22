@@ -87,10 +87,10 @@ export module Endpoint
 
     export enum PropertyType
     {
-        STRING = "string",
-        NUMBER = "number",
-        ARRAY  = "array",
-        OBJECT = "object",
+        STRING  = "string",
+        NUMBER  = "number",
+        ARRAY   = "array",
+        OBJECT  = "object",
         BOOLEAN = "boolean",
     }
 
@@ -110,8 +110,6 @@ export module Endpoint
 
 
     export const InitValue : any | string | number = undefined;
-
-    //export const SYS_APP_ID : string = "00000000-0000-0000-0000-000000000000";
 
 
 //
@@ -256,11 +254,6 @@ export class Definition
                     // no reason to warn here since there are usecases
                     // where the value is in the header and not set in the request
                     // but is extracted properly in the sserver.
-                    
-                    //else if( this.datamap[key].required )
-                    //{
-                    //    console.warn( "request not defined or missing attr for", source, key, field, this.method, this.url );
-                    //}
                 }
             }
         } // endif

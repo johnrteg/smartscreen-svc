@@ -13,6 +13,7 @@ import { netClient } from "../../../net/netClient.js";
 import { Constants } from "../../../utils/Constants.js";
 
 import { getWordOfDayEndpoint } from "../../../api/getWordOfDayEndpoint.js";
+import StringUtils from "../../../utils/StringUtils.js";
 
 
 
@@ -54,12 +55,14 @@ export default function WordOfDay( props : WordOfDayProps ) : JSX.Element
         const today : Date = new Date();
 
         const endpt : getWordOfDayEndpoint = new getWordOfDayEndpoint();
-        endpt.request.date      = today.toDateString();
+        endpt.request.date      = StringUtils.format( "{0}-{1}-{2}", today.getFullYear(),
+                                                    StringUtils.leadingZero( today.getMonth()+1, 2 ),
+                                                    StringUtils.leadingZero( today.getDate(), 2 ) );
 
         const reply  : netClient.Reply = await appdata.webserver.fetch( endpt, { cache: true, lifespan: 240 } ); // 240 minute force update
         if( reply.ok )
         {
-            //console.log("exchange", reply.data );
+            //console.log("word", reply.data );
             const data : getWordOfDayEndpoint.ReplyData = reply.data;
 
             setWord( data.word );
@@ -74,12 +77,14 @@ export default function WordOfDay( props : WordOfDayProps ) : JSX.Element
 
     // ===============================================================================================
     return (
-        <Stack direction={ "column" } spacing={0} gap={0} width={"100%"}>
+        <Stack direction={ "column" } spacing={0} gap={1} width={"100%"}>
             <Title label="Word of the Day" />
             <Stack direction="row"  spacing={0} gap={2} width={"100%"}>
                 <Typography component="div" color={"text.primary"} sx={{ fontSize: 24, lineHeight:1.0 }}>{word}</Typography>
-                <Typography component="div" color={"text.primary"} sx={{ fontSize: 16, lineHeight:1.0 }}>{definition}</Typography>
-                <Typography component="div" color={"text.secondary"} sx={{ fontSize: 16, lineHeight:1.0 }}>{type}</Typography>
+                <Typography component="div" color={"text.secondary"} sx={{ fontSize: 16, lineHeight:1.0, paddingTop:0.5, fontStyle:"italic" }}>{type}</Typography>
+            </Stack>
+            <Stack direction="row"  spacing={0} gap={2} width={"100%"}>
+                <Typography component="div" color={"text.secondary"} sx={{ fontSize: 16, lineHeight:1.0 }}>{definition}</Typography>
             </Stack>
         </Stack>       
     );

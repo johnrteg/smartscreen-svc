@@ -1,31 +1,17 @@
 //
 //
 //
-
-//
-//import { Endpoint }                 from "microvolt-lib/lib/services/Endpoint.js";
-//import ObjectUtils                  from "microvolt-lib/lib/utils/ObjectUtils.js";
 import { getLayoutEndpoint } from '../api/getLayoutEndpoint.js';
+import { getSettingsEndpoint } from '../api/getSettingsEndpoint.js';
+import { getConfigEndpoint } from '../api/getConfigEndpoint.js';
+
+
 import { netClient }          from '../net/netClient.js';
 import { Constants } from '../utils/Constants.js';
 import { Interfaces } from './Interfaces.js';
 
 
-export enum Cache
-{
-    //APP      = "app",
-    //APPS     = "apps",
-    //PACKAGES = "packages",
-    //CLIENTS  = "clients",
-    //COUPONS  = "coupons",
-    //ACCESS   = "access",
-    //TIMEOUT   = "timeout",
-}
 
-interface BrowserConfig
-{
-    host : string;
-}
 
 
 //
@@ -35,7 +21,8 @@ export default class AppData
 {
     private static _instance : AppData;
 
-    private config : BrowserConfig;
+    private host : string = "http://localhost:8080";
+    public config : getConfigEndpoint.ReplyData;
 
     public webserver    : netClient;
 
@@ -45,13 +32,17 @@ export default class AppData
     public begin_window : number = 6; // hours
     public end_window   : number = 22; // hours
 
+    public settings: getSettingsEndpoint.ReplyData;
+
+    public static event_colors : Array<string> = ['#7986CB','#33B679','#8E24AA','#E67C73','#F6BF26','#F4511E','#039BE5','#616161','#3F51B5','#0B8043','#D50000'];
+
     ////////////////////////////////////////////////////////////////////////////////////////////////
     constructor()
     {
         //this.localizer  = new Localizer();
         //this.cache      = new CacheData();
-        this.config = { host: "http://localhost:8080" };
         this.layout = { pages: [] };
+        this.settings = null;
     
     }
 
@@ -83,36 +74,42 @@ export default class AppData
     ////////////////////////////////////////////////////////////////////////////////////////////////
     public async initialize( main : Function ) : Promise<void>
     {
-        //this.uri = new Uri( window.location.hash );
-
-        //console.log('initialize', this.uri );
-
-        /*
-        // load browser config
-        const client : microvoltClient = new microvoltClient('/');
-        const reply  : microvoltClient.Reply = await client.get( "data/browser/config.json" );
-        if( reply.ok )
-        {
-            //console.info( "browser config", reply.data );
-            this.config = reply.data;
-        }
-        */
 
         // client service
         let headers : any = {};
+        this.webserver = new netClient( this.host, headers );
 
-        this.webserver = new netClient( this.config.host, headers );
+
+        //
+        //
+        //
+        const config_endpt : getConfigEndpoint = new getConfigEndpoint();
+        const config_reply  : netClient.Reply = await this.webserver.fetch( config_endpt );
+        if( config_reply.ok )
+        {
+            this.config = config_reply.data;
+            //console.log( "config", this.config );
+        }
+
+        
 
         //
         const endpt : getLayoutEndpoint = new getLayoutEndpoint();
         const init_reply  : netClient.Reply = await this.webserver.fetch( endpt );
         if( init_reply.ok )
         {
-            
-            //this.keys.editor = init_reply.data.editor;
             this.layout = init_reply.data.layout;
+        }
 
-            //console.info( "init layout", this.layout );
+        //
+        //
+        //
+        const settings_endpt : getSettingsEndpoint = new getSettingsEndpoint();
+        const settings_reply  : netClient.Reply = await this.webserver.fetch( settings_endpt );
+        if( settings_reply.ok )
+        {
+            this.settings = settings_reply.data;
+            console.log( "settings", this.settings );
         }
 
         //await this.localizer.init();

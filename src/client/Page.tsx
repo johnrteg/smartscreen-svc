@@ -1,19 +1,21 @@
 import * as React from "react";
 
 //
-import { Stack, Card, Paper, Box } from '@mui/material';
+import { Typography, Stack, Box, Card, CardContent, CardActions, Button, Grid } from '@mui/material';
 
-//
+
 import AppData from "./AppData.js";
 import { Interfaces } from "./Interfaces.js";
 
 //
-import Space            from "./modules/Space/Space.js";
-import Clock            from "./modules/Clock/Clock.js";
-import TimeZones        from "./modules/TimeZones/TimeZones.js";
-import Weather          from "./modules/Weather/Weather.js";
-import WeatherForecast  from "./modules/Weather/WeatherForecast.js";
-import Calendar         from "./modules/Calendar/Calendar.js";
+//import AppData from "../../data/AppData.js";
+//
+import Space            from "./modules/space/Space.js";
+import Clock            from "./modules/clock/Clock.js";
+import TimeZones        from "./modules/timezones/TimeZones.js";
+import Weather          from "./modules/weather/Weather.js";
+import WeatherForecast  from "./modules/weather/WeatherForecast.js";
+import Calendar         from "./modules/calendar/Calendar.js";
 import Exchange         from "./modules/exchange/Exchange.js";
 import MapGoogle        from "./modules/map/MapGoogle.js";
 import Commute          from "./modules/commute/Commute.js";
@@ -74,15 +76,22 @@ export default function Page( props : PageProps ) : JSX.Element
     }
 
 
+      /*
+                  <Grid container={true} spacing={2}>
+                <Grid item xs={5}>
+                    
+                </Grid>
+                <Grid item xs={3}>
+                    
+                </Grid>
+            </Grid>
+      */
     // ===============================================================================================
     return (
         <div style={{width: '100%' }}>
-            <Stack direction={"column"}>
-
-                { props.rows ? props.rows.map( ( row : Interfaces.Row, index: number ) => { return <Stack key={index} direction={"row"}>{ renderRow( index, row.widgets ) }</Stack> } ) : null }
-
+            <Stack direction={"column"} gap={2}>
+                { props.rows ? props.rows.map( ( row : Interfaces.Row, index: number ) => { return <Stack key={index} gap={2} direction={"row"}>{ renderRow( index, row.widgets ) }</Stack> } ) : null }
             </Stack>
-            
         </div>
     );
     // ===============================================================================================

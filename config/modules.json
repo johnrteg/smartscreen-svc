@@ -1,10 +1,10 @@
 {
     "modules" : [
-        { "id" : "wx", "config" : { "key" : "c3bae5e76d0640bb8c5153708242208" } },
+        { "id" : "wx", "config" : { "key" : "7ZY56VZ9TWFKNJPD6VLJY2EY4" } },
         { "id" : "calendar", "config" : {} },
         { "id" : "cnn", "config" : { "update" : 15 } },
         { "id" : "exchange", "config" : { "key" : "5f99167b787ee4dbd604aeab" } },
-        { "id" : "word", "config" : { "key" : "5f99167b787ee4dbd604aeab" } },
+        { "id" : "word", "config" : { "key" : "omswnoc95pqlfptacee0n4xm82veua0pvfzr20w567qfdmudh" } },
         { "id" : "googleMap", "config" : { "key" : "AIzaSyAh7YwRm96CWF8eftoTrnvt1kfhNDYB7fY" } }
     ]
 }

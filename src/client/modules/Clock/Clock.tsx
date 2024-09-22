@@ -1,8 +1,9 @@
 import * as React from "react";
 
 //
-import { Typography, Stack, Box} from '@mui/material';
+import { Typography, Stack, Box } from '@mui/material';
 import StringUtils from "../../../utils/StringUtils.js";
+
 
 export interface ClockConfig
 {
@@ -33,9 +34,7 @@ export default function Clock( props : ClockProps ) : JSX.Element
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function pageLoaded() : void
     {
-        console.log( "config", props.config );
         update();
-
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,13 +47,19 @@ export default function Clock( props : ClockProps ) : JSX.Element
         const hours : number = now.getHours() > 12 ? now.getHours()-12 : now.getHours();
         
         setTime( hours + ":" + StringUtils.leadingZero( now.getMinutes(), 2 ) );
+
         if( props.config.seconds )setSeconds( ":" + StringUtils.leadingZero( now.getSeconds(), 2 ) );
         //setDate( months[ now.getMonth() ] + " " + now.getDate() );
 
         let display_date : string = months[ now.getMonth() ] + " " + now.getDate();
         if( props.config.date == "DM" )display_date = now.getDate() + " " + months[ now.getMonth() ];
         setDow( dows[ now.getDay() ] +  ", " + display_date  );
+
+        setSeconds( ":" + StringUtils.leadingZero( now.getSeconds(), 2 ) );
+        //setDate( months[ now.getMonth() -1 ] + " " + now.getDate() );
+        //setDow( dows[ now.getDay() ] );
         setAmPm( now.getHours() >= 12 ? "PM" : "AM" );
+
         setTimeout( update, 1000 );
     }
 
@@ -64,12 +69,7 @@ export default function Clock( props : ClockProps ) : JSX.Element
         //console.log("clock unloaded");
     }
 
-//
-/*
-<Box sx={{ width: "100%", display: 'flex', justifyContent: 'flex-end', paddingRight: "15px" }} >
-                    <Typography align="right" textAlign={"right"} sx={{ fontSize: 24, lineHeight:1.0, paddingTop:"10px" }} color="text.secondary" gutterBottom>{date}</Typography>
-                </Box>
-*/
+// 
     // ===============================================================================================
     return (
         <Stack direction={"column"} spacing={0} gap={0}>
@@ -81,8 +81,7 @@ export default function Clock( props : ClockProps ) : JSX.Element
                 </Stack>  
             </Stack>
             <Stack direction={"row"} justifyContent="flex-start" spacing={0} width={"100%"}>
-                <Typography align="center" sx={{ fontSize: 45, lineHeight:1.0 }} color="text.secondary" gutterBottom>{dow}</Typography>
-                
+                <Typography align="center" sx={{ fontSize: 42, lineHeight:1.0 }} color="text.secondary" gutterBottom>{dow}</Typography>
             </Stack>
         </Stack>       
     );

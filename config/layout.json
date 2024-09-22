@@ -30,21 +30,20 @@
                                             },
                                             { "widgets" :   [   { "module": "map", "width" : "80%", "config" : {    "height": "475px",
                                                                                                                     "zoom" : 11,
-                                                                                                                    "lat" : 39.0, "lon" : -77.3,
+                                                                                                                    "lat" : 39.0, "lon" : -77.2,
                                                                                                                     "zoomControl" : true,
                                                                                                                     "mapTypeControl" : false,
                                                                                                                     "scaleControl" : false,
                                                                                                                     "streetViewControl" : false,
                                                                                                                     "fullscreenControl" : false } },
-                                                                { "module": "commute", "width" : "20%", "config" : { "from" : "4 Deer Trail Ct, Gaithersburg, MD",
-                                                                                                                    "to" : [ { "name" : "Work", "address" : "7642 Arlington Rd, Bethesda, MD", "icon" : "work" },
+                                                                { "module": "commute", "width" : "20%", "config" : {"to" : [ { "name" : "Work", "address" : "7642 Arlington Rd, Bethesda, MD", "icon" : "work" },
                                                                                                                              { "name" : "Tysons", "address" : "7920 Jones Branch Dr, McLean, VA", "icon" : "shop" },
                                                                                                                              { "name" : "DCA", "address" : "DCA, Virginia", "icon" : "plane" },
                                                                                                                              { "name" : "BWI", "address" : "BWI, Maryland", "icon" : "plane" },
                                                                                                                              { "name" : "IAD", "address" : "IAD, Virginia", "icon" : "plane" }
                                                                                                                             ],
                                                                                                                     "direction" : "vertical",
-                                                                                                                    "update_hours" : 2,
+                                                                                                                    "update_hours" : 0.5,
                                                                                                                     "title" : true } }                                                   
                                                                 
                                                         ]
@@ -94,7 +93,7 @@
                                                                                     
                                                             ]
                                             } ,
-                                            { "widgets" :   [   { "module": "wxforecast", "width" : "100%", "config" : {    "location" : "Omaha, NE",
+                                            { "widgets" :   [   { "module": "wxforecast", "width" : "100%", "config" : {    "location" : "68101",
                                                                                                                             "name" : "Omaha",
                                                                                                                             "units" : "imperial",
                                                                                                                             "direction" : "horizontal",

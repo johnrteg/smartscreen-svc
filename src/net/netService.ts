@@ -107,6 +107,19 @@ export class netService
         }   
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////
+    public writeJsonFile( path : string, value: any ) : void
+    {
+        //if( fs.existsSync( path ) )
+        fs.writeFileSync( path, JSON.stringify( value, null, 2 ) );
+            //return JSON.parse( );
+        //else
+        //{
+        //    this.logError( "readJsonFile path not found", { path: path, cwd: process.cwd() } );
+        //    return default_value;
+        //}   
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //
     protected directoryPath( import_meta_url : string ) : string

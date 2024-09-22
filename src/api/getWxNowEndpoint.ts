@@ -66,6 +66,8 @@ export namespace getWxNowEndpoint
 
         MIST = "mist",
         FOG = "fog",
+
+        WIND = "wind",
     }
 
     export interface Report

@@ -19,6 +19,7 @@ import { Icon as SunIcon } from "./icons/SunAltIcon.js";
 import { Icon as SleetIcon } from "./icons/SleetIcon.js";
 import { Icon as DrizzleIcon } from "./icons/DrizzleIcon.js";
 import { Icon as MistIcon } from "./icons/MistIcon.js";
+import { Icon as WindIcon } from "./icons/WindIcon.js";
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,6 +44,7 @@ export function WxIcon( value : getWxNowEndpoint.Conditions, size : number, colo
         case getWxNowEndpoint.Conditions.SLEET              : return <SleetIcon color={color} width={size+"px"} height={size+"px"} />; break; 
 
         case getWxNowEndpoint.Conditions.FOG                : return <FogIcon color={color} width={size+"px"} height={size+"px"} />; break;
+        case getWxNowEndpoint.Conditions.WIND               : return <WindIcon color={color} width={size+"px"} height={size+"px"} />; break;
         default : return <SunIcon color={color} width={size+"px"} height={size+"px"} />;
     }
     

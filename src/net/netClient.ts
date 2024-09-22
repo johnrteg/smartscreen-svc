@@ -314,7 +314,7 @@ export class netClient
                                                             } );
             //console.log( 'resp', response );
 
-            reply.ok       = response.status === 200;
+            reply.ok       = ( response.status >= 200 && response.status <= 299 );
             reply.headers  = { ...response.headers };
             reply.data     = response.data;
             reply.duration = Date.now() - start;
