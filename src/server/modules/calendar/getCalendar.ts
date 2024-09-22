@@ -98,9 +98,6 @@ export default class getCalendar extends getCalendarEndpoint
             // NOT_AUTHORIZED
             return this.failure( Network.Status.UNAUTHORIZED, getCalendarEndpoint.Error.NOT_AUTHORIZED, "unauthorized token" );
         }
-        // redirect: http://localhost:8080/auth/google
-        // client id: 251787141802-8lm7p0g9r8ph27lt54v0tjl0if521bjp.apps.googleusercontent.com
-        // client secret : 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
         
         // reply
         let reply : getCalendarEndpoint.ReplyData = { events : events };
