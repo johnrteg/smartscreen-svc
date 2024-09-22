@@ -74,7 +74,7 @@ export default class getCalendar extends getCalendarEndpoint
                     for( i=0; i < data.items.length; i++ )
                     {
                         console.log( "event", i, data.items[i] );
-                        
+
                         events.push( {  id          : data.items[i].id,
                                         calendarId  : ids[idx],
                                         summary     : data.items[i].summary,
@@ -95,7 +95,6 @@ export default class getCalendar extends getCalendarEndpoint
         else
         {
             console.error( "getCalendar: no tokens saved/expired" );
-            // NOT_AUTHORIZED
             return this.failure( Network.Status.UNAUTHORIZED, getCalendarEndpoint.Error.NOT_AUTHORIZED, "unauthorized token" );
         }
         
