@@ -1,6 +1,8 @@
 //
 import * as React from "react";
 //
+import dayjs from "dayjs";
+
 
 import { Typography, Stack, Box, Button, IconButton} from '@mui/material';
 
@@ -53,7 +55,7 @@ export interface EventInfo
 
 interface EventCell
 {
-    date : string;          // YYYYMMDD
+    date    : string;          // YYYYMMDD
     events  : Array<EventInfo>;
 }
 
@@ -73,7 +75,7 @@ export default function MonthlyView( props : MonthlyViewProps ) : JSX.Element
     const max_events_per_day                = React.useRef<number>( 4 );
 
     const [start_date, setStartDate]        = React.useState<Date>(null);
-    const [edit_date, setEditdate]          = React.useState<Date>(null);
+    const [edit_date, setEditdate]          = React.useState<string>(null);
 
     const [events, setEvents]               = React.useState< Array<EventCell> >( [] );
 
@@ -248,49 +250,51 @@ export default function MonthlyView( props : MonthlyViewProps ) : JSX.Element
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function renderCellInside( today : Date, cell_date : Date, row : number, col : number  ) : JSX.Element
+    function renderCellInside( today : string, cell_date : string, row : number, col : number ) : JSX.Element
     {
         let label      : string = "";
         let date_color : string = "text.primary";
 
+        const cdt : any = AppData.splitDateId( cell_date );
+        //console.log("split", cell_date, cdt );
+
         // show month on the first cell and the first day of each month
-        if( cell_date.getDate() == 1 || ( row == 0 && col == 0 ) )
+        if( cdt.date == 1 || ( row == 0 && col == 0 ) )
         {
-            label = StringUtils.format( "{0} ", month.current[ cell_date.getMonth() ] );
+            label = StringUtils.format( "{0} ", month.current[ cdt.month ] );
             date_color = "primary";
         }  
-        label += cell_date.getDate();
+        label += cdt.date;
 
         // banner
-        let banner : any = {display:'flex', justifyContent:'center', paddingTop:0.5, paddingRight:0.5, paddingBottom:0.5 };//, bgcolor: "#00a152" };
+        let banner : any = {display:'flex', justifyContent:'center', paddingTop:0.5, paddingRight:0.5, paddingBottom:0.5 };
         
-        if( today.getTime() == cell_date.getTime() )date_color = "error";
-        const past_date : boolean = cell_date.getTime() < today.getTime();
+        if( today == cell_date )date_color = "error";
+        const past_date : boolean = cell_date < today;
 
         return  <Stack direction={"column"} spacing={0} gap={0.3} width={"100%"}>
-                    <Box key={ "in_" + cell_date.getTime()/1000 } sx={ banner }>
+                    <Box key={ "in_" + cell_date } sx={ banner }>
                         <Typography sx={{ fontSize: 40, lineHeight:1.0, padding:0 }} component="div" color={date_color}>{ label }</Typography>
                     </Box>
-                    { renderEvents( past_date, dateId(cell_date), row, col ) }
+                    { renderEvents( past_date, cell_date, row, col ) }
                 </Stack>;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function renderCell( today : Date, row : number, col : number, maxRow : number  ) : JSX.Element
+    function renderCell( today : string, date : string, row : number, col : number, maxRow : number  ) : JSX.Element
     {
-        const cell_date : Date = new Date( start_date.getTime() + ( (row*7 + col) * Constants.DAYS_TO_MS ) );
-
         let sx : any = { p: 0.0, borderTop: '1px solid grey' };//, borderLeft: '1px solid grey' };
         if( row == maxRow-1 )sx['borderBottom'] = '1px solid grey';
 
-        return <Box key={ cell_date.getTime() } onClick={ (evt:any) => onDateClick( cell_date, row, col ) } component="section" width={"100%"} height={"140px"} sx={ sx }>{ renderCellInside( today, cell_date, row,col)}</Box>;
+        //                                                                       , row, col
+        return <Box key={ date } onClick={ (evt:any) => onDateClick( date ) } component="section" width={"100%"} height={"140px"} sx={ sx }>{ renderCellInside( today, date, row, col ) }</Box>; //, row, col)}</Box>;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function renderRow( today : Date, row : number, maxRow : number ) : JSX.Element
+    function renderRow( today : string, start_of_week_dt : any, row : number, maxRow : number ) : JSX.Element
     {
-        let rowel : JSX.Element = <Stack key={row} direction={"row"} spacing={0} gap={0} width={"100%"}>
-            { dow.current.map( ( dow : string, col : number ) => { return renderCell( today, row, col, maxRow ) } ) }
+        let rowel : JSX.Element = <Stack key={start_of_week_dt.valueOf()} direction={"row"} spacing={0} gap={0} width={"100%"}>
+            { dow.current.map( ( dow : string, col : number ) => { return renderCell( today, datedId( start_of_week_dt.add( col, 'day' ) ), row, col, maxRow ) } ) }
         </Stack>;
 
         return rowel;
@@ -335,28 +339,39 @@ export default function MonthlyView( props : MonthlyViewProps ) : JSX.Element
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    function datedId( dt : any ) : string
+    {
+        return StringUtils.format("{0}{1}{2}", dt.year(), StringUtils.leadingZero( dt.month()+1, 2 ), StringUtils.leadingZero( dt.date(), 2 ) );
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
     function renderWeeks() : Array<JSX.Element>
     {
         if( start_date == null )return null;
 
         // pass today
         const nbr_weeks : number = Math.ceil( props.days / 7 );
-        let weeks   : Array<JSX.Element> = [];
-        let w       : number;
+        let weeks       : Array<JSX.Element> = [];
+        let w           : number;
 
         // fill in the empty map of events for each day
         const nbr_cells : number = nbr_weeks * 7;
-        let i : number;
-        let date : Date = new Date( start_date );
+        let i           : number;
+        let date        : Date = new Date( start_date );
+        date.setHours( 0, 0, 0, 0 );
 
+        let dt : any = dayjs( date );
+        //console.log( "start", dt.valueOf() );
         //console.log('original start_date', start_date );
 
         // fill cells
         cells.current = [];
         for( i=0; i < nbr_cells; i++ )
         {
-            cells.current.push( { date: dateId( date ), events: [] } );
-            date.setTime( date.getTime() + Constants.DAYS_TO_MS );      // advance 1 day
+            //console.log( "cell", i, datedId( dt ), dt );
+            cells.current.push( { date: datedId( dt ), events: [] } );
+            dt = dt.add( 1, 'day' );
+            
         }
         //console.log('original cells', cells.current );
        
@@ -365,11 +380,15 @@ export default function MonthlyView( props : MonthlyViewProps ) : JSX.Element
         let today : Date = new Date();
         today.setHours( 0, 0, 0, 0 );
 
+        // reset
+        dt = dayjs( date );
+
         //
         weeks.push( renderHeader() );
         for( w = 0; w < nbr_weeks; w++ )
         {
-            weeks.push( renderRow( today, w, nbr_weeks ) );
+            weeks.push( renderRow( dateId( today ), dt, w, nbr_weeks ) );
+            dt = dt.add( 7, 'day' );
         }
         return weeks;
     }
@@ -608,19 +627,28 @@ export default function MonthlyView( props : MonthlyViewProps ) : JSX.Element
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function onDateClick( cell_date : Date, row : number, col : number ) : void
+    function onDateClick( cell_date : string ) : void
     {
-        const idx       : number = row*7 + col;
+        //const idx       : number = row*7 + col;
         let line        : number;
         let e_events    : Array<EventInfo> = [];
+        let idx : number;
 
-        for( line=0; line < events[idx].events.length; line++ )
+        for( idx=0; idx < events.length; idx++ )
         {
-            // if no event or event not starting on this date
-            if( events[idx].events[line] != null && events[idx].events[line].calendar === "primary" )
+            if( events[idx].date == cell_date )
             {
-                e_events.push( events[idx].events[line] );
+                for( line=0; line < events[idx].events.length; line++ )
+                {
+                    // if no event or event not starting on this date
+                    if( events[idx].events[line] != null && events[idx].events[line].calendar === "primary" )
+                    {
+                        e_events.push( events[idx].events[line] );
+                    }
+                }
+                break;
             }
+            
         }
 
         setEditEvents( e_events );

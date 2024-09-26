@@ -23,13 +23,13 @@ import { AlertAction } from "../../widgets/AlertPrompt.js";
 
 export interface ListEventsProps
 {
-    date    : Date;
-    events : Array<EventInfo>;
-    onAdd : ()=> void;
-    onClose : ()=> void;
-    onEdit : ( id : string ) => void;
-    onSave  : ()=> void;
-    onDeleted  : ()=> void;
+    date        : string;
+    events      : Array<EventInfo>;
+    onAdd       : ()=> void;
+    onClose     : ()=> void;
+    onEdit      : ( id : string ) => void;
+    onSave      : ()=> void;
+    onDeleted   : ()=> void;
 }
 
 
@@ -41,17 +41,9 @@ export default function ListEvents( props : ListEventsProps ) : JSX.Element
     const [appdata,setAppData]          = React.useState< AppData >( AppData.instance() );
 
     //
-    //const [summary, setSummary]         = React.useState<string>("");
-   // const [start_date, setStartDate]    = React.useState<Dayjs>(null);
-   // const [end_date, setEndDate]        = React.useState<Dayjs>(null);
-    //const [all_day, setAllday]          = React.useState<boolean>(true);
-    //const [color, setColor]             = React.useState<string>("#F6BF26");
     const [delete_event, setDeleteEvent]    = React.useState<EventInfo>(null);
 
     React.useEffect( () => pageLoaded(), [] );
-    //React.useEffect( () => () => pageUnloaded(), [] );
-    //React.useEffect( dateChanged, [start_date,end_date] );
-   // React.useEffect( allDayChanged, [all_day] );
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     function pageLoaded() : void
@@ -180,13 +172,20 @@ export default function ListEvents( props : ListEventsProps ) : JSX.Element
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    function dateHeader( str : string ) : string
+    {
+        const dt : any = AppData.splitDateId( str );
+        return [ dt.month, dt.date, dt.year ].join(' / ');
+    }
+
 
     // ===============================================================================================
 
     return (
         <div>
             <Dialog onClose={onClose} open={true} sx={{width:575,left:(window.outerWidth-575)/2}} fullWidth={true}>
-                <DialogTitle>{"Events: " + props.date.toLocaleDateString() }</DialogTitle>
+                <DialogTitle>{"Events: " + dateHeader( props.date ) }</DialogTitle>
                 <DialogContent dividers>
 
                     <List sx={{ width: '100%', maxWidth: 550, bgcolor: 'background.paper' }}>

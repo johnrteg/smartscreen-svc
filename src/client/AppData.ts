@@ -52,6 +52,17 @@ export default class AppData
         //this.webserver.clear();
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static splitDateId( id : string ) : any
+    {
+        // YYYYMMDD
+        // 01234567
+        const year  : string = id.substring(0,4);
+        const month : string = id.substring(4,6);
+        const date  : string = id.substring(6,8);
+        return { year: parseInt( year ), month: parseInt( month ), date: parseInt( date ) };
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////////
     public static instance() : AppData
     {

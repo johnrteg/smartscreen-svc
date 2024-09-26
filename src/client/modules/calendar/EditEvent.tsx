@@ -37,7 +37,7 @@ import { EventInfo } from "./MonthlyView.js";
 export interface EditEventProps
 {
     event    : EventInfo;
-    date    : Date;
+    date    : string;
     onClose : ()=> void;
     onSave  : ()=> void;
 }
