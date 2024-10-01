@@ -116,14 +116,33 @@ export default function ListEvents( props : ListEventsProps ) : JSX.Element
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
+    function toTimeString( minutes : number ) : string
+    {
+        const hours : number = Math.min( minutes / 60 );
+        const mins  : number = minutes - hours * 60;
+        const ampm  : string = hours >= 12 ? "pm" : "am";
+        return StringUtils.format( "{0}:{1} {2}", hours > 12 ? hours - 12 : hours, StringUtils.leadingZero( mins, 2 ), ampm );
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
     function eventDate( event : EventInfo ) : string
     {
         let str : string = toDateString( event.start_date );
+        if( !event.allday )str += ( " @ " + toTimeString( event.start_time ) );
+
         if( event.end_date != event.start_date )
         {
             str += " - ";
             str += toDateString( event.end_date );
+            if( !event.allday )str += ( " @ " + toTimeString( event.end_time ) );
         }
+        else
+        {
+            if( !event.allday )str += ( " - " + toTimeString( event.end_time ) );
+        }
+
+        
+
         return str;
     }
 

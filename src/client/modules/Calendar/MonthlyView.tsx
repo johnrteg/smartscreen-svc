@@ -261,7 +261,7 @@ export default function MonthlyView( props : MonthlyViewProps ) : JSX.Element
         // show month on the first cell and the first day of each month
         if( cdt.date == 1 || ( row == 0 && col == 0 ) )
         {
-            label = StringUtils.format( "{0} ", month.current[ cdt.month ] );
+            label = StringUtils.format( "{0} ", month.current[ cdt.month-1 ] );
             date_color = "primary";
         }  
         label += cdt.date;
